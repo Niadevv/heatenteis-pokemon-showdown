@@ -1,3 +1,14 @@
 full metal body: does magic guard work? YES
 	does status immunity work? YES
 	steel boost? YES
+
+kyurems can use:
+	ice punch
+	earthquake
+
+
+test to see if breaks protect:
+	bolt strike
+	blue flare
+	ice burn
+	freeze shock

@@ -17,6 +17,40 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 106, atk: 90, def: 150, spa: 110, spd: 174, spe: 110},
 		abilities: {0: "Pressure", 1: "Multiscale", H: "Drizzle"},
 	},
+	zekrom: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 170, def: 130, spa: 140, spd: 100, spe: 90},
+	},
+	reshiram: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 140, def: 100, spa: 170, spd: 130, spe: 90},
+	},
+	zacian: {
+		inherit: true,
+		types: ["Fighting"],
+	},
+	zamazenta: {
+		inherit: true,
+		types: ["Fairy"],
+	},
+	zaciancrowned: {
+		inherit: true,
+		types: ["Fighting", "Steel"],
+		baseStats: {hp: 92, atk: 170, def: 125, spa: 120, spd: 125, spe: 148},
+	},
+	zamazentacrowned: {
+		inherit: true,
+		types: ["Fairy", "Steel"],
+		baseStats: {hp: 92, atk: 130, def: 175, spa: 80, spd: 175, spe: 128},
+	},
+	solgaleo: {
+		inherit: true,
+		baseStats: {hp: 139, atk: 179, def: 107, spa: 113, spd: 89, spe: 113},
+	},
+	lunala: {
+		inherit: true,
+		baseStats: {hp: 139, atk: 113, def: 89, spa: 179, spd: 107, spe: 113},
+	}
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
