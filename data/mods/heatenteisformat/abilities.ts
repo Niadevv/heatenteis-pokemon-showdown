@@ -71,4 +71,12 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			return false;
 		},
 	},
+	neuroforce: {
+		inherit: true,
+		onModifyMove(move) {
+			if (move.id === "photongeyser") {
+				move.basePower = 160;
+			}
+		},
+	},
 };

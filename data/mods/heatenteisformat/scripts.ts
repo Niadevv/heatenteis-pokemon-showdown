@@ -12,5 +12,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'solgaleo').learnset.shiftgear = ['5L1'];
 		this.modData('Learnsets', 'lunala').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'lunala').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'necrozma').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'necrozma').learnset.dragonclaw = ['5L1'];
+		// Necrozma's forms should all inherit the learned moves
+		
 	},
 };

@@ -50,7 +50,19 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	lunala: {
 		inherit: true,
 		baseStats: {hp: 139, atk: 113, def: 89, spa: 179, spd: 107, spe: 113},
-	}
+	},
+	necrozmaduskmane: {
+		inherit: true,
+		baseStats: {hp: 97, atk: 157, def: 163, spa: 113, spd: 127, spe: 83},
+	},
+	necrozmadawnwings: {
+		inherit: true,
+		baseStats: {hp: 97, atk: 113, def: 127, spa: 157, spd: 163, spe: 83},
+	},
+	necrozmaultra: {
+		inherit: true,
+		baseStats: {hp: 97, atk: 197, def: 97, spa: 197, spd: 97, spe: 157},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,

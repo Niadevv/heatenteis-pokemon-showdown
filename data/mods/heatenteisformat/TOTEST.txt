@@ -12,3 +12,5 @@ test to see if breaks protect:
 	blue flare
 	ice burn
 	freeze shock
+
+is photon geyser 160 BP with neruforce?

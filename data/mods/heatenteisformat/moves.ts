@@ -87,6 +87,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "self",
 		type: "Ghost",
 		zMove: {effect: 'clearnegativeboost'},
-		contestType: "Clever",
-	}
+		contestType: "Beautiful",
+	},
 };
