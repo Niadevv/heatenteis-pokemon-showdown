@@ -7,6 +7,17 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 125, atk: 140, def: 100, spa: 190, spd: 110, spe: 95},
 	},
+	hooh: {
+		inherit: true,
+		baseStats: {hp: 106, atk: 150, def: 90, spa: 110, spd: 174, spe: 110},
+		abilities: {0: "Pressure", 1: "Regenerator", H: "Drought"},
+	},
+	lugia: {
+		inherit: true,
+		baseStats: {hp: 106, atk: 90, def: 150, spa: 110, spd: 174, spe: 110},
+		abilities: {0: "Pressure", 1: "Multiscale", H: "Drizzle"},
+	},
+	// MEGA STUFF
 	butterfree: {
 		inherit: true,
 		otherFormes: ["Butterfree-Mega"],

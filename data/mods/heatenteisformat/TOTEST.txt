@@ -1,0 +1,3 @@
+full metal body: does magic guard work? YES
+	does status immunity work? YES
+	steel boost? YES
