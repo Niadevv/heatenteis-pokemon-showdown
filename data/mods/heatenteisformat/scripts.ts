@@ -23,10 +23,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'giratina').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'giratina').learnset.dragondance = ['5L1'];
 		this.modData('Learnsets', 'giratina').learnset.roost = ['5L1'];
-		this.modData('Learnsets', 'giratinaorigin').learnset.nastyplot = ['5L1'];
+		/* this.modData('Learnsets', 'giratinaorigin').learnset.nastyplot = ['5L1'];
 		this.modData('Learnsets', 'giratinaorigin').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'giratinaorigin').learnset.dragondance = ['5L1'];
-		this.modData('Learnsets', 'giratinaorigin').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'giratinaorigin').learnset.roost = ['5L1'];*/
 		this.modData('Learnsets', 'mewtwo').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'mewtwo').learnset.closecombat = ['5L1'];
 	},
