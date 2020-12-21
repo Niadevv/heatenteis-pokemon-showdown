@@ -69,6 +69,31 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		basePower: 140,
 		breaksProtect: true,
 	},
+	roaroftime: {
+		inherit: true,
+		accuracy: 100,
+		flags: {mirror: 1},
+		self: {
+			// Make empty to ensure no recharge
+		},
+		// TODO: apply target's status damage 3 times
+	},
+	spacialrend: {
+		inherit: true,
+		basePower: 140,
+		accuracy: 100,
+		ignoreAbility: true,
+		flags: {mirror: 1},
+		breaksProtect: true,
+		onTryHit(pokemon) {
+			if (pokemon.runImmunity('Dragon')) {
+				pokemon.side.removeSideCondition('reflect');
+				pokemon.side.removeSideCondition('lightscreen');
+				pokemon.side.removeSideCondition('auroraveil');
+			}
+		},
+		ignorePositiveDefensive: true,
+	},
 	// NEW MOVES
 	curseddance: {
 		num: 3000,
