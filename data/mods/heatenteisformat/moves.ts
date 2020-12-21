@@ -76,7 +76,30 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		self: {
 			// Make empty to ensure no recharge
 		},
-		// TODO: apply target's status damage 3 times
+		// TODO: apply target's status damage 3 times - if poison heal make them heal 3 times, and do not damage with status
+		onHit(target) {
+			if (target.status) {
+				if (!(['magicguard', 'poisonheal', 'spacialbarrier'].includes(target.ability))) {
+					if (target.status === 'psn') {
+						target.damage((target.baseMaxhp / 8) * 3);
+					} else if (target.status === 'tox') {
+						let accumulatedDamage = 0;
+
+						for (let i = 0; i < 3; i++) {
+							accumulatedDamage += (target.baseMaxhp / 16) * target.statusData.stage;
+							target.statusData.stage += 1;
+						}
+
+						target.damage(this.clampIntRange(accumulatedDamage));
+					} else if (target.status === 'brn') {
+						target.damage((target.baseMaxhp / 16) * 3);
+					}
+				}
+				if (target.ability === 'poisonheal') {
+					target.heal((target.baseMaxhp / 8) * 3);
+				}
+			}
+		},
 	},
 	spacialrend: {
 		inherit: true,
@@ -192,7 +215,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		flags: {mirror: 1},
 		breaksProtect: true,
 		onBasePower(basePower, pokemon, target) {
-			if (target.maxhp >= 450) {
+			// yes, we're including dynamax in this
+			if (target.maxhp >= 450 || target.baseMaxhp >= 450) {
 				return this.chainModify(2);
 			}
 		},

@@ -135,4 +135,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		// TODO: Make able to move when asleep
 	},
+	distortion: {
+		desc: "Upon switchin, the user summons Gravity and disables all items that directly trigger, such as berries or transformation orbs.",
+		shortDesc: "Summons Gravity and disables triggering items.",
+		name: "Distortion",
+		onFoeTryEatItem: false,
+		onStart(pokemon) {
+			this.add('-fieldstart', 'ability: Distortion');
+			this.field.addPseudoWeather('gravity');
+		},
+
+		// TODO: disable all items that trigger instead of just berries
+	},
 };

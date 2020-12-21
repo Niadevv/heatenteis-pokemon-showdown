@@ -73,6 +73,16 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 100, atk: 120, def: 120, spa: 150, spd: 100, spe: 90},
 		abilities: {0: "Pressure", H: "Temporal Barrier"},
 	},
+	giratina: {
+		inherit: true,
+		baseStats: {hp: 150, atk: 100, def: 160, spa: 100, spd: 160, spe: 90},
+		abilities: {0: "Pressure", H: "Telepathy"}, // TODO: Distortion for HA
+	},
+	giratinaorigin: {
+		inherit: true,
+		baseStats: {hp: 150, atk: 160, def: 100, spa: 160, spd: 100, spe: 90},
+		abilities: {0: "Levitate"},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
