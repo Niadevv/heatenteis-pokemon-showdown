@@ -14,3 +14,7 @@ test to see if breaks protect:
 	freeze shock
 
 is photon geyser 160 BP with neruforce?
+
+temporal barrier:
+	test with rollout
+	test with ice ball

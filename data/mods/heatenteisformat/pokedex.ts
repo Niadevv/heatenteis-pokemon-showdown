@@ -63,6 +63,16 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 97, atk: 197, def: 97, spa: 197, spd: 97, spe: 157},
 	},
+	palkia: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 120, def: 100, spa: 180, spd: 140, spe: 130},
+		abilities: {0: "Pressure", H: "Spacial Barrier"},
+	},
+	dialga: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 120, def: 120, spa: 150, spd: 100, spe: 90},
+		abilities: {0: "Pressure", H: "Temporal Barrier"},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,

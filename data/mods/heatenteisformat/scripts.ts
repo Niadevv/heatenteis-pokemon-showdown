@@ -15,6 +15,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'necrozma').learnset.focusblast = ['5L1'];
 		this.modData('Learnsets', 'necrozma').learnset.dragonclaw = ['5L1'];
 		// Necrozma's forms should all inherit the learned moves
-		
+		this.modData('Learnsets', 'palkia').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'palkia').learnset.recover = ['5L1'];
+		this.modData('Learnsets', 'dialga').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'dialga').learnset.recover = ['5L1'];
 	},
 };
