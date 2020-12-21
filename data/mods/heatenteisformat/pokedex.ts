@@ -76,12 +76,70 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	giratina: {
 		inherit: true,
 		baseStats: {hp: 150, atk: 100, def: 160, spa: 100, spd: 160, spe: 90},
-		abilities: {0: "Pressure", H: "Telepathy"}, // TODO: Distortion for HA
+		abilities: {0: "Pressure", H: "Distortion"},
 	},
 	giratinaorigin: {
 		inherit: true,
 		baseStats: {hp: 150, atk: 160, def: 100, spa: 160, spd: 100, spe: 90},
-		abilities: {0: "Levitate"},
+		abilities: {0: "Levitate", H: "Distortion"},
+	},
+	arceus: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	groudon: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 160, def: 150, spa: 130, spd: 100, spe: 90},
+	},
+	groudonprimal: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 190, def: 170, spa: 160, spd: 120, spe: 90},
+	},
+	kyogre: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 130, def: 100, spa: 160, spd: 150, spe: 90},
+	},
+	kyogreprimal: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 160, def: 120, spa: 190, spd: 170, spe: 90},
+	},
+	rayquaza: {
+		inherit: true,
+		baseStats: {hp: 105, atk: 160, def: 105, spa: 160, spd: 105, spe: 105},
+	},
+	rayquazamega: {
+		inherit: true,
+		baseStats: {hp: 105, atk: 190, def: 115, spa: 190, spd: 115, spe: 125},
+	},
+	eternatus: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 85, def: 115, spa: 165, spd: 115, spe: 130},
+	},
+	zygardecomplete: {
+		inherit: true,
+		baseStats: {hp: 216, atk: 110, def: 141, spa: 91, spd: 115, spe: 85},
+	},
+	yveltal: {
+		inherit: true,
+		baseStats: {hp: 126, atk: 151, def: 105, spa: 151, spd: 108, spe: 99},
+	},
+	xerneas: {
+		inherit: true,
+		baseStats: {hp: 126, atk: 151, def: 105, spa: 151, spd: 108, spe: 99},
+	},
+	mewtwo: {
+		inherit: true,
+		baseStats: {hp: 106, atk: 110, def: 100, spa: 184, spd: 100, spe: 140},
+	},
+	mewtwomegay: {
+		inherit: true,
+		baseStats: {hp: 106, atk: 150, def: 80, spa: 224, spd: 130, spe: 150},
+		abilities: {0: "Limber"},
+	},
+	mewtwomegax: {
+		inherit: true,
+		baseStats: {hp: 106, atk: 220, def: 110, spa: 154, spd: 110, spe: 140},
+		abilities: {0: "Inner Focus"},
 	},
 	// MEGA STUFF
 	butterfree: {

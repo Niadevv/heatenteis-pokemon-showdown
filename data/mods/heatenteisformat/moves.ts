@@ -76,10 +76,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		self: {
 			// Make empty to ensure no recharge
 		},
-		// TODO: apply target's status damage 3 times - if poison heal make them heal 3 times, and do not damage with status
+		// apply target's status damage 3 times - if poison heal make them heal 3 times, and do not damage with status
+		// TODO: neurotoxin
 		onHit(target) {
 			if (target.status) {
-				if (!(['magicguard', 'poisonheal', 'spacialbarrier'].includes(target.ability))) {
+				if (!['magicguard', 'poisonheal', 'spacialbarrier'].includes(target.ability)) {
 					if (target.status === 'psn') {
 						target.damage((target.baseMaxhp / 8) * 3);
 					} else if (target.status === 'tox') {

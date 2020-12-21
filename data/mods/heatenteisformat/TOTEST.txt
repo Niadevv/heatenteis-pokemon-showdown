@@ -18,3 +18,5 @@ is photon geyser 160 BP with neruforce?
 temporal barrier:
 	test with rollout
 	test with ice ball
+
+roar of time status acceleration
