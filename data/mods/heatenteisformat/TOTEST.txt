@@ -13,10 +13,14 @@ test to see if breaks protect:
 	ice burn
 	freeze shock
 
-is photon geyser 160 BP with neruforce?
+is photon geyser 160 BP with neruforce? - YES
 
 temporal barrier:
 	test with rollout
 	test with ice ball
 
 roar of time status acceleration
+- makes tox counter accerlate but didn't do the raw damage
+- only applies if it kills?
+- damage seems to apply to the status application at the end of the turn
+- applies immediately if it would kill

@@ -94,7 +94,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
 		shortDesc: "While active, this Pokemon is immune to status and OHKO moves.",
 		name: "Spacial Barrier",
-		isNonstandard: "Custom",
 		rating: 4,
 		isUnbreakable: true,
 		onUpdate(pokemon) {
@@ -121,7 +120,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "This Pokemon cannot be flinched, can attack while asleep, and cumulative effects such as Toxic and Rollout base power increase will not grow,",
 		shortDesc: "Cannot be flinched, can attack while asleep, cumulative effects do not gain.",
 		name: "Temporal Barrier",
-		isNonstandard: "Custom",
 		// No flinches thank you
 		onTryAddVolatile(status, pokemon) {
 			if (status.id === 'flinch') return null;

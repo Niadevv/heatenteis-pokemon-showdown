@@ -82,9 +82,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (target.status) {
 				if (!['magicguard', 'poisonheal', 'spacialbarrier'].includes(target.ability)) {
 					if (target.status === 'psn') {
+						// this.add('-activate', 'move: Roar of Time');
 						target.damage((target.baseMaxhp / 8) * 3);
+						this.add('-damage', target, target.getHealth);
 					} else if (target.status === 'tox') {
 						let accumulatedDamage = 0;
+						// this.add('-activate', 'move: Roar of Time');
 
 						for (let i = 0; i < 3; i++) {
 							accumulatedDamage += (target.baseMaxhp / 16) * target.statusData.stage;
@@ -92,11 +95,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 						}
 
 						target.damage(this.clampIntRange(accumulatedDamage));
+						this.add('-damage', target, target.getHealth);
 					} else if (target.status === 'brn') {
+						// this.add('-activate', 'move: Roar of Time');
 						target.damage((target.baseMaxhp / 16) * 3);
+						this.add('-damage', target, target.getHealth);
 					}
 				}
 				if (target.ability === 'poisonheal') {
+					this.add('-activate', 'move: Roar of Time');
 					target.heal((target.baseMaxhp / 8) * 3);
 				}
 			}
