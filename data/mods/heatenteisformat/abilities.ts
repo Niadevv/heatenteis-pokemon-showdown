@@ -150,7 +150,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Distortion",
 		onFoeTryEatItem: false,
 		onStart(pokemon) {
-			this.add('-fieldstart', 'ability: Distortion');
+			// this.add('-fieldstart', 'ability: Distortion');
 			this.field.addPseudoWeather('gravity');
 		},
 

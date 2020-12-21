@@ -161,4 +161,21 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		eggGroups: ["Bug"],
 		requiredItem: "Butterfreenite",
 	},
+	arbok: {
+		inherit: true,
+		otherFormes: ["Arbok-Mega"],
+		formeOrder: ["Arbok", "Arbok-Mega"],
+	},
+	arbokmega: {
+		num: 24,
+		name: "Arbok-Mega",
+		types: ["Poison", "Ghost"],
+		baseStats: {hp: 60, atk: 145, def: 69, spa: 65, spd: 79, spe: 130},
+		abilities: {0: "Disguise"},
+		heightm: 3.5,
+		weightkg: 65,
+		color: "Purple",
+		eggGroups: ["Field", "Dragon"],
+		requiredItem: "Arbokite",
+	},
 };
