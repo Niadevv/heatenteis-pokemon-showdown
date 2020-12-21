@@ -29,5 +29,12 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'giratinaorigin').learnset.roost = ['5L1'];*/
 		this.modData('Learnsets', 'mewtwo').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'mewtwo').learnset.closecombat = ['5L1'];
+
+		// Mega Base forms new learned moves:
+		this.modData('Learnsets', 'butterfree').learnset.psyshock = ['5L1'];
+		this.modData('Learnsets', 'arbok').learnset.shadowsneak = ['5L1'];
+		this.modData('Learnsets', 'arbok').learnset.shadowfang = ['5L1'];
+		this.modData('Learnsets', 'raichu').learnset.highjumpkick = ['5L1'];
+		this.modData('Learnsets', 'raichu').learnset.bulkup = ['5L1'];
 	},
 };

@@ -178,4 +178,20 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		eggGroups: ["Field", "Dragon"],
 		requiredItem: "Arbokite",
 	},
+	raichu: {
+		inherit: true,
+		otherFormes: ["Raichu-Alola", "Raichu-Mega"],
+		formeOrder: ["Raichu", "Raichu-Alola", "Raichu-Mega"],
+	},
+	raichumega: {
+		num: 26,
+		name: "Raichu-Mega",
+		types: ["Electric", "Fighting"],
+		baseStats: {hp: 60, atk: 165, def: 65, spa: 70, spd: 80, spe: 145},
+		abilities: {0: "Reckless"},
+		heightm: 0.8,
+		weightkg: 30,
+		color: "Yellow",
+		eggGroups: ["Field", "Fairy"],
+	},
 };

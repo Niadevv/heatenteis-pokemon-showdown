@@ -246,4 +246,17 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Beautiful",
 	},
+	shadowfang: {
+		num: 3001,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Shadow Fang",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, bite: 1},
+		drain: [1, 3],
+		target: "normal",
+		type: "Ghost",
+	},
 };
