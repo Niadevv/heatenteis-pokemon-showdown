@@ -79,6 +79,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	powerconstruct: {
+		inherit: true,
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Power Construct');
+		},
+		onAnyTryPrimaryHit(target, source, move) {
+			if (target === source || move.category === 'Status') return;
+			move.hasAuraBreak = true;
+		},
+	},
+	// New abilities
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
 		shortDesc: "While active, this Pokemon is immune to status and OHKO moves.",
