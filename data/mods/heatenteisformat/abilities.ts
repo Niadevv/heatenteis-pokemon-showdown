@@ -85,6 +85,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Spacial Barrier",
 		isNonstandard: "Custom",
 		rating: 4,
+		isUnbreakable: true,
 		onUpdate(pokemon) {
 			if (pokemon.status) {
 				this.add('-activate', pokemon, 'ability: Spacial Barrier');
@@ -110,6 +111,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Cannot be flinched, can attack while asleep, cumulative effects do not gain.",
 		name: "Temporal Barrier",
 		isNonstandard: "Custom",
+		// No flinches thank you
 		onTryAddVolatile(status, pokemon) {
 			if (status.id === 'flinch') return null;
 		},
@@ -117,7 +119,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onDamage(damage, target, source, effect) {
 			if (effect.id === 'tox') {
 				// keep toxic timer at 6%, refer to conditions.ts
-				this.effectData.stage = 1;
+				this.effectData.stage -= 1;
 				// but still take damage
 				return true;
 			}
@@ -126,7 +128,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onDamagingHit(damage, target, source, move) {
 			if (move.id === "rollout") {
 				source.volatiles['rollout'].hitCount -= 1;
-			} else if (move.id === "iceball") {
+			}
+			if (move.id === "iceball") {
 				source.volatiles['iceball'].hitCount -= 1;
 			}
 		},

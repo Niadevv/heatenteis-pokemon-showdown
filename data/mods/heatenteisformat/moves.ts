@@ -94,6 +94,109 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		ignorePositiveDefensive: true,
 	},
+	originpulse: {
+		inherit: true,
+		basePower: 140,
+		accuracy: 100,
+	},
+	precipiceblades: {
+		inherit: true,
+		basePower: 150,
+		accuracy: 100,
+	},
+	oblivionwing: {
+		inherit: true,
+		basePower: 130,
+		secondary: {
+			chance: 100,
+			boosts: {
+				spa: -1,
+				atk: -1,
+			},
+		},
+	},
+	behemothblade: {
+		inherit: true,
+		basePower: 120,
+		flags: {contact: 1, mirror: 1},
+		breaksProtect: true,
+	},
+	behemothbash: {
+		inherit: true,
+		basePower: 120,
+		useSourceDefensiveAsOffensive: true,
+		flags: {contact: 1, mirror: 1},
+		breaksProtect: true,
+	},
+	shadowforce: {
+		inherit: true,
+		basePower: 150,
+		flags: {contact: 1, mirror: 1},
+		condition: {
+
+		},
+		onTryMove(attacker, defender, move) {
+
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+	},
+	sacredfire: {
+		inherit: true,
+		basePower: 140,
+		accuracy: 100,
+	},
+	aeroblast: {
+		inherit: true,
+		basePower: 130,
+		accuracy: 100,
+		secondary: {
+			chance: 40,
+			volatileStatus: 'flinch',
+		},
+	},
+	eternabeam: {
+		inherit: true,
+		basePower: 170,
+		accuracy: 100,
+		flags: {mirror: 1},
+		self: {
+
+		},
+	},
+	judgement: {
+		inherit: true,
+		basePower: 120,
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+		},
+	},
+	coreenforcer: {
+		inherit: true,
+		onHit(target) {
+			if (target.getAbility().isPermanent) return;
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage(damage, target) {
+			if (target.getAbility().isPermanent) return;
+			target.addVolatile('gastroacid');
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+		},
+	},
+	dynamaxcannon: {
+		inherit: true,
+		basePower: 120,
+		flags: {mirror: 1},
+		breaksProtect: true,
+		onBasePower(basePower, pokemon, target) {
+			if (target.maxhp >= 450) {
+				return this.chainModify(2);
+			}
+		},
+	},
 	// NEW MOVES
 	curseddance: {
 		num: 3000,
