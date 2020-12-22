@@ -27,6 +27,8 @@ shadow force photon geyser effect
 photon geyser with neuroforce
 behemoth bash
 
+abilities to test:
+	neurotoxin (tspikes, toxic and secondary poisons)
 
 TODO:
 implement Delta Stream

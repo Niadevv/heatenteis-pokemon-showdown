@@ -69,4 +69,18 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	weezinite: {
+		name: "Weezinite",
+		spritenum: 625,
+		megaStone: "Weezing-Mega",
+		megaEvolves: "Weezing",
+		itemUser: ["Weezing"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -105,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

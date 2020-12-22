@@ -230,4 +230,20 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		eggGroups: ["Field"],
 		requiredItem: "Arcanite",
 	},
+	weezing: {
+		inherit: true,
+		otherFormes: ["Weezing-Galar", "Weezing-Mega"],
+		formeOrder: ["Weezing", "Weezing-Galar", "Weezing-Mega"],
+	},
+	weezingmega: {
+		num: 110,
+		name: "Weezing-Mega",
+		types: ["Poison"],
+		baseStats: {hp: 65, atk: 90, def: 170, spa: 85, spd: 120, spe: 60},
+		abilities: {0: "Neurotoxin"},
+		heightm: 1.2,
+		weightkg: 9.5,
+		eggGroups: ["Amorphous"],
+		requiredItem: "Weezinite",
+	},
 };
