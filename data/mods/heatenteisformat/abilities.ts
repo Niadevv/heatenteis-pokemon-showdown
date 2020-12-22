@@ -89,6 +89,21 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			move.hasAuraBreak = true;
 		},
 	},
+	liquidvoice: {
+		inherit: true,
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.flags['sound'] && !attacker.volatiles['dynamax']) {
+				this.chainModify(1.2);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.flags['sound'] && !attacker.volatiles['dynamax']) {
+				this.chainModify(1.2);
+			}
+		},
+	},
 	// New abilities
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -161,5 +176,24 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Poison caused by the user does double damage.",
 		name: "Neurotoxin",
 		// we redefine toxic and poison to make this work. hacky I know but there's no way to conditionally set status in a way that means it's not blocked by sheer force
+	},
+	psychooverload: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Psychic') {
+				this.debug('Psycho Overload boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Psychic') {
+				this.debug('Psycho Overload boost');
+				return this.chainModify(1.5);
+			}
+		},
+		name: "Psycho Overload",
+		desc: "The user's psychic moves are boosted by 1.5x.",
+		shortDesc: "Psychic moves boosted by 1.5x",
 	},
 };

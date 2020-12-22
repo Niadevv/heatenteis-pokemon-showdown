@@ -83,4 +83,32 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	starmite: {
+		name: "Starmite",
+		spritenum: 625,
+		megaStone: "Starmie-Mega",
+		megaEvolves: "Starmie",
+		itemUser: ["Starmie"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -106,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	laprasite: {
+		name: "Laprasite",
+		spritenum: 625,
+		megaStone: "Lapras-Mega",
+		megaEvolves: "Lapras",
+		itemUser: ["Lapras"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -107,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

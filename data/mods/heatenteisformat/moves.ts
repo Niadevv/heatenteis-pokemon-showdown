@@ -268,7 +268,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		name: "Cursed Dance",
 		pp: 10,
 		priority: 0,
-		flags: {snatch: 1},
+		flags: {snatch: 1, dance: 1},
 		boosts: {
 			spe: 2,
 			spa: 1,

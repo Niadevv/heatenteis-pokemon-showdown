@@ -34,5 +34,12 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'raichu').learnset.bulkup = ['5L1'];
 		this.modData('Learnsets', 'vileplume').learnset.leafstorm = ['5L1'];
 		this.modData('Learnsets', 'vileplume').learnset.clearsmog = ['5L1'];
+		this.modData('Learnsets', 'weezing').learnset.recover = ['5L1'];
+		this.modData('Learnsets', 'starmie').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'starmie').learnset.energyball = ['5L1'];
+		this.modData('Learnsets', 'starmie').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'lapras').learnset.moonblast = ['5L1'];
+		this.modData('Learnsets', 'lapras').learnset.drainingkiss = ['5L1'];
+		this.modData('Learnsets', 'lapras').learnset.calmmind = ['5L1'];
 	},
 };
