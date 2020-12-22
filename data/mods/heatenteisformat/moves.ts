@@ -226,6 +226,39 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
+	toxicspikes: {
+		inherit: true,
+		condition: {
+			// this is a side condition
+			onStart(side, source) {
+				this.add('-sidestart', side, 'move: Toxic Spikes');
+				this.effectData.layers = 1;
+				if (source.ability === 'neurotoxin') {
+					this.effectData.neurotoxin = true;
+				} else {
+					this.effectData.neurotoxin = false;
+				}
+			},
+			onRestart(side) {
+				if (this.effectData.layers >= 2) return false;
+				this.add('-sidestart', side, 'move: Toxic Spikes');
+				this.effectData.layers++;
+			},
+			onSwitchIn(pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasType('Poison')) {
+					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
+					pokemon.side.removeSideCondition('toxicspikes');
+				} else if (pokemon.hasType('Steel') || pokemon.hasItem('heavydutyboots')) {
+					return;
+				} else if (this.effectData.layers >= 2) {
+					pokemon.trySetStatus((!this.effectData.neurotoxin ? 'tox' : 'neurotoxintox'), pokemon.side.foe.active[0]);
+				} else {
+					pokemon.trySetStatus((!this.effectData.neurotoxin ? 'psn' : 'neurotoxinpsn'), pokemon.side.foe.active[0]);
+				}
+			},
+		},
+	},
 	// NEW MOVES
 	curseddance: {
 		num: 3000,
