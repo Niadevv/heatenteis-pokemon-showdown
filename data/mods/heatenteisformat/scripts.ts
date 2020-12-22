@@ -1,5 +1,7 @@
 export const Scripts: ModdedBattleScriptsData = {
 	init() {
+		this.modData('Learnsets', 'kyurem').learnset.icepunch = ['5L1'];
+		this.modData('Learnsets', 'kyurem').learnset.earthquake = ['5L1'];
 		this.modData('Learnsets', 'kyuremblack').learnset.icepunch = ['5L1'];
 		this.modData('Learnsets', 'kyuremblack').learnset.earthquake = ['5L1'];
 		this.modData('Learnsets', 'kyuremwhite').learnset.icepunch = ['5L1'];
@@ -46,5 +48,23 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'meganium').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'typhlosion').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'feraligatr').learnset.psychicfangs = ['5L1'];
+		this.modData('Learnsets', 'sudowoodo').learnset.accelerock = ['5L1'];
+		this.modData('Learnsets', 'sudowoodo').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'sudowoodo').learnset.bulkup = ['5L1'];
+		this.modData('Learnsets', 'sudowoodo').learnset.seedbomb = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.ironmaw = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.extremespeed = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.hyperbeam = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.expandingforce = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.storedpower = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.icefang = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.firefang = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.thunderfang = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.jumpkick = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.hornleech = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.playrough = ['5L1'];
 	},
 };

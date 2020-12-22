@@ -369,4 +369,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Ghost",
 	},
+	ironmaw: {
+		num: 3002,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Iron Maw",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, bite: 1, contact: 1},
+		target: "normal",
+		type: "Steel",
+		secondary: {
+			chance: 10,
+			volatileStatus: 'flinch',
+		},
+	},
 };

@@ -153,4 +153,32 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	sudowoodite: {
+		name: "Sudowoodite",
+		spritenum: 625,
+		megaStone: "Sudowoodo-Mega",
+		megaEvolves: "Sudowoodo",
+		itemUser: ["Sudowoodo"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -111,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	girafarinite: {
+		name: "Girafarinite",
+		spritenum: 625,
+		megaStone: "Girafarig-Mega",
+		megaEvolves: "Girafarig",
+		itemUser: ["Girafarig"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -112,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };
