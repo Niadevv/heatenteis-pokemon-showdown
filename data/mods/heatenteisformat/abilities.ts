@@ -104,6 +104,28 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	speedboost: {
+		inherit: true,
+		onStart(pokemon) {
+			this.boost({spe: 1}, pokemon);
+		},
+		onResidual() {
+
+		},
+	},
+	flowergift: {
+		inherit: true,
+		onStart(pokemon) {
+			this.field.setWeather('sunnyday');
+			delete this.effectData.forme;
+		},
+	},
+	regenerator: {
+		inherit: true,
+		onSwitchOut(pokemon) {
+			pokemon.heal(pokemon.baseMaxhp / 4);
+		},
+	},
 	// New abilities
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",

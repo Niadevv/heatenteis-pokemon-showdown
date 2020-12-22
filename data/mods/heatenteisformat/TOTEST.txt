@@ -29,6 +29,7 @@ behemoth bash
 
 abilities to test:
 	neurotoxin (tspikes, toxic and secondary poisons)
+	speed boost (should only give +1 spe on SI)
 
 TODO:
 implement Delta Stream

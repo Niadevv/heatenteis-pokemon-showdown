@@ -289,6 +289,53 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 	},
+	fishiousrend: {
+		inherit: true,
+		basePowerCallback(pokemon, target, move) {
+			if (target.newlySwitched || this.queue.willMove(target)) {
+				this.debug('Fishious Rend damage boost');
+				// Nerfed from 2x
+				return move.basePower * 1.5;
+			}
+			this.debug('Fishious Rend NOT boosted');
+			return move.basePower;
+		},
+	},
+	boltbeak: {
+		inherit: true,
+		basePowerCallback(pokemon, target, move) {
+			if (target.newlySwitched || this.queue.willMove(target)) {
+				this.debug('Bolt Beak damage boost');
+				// Nerfed from 2x
+				return move.basePower * 1.5;
+			}
+			this.debug('Bolt Beak NOT boosted');
+			return move.basePower;
+		},
+	},
+	hyperspacehole: {
+		inherit: true,
+		basePower: 100,
+		selfSwitch: true,
+	},
+	fly: {
+		inherit: true,
+		accuracy: 100,
+	},
+	thunderwave: {
+		inherit: true,
+		accuracy: 100,
+	},
+	// aight lads let's make darkrai absolutely cracked again
+	// AG is crying rn
+	darkvoid: {
+		inherit: true,
+		accuracy: 90,
+	},
+	synthesis: {
+		inherit: true,
+		pp: 10,
+	},
 	// NEW MOVES
 	curseddance: {
 		num: 3000,

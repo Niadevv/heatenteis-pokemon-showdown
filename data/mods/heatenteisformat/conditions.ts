@@ -54,4 +54,29 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			// No more getting parad thank you
 		},
 	},
+	frz: {
+		inherit: true,
+		onStart(target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'frz', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else {
+				this.add('-status', target, 'frz');
+			}
+			if (target.species.name === 'Shaymin-Sky' && target.baseSpecies.baseSpecies === 'Shaymin') {
+				target.formeChange('Shaymin', this.effect, true);
+			}
+			this.effectData.turns = 0;
+		},
+		onBeforeMovePriority: 10,
+		onBeforeMove(pokemon, target, move) {
+			this.effectData.turns += 1;
+			if (move.flags['defrost']) return;
+			if (this.randomChance(1, 5) || this.effectData.turns >= 5) {
+				pokemon.cureStatus();
+				return;
+			}
+			this.add('cant', pokemon, 'frz');
+			return false;
+		},
+	},
 };
