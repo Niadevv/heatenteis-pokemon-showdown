@@ -42,4 +42,16 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.damage(pokemon.baseMaxhp / (!this.effectData.neurotoxin ? 8 : 4));
 		},
 	},
+	par: {
+		inherit: true,
+		onModifySpe(spe, pokemon) {
+			if (!pokemon.hasAbility('quickfeet')) {
+				return this.chainModify(0.25);
+			}
+		},
+		onBeforeMovePriority: 1,
+		onBeforeMove(pokemon) {
+			// No more getting parad thank you
+		},
+	},
 };

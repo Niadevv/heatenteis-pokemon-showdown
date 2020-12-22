@@ -260,6 +260,35 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	lifedew: {
+		inherit: true,
+		heal: null,
+		onHit(pokemon) {
+			// Split healing in doubles otherwise heal full
+			if (this.gameType === 'doubles') {
+				return !!(this.heal(this.modify(pokemon.maxhp, 0.25)));
+			} else {
+				return !!(this.heal(this.modify(pokemon.maxhp, 0.5)));
+			}
+		},
+	},
+	junglehealing: {
+		inherit: true,
+		heal: null,
+		onHit(pokemon) {
+			let success = !!this.heal(this.modify(pokemon.maxhp, (this.gameType === 'doubles' ? 0.25 : 0.5)));
+			if (this.gameType === 'doubles') {
+				success = !!this.heal(this.modify(pokemon.maxhp, 0.25));
+			} else {
+				success = !!this.heal(this.modify(pokemon.maxhp, 0.5));
+			}
+			return pokemon.cureStatus() || success;
+		},
+	},
+	closecombat: {
+		inherit: true,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
+	},
 	// NEW MOVES
 	curseddance: {
 		num: 3000,
