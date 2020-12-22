@@ -20,7 +20,6 @@ export const Formats: FormatList = [
 		name: "[Gen 8] Heat Enteis",
 		desc: "Assorted buffs and new megas",
 		mod: 'heatenteisformat',
-		// ruleset: ['[Gen 8] National Dex'],
 		ruleset: ['OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		banlist: [
 			'Arceus', 'Calyrex-Ice', 'Calyrex-Shadow', 'Dialga', 'Eternatus', 'Giratina', 'Giratina-Origin', 'Groudon',
