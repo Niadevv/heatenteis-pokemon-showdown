@@ -9149,7 +9149,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Dark",
 	},
-	judgement: {
+	judgment: {
 		num: 449,
 		accuracy: 100,
 		basePower: 100,
