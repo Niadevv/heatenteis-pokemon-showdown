@@ -7,7 +7,8 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'kyuremwhite').learnset.icepunch = ['5L1'];
 		this.modData('Learnsets', 'kyuremwhite').learnset.earthquake = ['5L1'];
 		this.modData('Learnsets', 'zekrom').learnset.earthquake = ['5L1'];
-		this.modData('Learnsets', 'zamazentacrowned').learnset.recover = ['5L1'];
+		// this was a mistake
+		// this.modData('Learnsets', 'zamazentacrowned').learnset.recover = ['5L1'];
 		this.modData('Learnsets', 'zamazentacrowned').learnset.bodypress = ['5L1'];
 		this.modData('Learnsets', 'zamazentacrowned').learnset.playrough = ['5L1'];
 		this.modData('Learnsets', 'solgaleo').learnset.swordsdance = ['5L1'];
@@ -70,11 +71,15 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'granbull').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'octillery').learnset.flashcannon = ['5L1'];
 		this.modData('Learnsets', 'octillery').learnset.ironhead = ['5L1'];
+		this.modData('Learnsets', 'delibird').learnset.pursuit = ['5L1'];
+		this.modData('Learnsets', 'delibird').learnset.suckerpunch = ['5L1'];
+		this.modData('Learnsets', 'delibird').learnset.knockoff = ['5L1'];
+		this.modData('Learnsets', 'delibird').learnset.iciclecrash = ['5L1'];
+		this.modData('Learnsets', 'delibird').learnset.swordsdance = ['5L1'];
 
 		// Cursed Dance learners
 		this.modData('Learnsets', 'blacephalon').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'hoopa').learnset.curseddance = ['5L1'];
-		this.modData('Learnsets', 'hoopaunbound').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'spectrier').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'chandelure').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'lampent').learnset.curseddance = ['5L1'];
@@ -82,7 +87,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'gengar').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'haunter').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'mismagius').learnset.curseddance = ['5L1'];
-		this.modData('Learnsets', 'oricoriosensu').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'oricorio').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'drifblim').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'misdreavus').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'froslass').learnset.curseddance = ['5L1'];

@@ -80,7 +80,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		// TODO: neurotoxin
 		onHit(target) {
 			if (target.status) {
-				if (!['magicguard', 'poisonheal', 'spacialbarrier'].includes(target.ability)) {
+				if (!['magicguard', 'poisonheal', 'spacialbarrier', 'temporalbarrier'].includes(target.ability)) {
 					if (target.status === 'psn') {
 						target.damage((target.baseMaxhp / 8) * 3);
 						this.add('-damage', target, target.getHealth);
