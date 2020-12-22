@@ -156,4 +156,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 
 		// TODO: disable all items that trigger instead of just berries
 	},
+	neurotoxin: {
+		desc: "Poison caused by the user does double damage to the target, including Toxic and Toxic Spikes.",
+		shortDesc: "Poison caused by the user does double damage.",
+		name: "Neurotoxin",
+		// we redefine toxic and poison to make this work. hacky I know but there's no way to conditionally set status in a way that means it's not blocked by sheer force
+	},
 };
