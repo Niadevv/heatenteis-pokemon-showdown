@@ -370,7 +370,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	sudowoodomega: {
 		num: 185,
-		name: "Sudowoodo",
+		name: "Sudowoodo-Mega",
 		forme: "Mega",
 		types: ["Rock"],
 		baseStats: {hp: 70, atk: 100, def: 115, spa: 30, spd: 65, spe: 130},
