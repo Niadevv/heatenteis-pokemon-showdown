@@ -42,34 +42,4 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.damage(pokemon.baseMaxhp / (!this.effectData.neurotoxin ? 8 : 4));
 		},
 	},
-	// Defined so Toxic Spikes can work with Neurotoxin
-	neurotoxinpsn: {
-		name: 'neurotoxinpsn',
-		effectType: 'Status',
-		onStart(target, source, sourceEffect) {
-			this.add('-status', target, 'neurotoxinpsn');
-		},
-		onResidualOrder: 9,
-		onResidual(pokemon) {
-			this.damage(pokemon.baseMaxhp / 4);
-		},
-	},
-	neurotoxintox: {
-		name: 'neurotoxintox',
-		effectType: 'Status',
-		onStart(target, source, sourceEffect) {
-			this.effectData.stage = 0;
-			this.add('-status', target, 'neurotoxintox', '[from] ability: ' + sourceEffect.name + '[of] ' + source);
-		},
-		onSwitchIn() {
-			this.effectData.stage = 0;
-		},
-		onResidualOrder: 9,
-		onResidual(pokemon) {
-			if (this.effectData.stage < 15) {
-				this.effectData.stage++;
-			}
-			this.damage(this.clampIntRange(pokemon.baseMaxhp / 8, 1) * this.effectData.stage);
-		},
-	},
 };

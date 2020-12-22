@@ -111,4 +111,46 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	draconite: {
+		name: "Draconite",
+		spritenum: 625,
+		megaStone: "Dragonite-Mega",
+		megaEvolves: "Dragonite",
+		itemUser: ["Dragonite"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -108,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	typhlosionite: {
+		name: "Typhlosionite",
+		spritenum: 625,
+		megaStone: "Typhlosion-Mega",
+		megaEvolves: "Typhlosion",
+		itemUser: ["Typhlosion"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -109,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	feraliganite: {
+		name: "Feraliganite",
+		spritenum: 625,
+		megaStone: "Feraligatr-Mega",
+		megaEvolves: "Feraligatr",
+		itemUser: ["Feraligatr"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -110,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

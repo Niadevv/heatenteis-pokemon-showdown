@@ -41,5 +41,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'lapras').learnset.moonblast = ['5L1'];
 		this.modData('Learnsets', 'lapras').learnset.drainingkiss = ['5L1'];
 		this.modData('Learnsets', 'lapras').learnset.calmmind = ['5L1'];
+		this.modData('Learnsets', 'meganium').learnset.moonblast = ['5L1'];
+		this.modData('Learnsets', 'meganium').learnset.drainingkiss = ['5L1'];
+		this.modData('Learnsets', 'meganium').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'typhlosion').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'feraligatr').learnset.psychicfangs = ['5L1'];
 	},
 };

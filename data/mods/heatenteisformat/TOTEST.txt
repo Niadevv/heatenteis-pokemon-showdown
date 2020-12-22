@@ -32,3 +32,4 @@ abilities to test:
 
 TODO:
 implement Delta Stream
+investigate why knock off can remove custom mega stones (only confirmed to be knockable with weezinite but investigate others)

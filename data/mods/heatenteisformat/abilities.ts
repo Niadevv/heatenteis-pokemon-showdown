@@ -178,6 +178,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		// we redefine toxic and poison to make this work. hacky I know but there's no way to conditionally set status in a way that means it's not blocked by sheer force
 	},
 	psychooverload: {
+		name: "Psycho Overload",
+		desc: "The user's psychic moves are boosted by 1.5x.",
+		shortDesc: "Psychic moves boosted by 1.5x",
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Psychic') {
@@ -192,8 +195,26 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return this.chainModify(1.5);
 			}
 		},
-		name: "Psycho Overload",
-		desc: "The user's psychic moves are boosted by 1.5x.",
-		shortDesc: "Psychic moves boosted by 1.5x",
+	},
+	explosive: {
+		name: "Explosive",
+		desc: "The user's Blast and Burn moves are powered up by 1.3x.",
+		shortDesc: "Blast and Burn moves powered up by 1.3x",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (['beakblast', 'blastburn', 'boomburst', 'eruption', 'explosion', 'fireblast',
+			 'flameburst', 'focusblast', 'moonblast', 'rockblast', 'selfdestruct', 'technoblast'].includes(move.id)) {
+				this.debug('Explosive boost');
+				return this.chainModify(1.3);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (['beakblast', 'blastburn', 'boomburst', 'eruption', 'explosion', 'fireblast',
+			 'flameburst', 'focusblast', 'moonblast', 'rockblast', 'selfdestruct', 'technoblast'].includes(move.id)) {
+				this.debug('Explosive boost');
+				return this.chainModify(1.3);
+			}
+		},
 	},
 };
