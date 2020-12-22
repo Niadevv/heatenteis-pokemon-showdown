@@ -350,6 +350,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			spe: 2,
 			spa: 1,
 		},
+		onPrepareHit(source) {
+			this.add('[still]');
+			this.add('-anim', source, 'Quiver Dance');
+		},
 		secondary: null,
 		target: "self",
 		type: "Ghost",
@@ -384,5 +388,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 10,
 			volatileStatus: 'flinch',
 		},
+	},
+	lightthatburnsthesky: {
+		inherit: true,
+		basePower: 250,
 	},
 };

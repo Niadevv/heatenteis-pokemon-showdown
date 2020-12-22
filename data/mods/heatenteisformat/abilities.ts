@@ -263,4 +263,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		rating: 4.5,
 	},
+	prosecutor: {
+		name: "Prosecutor",
+		desc: "The user judges the opponent at the end of every turn, with a 50% chance to Curse the opponent.",
+		shortDesc: "50% chance to inflict Curse on the opponent at end of every turn.",
+		onEnd(target) {
+			const chance = this.random(2);
+			if (chance === 0) {
+				this.add('-activate', 'ability: Prosecutor');
+				target.addVolatile('curse');
+				this.add('-start', target, 'curse');
+			}
+		},
+	},
 };

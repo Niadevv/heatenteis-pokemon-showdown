@@ -66,5 +66,26 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'girafarig').learnset.focusblast = ['5L1'];
 		this.modData('Learnsets', 'girafarig').learnset.hornleech = ['5L1'];
 		this.modData('Learnsets', 'girafarig').learnset.playrough = ['5L1'];
+		this.modData('Learnsets', 'granbull').learnset.knockoff = ['5L1'];
+		this.modData('Learnsets', 'granbull').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'octillery').learnset.flashcannon = ['5L1'];
+		this.modData('Learnsets', 'octillery').learnset.ironhead = ['5L1'];
+
+		// Cursed Dance learners
+		this.modData('Learnsets', 'blacephalon').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'hoopa').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'hoopaunbound').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'spectrier').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'chandelure').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'lampent').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'polteageist').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'gengar').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'haunter').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'mismagius').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'oricoriosensu').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'drifblim').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'misdreavus').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'froslass').learnset.curseddance = ['5L1'];
+		this.modData('Learnsets', 'sinistea').learnset.curseddance = ['5L1'];
 	},
 };

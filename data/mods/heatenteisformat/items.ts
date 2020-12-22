@@ -181,4 +181,46 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	granbullinite: {
+		name: "Granbullinite",
+		spritenum: 625,
+		megaStone: "Granbull-Mega",
+		megaEvolves: "Granbull",
+		itemUser: ["Granbull"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -113,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	octillerite: {
+		name: "Octillerite",
+		spritenum: 625,
+		megaStone: "Octillery-Mega",
+		megaEvolves: "Octillery",
+		itemUser: ["Octillery"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -114,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	delibirdite: {
+		name: "Delibirdite",
+		spritenum: 625,
+		megaStone: "Delibird-Mega",
+		megaEvolves: "Delibird",
+		itemUser: ["Delibird"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -115,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };
