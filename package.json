@@ -37,6 +37,11 @@
     "posttest": "npm run tsc",
     "full-test": "npm run full-lint && npm run build && npm run tsc && mocha --forbid-only -g \".*\""
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
+  },
   "bin": "./pokemon-showdown",
   "homepage": "http://pokemonshowdown.com",
   "repository": {
