@@ -298,26 +298,39 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "Upon switchin, the user summons 6 stars, each giving it a boost in attack. At the end of each turn, one fades, taking its associated boost away.",
 		shortDesc: "+6 on switchin, -1 each turn for 5 turns after.",
 		onStart(pokemon) {
-			if (!this.field.getWeather()) {
-				this.add('-ability', pokemon, 'ability: Starlight');
-				this.effectData.duration = 6;
+			if (!this.field.effectiveWeather()) {
+				this.add('-ability', pokemon, 'Starlight');
+				this.effectData.starCount = 6;
 				this.effectData.user = pokemon;
 				this.boost({atk: 6}, pokemon);
 			}
 		},
 		onAnySetWeather(target, source, weather) {
 			// clear boosts on weather set
-			if (this.effectData.duration > 0) {
-				this.boost({atk: -this.effectData.duration}, this.effectData.user);
-				this.effectData.duration = 0;
+			if (this.effectData.starCount > 0) {
+				this.debug("Clearing boosts from weather");
+				this.boost({atk: -this.effectData.starCount}, this.effectData.user);
+				this.effectData.starCount = 0;
 			}
 		},
 		onResidual(pokemon) {
+			this.debug("Starlight level of " + pokemon + ": " + this.effectData.starCount);
 			// Only decrease if the user was in for a full turn
-			if (pokemon.activeTurns && this.effectData.duration > 0) {
+			if (pokemon.activeTurns && this.effectData.starCount > 0) {
+				this.debug("Dropping Starlight count!");
 				this.boost({atk: -1}, pokemon);
-				this.effectData.duration--;
+				this.effectData.starCount -= 1;
+				this.debug("Starlight level of " + pokemon + " after drop: " + this.effectData.starCount);
 			}
 		},
+		// Remove star power before baton pass for the sake of AG's sanity and lore
+		onBeforeMove(source, target, move) {
+			if (move.id === 'batonpass') {
+				this.boost({atk: -this.effectData.starCount}, this.effectData.user);
+			}
+		},
+		rating: 4.5,
+
+		// TODO: Clear starlight boosts before baton passing
 	},
 };

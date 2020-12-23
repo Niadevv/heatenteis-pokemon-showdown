@@ -6,7 +6,7 @@ export const Formats: FormatList = [
 		name: "[Gen 8] Heat Enteis OU",
 		desc: "Assorted buffs and new megas",
 		mod: 'heatenteisformat',
-		ruleset: ['OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		banlist: [
 			'Arceus', 'Calyrex-Shadow', 'Dialga', 'Eternatus', 'Giratina', 'Giratina-Origin', 'Groudon',
 			'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Marshadow', 'Mewtwo', 'Necrozma-Dawn-Wings',
@@ -21,6 +21,7 @@ export const Formats: FormatList = [
 				return [`${set.name || set.species}'s item ${item.name} is banned by Signature Z-Moves Only Clause.`];
 			}
 		},
+		debug: true, // TEMP, REMOVEME
 	},
 	{
 		name: "[Gen 8] Heat Enteis Ubers",
