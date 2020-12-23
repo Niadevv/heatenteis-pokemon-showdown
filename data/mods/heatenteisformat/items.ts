@@ -223,4 +223,32 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	noctowlite: {
+		name: "Noctowlite",
+		spritenum: 625,
+		megaStone: "Noctowl-Mega",
+		megaEvolves: "Noctowl",
+		itemUser: ["Noctowl"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -116,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	ledianite: {
+		name: "Ledianite",
+		spritenum: 625,
+		megaStone: "Ledian-Mega",
+		megaEvolves: "Ledian",
+		itemUser: ["Ledian"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -117,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

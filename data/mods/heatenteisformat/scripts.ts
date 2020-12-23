@@ -76,6 +76,11 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'delibird').learnset.knockoff = ['5L1'];
 		this.modData('Learnsets', 'delibird').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'delibird').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'noctowl').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'noctowl').learnset.aurasphere = ['5L1'];
+		this.modData('Learnsets', 'noctowl').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'ledian').learnset.playrough = ['5L1'];
+		this.modData('Learnsets', 'ledian').learnset.firstimpression = ['5L1'];
 
 		// Cursed Dance learners
 		this.modData('Learnsets', 'blacephalon').learnset.curseddance = ['5L1'];

@@ -276,4 +276,48 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	birdsofprey: {
+		name: "Birds of Prey",
+		desc: "The user traps opposing Bug and Flying types.",
+		shortDesc: "Traps opposing Bug and Flying types.",
+		onFoeTrapPokemon(pokemon) {
+			if ((pokemon.hasType('Bug') || pokemon.hasType('Flying')) && this.isAdjacent(pokemon, this.effectData.target)) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon(pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if (!source || !this.isAdjacent(pokemon, source)) return;
+			if (!pokemon.knownType || (pokemon.hasType('Bug') || pokemon.hasType('Flying'))) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+	},
+	starlight: {
+		name: "Starlight",
+		desc: "Upon switchin, the user summons 6 stars, each giving it a boost in attack. At the end of each turn, one fades, taking its associated boost away.",
+		shortDesc: "+6 on switchin, -1 each turn for 5 turns after.",
+		onStart(pokemon) {
+			if (!this.field.getWeather()) {
+				this.add('-ability', pokemon, 'ability: Starlight');
+				this.effectData.duration = 6;
+				this.effectData.user = pokemon;
+				this.boost({atk: 6}, pokemon);
+			}
+		},
+		onAnySetWeather(target, source, weather) {
+			// clear boosts on weather set
+			if (this.effectData.duration > 0) {
+				this.boost({atk: -this.effectData.duration}, this.effectData.user);
+				this.effectData.duration = 0;
+			}
+		},
+		onResidual(pokemon) {
+			// Only decrease if the user was in for a full turn
+			if (pokemon.activeTurns && this.effectData.duration > 0) {
+				this.boost({atk: -1}, pokemon);
+				this.effectData.duration--;
+			}
+		},
+	},
 };
