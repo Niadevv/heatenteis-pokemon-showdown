@@ -92,5 +92,8 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'misdreavus').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'froslass').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'sinistea').learnset.curseddance = ['5L1'];
+
+		// Other buffs
+		this.modData('Learnsets', 'dragapult').learnset.poltergeist = ['5L1'];
 	},
 };
