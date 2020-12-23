@@ -1,4 +1,5 @@
 export const Pokedex: {[k: string]: ModdedSpeciesData} = {
+	// UBERS BUFFS
 	kyuremblack: {
 		inherit: true,
 		baseStats: {hp: 125, atk: 190, def: 110, spa: 140, spd: 100, spe: 95},
@@ -140,6 +141,68 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 106, atk: 220, def: 110, spa: 154, spd: 110, spe: 140},
 		abilities: {0: "Inner Focus"},
+	},
+	// NON UBERS BUFFS
+	raticate: {
+		inherit: true,
+		baseStats: {hp: 55, atk: 105, def: 60, spa: 50, spd: 70, spe: 107},
+	},
+	raticatealola: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 80, def: 100, spa: 40, spd: 110, spe: 77},
+		abilities: {0: "Gluttony", 1: "Guts", H: "Thick Fat"},
+	},
+	fearow: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 100, def: 65, spa: 61, spd: 61, spe: 110},
+		abilities: {0: "Keen Eye", 1: "Reckless", H: "Sniper"},
+	},
+	raichualola: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 65, def: 50, spa: 115, spd: 85, spe: 110},
+	},
+	sandslash: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 100, def: 120, spa: 45, spd: 65, spe: 65},
+	},
+	sandslashalola: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 115, def: 120, spa: 25, spd: 65, spe: 75},
+	},
+	ninetales: {
+		inherit: true,
+		baseStats: {hp: 73, atk: 76, def: 75, spa: 111, spd: 100, spe: 105},
+	},
+	ninetalesalola: {
+		inherit: true,
+		baseStats: {hp: 73, atk: 67, def: 75, spa: 111, spd: 100, spe: 109},
+	},
+	wigglytuff: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 70, def: 45, spa: 115, spd: 50, spe: 55},
+	},
+	parasect: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 110, def: 100, spa: 60, spd: 100, spe: 30},
+		abilities: {0: "Effect Spore", 1: "Dry Skin", H: "Regenerator"},
+	},
+	dugtrioalola: {
+		inherit: true,
+		baseStats: {hp: 35, atk: 110, def: 60, spa: 50, spd: 70, spe: 110},
+	},
+	persian: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 90, def: 65, spa: 85, spd: 70, spe: 115},
+	},
+	persianalola: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 85, def: 65, spa: 95, spd: 70, spe: 115},
+	},
+	golduck: {
+		inherit: true,
+		types: ["Water", "Psychic"],
+		baseStats: {hp: 80, atk: 82, def: 78, spa: 110, spd: 90, spe: 90},
+		abilities: {0: "Magic Bounce", 1: "Cloud Nine", H: "Swift Swim"},
 	},
 	// MEGA STUFF
 	butterfree: {

@@ -28,9 +28,9 @@ photon geyser with neuroforce
 behemoth bash
 
 abilities to test:
-	neurotoxin (tspikes, toxic and secondary poisons)
-	speed boost (should only give +1 spe on SI)
-	prosecutor
+	neurotoxin (tspikes, toxic and secondary poisons) WORKS
+	speed boost (should only give +1 spe on SI) WORKS
+	prosecutor WORKS
 
 TODO:
 implement Delta Stream

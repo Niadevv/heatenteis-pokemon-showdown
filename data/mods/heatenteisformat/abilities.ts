@@ -269,16 +269,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "50% chance to inflict Curse on the opponent at end of every turn.",
 		onResidual(target) {
 			const chance = this.random(2);
-			this.debug("Prosecutor chance: " + chance);
 			if (chance === 0) {
 				this.add('-activate', 'ability: Prosecutor');
-				// for (let i = 0; i < target.side.foe.active.length; i++) {
 				const opposingSide = target.side.foe.active;
 				for (const foe of opposingSide) {
-					foe.addVolatile('curse');
+					if (foe) {
+						foe.addVolatile('curse');
+					}
 				}
-				// this.add('-start', target, 'curse');
-				this.debug("Cursed");
 			}
 		},
 	},

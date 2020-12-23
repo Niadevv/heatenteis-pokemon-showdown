@@ -31,11 +31,15 @@ export const Scripts: ModdedBattleScriptsData = {
 
 		// Mega Base forms new learned moves:
 		this.modData('Learnsets', 'butterfree').learnset.psyshock = ['5L1'];
+		this.modData('Learnsets', 'butterfree').learnset.aurasphere = ['5L1'];
 		this.modData('Learnsets', 'arbok').learnset.shadowsneak = ['5L1'];
 		this.modData('Learnsets', 'arbok').learnset.shadowfang = ['5L1'];
+		this.modData('Learnsets', 'arbok').learnset.knockoff = ['5L1'];
+		this.modData('Learnsets', 'arbok').learnset.taunt = ['5L1'];
 		this.modData('Learnsets', 'raichu').learnset.highjumpkick = ['5L1'];
 		this.modData('Learnsets', 'raichu').learnset.bulkup = ['5L1'];
 		this.modData('Learnsets', 'vileplume').learnset.leafstorm = ['5L1'];
+		this.modData('Learnsets', 'vileplume').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'vileplume').learnset.clearsmog = ['5L1'];
 		this.modData('Learnsets', 'weezing').learnset.recover = ['5L1'];
 		this.modData('Learnsets', 'starmie').learnset.focusblast = ['5L1'];
@@ -99,6 +103,50 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'sinistea').learnset.curseddance = ['5L1'];
 
 		// Other buffs
+		this.modData('Learnsets', 'venusaur').learnset.sludgewave = ['5L1'];
+		this.modData('Learnsets', 'venusaur').learnset.strengthsap = ['5L1'];
+		this.modData('Learnsets', 'venusaur').learnset.stunspore = ['5L1'];
+		this.modData('Learnsets', 'charizard').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'blastoise').learnset.zapcannon = ['5L1'];
+		this.modData('Learnsets', 'beedrill').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'beedrill').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'beedrill').learnset.gunkshot = ['5L1'];
+		this.modData('Learnsets', 'beedrill').learnset.megahorn = ['5L1'];
+		this.modData('Learnsets', 'pidgeot').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'beedrill').learnset.hypervoice = ['5L1'];
+		this.modData('Learnsets', 'beedrill').learnset.sing = ['5L1'];
 		this.modData('Learnsets', 'dragapult').learnset.poltergeist = ['5L1'];
+		this.modData('Learnsets', 'raticate').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'raticate').learnset.extremespeed = ['5L1'];
+		this.modData('Learnsets', 'raticate').learnset.flareblitz = ['5L1'];
+		this.modData('Learnsets', 'raticate').learnset.slackoff = ['5L1'];
+		this.modData('Learnsets', 'raticatealola').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'raticatealola').learnset.extremespeed = ['5L1'];
+		this.modData('Learnsets', 'raticatealola').learnset.slackoff = ['5L1'];
+		this.modData('Learnsets', 'fearow').learnset.bravebird = ['5L1'];
+		this.modData('Learnsets', 'fearow').learnset.superpower = ['5L1'];
+		this.modData('Learnsets', 'fearow').learnset.bravebird = ['5L1'];
+		this.modData('Learnsets', 'raichualola').learnset.aurasphere = ['5L1'];
+		this.modData('Learnsets', 'sandslash').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'sandslash').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'nidoking').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'nidoqueen').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'ninetales').learnset.lavaplume = ['5L1'];
+		this.modData('Learnsets', 'ninetales').learnset.morningsun = ['5L1'];
+		this.modData('Learnsets', 'wigglytuff').learnset.boomburst = ['5L1'];
+		this.modData('Learnsets', 'wigglytuff').learnset.calmmind = ['5L1'];
+		this.modData('Learnsets', 'wigglytuff').learnset.moonblast = ['5L1'];
+		this.modData('Learnsets', 'parasect').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'parasect').learnset.leafblade = ['5L1'];
+		this.modData('Learnsets', 'dugtrio').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'dugtrioalola').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'persian').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'persian').learnset.pursuit = ['5L1'];
+		this.modData('Learnsets', 'persianalola').learnset.pursuit = ['5L1'];
+		this.modData('Learnsets', 'golduck').learnset.aurasphere = ['5L1'];
+		this.modData('Learnsets', 'golduck').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'golduck').learnset.lifedew = ['5L1'];
+		this.modData('Learnsets', 'golduck').learnset.storedpower = ['5L1'];
+		this.modData('Learnsets', 'golduck').learnset.teleport = ['5L1'];
 	},
 };
