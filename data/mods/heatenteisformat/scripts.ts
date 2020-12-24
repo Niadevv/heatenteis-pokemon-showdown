@@ -148,5 +148,8 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'golduck').learnset.lifedew = ['5L1'];
 		this.modData('Learnsets', 'golduck').learnset.storedpower = ['5L1'];
 		this.modData('Learnsets', 'golduck').learnset.teleport = ['5L1'];
+		this.modData('Learnsets', 'primeape').learnset.machpunch = ['5L1'];
+		this.modData('Learnsets', 'poliwrath').learnset.lifedew = ['5L1'];
+		this.modData('Learnsets', 'poliwrath').learnset.flipturn = ['5L1'];
 	},
 };

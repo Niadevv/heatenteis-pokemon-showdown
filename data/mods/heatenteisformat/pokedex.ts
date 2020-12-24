@@ -204,6 +204,16 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 80, atk: 82, def: 78, spa: 110, spd: 90, spe: 90},
 		abilities: {0: "Magic Bounce", 1: "Cloud Nine", H: "Swift Swim"},
 	},
+	primeape: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 120, def: 60, spa: 60, spd: 70, spe: 100},
+		abilities: {0: "Iron Fist", 1: "Anger Point", H: "Defiant"},
+	},
+	poliwrath: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 105, def: 95, spa: 70, spd: 90, spe: 70},
+		abilities: {0: "Water Absorb", 1: "Iron Fist", H: "Swift Swim"},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
