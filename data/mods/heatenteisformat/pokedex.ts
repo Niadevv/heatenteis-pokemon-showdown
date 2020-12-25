@@ -214,6 +214,30 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 105, def: 95, spa: 70, spd: 90, spe: 70},
 		abilities: {0: "Water Absorb", 1: "Iron Fist", H: "Swift Swim"},
 	},
+	victreebel: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 115, def: 65, spa: 110, spd: 70, spe: 80},
+	},
+	rapidash: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 105, def: 70, spa: 80, spd: 80, spe: 110},
+		abilities: {0: "Speed Boost", 1: "Flash Fire", H: "Flame Body"},
+	},
+	rapidashgalar: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 105, def: 70, spa: 80, spd: 80, spe: 110},
+		abilities: {0: "Queenly Majesty", 1: "Pastel Veil", H: "Anticipation"},
+	},
+	farfetchd: {
+		inherit: true,
+		types: ["Fighting", "Flying"],
+		baseStats: {hp: 70, atk: 105, def: 65, spa: 58, spd: 72, spe: 90},
+		abilities: {0: "Aerilate", 1: "Inner Focus", H: "Defiant"},
+	},
+	gengar: {
+		inherit: true,
+		abilities: {0: "Cursed Body", 1: "Levitate", H: "Prankster"},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
