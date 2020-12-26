@@ -238,6 +238,32 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Cursed Body", 1: "Levitate", H: "Prankster"},
 	},
+	electrode: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 50, def: 70, spa: 100, spd: 80, spe: 170},
+		abilities: {0: "Soundproof", 1: "Static", H: "Electric Terrain"},
+	},
+	marowak: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 100, def: 110, spa: 50, spd: 80, spe: 45},
+		abilities: {0: "Rock Head", 1: "Perish Body", H: "Battle Armor"},
+	},
+	seaking: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 102, def: 70, spa: 65, spd: 80, spe: 80},
+	},
+	mrmime: {
+		inherit: true,
+		baseStats: {hp: 50, atk: 45, def: 65, spa: 115, spd: 120, spe: 100},
+	},
+	jynx: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 50, def: 35, spa: 115, spd: 95, spe: 100},
+	},
+	tauros: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 120, def: 95, spa: 40, spd: 70, spe: 115},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
@@ -352,6 +378,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		otherFormes: ["Starmie-Mega"],
 		formeOrder: ["Starmie", "Starmie-Mega"],
+		abilities: {0: "Regenerator", 1: "Natural Cure", H: "Analytic"},
 	},
 	starmiemega: {
 		num: 121,
