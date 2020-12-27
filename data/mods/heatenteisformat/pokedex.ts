@@ -273,6 +273,18 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 75, atk: 125, def: 79, spa: 35, spd: 130, spe: 76},
 	},
+	vaporeon: {
+		inherit: true,
+		baseStats: {hp: 130, atk: 65, def: 80, spa: 110, spd: 95, spe: 75},
+	},
+	jolteon: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 65, def: 60, spa: 115, spd: 95, spe: 130},
+	},
+	flareon: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 130, def: 60, spa: 55, spd: 110, spe: 95},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,

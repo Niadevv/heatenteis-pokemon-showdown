@@ -336,6 +336,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		pp: 10,
 	},
+	lightthatburnsthesky: {
+		inherit: true,
+		basePower: 250,
+	},
 	// NEW MOVES
 	curseddance: {
 		num: 3000,
@@ -389,8 +393,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			volatileStatus: 'flinch',
 		},
 	},
-	lightthatburnsthesky: {
-		inherit: true,
-		basePower: 250,
+	recharge: {
+		num: 3003,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Recharge",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		heal: [1, 2],
+		secondary: null,
+		target: "self",
+		type: "Electric",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Clever",
 	},
 };

@@ -140,6 +140,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'wigglytuff').learnset.boomburst = ['5L1'];
 		this.modData('Learnsets', 'wigglytuff').learnset.calmmind = ['5L1'];
 		this.modData('Learnsets', 'wigglytuff').learnset.moonblast = ['5L1'];
+		this.modData('Learnsets', 'wigglytuff').learnset.softboiled = ['5L1'];
 		this.modData('Learnsets', 'parasect').learnset.firstimpression = ['5L1'];
 		this.modData('Learnsets', 'parasect').learnset.leafblade = ['5L1'];
 		this.modData('Learnsets', 'parasect').learnset.closecombat = ['5L1'];
@@ -250,5 +251,11 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'pinsir').learnset.hornleech = ['5L1'];
 		this.modData('Learnsets', 'pinsir').learnset.megahorn = ['5L1'];
 		this.modData('Learnsets', 'gyarados').learnset.fishiousrend = ['5L1'];
+		this.modData('Learnsets', 'vaporeon').learnset.calmmind = ['5L1'];
+		this.modData('Learnsets', 'vaporeon').learnset.lifedew = ['5L1'];
+		this.modData('Learnsets', 'jolteon').learnset.calmmind = ['5L1'];
+		this.modData('Learnsets', 'jolteon').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'flareon').learnset.bulkup = ['5L1'];
+		this.modData('Learnsets', 'flareon').learnset.morningsun = ['5L1'];
 	},
 };
