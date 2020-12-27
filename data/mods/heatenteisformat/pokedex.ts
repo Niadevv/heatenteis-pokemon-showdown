@@ -164,6 +164,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	sandslash: {
 		inherit: true,
 		baseStats: {hp: 85, atk: 100, def: 120, spa: 45, spd: 65, spe: 65},
+		abilities: {0: "Sand Veil", 1: "Rough Skin", H: "Sand Rush"},
 	},
 	sandslashalola: {
 		inherit: true,
@@ -201,7 +202,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	golduck: {
 		inherit: true,
 		types: ["Water", "Psychic"],
-		baseStats: {hp: 80, atk: 82, def: 78, spa: 110, spd: 90, spe: 90},
+		baseStats: {hp: 80, atk: 82, def: 78, spa: 110, spd: 100, spe: 90},
 		abilities: {0: "Magic Bounce", 1: "Cloud Nine", H: "Swift Swim"},
 	},
 	primeape: {
@@ -263,6 +264,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	tauros: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 120, def: 95, spa: 40, spd: 70, spe: 115},
+	},
+	hitmonlee: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 120, def: 53, spa: 35, spd: 130, spe: 107},
+	},
+	hitmonchan: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 125, def: 79, spa: 35, spd: 130, spe: 76},
 	},
 	// MEGA STUFF
 	butterfree: {
