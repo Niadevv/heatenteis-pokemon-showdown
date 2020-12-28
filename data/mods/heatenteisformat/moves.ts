@@ -326,6 +326,22 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		accuracy: 100,
 	},
+	bounce: {
+		inherit: true,
+		accuracy: 100,
+	},
+	blazekick: {
+		inherit: true,
+		accuracy: 100,
+	},
+	boneclub: {
+		inherit: true,
+		accuracy: 100,
+	},
+	dragonrush: {
+		inherit: true,
+		accuracy: 90,
+	},
 	// aight lads let's make darkrai absolutely cracked again
 	// AG is crying rn
 	darkvoid: {
@@ -335,6 +351,22 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	synthesis: {
 		inherit: true,
 		pp: 10,
+	},
+	moonlight: {
+		inherit: true,
+		pp: 10,
+	},
+	morningsun: {
+		inherit: true,
+		pp: 10,
+	},
+	uturn: {
+		inherit: true,
+		basePower: 60,
+	},
+	voltswitch: {
+		inherit: true,
+		basePower: 60,
 	},
 	lightthatburnsthesky: {
 		inherit: true,
