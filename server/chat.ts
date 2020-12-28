@@ -84,7 +84,7 @@ export type SettingsHandler = (
  * 2. return an altered string - to alter a user's message
  * 3. return undefined to send the original message through
  */
-export type ChatFilter = (
+export type ChatFilter = ((
 	this: CommandContext,
 	message: string,
 	user: User,
@@ -92,7 +92,7 @@ export type ChatFilter = (
 	connection: Connection,
 	targetUser: User | null,
 	originalMessage: string
-) => string | false | null | undefined;
+) => string | false | null | undefined) & {priority?: number};
 
 export type NameFilter = (name: string, user: User) => string;
 export type NicknameFilter = (name: string, user: User) => string | false;
@@ -984,7 +984,7 @@ export class CommandContext extends MessageContext {
 				}
 				if (targetUser.settings.blockPMs &&
 					(targetUser.settings.blockPMs === true || !Users.globalAuth.atLeast(user, targetUser.settings.blockPMs)) &&
-					!user.can('lock')) {
+					!user.can('lock') && targetUser.id !== user.id) {
 					Chat.maybeNotifyBlocked('pm', targetUser, user);
 					if (!targetUser.can('lock')) {
 						throw new Chat.ErrorMessage(this.tr`This user is blocking private messages right now.`);
@@ -994,7 +994,8 @@ export class CommandContext extends MessageContext {
 					}
 				}
 				if (user.settings.blockPMs && (user.settings.blockPMs === true ||
-					!Users.globalAuth.atLeast(targetUser, user.settings.blockPMs)) && !targetUser.can('lock')) {
+					!Users.globalAuth.atLeast(targetUser, user.settings.blockPMs)) && !targetUser.can('lock') &&
+					targetUser.id !== user.id) {
 					throw new Chat.ErrorMessage(this.tr`You are blocking private messages right now.`);
 				}
 			}
@@ -1479,8 +1480,9 @@ export const Chat = new class {
 		// ensure that english is the first entry when we iterate over Chat.languages
 		Chat.languages.set('english' as ID, 'English');
 		for (const dirname of directories) {
+			// translation dirs shouldn't have caps, but things like sourceMaps and the README will
+			if (/[^a-z0-9]/.test(dirname)) continue;
 			const dir = FS(`${TRANSLATION_DIRECTORY}/${dirname}`);
-			if (!dir.isDirectorySync()) continue;
 
 			// For some reason, toID() isn't available as a global when this executes.
 			const languageID = Dex.toID(dirname);
@@ -1597,9 +1599,19 @@ export const Chat = new class {
 	 */
 	parse(message: string, room: Room | null | undefined, user: User, connection: Connection) {
 		Chat.loadPlugins();
-		const context = new CommandContext({message, room, user, connection});
 
-		return context.parse();
+		const initialRoomlogLength = room?.log.log.length;
+		const context = new CommandContext({message, room, user, connection});
+		const result = context.parse();
+
+		if (room && room.log.log.length !== initialRoomlogLength) {
+			room.messagesSent++;
+			for (const [handler, numMessages] of room.nthMessageHandlers) {
+				if (room.messagesSent % numMessages === 0) handler(room, message);
+			}
+		}
+
+		return result;
 	}
 	sendPM(message: string, user: User, pmTarget: User, onlyRecipient: User | null = null) {
 		const buf = `|pm|${user.getIdentity()}|${pmTarget.getIdentity()}|${message}`;
@@ -1740,6 +1752,7 @@ export const Chat = new class {
 			this.loadPlugin(`chat-plugins/${file}`);
 		}
 		Chat.oldPlugins = {};
+		Utils.sortBy(Chat.filters, filter => filter.priority || 0);
 	}
 	destroy() {
 		for (const handler of Chat.destroyHandlers) {
