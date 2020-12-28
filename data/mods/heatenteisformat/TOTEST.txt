@@ -33,6 +33,8 @@ abilities to test:
 	prosecutor WORKS
 	sticky madness (test with webs on opp side, on user side, on both sides and on neither side. also test it setting its webs)
 	twisted dimension (see if removes properly if the original setter switches out while another mon with the ability is active, which subsequently switches out)
+	photosynthesis (should lose stat changes when weather ends/changes)
+	shell break (water immunity, forme changing)
 
 TODO:
 implement Delta Stream

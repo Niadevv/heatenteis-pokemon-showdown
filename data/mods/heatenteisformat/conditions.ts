@@ -79,4 +79,15 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			return false;
 		},
 	},
+	deltastream: {
+		inherit: true,
+		// mareanie why
+		onWeatherModifyDamage(damage, attacker, defender, move) {
+			if (defender.hasItem('utilityumbrella')) return;
+			if (move.type === 'Flying') {
+				this.debug('Delta Stream flying boost');
+				return this.chainModify(1.5);
+			}
+		},
+	},
 };

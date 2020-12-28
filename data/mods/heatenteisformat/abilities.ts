@@ -463,4 +463,29 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			return false;
 		},
 	},
+	submerge: {
+		name: "Submerge",
+		desc: "Upon use of a water move, the user summons an underwater terrain, doubling water moves, boosting electric moves by 1.5x, and negating fire moves. The user also has 1.2x speed while the terrain is active.",
+		shortDesc: "Summons water terrain on water move use, doubles water moves, 1.5x to electric moves, fire moves fail, user has 1.2x speed.",
+		onModifySpe(spe, pokemon) {
+			if (this.field.getTerrain().id === 'submerge') {
+				return this.chainModify(1.2);
+			}
+		},
+		onAfterMove(source, target, move) {
+			if (move.type === 'Water') {
+				this.add('-activate', source, 'ability: Submerge');
+				this.field.setTerrain('submerge');
+				// Apply water type
+				if (!target.setType('Water')) {
+					this.add('-fail', target);
+				}
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.getTerrain().id === 'submerge') {
+				this.field.clearTerrain();
+			}
+		},
+	},
 };

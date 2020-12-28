@@ -476,4 +476,62 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Clever",
 	},
+	// internal inaccessible move that is used to set Submerge
+	submerge: {
+		num: 3004,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Submerge",
+		pp: 10,
+		priority: 0,
+		flags: {nonsky: 1},
+		terrain: 'submerge',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasItem('terrainextender')) {
+					return 8;
+				}
+				return 5;
+			},
+			onBasePowerPriority: 6,
+			onBasePower(basePower, attacker, defender, move) {
+				if (attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
+					if (move.type === 'Water') {
+						this.debug('Submerge boost');
+						return this.chainModify(2);
+					}
+					if (move.type === 'Electric') {
+						this.debug('Submerge boost');
+						return this.chainModify(1.5);
+					}
+				}
+			},
+			onStart(battle, source, effect) {
+				if (effect?.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Submerge', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Submerge');
+				}
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd() {
+				this.add('-fieldend', 'move: Submerge');
+			},
+			onBeforeMovePriority: 6,
+			onBeforeMove(pokemon, target, move) {
+				if (!move.isZ && !move.isMax && !move.status && move.type === 'Fire') {
+					this.add('cant', pokemon, 'move: Submerge');
+					return false;
+				}
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Water",
+		zMove: {boost: {spe: 1}},
+		contestType: "Clever",
+	},
 };
