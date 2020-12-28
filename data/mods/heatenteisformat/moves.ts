@@ -368,6 +368,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		basePower: 60,
 	},
+	razorshell: {
+		inherit: true,
+		basePower: 90,
+		accuracy: 100,
+	},
 	lightthatburnsthesky: {
 		inherit: true,
 		basePower: 250,

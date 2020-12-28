@@ -257,5 +257,23 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'jolteon').learnset.recharge = ['5L1'];
 		this.modData('Learnsets', 'flareon').learnset.bulkup = ['5L1'];
 		this.modData('Learnsets', 'flareon').learnset.morningsun = ['5L1'];
+		this.modData('Learnsets', 'kabutops').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'kabutops').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'kabutops').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'aerodactyl').learnset.bravebird = ['5L1'];
+		this.modData('Learnsets', 'aerodactyl').learnset.headsmash = ['5L1'];
+		this.modData('Learnsets', 'snorlax').learnset.slackoff = ['5L1'];
+		this.modData('Learnsets', 'articuno').learnset.aurasphere = ['5L1'];
+		this.modData('Learnsets', 'articuno').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'articunogalar').learnset.aurasphere = ['5L1'];
+		this.modData('Learnsets', 'articunogalar').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'articunogalar').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'zapdos').learnset.boltbeak = ['5L1'];
+		this.modData('Learnsets', 'zapdos').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'zapdosgalar').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'moltresgalar').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'dragonite').learnset.dragonenergy = ['5L1'];
+		this.modData('Learnsets', 'mew').learnset.recharge = ['5L1'];
+		// --------- END KANTO BUFFS ---------
 	},
 };

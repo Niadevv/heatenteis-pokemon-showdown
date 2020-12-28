@@ -285,6 +285,30 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 75, atk: 130, def: 60, spa: 55, spd: 110, spe: 95},
 	},
+	omastar: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 60, def: 125, spa: 115, spd: 80, spe: 65},
+	},
+	kabutops: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 115, def: 115, spa: 65, spd: 80, spe: 90},
+	},
+	articuno: {
+		inherit: true,
+		abilities: {0: "Pressure", 1: "Snow Cloak", H: "Snow Warning"},
+	},
+	zapdos: {
+		inherit: true,
+		abilities: {0: "Pressure", 1: "Static", H: "Volt Absorb"},
+	},
+	moltres: {
+		inherit: true,
+		abilities: {0: "Pressure", 1: "Flame Body", H: "Regenerator"},
+	}
+	mew: {
+		inherit: true,
+		abilities: {0: "Synchronize", 1: "Protean"},
+	}
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
