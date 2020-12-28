@@ -308,7 +308,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	mew: {
 		inherit: true,
 		abilities: {0: "Synchronize", 1: "Protean"},
-	}
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,

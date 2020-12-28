@@ -337,4 +337,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 
 		// TODO: Clear starlight boosts before baton passing
 	},
+	stickymadness: {
+		name: "Sticky Madness",
+		desc: "If hit with a contact move, the user will set webs on the opponents' side and lower their speed by 1. Additionally, if webs are set, it gains +2 attack and +1 speed. If webs are up on the user's side, it gains an additional +1 in speed.",
+		shortDesc: "Sets webs on opponent's side and lowers attacker's speed by 1 on contact, +2 attack and +1 speed in webs (+2 spe if on user's side).",
+		onDamagingHitOrder: 1,
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
+				source.
+			}
+		}
+	},
 };
