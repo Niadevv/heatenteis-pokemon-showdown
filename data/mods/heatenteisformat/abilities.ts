@@ -360,7 +360,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				this.boost({atk: 2, spe: 1});
 			}
 
-			if (pokemon.side.getSideCondition('stickyweb')) {
+			if (pokemon.side.getSideCondition('stickyweb') && !pokemon.side.foe.getSideCondition('stickyweb')) {
 				this.boost({atk: 2, spe: 2});
 			}
 		},
