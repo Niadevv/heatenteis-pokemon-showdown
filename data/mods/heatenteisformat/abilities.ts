@@ -344,8 +344,25 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onDamagingHitOrder: 1,
 		onDamagingHit(damage, target, source, move) {
 			if (move.flags['contact']) {
-				source.
+				if (!source.side.getSideCondition('stickyweb') && !(source.side === target.side)) {
+					source.side.addSideCondition('stickyweb');
+
+					// check if the user's side has webs befor boosting
+					if (!target.side.getSideCondition('stickyweb')) {
+						this.boost({atk: 2, spe: 1});
+					}
+				}
+				this.boost({spe: -1}, source);
 			}
-		}
+		},
+		onStart(pokemon) {
+			if (pokemon.side.foe.getSideCondition('stickyweb')) {
+				this.boost({atk: 2, spe: 1});
+			}
+
+			if (pokemon.side.getSideCondition('stickyweb')) {
+				this.boost({atk: 2, spe: 2});
+			}
+		},
 	},
 };

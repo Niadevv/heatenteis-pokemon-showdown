@@ -304,7 +304,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	moltres: {
 		inherit: true,
 		abilities: {0: "Pressure", 1: "Flame Body", H: "Regenerator"},
-	}
+	},
 	mew: {
 		inherit: true,
 		abilities: {0: "Synchronize", 1: "Protean"},
