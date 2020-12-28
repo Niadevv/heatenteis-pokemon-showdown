@@ -347,7 +347,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				if (!source.side.getSideCondition('stickyweb') && !(source.side === target.side)) {
 					source.side.addSideCondition('stickyweb');
 
-					// check if the user's side has webs befor boosting
+					// check if the user's side has webs before boosting
 					if (!target.side.getSideCondition('stickyweb')) {
 						this.boost({atk: 2, spe: 1});
 					}
@@ -363,6 +363,104 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (pokemon.side.getSideCondition('stickyweb') && !pokemon.side.foe.getSideCondition('stickyweb')) {
 				this.boost({atk: 2, spe: 2});
 			}
+		},
+	},
+	solarenergy: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(spa, pokemon) {
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				return this.chainModify(1.5);
+			}
+		},
+		onWeather(target, source, effect) {
+			if (target.hasItem('utilityumbrella')) return;
+			if (effect.id === 'sunnyday' || effect.id === 'desolateland') {
+				this.damage(target.baseMaxhp / 8, target, target);
+			}
+		},
+		name: "Solar Energy",
+		desc: "The user's attack stat receives a 1.5x boost in sunny weather. They also lose 1/8th their HP at the end of every turn while sun is active.",
+		shortDesc: "User attack stat 1.5x in sun, 1/8th HP lost at end of turn while sun active.",
+	},
+	twisteddimension: {
+		name: "Twisted Dimension",
+		desc: "The user summons Trick Room while it is active, which fades once the user switches out.",
+		shortDesc: "Trick Room active while user is active.",
+		onStart(pokemon) {
+			if (!this.field.getPseudoWeather('trickroom')) {
+				this.field.addPseudoWeather('trickroom');
+				this.effectData.twistedDimensionSetTR = true;
+			} else {
+				this.effectData.twistedDimensionSetTR = false;
+			}
+		},
+		onEnd(pokemon) {
+			// check if the user that set TR was a mon with twisted dimension and that the trick room hasn't been unset by another Pokemon using the move Trick Room
+			if (this.effectData.twistedDimensionSetTR && this.field.getPseudoWeather('trickroom')) {
+				// don't remove TR if another Pokemon has Twisted Dimension
+				for (const target of this.getAllActive()) {
+					if (target === pokemon) continue;
+					if (target.hasAbility('twisteddimension')) {
+						// target.abilityData.userSetTR = true;
+						return;
+					}
+				}
+
+				this.field.removePseudoWeather('trickroom');
+			}
+		},
+	},
+	photosynthesis: {
+		name: "Photosynthesis",
+		desc: "The user gains +2 to all stats in sun, and loses them when the weather ends or is changed.",
+		shortDesc: "+2 to all stats while sun active.",
+		onStart(pokemon) {
+			if (['sunnyday', 'desolateland'].includes(this.field.getWeather().id)) {
+				this.add('-activate', pokemon, 'ability: Photosynthesis');
+				this.boost({atk: 2, def: 2, spa: 2, spd: 2, spe: 2}, pokemon);
+			}
+		},
+		// on update in case of things like cloud nine, also not sure if onanysetweather triggers if weather fades
+		onUpdate(pokemon) {
+			if (!pokemon.isActive || !pokemon.hp) return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				// set boosts if sun is triggered
+				this.add('-activate', pokemon, 'ability: Photosynthesis');
+				this.boost({atk: 2, def: 2, spa: 2, spd: 2, spe: 2}, pokemon);
+			} else {
+				// unset boosts if sunny weather goes away
+				this.add('-activate', pokemon, 'ability: Photosynthesis');
+				this.boost({atk: -2, def: -2, spa: -2, spd: -2, spe: -2});
+			}
+		},
+	},
+	shellbreak: {
+		name: "Shell Break",
+		desc: "When the user uses Shell Smash, they change into their Broken form. While they are in shell form, they are immune to water.",
+		shortDesc: "Transforms upon using Shell Smash, immune to water before transformation.",
+		onStart(pokemon) {
+			delete this.effectData.forme;
+			this.effectData.shellSmashed = false;
+		},
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Water' && !this.effectData.shellSmashed) {
+				this.add('-immune', target, '[from] ability: Shell Break');
+				return null;
+			}
+		},
+		onAfterMove(source, target, move) {
+			if (move.id === 'Shell Smash' && !this.effectData.shellSmashed) {
+				this.add('-activate', source, 'ability: Shell Break');
+				source.formeChange('Magcargo-Mega-Broken', move, false, '[msg]');
+				this.effectData.shellSmashed = true;
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if (!this.effectData.shellSmashed || target.transformed) return;
+			if ((effect as Move)?.status) {
+				this.add('-immune', target, '[from] ability: Shell Break');
+			}
+			return false;
 		},
 	},
 };

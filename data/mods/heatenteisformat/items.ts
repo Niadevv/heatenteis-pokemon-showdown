@@ -251,4 +251,74 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	ariadosite: {
+		name: "Ariadosite",
+		spritenum: 625,
+		megaStone: "Ariados-Mega",
+		megaEvolves: "Ariados",
+		itemUser: ["Ariados"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -118,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	bellossomite: {
+		name: "Bellossomite",
+		spritenum: 625,
+		megaStone: "Bellossom-Mega",
+		megaEvolves: "Bellossom",
+		itemUser: ["Bellossom"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -119,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	sunflorite: {
+		name: "Sunflorite",
+		spritenum: 625,
+		megaStone: "Sunflora-Mega",
+		megaEvolves: "Sunflora",
+		itemUser: ["Sunflora"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -120,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	slowkingite: {
+		name: "Slowkingite",
+		spritenum: 625,
+		megaStone: "Slowking-Mega",
+		megaEvolves: "Slowking",
+		itemUser: ["Slowking"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -121,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	magcargonite: {
+		name: "Magcargonite",
+		spritenum: 625,
+		megaStone: "Magcargo-Mega",
+		megaEvolves: "Magcargo",
+		itemUser: ["Magcargo"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -122,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

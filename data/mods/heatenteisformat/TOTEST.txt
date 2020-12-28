@@ -31,6 +31,8 @@ abilities to test:
 	neurotoxin (tspikes, toxic and secondary poisons) WORKS
 	speed boost (should only give +1 spe on SI) WORKS
 	prosecutor WORKS
+	sticky madness (test with webs on opp side, on user side, on both sides and on neither side. also test it setting its webs)
+	twisted dimension (see if removes properly if the original setter switches out while another mon with the ability is active, which subsequently switches out)
 
 TODO:
 implement Delta Stream

@@ -260,6 +260,36 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	// Modify so Twisted Dimension works
+	trickroom: {
+		inherit: true,
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				if (source?.hasAbility('twisteddimension')) {
+					this.add('-activate', source, 'ability: Twisted Dimension', effect);
+					// Set to obscenely long time as Twisted Dimenion trick room is permanent until the user switches out
+					return 9999;
+				}
+				return 5;
+			},
+			onStart(target, source) {
+				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('trickroom');
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onResidualOrder: 23,
+			onEnd() {
+				this.add('-fieldend', 'move: Trick Room');
+			},
+		},
+	},
 	lifedew: {
 		inherit: true,
 		heal: null,
