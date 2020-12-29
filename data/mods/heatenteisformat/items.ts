@@ -335,4 +335,32 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	stantlerite: {
+		name: "Stantlerite",
+		spritenum: 625,
+		megaStone: "Stantler-Mega",
+		megaEvolves: "Stantler",
+		itemUser: ["Stantler"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -124,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	miltankite: {
+		name: "Miltankite",
+		spritenum: 625,
+		megaStone: "Miltank-Mega",
+		megaEvolves: "Miltank",
+		itemUser: ["Miltank"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -125,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

@@ -484,4 +484,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	lostgift: {
+		name: "Lost Gift",
+		desc: "Upon switchin, the user restores its teammates lost items.",
+		shortDesc: "User's team regains lost held items on switchin.",
+		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Lost Gift');
+			for (const teammate of pokemon.side.pokemon) {
+				teammate.setItem(teammate.set.item);
+			}
+		},
+	},
 };

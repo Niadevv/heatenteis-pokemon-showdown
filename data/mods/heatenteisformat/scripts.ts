@@ -1,5 +1,11 @@
 export const Scripts: ModdedBattleScriptsData = {
 	init() {
+		// Making move combos available
+		this.modData('Learnsets', 'blissey').learnset.teleport = ['5L1'];
+		this.modData('Learnsets', 'blissey').learnset.wish = ['5L1'];
+		this.modData('Learnsets', 'blissey').learnset.softboiled = ['5L1'];
+		this.modData('Learnsets', 'blissey').learnset.psywave = ['5L1'];
+		// Uber buffs
 		this.modData('Learnsets', 'kyurem').learnset.icepunch = ['5L1'];
 		this.modData('Learnsets', 'kyurem').learnset.earthquake = ['5L1'];
 		this.modData('Learnsets', 'kyuremblack').learnset.icepunch = ['5L1'];
@@ -56,11 +62,12 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'meganium').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'typhlosion').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'feraligatr').learnset.psychicfangs = ['5L1'];
+		// Learns Iron Maw further down
 		this.modData('Learnsets', 'sudowoodo').learnset.accelerock = ['5L1'];
 		this.modData('Learnsets', 'sudowoodo').learnset.closecombat = ['5L1'];
 		this.modData('Learnsets', 'sudowoodo').learnset.bulkup = ['5L1'];
 		this.modData('Learnsets', 'sudowoodo').learnset.seedbomb = ['5L1'];
-		this.modData('Learnsets', 'girafarig').learnset.ironmaw = ['5L1'];
+		// Girafarig learns Iron Maw further down
 		this.modData('Learnsets', 'girafarig').learnset.extremespeed = ['5L1'];
 		this.modData('Learnsets', 'girafarig').learnset.hyperbeam = ['5L1'];
 		this.modData('Learnsets', 'girafarig').learnset.swordsdance = ['5L1'];
@@ -76,6 +83,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'girafarig').learnset.playrough = ['5L1'];
 		this.modData('Learnsets', 'granbull').learnset.knockoff = ['5L1'];
 		this.modData('Learnsets', 'granbull').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'granbull').learnset.psychicfangs = ['5L1'];
 		this.modData('Learnsets', 'octillery').learnset.flashcannon = ['5L1'];
 		this.modData('Learnsets', 'octillery').learnset.ironhead = ['5L1'];
 		this.modData('Learnsets', 'delibird').learnset.pursuit = ['5L1'];
@@ -88,6 +96,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'noctowl').learnset.uturn = ['5L1'];
 		this.modData('Learnsets', 'ledian').learnset.playrough = ['5L1'];
 		this.modData('Learnsets', 'ledian').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'bellossom').learnset.calmmind = ['5L1'];
+		this.modData('Learnsets', 'bellossom').learnset.drainingkiss = ['5L1'];
+		this.modData('Learnsets', 'bellossom').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'bellossom').learnset.weatherball = ['5L1'];
 
 		// Cursed Dance learners
 		this.modData('Learnsets', 'blacephalon').learnset.curseddance = ['5L1'];
@@ -104,6 +116,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'misdreavus').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'froslass').learnset.curseddance = ['5L1'];
 		this.modData('Learnsets', 'sinistea').learnset.curseddance = ['5L1'];
+
+		// Iron Maw learners
+		this.modData('Learnsets', 'feraligatr').learnset.ironmaw = ['5L1'];
+		this.modData('Learnsets', 'girafarig').learnset.ironmaw = ['5L1'];
 
 		// Other buffs
 		this.modData('Learnsets', 'venusaur').learnset.sludgewave = ['5L1'];
@@ -275,5 +291,42 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'dragonite').learnset.dragonenergy = ['5L1'];
 		this.modData('Learnsets', 'mew').learnset.recharge = ['5L1'];
 		// --------- END KANTO BUFFS ---------
+		// Starter moves are further up
+		this.modData('Learnsets', 'furret').learnset.bulletseed = ['5L1'];
+		this.modData('Learnsets', 'furret').learnset.claysmack = ['5L1'];
+		this.modData('Learnsets', 'furret').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'furret').learnset.extremespeed = ['5L1'];
+		this.modData('Learnsets', 'furret').learnset.suckerpunch = ['5L1'];
+		this.modData('Learnsets', 'furret').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'furret').learnset.tailslap = ['5L1'];
+		// Noctowl, Ledian and Ariados moves are further up
+		this.modData('Learnsets', 'lanturn').learnset.lifedew = ['5L1'];
+		this.modData('Learnsets', 'xatu').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'ampharos').learnset.dracometeor = ['5L1'];
+		this.modData('Learnsets', 'ampharos').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'ampharos').learnset.tailglow = ['5L1'];
+		this.modData('Learnsets', 'azumarill').learnset.highhorsepower = ['5L1'];
+		this.modData('Learnsets', 'politoed').learnset.flipturn = ['5L1'];
+		this.modData('Learnsets', 'politoed').learnset.lifedew = ['5L1'];
+		this.modData('Learnsets', 'jumpluff').learnset.airslash = ['5L1'];
+		this.modData('Learnsets', 'jumpluff').learnset.defog = ['5L1'];
+		this.modData('Learnsets', 'jumpluff').learnset.leafstorm = ['5L1'];
+		this.modData('Learnsets', 'jumpluff').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'sunflora').learnset.weatherball = ['5L1'];
+		this.modData('Learnsets', 'quagsire').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'espeon').learnset.aurasphere = ['5L1'];
+		this.modData('Learnsets', 'espeon').learnset.mysticalfire = ['5L1'];
+		this.modData('Learnsets', 'umbreon').learnset.calmmind = ['5L1'];
+		this.modData('Learnsets', 'umbreon').learnset.moonblast = ['5L1'];
+		this.modData('Learnsets', 'slowkinggalar').learnset.teleport = ['5L1'];
+		this.modData('Learnsets', 'forretress').learnset.bodypress = ['5L1'];
+		this.modData('Learnsets', 'forretress').learnset.repair = ['5L1'];
+		this.modData('Learnsets', 'steelix').learnset.ironmaw = ['5L1'];
+		this.modData('Learnsets', 'steelix').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'qwilfish').learnset.fishiousrend = ['5L1'];
+		this.modData('Learnsets', 'qwilfish').learnset.gunkshot = ['5L1'];
+		this.modData('Learnsets', 'qwilfish').learnset.lifedew = ['5L1'];
+		this.modData('Learnsets', 'scizor').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'heracross').learnset.firstimpression = ['5L1'];
 	},
 };

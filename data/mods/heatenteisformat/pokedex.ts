@@ -309,6 +309,54 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Synchronize", 1: "Protean"},
 	},
+	furret: {
+		inherit: true,
+		types: ["Normal", "Ground"],
+		baseStats: {hp: 85, atk: 100, def: 75, spa: 45, spd: 65, spe: 115},
+		abilities: {0: "Skill Link", 1: "Keen Eye", H: "Frisk"},
+	},
+	crobat: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 100, def: 90, spa: 90, spd: 90, spe: 130},
+	},
+	lanturn: {
+		inherit: true,
+		baseStats: {hp: 125, atk: 58, def: 85, spa: 86, spd: 100, spe: 67},
+	},
+	xatu: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 75, def: 80, spa: 105, spd: 90, spe: 95},
+	},
+	ampharos: {
+		inherit: true,
+		abilities: {0: "Static", 1: "Plus", H: "Lightning Rod"},
+	},
+	jumpluff: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 55, def: 90, spa: 75, spd: 95, spe: 110},
+		abilities: {0: "Chlorophyll", 1: "Prankster", H: "Infiltrator"},
+	},
+	quagsire: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 85, def: 105, spa: 65, spd: 85, spe: 35},
+	},
+	espeon: {
+		inherit: true,
+		abilities: {0: "Synchronize", 1: "Magic Bounce", H: "Inner Focus"},
+	},
+	umbreon: {
+		inherit: true,
+		abilities: {0: "Synchronize", 1: "Inner Focus", H: "Magic Guard"},
+	},
+	dunsparce: {
+		inherit: true,
+		types: ["Normal", "Ground"],
+	},
+	qwilfish: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 95, def: 95, spa: 55, spd: 75, spe: 85},
+		abilities: {0: "Rough Skin", 1: "Swift Swim", H: "Intimidate"},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
@@ -700,6 +748,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		otherFormes: ["Sunflora-Mega"],
 		formeOrder: ["Sunflora", "Sunflora-Mega"],
+		abilities: {0: "Chlorophyll", 1: "Solar Power", H: "Drought"},
 	},
 	sunfloramega: {
 		num: 192,
@@ -785,5 +834,42 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		color: "Blue",
 		eggGroups: ["Water 1", "Dragon"],
 		requiredItem: "Kingdranite",
+	},
+	stantler: {
+		inherit: true,
+		otherFormes: ["Stantler-Mega"],
+		formeOrder: ["Stantler", "Stantler-Mega"],
+	},
+	stantlermega: {
+		num: 234,
+		name: "Stantler-Mega",
+		forme: "Mega",
+		types: ["Normal", "Ice"],
+		baseStats: {hp: 73, atk: 135, def: 72, spa: 85, spd: 75, spe: 125},
+		abilities: {0: "Lost Gift"},
+		heightm: 1.4,
+		weightkg: 71.2,
+		color: "Brown",
+		eggGroups: ["Field"],
+		requiredItem: "Stantlerite",
+	},
+	miltank: {
+		inherit: true,
+		otherFormes: ["Miltank-Mega"],
+		formeOrder: ["Miltank", "Miltank-Mega"],
+	},
+	miltankmega: {
+		num: 241,
+		name: "Miltank",
+		forme: "Mega",
+		types: ["Normal", "Ground"],
+		gender: "F",
+		baseStats: {hp: 95, atk: 110, def: 130, spa: 40, spd: 110, spe: 105},
+		abilities: {0: "Thick Fat"},
+		heightm: 1.2,
+		weightkg: 75.5,
+		color: "Pink",
+		eggGroups: ["Field"],
+		requiredItem: "Miltankite",
 	},
 };
