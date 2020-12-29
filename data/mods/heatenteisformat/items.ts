@@ -321,4 +321,18 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	kingdranite: {
+		name: "Kingdranite",
+		spritenum: 625,
+		megaStone: "Kingdra-Mega",
+		megaEvolves: "Kingdra",
+		itemUser: ["Kingdra"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -123,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

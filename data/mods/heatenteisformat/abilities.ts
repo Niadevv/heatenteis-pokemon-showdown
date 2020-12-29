@@ -477,8 +477,11 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				this.add('-activate', source, 'ability: Submerge');
 				this.field.setTerrain('submerge');
 				// Apply water type
-				if (!target.setType('Water')) {
-					this.add('-fail', target);
+				if (!this.effectData.soaked) {
+					if (!target.setType('Water')) {
+						this.add('-fail', target);
+					}
+					this.effectData.soaked = true;
 				}
 			}
 		},

@@ -768,4 +768,22 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		eggGroups: ["Amorphous"],
 		requiredItem: "Magcargonite",
 	},
+	kingdra: {
+		inherit: true,
+		otherFormes: ["Kingdra-Mega"],
+		formeOrder: ["Kingdra", "Kingdra-Mega"],
+	},
+	kingdramega: {
+		num: 230,
+		name: "Kingdra-Mega",
+		forme: "Mega",
+		types: ["Water", "Dragon"],
+		baseStats: {hp: 75, atk: 105, def: 105, spa: 135, spd: 115, spe: 105},
+		abilities: {0: "Submerge"},
+		heightm: 1.8,
+		weightkg: 152,
+		color: "Blue",
+		eggGroups: ["Water 1", "Dragon"],
+		requiredItem: "Kingdranite",
+	},
 };
