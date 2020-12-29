@@ -403,6 +403,18 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		basePower: 90,
 		accuracy: 100,
 	},
+	tailslap: {
+		inherit: true,
+		accuracy: 100,
+	},
+	shadowclaw: {
+		inherit: true,
+		basePower: 90,
+	},
+	shadowpunch: {
+		inherit: true,
+		basePower: 80,
+	},
 	lightthatburnsthesky: {
 		inherit: true,
 		basePower: 250,

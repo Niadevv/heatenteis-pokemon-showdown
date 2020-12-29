@@ -357,6 +357,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 75, atk: 95, def: 95, spa: 55, spd: 75, spe: 85},
 		abilities: {0: "Rough Skin", 1: "Swift Swim", H: "Intimidate"},
 	},
+	ursaring: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 130, def: 95, spa: 75, spd: 95, spe: 85},
+	},
+	corsola: {
+		inherit: true,
+		baseStats: {hp: 105, atk: 55, def: 115, spa: 65, spd: 115, spe: 35},
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,
@@ -640,6 +648,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		otherFormes: ["Octillery-Mega"],
 		formeOrder: ["Octillery", "Octillery-Mega"],
+		abilities: {0: "Mega Launcher", 1: "Sniper", H: "Moody"},
 	},
 	octillerymega: {
 		num: 224,
