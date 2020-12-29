@@ -476,13 +476,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move.type === 'Water') {
 				this.add('-activate', source, 'ability: Submerge');
 				this.field.setTerrain('submerge');
-				// Apply water type
-				if (!this.effectData.soaked) {
-					if (!target.setType('Water')) {
-						this.add('-fail', target);
-					}
-					this.effectData.soaked = true;
-				}
 			}
 		},
 		onEnd(pokemon) {
