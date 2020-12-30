@@ -383,7 +383,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	celebi: {
 		inherit: true,
-		types: ["Grass", "Fairy"]
+		types: ["Grass", "Fairy"],
 	},
 	// MEGA STUFF
 	butterfree: {
