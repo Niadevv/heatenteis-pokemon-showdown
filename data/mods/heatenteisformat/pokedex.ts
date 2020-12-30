@@ -365,6 +365,26 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 105, atk: 55, def: 115, spa: 65, spd: 115, spe: 35},
 	},
+	hitmontop: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 115, def: 95, spa: 35, spd: 110, spe: 90},
+	},
+	raikou: {
+		inherit: true,
+		abilities: {0: "Pressure", 1: "Inner Focus", H: "Volt Absorb"},
+	},
+	entei: {
+		inherit: true,
+		abilities: {0: "Pressure", 1: "Inner Focus", H: "Flash Fire"},
+	},
+	suicune: {
+		inherit: true,
+		abilities: {0: "Pressure", 1: "Inner Focus", H: "Water Absorb"},
+	},
+	celebi: {
+		inherit: true,
+		types: ["Grass", "Fairy"]
+	},
 	// MEGA STUFF
 	butterfree: {
 		inherit: true,

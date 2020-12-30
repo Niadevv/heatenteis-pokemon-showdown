@@ -344,5 +344,25 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'donphan').learnset.bodypress = ['5L1'];
 		this.modData('Learnsets', 'donphan').learnset.powerwhip = ['5L1'];
 		this.modData('Learnsets', 'donphan').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'stantler').learnset.highjumpkick = ['5L1'];
+		this.modData('Learnsets', 'stantler').learnset.hornleech = ['5L1'];
+		this.modData('Learnsets', 'stantler').learnset.iciclecrash = ['5L1'];
+		this.modData('Learnsets', 'stantler').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'stantler').learnset.tripleaxel = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.blazekick = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.drainpunch = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.firepunch = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.gunkshot = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.icepunch = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.poweruppunch = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.thunderpunch = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.tropkick = ['5L1'];
+		this.modData('Learnsets', 'hitmontop').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'raikou').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'tyranitar').learnset.knockoff = ['5L1'];
+		this.modData('Learnsets', 'tyranitar').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'celebi').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'celebi').learnset.moonblast = ['5L1'];
+		this.modData('Learnsets', 'celebi').learnset.mysticalfire = ['5L1'];
 	},
 };
