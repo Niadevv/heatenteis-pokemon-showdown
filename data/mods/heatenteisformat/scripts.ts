@@ -328,6 +328,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'forretress').learnset.repair = ['5L1'];
 		this.modData('Learnsets', 'steelix').learnset.ironmaw = ['5L1'];
 		this.modData('Learnsets', 'steelix').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'steelix').learnset.repair = ['5L1'];
 		this.modData('Learnsets', 'qwilfish').learnset.fishiousrend = ['5L1'];
 		this.modData('Learnsets', 'qwilfish').learnset.gunkshot = ['5L1'];
 		this.modData('Learnsets', 'qwilfish').learnset.lifedew = ['5L1'];

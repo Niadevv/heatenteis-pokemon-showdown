@@ -415,7 +415,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		basePower: 80,
 	},
-	// Make Hurricane always hit in Windstorm and Hurricane
+	// Make Hurricane always hit in Windstorm and Delta Stream
 	hurricane: {
 		inherit: true,
 		onModifyMove(move, pokemon, target) {

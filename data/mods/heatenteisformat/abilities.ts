@@ -495,4 +495,68 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	forgedsteel: {
+		name: "Forged Steel",
+		desc: "The user is immune to fire type moves.",
+		shortDesc: "User immune to fire moves.",
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Fire') {
+				move.accuracy = true;
+				this.add('-immune', target, '[from] ability: Forged Steel');
+				return null;
+			}
+		},
+	},
+	sublimeaura: {
+		name: "Sublime Aura",
+		desc: "Upon switchin, the user clears the stat changes of the opposing side.",
+		shortDesc: "Clears opposing stat changes on switchin.",
+		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Sublime Aura');
+			for (const mon of pokemon.side.foe.active) {
+				this.add('-clearboosts', mon);
+				mon.clearBoosts();
+			}
+		},
+	},
+	plantation: {
+		name: "Plantation",
+		desc: "If the user is below 50% health at the end of the turn, the user restores 25% of its max HP.",
+		shortDesc: "User restores 25% max HP at end of turn if below 50%",
+		onResidual(target) {
+			if (target.hp < (Math.floor(target.hp / 2))) {
+				this.heal(target.baseMaxhp / 4);
+			}
+		},
+	},
+	fortissimo: {
+		name: "Fortissimo",
+		desc: "After the target is hit by the user's attacks twice, they are forced to switch out. Soundproof Pokemon are not affected.",
+		shortDesc: "Target switches out after hit twice by user. Soundproof Pokemon not affected.",
+		onBeforeMove(source, target, move) {
+			if (target.ability !== 'soundproof') {
+				if (target === this.effectData.currentTarget) {
+					if (this.effectData.hitsOnTarget >= 2) {
+						move.forceSwitch = true;
+						this.effectData.willSwitchTarget = false;
+					} else {
+						this.effectData.hitsOnTarget++;
+					}
+				} else {
+					this.effectData.currentTarget = target;
+					this.effectData.hitsOnTarget = 1;
+				}
+			}
+		},
+		onAfterMove(source, target, move) {
+			this.effectData.hitsOnTarget++;
+
+			if (this.effectData.willSwitchTarget) {
+				this.add('-activate', source, 'ability: Fortissimo');
+				this.effectData.hitsOnTarget = 0;
+				this.effectData.currentTarget = null;
+				this.effectData.willSwitchTarget = false;
+			}
+		},
+	},
 };
