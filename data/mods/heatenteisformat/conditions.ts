@@ -90,4 +90,44 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			}
 		},
 	},
+	windstorm: {
+		name: 'WindStorm',
+		effectType: 'Weather',
+		duration: 5,
+		onEffectivenessPriority: -1,
+		durationCallback(source, effect) {
+			if (source?.hasItem('galestone')) {
+				return 8;
+			}
+			return 5;
+		},
+		onWeatherModifyDamage(damage, attacker, defender, move) {
+			if (defender.hasItem('utilityumbrella')) return;
+			if (move.type === 'Flying') {
+				this.debug('Delta Stream flying boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (move && move.effectType === 'Move' && move.category !== 'Status' && type === 'Flying' && typeMod > 0) {
+				this.add('-activate', '', 'windstorm');
+				return 0;
+			}
+		},
+		onStart(battle, source, effect) {
+			if (effect?.effectType === 'Ability') {
+				this.add('-weather', 'WindStorm', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'WindStorm');
+			}
+		},
+		onResidualOrder: 1,
+		onResidual() {
+			this.add('-weather', 'WindStorm', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
 };

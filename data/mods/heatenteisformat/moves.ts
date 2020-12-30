@@ -415,6 +415,24 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		basePower: 80,
 	},
+	// Make Hurricane always hit in Windstorm and Hurricane
+	hurricane: {
+		inherit: true,
+		onModifyMove(move, pokemon, target) {
+			switch (target?.effectiveWeather()) {
+			case 'raindance':
+			case 'primordialsea':
+			case 'deltastream':
+			case 'windstorm':
+				move.accuracy = true;
+				break;
+			case 'sunnyday':
+			case 'desolateland':
+				move.accuracy = 50;
+				break;
+			}
+		},
+	},
 	lightthatburnsthesky: {
 		inherit: true,
 		basePower: 250,
