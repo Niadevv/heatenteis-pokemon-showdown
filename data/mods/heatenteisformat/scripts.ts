@@ -365,5 +365,23 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'celebi').learnset.focusblast = ['5L1'];
 		this.modData('Learnsets', 'celebi').learnset.moonblast = ['5L1'];
 		this.modData('Learnsets', 'celebi').learnset.mysticalfire = ['5L1'];
+		// --------- END JOHTO BUFFS ---------
+		this.modData('Learnsets', 'sceptile').learnset.dracometeor = ['5L1'];
+		this.modData('Learnsets', 'sceptile').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'sceptile').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'sceptile').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'swampert').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'mightyena').learnset.ironmaw = ['5L1'];
+		this.modData('Learnsets', 'mightyena').learnset.psychicfangs = ['5L1'];
+		this.modData('Learnsets', 'beautifly').learnset.airslash = ['5L1'];
+		this.modData('Learnsets', 'beautifly').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'beautifly').learnset.sleeppowder = ['5L1'];
+		this.modData('Learnsets', 'dustox').learnset.sleeppowder = ['5L1'];
+		this.modData('Learnsets', 'dustox').learnset.sludgewave = ['5L1'];
+		this.modData('Learnsets', 'ludicolo').learnset.flipturn = ['5L1'];
+		this.modData('Learnsets', 'shiftry').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'gardevoir').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'masquerain').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'masquerain').learnset.surf = ['5L1'];
 	},
 };

@@ -35,6 +35,8 @@ abilities to test:
 	twisted dimension (see if removes properly if the original setter switches out while another mon with the ability is active, which subsequently switches out)
 	photosynthesis (should lose stat changes when weather ends/changes)
 	shell break (water immunity, forme changing)
+	plantation
+	sublime aura
 	fortissimo (check to make sure moves that switch don't permanently switch everything, check to make sure it only switches after two successful moves)
 
 TODO:

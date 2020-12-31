@@ -309,6 +309,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Synchronize", 1: "Protean"},
 	},
+	// -------- END KANTO BUFFS --------
 	furret: {
 		inherit: true,
 		types: ["Normal", "Ground"],
@@ -384,6 +385,40 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	celebi: {
 		inherit: true,
 		types: ["Grass", "Fairy"],
+	},
+	// -------- END JOHTO BUFFS --------
+	mightyena: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 110, def: 80, spa: 60, spd: 70, spe: 100},
+		abilities: {0: "Intimidate", 1: "Strong Jaw", H: "Moxie"},
+	},
+	beautifly: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 70, def: 65, spa: 120, spd: 65, spe: 85},
+		abilities: {0: "Swarm", 1: "Rivalry", H: "Shield Dust"},
+	},
+	dustox: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 50, def: 100, spa: 75, spd: 120, spe: 70},
+		abilities: {0: "Shield Dust", 1: "Compound Eyes", H: "Tinted Lens"},
+	},
+	ludicolo: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 70, def: 70, spa: 110, spd: 100, spe: 80},
+	},
+	shiftry: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 110, def: 60, spa: 90, spd: 60, spe: 80},
+	},
+	swellow: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 85, def: 60, spa: 95, spd: 50, spe: 125},
+	},
+	masquerain: {
+		inherit: true,
+		types: ["Bug", "Water"],
+		baseStats: {hp: 70, atk: 60, def: 72, spa: 112, spd: 82, spe: 90},
+		abilities: {0: "Intimidate", 1: "Unnerve", H: "Levitate"},
 	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
