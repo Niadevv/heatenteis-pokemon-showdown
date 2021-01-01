@@ -126,6 +126,49 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			pokemon.heal(pokemon.baseMaxhp / 4);
 		},
 	},
+	plus: {
+		inherit: true,
+		onStart(pokemon) {
+			this.boost({spa: 2}, pokemon);
+		},
+	},
+	minus: {
+		inherit: true,
+		onStart(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Minus', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					this.boost({spa: -2}, target, pokemon, null, true);
+				}
+			}
+		},
+	},
+	// Get rid of max HP requirement
+	galewings: {
+		inherit: true,
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.type === 'Flying') return priority + 1;
+		},
+	},
+	prankster: {
+		inherit: true,
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.category === 'Status') {
+				// From what I can tell, this only seems to serve to tell if the move is from Prankster, which is used to
+				// do the immunity check in the first place. Removing this shouldn't have any consequences other than restoring
+				// pre gen 7 mechanics
+				// move.pranksterBoosted = true;
+				return priority + 1;
+			}
+		},
+	},
 	// New abilities
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",

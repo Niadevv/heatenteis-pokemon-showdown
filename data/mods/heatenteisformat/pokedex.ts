@@ -420,6 +420,46 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 70, atk: 60, def: 72, spa: 112, spd: 82, spe: 90},
 		abilities: {0: "Intimidate", 1: "Unnerve", H: "Levitate"},
 	},
+	breloom: {
+		inherit: true,
+		abilities: {0: "Long Reach", 1: "Poison Heal", H: "Technician"},
+	},
+	slaking: {
+		inherit: true,
+		// mareanie why part 2
+		abilities: {0: "Truant", 1: "Comatose"},
+	},
+	ninjask: {
+		inherit: true,
+		baseStats: {hp: 61, atk: 100, def: 45, spa: 50, spd: 50, spe: 160},
+	},
+	shedinja: {
+		inherit: true,
+		// mareanie why part 3
+		baseStats: {hp: 1, atk: 130, def: 45, spa: 30, spd: 30, spe: 50},
+	},
+	exploud: {
+		inherit: true,
+		abilities: {0: "Soundproof", 1: "Scrappy", H: "Punk Rock"},
+	},
+	hariyama: {
+		inherit: true,
+		baseStats: {hp: 144, atk: 120, def: 80, spa: 40, spd: 80, spe: 50},
+	},
+	delcatty: {
+		inherit: true,
+		types: ["Normal", "Fairy"],
+		baseStats: {hp: 70, atk: 65, def: 75, spa: 105, spd: 65, spe: 110},
+		abilities: {0: "Technician", 1: "Normalize", H: "Wonder Skin"},
+	},
+	plusle: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 50, def: 40, spa: 115, spd: 75, spe: 115},
+	},
+	minun: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 115, def: 50, spa: 40, spd: 85, spe: 115},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {
