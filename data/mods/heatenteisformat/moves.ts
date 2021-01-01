@@ -433,6 +433,46 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
+	weatherball: {
+		inherit: true,
+		onModifyType(move, pokemon) {
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				move.type = 'Fire';
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				move.type = 'Water';
+				break;
+			case 'sandstorm':
+				move.type = 'Rock';
+				break;
+			case 'windstorm':
+			case 'deltastream':
+				move.type = 'Flying';
+				break;
+			case 'hail':
+				move.type = 'Ice';
+				break;
+			}
+		},
+		onModifyMove(move, pokemon) {
+			// I *could* rewrite this to be more efficient but I already have and I don't care because it's not being run 50 million times a second
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+			case 'raindance':
+			case 'primordialsea':
+			case 'sandstorm':
+			case 'windstorm':
+			case 'deltastream':
+			case 'hail':
+				move.basePower *= 2;
+				break;
+			}
+		},
+	},
 	lightthatburnsthesky: {
 		inherit: true,
 		basePower: 250,

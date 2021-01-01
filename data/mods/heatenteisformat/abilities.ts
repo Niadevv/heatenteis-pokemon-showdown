@@ -169,7 +169,46 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	// New abilities
+	forecast: {
+		inherit: true,
+		onUpdate(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Castform' || pokemon.transformed) return;
+			let forme = null;
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+				if (pokemon.species.id !== 'castformsunny') forme = 'Castform-Sunny';
+				break;
+			case 'raindance':
+				if (pokemon.species.id !== 'castformrainy') forme = 'Castform-Rainy';
+				break;
+			case 'hail':
+				if (pokemon.species.id !== 'castformsnowy') forme = 'Castform-Snowy';
+				break;
+			case 'sandstorm':
+				if (pokemon.species.id !== 'castformsandy') forme = 'Castform-Sandy';
+				break;
+			case 'windstorm':
+				if (pokemon.species.id !== 'castformwindy') forme = 'Castform-Windy';
+				break;
+			case 'desolateland':
+				if (pokemon.species.id !== 'castformsolar') forme = 'Castform-Solar';
+				break;
+			case 'primordialsea':
+				if (pokemon.species.id !== 'castformtyphoon') forme = 'Castform-Typhoon';
+				break;
+			case 'deltastream':
+				if (pokemon.species.id !== 'castformtyphoon') forme = 'Castform-Typhoon';
+				break;
+			default:
+				if (pokemon.species.id !== 'castform') forme = 'Castform';
+				break;
+			}
+			if (pokemon.isActive && forme) {
+				pokemon.formeChange(forme, this.effect, false, '[msg]');
+			}
+		},
+	},
+	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
 		shortDesc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -534,7 +573,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			this.add('-activate', pokemon, 'ability: Lost Gift');
 			for (const teammate of pokemon.side.pokemon) {
-				teammate.setItem(teammate.set.item);
+				if (!teammate.hasItem && teammate.set.item) {
+					teammate.setItem(teammate.set.item);
+					this.add('-item', teammate, teammate.item, '[from] ability: Lost Gift');
+				}
 			}
 		},
 	},
@@ -600,6 +642,22 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				this.effectData.currentTarget = null;
 				this.effectData.willSwitchTarget = false;
 			}
+		},
+	},
+	solareclipse: {
+		name: "Solar Eclipse",
+		desc: "The user gains +1 in attack and special attack on switchin.",
+		shortDesc: "+1 in attack and special attack on switchin.",
+		onStart(pokemon) {
+			this.boost({atk: 1, spa: 1}, pokemon);
+		},
+	},
+	lunareclipse: {
+		name: "Lunar Eclipse",
+		desc: "The user gains +1 in defense and special defense on switchin.",
+		shortDesc: "+1 in defense and special defense on switchin.",
+		onStart(pokemon) {
+			this.boost({def: 1, spd: 1}, pokemon);
 		},
 	},
 };
