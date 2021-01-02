@@ -208,6 +208,21 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	// More Pokemon can use Disguise now so get rid of the form exclusive stuff
+	disguise: {
+		inherit: true,
+		onDamage(damage, target, source, effect) {
+			if (
+				effect && effect.effectType === 'Move' &&
+				/* ['mimikyu', 'mimikyutotem'].includes(target.species.id)*/
+				!this.effectData.busted && !target.transformed
+			) {
+				this.add('-activate', target, 'ability: Disguise');
+				this.effectData.busted = true;
+				return 0;
+			}
+		},
+	},
 	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -658,6 +673,69 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "+1 in defense and special defense on switchin.",
 		onStart(pokemon) {
 			this.boost({def: 1, spd: 1}, pokemon);
+		},
+	},
+	dollhouse: {
+		name: "Dollhouse",
+		desc: "On switchin, the user puts in a substitute.",
+		shortDesc: "Substitutes on switchin",
+		onStart(pokemon) {
+			// check for substitute already as it may be baton passed to mega bannette
+			if (pokemon.maxhp > pokemon.hp / 4 && !pokemon.volatiles['substitute']) {
+				this.add('-activate', pokemon, 'ability: Dollhouse');
+				this.directDamage(pokemon.maxhp / 4, pokemon);
+				pokemon.addVolatile('substitute');
+			} else {
+				if (!pokemon.volatiles['substitute']) {
+					this.add('-fail', pokemon, 'ability: Dollhouse', '[weak]');
+				} else {
+					this.add('-fail', pokemon, 'ability: Dollhouse');
+				}
+			}
+		},
+	},
+	waterscales: {
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === 'Special') {
+				return this.chainModify(0.5);
+			}
+		},
+		name: "Water Scales",
+	},
+	prevision: {
+		name: "Prevision",
+		desc: "Upon switchin, the user uses Future Sight on the opposing side.",
+		shortDesc: "Future Sight for opposing side on switchin.",
+		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Prevision');
+			let success = false;
+			for (const target of pokemon.side.foe.active) {
+				if (target.side.addSlotCondition(target, 'futuremove')) {
+					Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+						duration: 3,
+						move: 'futuresight',
+						source: pokemon,
+						moveData: {
+							id: 'futuresight',
+							name: "Future Sight",
+							accuracy: 100,
+							basePower: 120,
+							category: "Special",
+							priority: 0,
+							flags: {},
+							ignoreImmunity: false,
+							effectType: 'Move',
+							isFutureMove: true,
+							type: 'Psychic',
+						},
+					});
+					success = true;
+				}
+			}
+
+			if (success) {
+				this.add('-start', pokemon, 'move: Future Sight');
+			}
 		},
 	},
 };

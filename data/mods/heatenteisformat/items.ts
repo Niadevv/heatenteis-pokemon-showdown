@@ -1,4 +1,88 @@
+/* -100 to -349 - Mega Stones
+-350 onwards - custom items
+Numbers are negative 100 and below as CAP items appear to take -1 to -99
+*/
 export const Items: {[k: string]: ModdedItemData} = {
+	galestone: {
+		name: "Gale Stone",
+		spritenum: 88,
+		fling: {
+			basePower: 60,
+		},
+		num: -350,
+		gen: 8,
+	},
+	// Legalising gems
+	buggem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	firegem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	watergem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	electricgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	grassgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	icegem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	fightinggem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	poisongem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	groundgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	flyinggem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	psychicgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	rockgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	ghostgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	dragongem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	darkgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	steelgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	fairygem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	// Normal Gem is already legal
+	// -------- MEGA STONES --------
 	butterfreenite: {
 		name: "Butterfreenite",
 		spritenum: 625,
@@ -360,6 +444,62 @@ export const Items: {[k: string]: ModdedItemData} = {
 			return true;
 		},
 		num: -125,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	flygonite: {
+		name: "Flygonite",
+		spritenum: 625,
+		megaStone: "Flygon-Mega",
+		megaEvolves: "Flygon",
+		itemUser: ["Flygon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -126,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	milotite: {
+		name: "Milotite",
+		spritenum: 625,
+		megaStone: "Milotic-Mega",
+		megaEvolves: "Milotic",
+		itemUser: ["Milotic"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -127,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	tropiusite: {
+		name: "Tropiusite",
+		spritenum: 625,
+		megaStone: "Tropius-Mega",
+		megaEvolves: "Tropius",
+		itemUser: ["Tropius"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -128,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	chimechonite: {
+		name: "Chimechonite",
+		spritenum: 625,
+		megaStone: "Chimecho-Mega",
+		megaEvolves: "Chimecho",
+		itemUser: ["Chimecho"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -129,
 		gen: 7,
 		isNonstandard: "Past",
 	},

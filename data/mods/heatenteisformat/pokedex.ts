@@ -614,6 +614,79 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		requiredAbility: "Forecast",
 		battleOnly: "Castform",
 	},
+	kecleon: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 100, def: 75, spa: 80, spd: 120, spe: 55},
+	},
+	banettemega: {
+		inherit: true,
+		baseStats: {hp: 64, atk: 165, def: 75, spa: 73, spd: 83, spe: 95},
+		abilities: {0: "Dollhouse"},
+	},
+	absolmega: {
+		inherit: true,
+		types: ["Dark", "Fairy"],
+	},
+	glaliemega: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 140, def: 80, spa: 80, spd: 80, spe: 120},
+	},
+	walrein: {
+		inherit: true,
+		abilities: {0: "Thick Fat", 1: "Fur Coat", H: "Oblivious"},
+	},
+	huntail: {
+		inherit: true,
+		types: ["Water", "Dark"],
+		baseStats: {hp: 55, atk: 114, def: 105, spa: 94, spd: 75, spe: 72},
+		abilities: {0: "Swift Swim", 1: "Water Veil", H: "Strong Jaw"},
+	},
+	gorebyss: {
+		inherit: true,
+		types: ["Water", "Fairy"],
+		baseStats: {hp: 55, atk: 94, def: 105, spa: 114, spd: 75, spe: 72},
+	},
+	relicanth: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 105, def: 130, spa: 45, spd: 85, spe: 55},
+	},
+	// pain.
+	metagross: {
+		inherit: true,
+		abilities: {0: "Clear Body", 1: "Light Metal", H: "Steelworker"},
+	},
+	regirock: {
+		inherit: true,
+		abilities: {0: "Clear Body", 1: "Sturdy", H: "Sand Stream"},
+	},
+	regice: {
+		inherit: true,
+		abilities: {0: "Clear Body", 1: "Ice Body", H: "Snow Warning"},
+	},
+	registeel: {
+		inherit: true,
+		abilities: {0: "Clear Body", 1: "Light Metal", H: "Battle Armor"},
+	},
+	jirachi: {
+		inherit: true,
+		abilities: {0: "Serene Grace", H: "Prevision"},
+	},
+	deoxys: {
+		inherit: true,
+		abilities: {0: "Pressure", H: "Regenerator"},
+	},
+	deoxysattack: {
+		inherit: true,
+		abilities: {0: "Pressure", H: "Regenerator"},
+	},
+	deoxysdefense: {
+		inherit: true,
+		abilities: {0: "Pressure", H: "Regenerator"},
+	},
+	deoxysspeed: {
+		inherit: true,
+		abilities: {0: "Pressure", H: "Regenerator"},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {

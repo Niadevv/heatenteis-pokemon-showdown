@@ -620,4 +620,29 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Clever",
 	},
+	happyvalentine: {
+		num: 3006,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Happy Valentine",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		secondary: {
+			onHit(target) {
+				const result = this.random(2);
+				if (result === 0) {
+					this.boost({def: 4, spd: 4, spe: 4});
+				} else {
+					this.boost({atk: 4, spa: 4, spe: 4});
+				}
+			},
+		},
+		// secondary: null,
+		target: "self",
+		type: "Normal",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Tough",
+	},
 };
