@@ -712,6 +712,100 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 95, atk: 79, def: 115, spa: 79, spd: 115, spe: 40},
 		abilities: {0: "Anticipation", 1: "Overcoat", H: "Battle Armor"},
 	},
+	mothim: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 94, def: 50, spa: 115, spd: 50, spe: 90},
+	},
+	pachirisu: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 45, def: 90, spa: 80, spd: 90, spe: 110},
+	},
+	floatzel: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 115, def: 55, spa: 100, spd: 50, spe: 115},
+		abilities: {0: "Swift Swim", 1: "Water Veil", H: "Technician"},
+	},
+	cherrim: {
+		inherit: true,
+		types: ["Grass", "Dark"],
+		baseStats: {hp: 70, atk: 60, def: 100, spa: 87, spd: 108, spe: 85},
+	},
+	cherrimsunshine: {
+		inherit: true,
+		types: ["Grass", "Fire"],
+		baseStats: {hp: 70, atk: 90, def: 70, spa: 117, spd: 78, spe: 110},
+	},
+	ambipom: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 110, def: 66, spa: 60, spd: 66, spe: 120},
+	},
+	drifblim: {
+		inherit: true,
+		baseStats: {hp: 150, atk: 80, def: 64, spa: 90, spd: 74, spe: 80},
+	},
+	skuntank: {
+		inherit: true,
+		baseStats: {hp: 103, atk: 100, def: 67, spa: 80, spd: 61, spe: 90},
+		abilities: {0: "Merciless", 1: "Aftermath", H: "Poison Touch"},
+	},
+	chatot: {
+		inherit: true,
+		baseStats: {hp: 76, atk: 65, def: 45, spa: 100, spd: 42, spe: 105},
+	},
+	drapion: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 115, def: 110, spa: 60, spd: 75, spe: 105},
+		abilities: {0: "Battle Armor", 1: "Sniper", H: "Merciless"},
+	},
+	toxicroak: {
+		inherit: true,
+		abilities: {0: "Toxify", 1: "Dry Skin", H: "Poison Touch"},
+	},
+	carnivine: {
+		inherit: true,
+		types: ["Grass", "Dark"],
+		baseStats: {hp: 94, atk: 125, def: 102, spa: 90, spd: 92, spe: 46},
+		abilities: {0: "Levitate", H: "Strong Jaw"},
+	},
+	lickilicky: {
+		inherit: true,
+		abilities: {0: "Own Tempo", 1: "Oblivious", H: "Thick Fat"},
+	},
+	yanmega: {
+		inherit: true,
+		baseStats: {hp: 86, atk: 76, def: 86, spa: 126, spd: 56, spe: 95},
+	},
+	leafeon: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 110, def: 130, spa: 60, spd: 65, spe: 105},
+	},
+	glaceon: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 60, def: 110, spa: 130, spd: 95, spe: 95},
+	},
+	probopass: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 55, def: 145, spa: 75, spd: 150, spe: 40},
+		abilities: {0: "Sturdy", 1: "Magnet Pull", H: "Levitate"},
+	},
+	dusknoir: {
+		inherit: true,
+		types: ["Ghost", "Dark"],
+		baseStats: {hp: 65, atk: 115, def: 135, spa: 65, spd: 135, spe: 45},
+	},
+	rotomfan: {
+		inherit: true,
+		abilities: {0: "Motor Drive"},
+	},
+	phione: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 100, def: 100, spa: 100, spd: 100, spe: 100},
+		abilities: {0: "Hydration", H: "First Born"},
+	},
+	manaphy: {
+		inherit: true,
+		abilities: {0: "Hydration", H: "Child of the Sea"},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {

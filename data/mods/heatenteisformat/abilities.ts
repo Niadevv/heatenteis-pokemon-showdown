@@ -223,6 +223,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	watercompaction: {
+		inherit: true,
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Water') {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Water Compaction');
+				}
+				return null;
+			}
+		},
+	},
 	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -769,6 +780,42 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (!source || !this.isAdjacent(pokemon, source)) return;
 			if (!pokemon.knownType || (pokemon.hasType('Grass'))) {
 				pokemon.maybeTrapped = true;
+			}
+		},
+	},
+	toxify: {
+		name: "Toxify",
+		desc: "The user's attacks do twice the damage against poisoned targets.",
+		shortDesc: "User's attacks do 2x against poisoned targets.",
+		onBasePower(basePower, source, target) {
+			if (target.status === 'psn') {
+				return this.chainModify(2);
+			}
+		},
+	},
+	firstborn: {
+		name: "First Born",
+		desc: "The user summons an Aqua Ring for itself and is protected from status.",
+		shortDesc: "User summons Aqua Ring for itself and is protected from status.",
+		onStart(pokemon) {
+			pokemon.addVolatile('aquaring');
+		},
+		onSetStatus(status, target, source, effect) {
+			if (status) return;
+			if ((effect as Move)?.status) {
+				this.add('-immune', target, '[from] ability: First Born');
+			}
+			return false;
+		},
+	},
+	childofthesea: {
+		name: "Child of the Sea",
+		desc: "Opposing water type attacks will always fail.",
+		shortDesc: "Opposing water type attacks always fail.",
+		onBeforeMove(source, target, move) {
+			if (move.type === 'Water' && source.side !== target.side) {
+				this.add('cant', source, 'ability: Child of the Sea', move);
+				return false;
 			}
 		},
 	},

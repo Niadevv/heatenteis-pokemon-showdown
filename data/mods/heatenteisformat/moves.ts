@@ -690,4 +690,53 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Beautiful",
 	},
+	purgingflame: {
+		num: 3008,
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		name: "Purging Flame",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
+		secondary: {
+			chance: 20,
+			onHit(target, source) {
+				const result = this.random(2);
+				if (result > 0) {
+					target.addVolatile('flinch', source);
+				} else {
+					target.trySetStatus('brn', source);
+				}
+			},
+		},
+		onModifyType(move, pokemon) {
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				move.type = 'Fire';
+				break;
+			default:
+				move.type = 'Dark';
+			}
+		},
+		target: "any",
+		type: "Dark",
+		contestType: "Cool",
+	},
+	claysmack: {
+		num: 3009,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		name: "Clay Smack",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: [2, 5],
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Smart",
+	},
 };
