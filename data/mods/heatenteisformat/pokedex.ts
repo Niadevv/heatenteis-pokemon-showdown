@@ -692,6 +692,26 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 90, atk: 100, def: 75, spa: 55, spd: 75, spe: 90},
 	},
+	kricketune: {
+		inherit: true,
+		baseStats: {hp: 83, atk: 55, def: 60, spa: 105, spd: 60, spe: 75},
+		abilities: {0: "Swarm", 1: "Technician", H: "Crescendo"},
+	},
+	wormadam: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 85, def: 95, spa: 105, spd: 115, spe: 40},
+		abilities: {0: "Anticipation", 1: "Overcoat", H: "Leaf Hurricane"},
+	},
+	wormadamsandy: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 89, def: 125, spa: 69, spd: 105, spe: 40},
+		abilities: {0: "Anticipation", 1: "Overcoat", H: "Sticky Hold"},
+	},
+	wormadamtrash: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 79, def: 115, spa: 79, spd: 115, spe: 40},
+		abilities: {0: "Anticipation", 1: "Overcoat", H: "Battle Armor"},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {

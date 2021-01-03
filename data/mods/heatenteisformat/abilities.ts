@@ -755,4 +755,21 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	leafhurricane: {
+		name: "Leaf Hurricane",
+		desc: "The user traps opposing Grass types.",
+		shortDesc: "Traps opposing Grass types.",
+		onFoeTrapPokemon(pokemon) {
+			if ((pokemon.hasType('Grass')) && this.isAdjacent(pokemon, this.effectData.target)) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon(pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if (!source || !this.isAdjacent(pokemon, source)) return;
+			if (!pokemon.knownType || (pokemon.hasType('Grass'))) {
+				pokemon.maybeTrapped = true;
+			}
+		},
+	},
 };
