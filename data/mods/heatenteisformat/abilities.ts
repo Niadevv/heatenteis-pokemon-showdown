@@ -738,4 +738,21 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	crescendo: {
+		name: "Crescendo",
+		desc: "Power of sound based moves increases when used in a row, maxing at a 3x boost after 5 uses.",
+		shortDesc: "Sound based moves increased on successive uses, maxes at 3x boost after 5",
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.flags['sound'] && move.category !== 'Status') {
+				return this.chainModify(1 + (this.effectData.uses * 0.4));
+			}
+		},
+		onAfterMoveSecondary(target, source, move) {
+			if (move.flags['sound'] && move.category !== 'Status') {
+				this.effectData.uses++;
+			} else {
+				this.effectData.uses = 0;
+			}
+		},
+	},
 };

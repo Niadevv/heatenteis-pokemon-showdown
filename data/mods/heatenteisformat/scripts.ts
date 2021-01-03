@@ -504,5 +504,13 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'latios').learnset.dragonenergy = ['5L1'];
 		this.modData('Learnsets', 'latios').learnset.flamethrower = ['5L1'];
 		this.modData('Learnsets', 'jirachi').learnset.moonlight = ['5L1'];
+		// -------- END HOENN BUFFS --------
+		this.modData('Learnsets', 'torterra').learnset.shellsmash = ['5L1'];
+		this.modData('Learnsets', 'infernape').learnset.drainpunch = ['5L1'];
+		this.modData('Learnsets', 'empoleon').learnset.flipturn = ['5L1'];
+		this.modData('Learnsets', 'empoleon').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'bibarel').learnset.bodyslam = ['5L1'];
+		this.modData('Learnsets', 'bibarel').learnset.flipturn = ['5L1'];
+		this.modData('Learnsets', 'bibarel').learnset.slackoff = ['5L1'];
 	},
 };

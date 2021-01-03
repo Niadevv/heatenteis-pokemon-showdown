@@ -315,6 +315,26 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			return pokemon.cureStatus() || success;
 		},
 	},
+	floralhealing: {
+		inherit: true,
+		onHit(target, source) {
+			// maintain doubles behaviour in doubles, make move usable in singles
+			let success = false;
+			if (this.format.gameType === 'singles' || !target) {
+				success = !!this.heal(source.maxhp / 2, source);
+			} else {
+				if (this.field.isTerrain('grassyterrain')) {
+					success = !!this.heal(this.modify(target.baseMaxhp, 0.667));
+				} else {
+					success = !!this.heal(Math.ceil(target.baseMaxhp * 0.5));
+				}
+				if (success && target.side !== source.side) {
+					target.staleness = 'external';
+				}
+			}
+			return success;
+		},
+	},
 	closecombat: {
 		inherit: true,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
@@ -472,6 +492,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				break;
 			}
 		},
+	},
+	// woot wild charge is good now
+	wildcharge: {
+		inherit: true,
+		recoil: [0, 1],
+	},
+	triplekick: {
+		inherit: true,
+		basePower: 20,
 	},
 	lightthatburnsthesky: {
 		inherit: true,
@@ -644,5 +673,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Normal",
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Tough",
+	},
+	numbingviolin: {
+		num: 3007,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Numbing Violin",
+		pp: 15,
+		priority: 0,
+		flags: {sound: 1, protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		status: 'slp',
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Beautiful",
 	},
 };

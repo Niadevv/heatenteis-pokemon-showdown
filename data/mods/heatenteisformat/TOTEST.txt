@@ -38,10 +38,14 @@ abilities to test:
 	plantation
 	sublime aura
 	fortissimo (check to make sure moves that switch don't permanently switch everything, check to make sure it only switches after two successful moves)
+	dollhouse
+	prevision
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?)
 
+moves to test:
+	wild charge (does wild charge no longer do recoil?)
+
 TODO:
-implement Delta Stream
 investigate why knock off can remove custom mega stones (only confirmed to be knockable with weezinite but investigate others)

@@ -687,6 +687,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Pressure", H: "Regenerator"},
 	},
+	// -------- END HOENN BUFFS --------
+	bibarel: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 100, def: 75, spa: 55, spd: 75, spe: 90},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {
