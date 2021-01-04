@@ -575,9 +575,162 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Clever",
 	},
+	repair: {
+		num: 3004,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Repair",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		heal: [1, 2],
+		secondary: null,
+		target: "self",
+		type: "Steel",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Clever",
+	},
+	happyvalentine: {
+		num: 3005,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Happy Valentine",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		secondary: {
+			onHit(target) {
+				const result = this.random(2);
+				if (result === 0) {
+					this.boost({def: 4, spd: 4, spe: 4});
+				} else {
+					this.boost({atk: 4, spa: 4, spe: 4});
+				}
+			},
+		},
+		// secondary: null,
+		target: "self",
+		type: "Normal",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Tough",
+	},
+	numbingviolin: {
+		num: 3006,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Numbing Violin",
+		pp: 15,
+		priority: 0,
+		flags: {sound: 1, protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		status: 'slp',
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Beautiful",
+	},
+	purgingflame: {
+		num: 3007,
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		name: "Purging Flame",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
+		secondary: {
+			chance: 20,
+			onHit(target, source) {
+				const result = this.random(2);
+				if (result > 0) {
+					target.addVolatile('flinch', source);
+				} else {
+					target.trySetStatus('brn', source);
+				}
+			},
+		},
+		onModifyType(move, pokemon) {
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				move.type = 'Fire';
+				break;
+			default:
+				move.type = 'Dark';
+			}
+		},
+		target: "any",
+		type: "Dark",
+		contestType: "Cool",
+	},
+	claysmack: {
+		num: 3008,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		name: "Clay Smack",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: [2, 5],
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Smart",
+	},
+	// New Sig Z Moves
+	endlesssilentforest: {
+		accuracy: true,
+		basePower: 190,
+		category: "Physical",
+		isNonstandard: "Past",
+		name: "Endless Silent Forest",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "simisagiumz",
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
+	},
+	deafeningfirestorm: {
+		accuracy: true,
+		basePower: 190,
+		category: "Special",
+		isNonstandard: "Past",
+		name: "Deafening Firestorm",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "simiseariumz",
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},
+	blindingwaterfall: {
+		accuracy: true,
+		basePower: 190,
+		category: "Special",
+		isNonstandard: "Past",
+		name: "Blinding Waterfall",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "simipouriumz",
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		contestType: "Beautiful",
+	},
+	// -------- Internal Moves to set Terrains and such -------
 	// internal inaccessible move that is used to set Submerge
 	submerge: {
-		num: 3004,
+		num: 4000,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -632,111 +785,5 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Water",
 		zMove: {boost: {spe: 1}},
 		contestType: "Clever",
-	},
-	repair: {
-		num: 3005,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		name: "Repair",
-		pp: 10,
-		priority: 0,
-		flags: {snatch: 1, heal: 1},
-		heal: [1, 2],
-		secondary: null,
-		target: "self",
-		type: "Steel",
-		zMove: {effect: 'clearnegativeboost'},
-		contestType: "Clever",
-	},
-	happyvalentine: {
-		num: 3006,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		name: "Happy Valentine",
-		pp: 15,
-		priority: 0,
-		flags: {snatch: 1},
-		secondary: {
-			onHit(target) {
-				const result = this.random(2);
-				if (result === 0) {
-					this.boost({def: 4, spd: 4, spe: 4});
-				} else {
-					this.boost({atk: 4, spa: 4, spe: 4});
-				}
-			},
-		},
-		// secondary: null,
-		target: "self",
-		type: "Normal",
-		zMove: {effect: 'clearnegativeboost'},
-		contestType: "Tough",
-	},
-	numbingviolin: {
-		num: 3007,
-		accuracy: 100,
-		basePower: 0,
-		category: "Status",
-		name: "Numbing Violin",
-		pp: 15,
-		priority: 0,
-		flags: {sound: 1, protect: 1, reflectable: 1, mirror: 1, authentic: 1},
-		status: 'slp',
-		secondary: null,
-		target: "normal",
-		type: "Normal",
-		zMove: {effect: 'clearnegativeboost'},
-		contestType: "Beautiful",
-	},
-	purgingflame: {
-		num: 3008,
-		accuracy: 100,
-		basePower: 95,
-		category: "Special",
-		name: "Purging Flame",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
-		secondary: {
-			chance: 20,
-			onHit(target, source) {
-				const result = this.random(2);
-				if (result > 0) {
-					target.addVolatile('flinch', source);
-				} else {
-					target.trySetStatus('brn', source);
-				}
-			},
-		},
-		onModifyType(move, pokemon) {
-			switch (pokemon.effectiveWeather()) {
-			case 'sunnyday':
-			case 'desolateland':
-				move.type = 'Fire';
-				break;
-			default:
-				move.type = 'Dark';
-			}
-		},
-		target: "any",
-		type: "Dark",
-		contestType: "Cool",
-	},
-	claysmack: {
-		num: 3009,
-		accuracy: 100,
-		basePower: 30,
-		category: "Physical",
-		name: "Clay Smack",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		multihit: [2, 5],
-		secondary: null,
-		target: "normal",
-		type: "Ground",
-		contestType: "Smart",
 	},
 };

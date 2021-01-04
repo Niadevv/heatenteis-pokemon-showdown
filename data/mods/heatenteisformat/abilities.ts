@@ -581,7 +581,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		onAfterMove(source, target, move) {
-			if (move.type === 'Water') {
+			if (move.type === 'Water' && this.field.getTerrain().id !== 'submerge') {
 				this.add('-activate', source, 'ability: Submerge');
 				this.field.setTerrain('submerge');
 			}
@@ -816,6 +816,44 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move.type === 'Water' && source.side !== target.side) {
 				this.add('cant', source, 'ability: Child of the Sea', move);
 				return false;
+			}
+		},
+	},
+	riposte: {
+		name: "Riposte",
+		desc: "Boosts Sword, Blade or Spear moves.",
+		shortDesc: "Boosts Sword, Blade or Spear moves.",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (['behemothblade', 'leafblade', 'solarblade', 'sacredsword', 'secretsword',
+			  'iciclespear', 'razorshell', 'cut', 'xscissor', 'megahorn', 'airslash', 'aerialace',
+			  'furycutter', 'nightslash', 'slash', 'smartstrike'].includes(move.id)) {
+				this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (['behemothblade', 'leafblade', 'solarblade', 'sacredsword', 'secretsword',
+			  'iciclespear', 'razorshell', 'cut', 'xscissor', 'megahorn', 'airslash', 'aerialace',
+			  'furycutter', 'nightslash', 'slash', 'smartstrike'].includes(move.id)) {
+				this.chainModify(1.5);
+			}
+		},
+	},
+	dreamworld: {
+		name: "Dream World",
+		desc: "While user is in, has 30% chance to put an opposing Pokemon to sleep at the end of each turn. Lasts 5 turns.",
+		shortDesc: "User has 30% chance to sleep adjacing opposing Pokemon at end of each turn while in.",
+		onResidual(pokemon, target, effect) {
+			for (const mon of target.side.active) {
+				const rand = this.random(10);
+				// 0, 1 and 2 = 30%
+				if (rand <= 2) {
+					// TODO: does this respect sleep clause?
+					if (mon.trySetStatus('sleep')) {
+						this.add('-activate', pokemon, 'move: Dream World');
+					}
+				}
 			}
 		},
 	},

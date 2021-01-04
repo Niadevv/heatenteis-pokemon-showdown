@@ -40,6 +40,8 @@ abilities to test:
 	fortissimo (check to make sure moves that switch don't permanently switch everything, check to make sure it only switches after two successful moves)
 	dollhouse
 	prevision
+	child of sea
+	first born
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?)

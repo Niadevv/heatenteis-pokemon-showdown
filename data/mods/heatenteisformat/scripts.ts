@@ -290,10 +290,13 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'articunogalar').learnset.aurasphere = ['5L1'];
 		this.modData('Learnsets', 'articunogalar').learnset.focusblast = ['5L1'];
 		this.modData('Learnsets', 'articunogalar').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'articunogalar').learnset.defog = ['5L1'];
 		this.modData('Learnsets', 'zapdos').learnset.boltbeak = ['5L1'];
 		this.modData('Learnsets', 'zapdos').learnset.recharge = ['5L1'];
 		this.modData('Learnsets', 'zapdosgalar').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'zapdosgalar').learnset.defog = ['5L1'];
 		this.modData('Learnsets', 'moltresgalar').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'moltresgalar').learnset.defog = ['5L1'];
 		this.modData('Learnsets', 'dragonite').learnset.dragonenergy = ['5L1'];
 		this.modData('Learnsets', 'mew').learnset.recharge = ['5L1'];
 		// --------- END KANTO BUFFS ---------
@@ -326,6 +329,38 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'umbreon').learnset.calmmind = ['5L1'];
 		this.modData('Learnsets', 'umbreon').learnset.moonblast = ['5L1'];
 		this.modData('Learnsets', 'slowkinggalar').learnset.teleport = ['5L1'];
+		// UNOWNS START
+
+		let moves = require('./../../moves').Moves;
+		let movesKeys = Object.keys(moves);
+
+		for (const move of movesKeys) {
+			const currMove = moves[move];
+			if (!currMove.isZ && !currMove.isMax && !['sketch', 'struggle', 'chatter'].includes(move)) {
+				const letter = move.substr(0, 1).toLowerCase();
+				if (letter === 'a') {
+					this.modData('Learnsets', 'unown').learnset[move] = ['5L1'];
+				} else {
+					this.modData('Learnsets', 'unown' + letter).learnset[move] = ['5L1'];
+				}
+			}
+		}
+
+		moves = require('./moves').Moves;
+		movesKeys = Object.keys(moves);
+		for (const move of movesKeys) {
+			const currMove = moves[move];
+			if (!currMove.isZ && !currMove.isMax && !['sketch', 'struggle', 'chatter'].includes(move)) {
+				const letter = move.substr(0, 1).toLowerCase();
+				if (letter === 'a') {
+					this.modData('Learnsets', 'unown').learnset[move] = ['5L1'];
+				} else {
+					this.modData('Learnsets', 'unown' + letter).learnset[move] = ['5L1'];
+				}
+			}
+		}
+
+		// UNOWNS END
 		this.modData('Learnsets', 'forretress').learnset.bodypress = ['5L1'];
 		this.modData('Learnsets', 'forretress').learnset.repair = ['5L1'];
 		this.modData('Learnsets', 'steelix').learnset.ironmaw = ['5L1'];
@@ -533,15 +568,15 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'wormadam').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'wormadam').learnset.stickyweb = ['5L1'];
 		this.modData('Learnsets', 'wormadam').learnset.uturn = ['5L1'];
-		this.modData('Learnsets', 'wormadam-sandy').learnset.rockslide = ['5L1'];
-		this.modData('Learnsets', 'wormadam-sandy').learnset.shoreup = ['5L1'];
-		this.modData('Learnsets', 'wormadam-sandy').learnset.stickyweb = ['5L1'];
-		this.modData('Learnsets', 'wormadam-sandy').learnset.stoneedge = ['5L1'];
-		this.modData('Learnsets', 'wormadam-sandy').learnset.uturn = ['5L1'];
-		this.modData('Learnsets', 'wormadam-trash').learnset.earthpower = ['5L1'];
-		this.modData('Learnsets', 'wormadam-trash').learnset.repair = ['5L1'];
-		this.modData('Learnsets', 'wormadam-trash').learnset.stickyweb = ['5L1'];
-		this.modData('Learnsets', 'wormadam-trash').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'wormadamsandy').learnset.rockslide = ['5L1'];
+		this.modData('Learnsets', 'wormadamsandy').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'wormadamsandy').learnset.stickyweb = ['5L1'];
+		this.modData('Learnsets', 'wormadamsandy').learnset.stoneedge = ['5L1'];
+		this.modData('Learnsets', 'wormadamsandy').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'wormadamtrash').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'wormadamtrash').learnset.repair = ['5L1'];
+		this.modData('Learnsets', 'wormadamtrash').learnset.stickyweb = ['5L1'];
+		this.modData('Learnsets', 'wormadamtrash').learnset.uturn = ['5L1'];
 		this.modData('Learnsets', 'mothim').learnset.hurricane = ['5L1'];
 		this.modData('Learnsets', 'mothim').learnset.sleeppowder = ['5L1'];
 		this.modData('Learnsets', 'pachirisu').learnset.calmmind = ['5L1'];
@@ -617,7 +652,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'dusknoir').learnset.knockoff = ['5L1'];
 		this.modData('Learnsets', 'dusknoir').learnset.powertrip = ['5L1'];
 		this.modData('Learnsets', 'dusknoir').learnset.recover = ['5L1'];
-		this.modData('Learnsets', 'frosslass').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'froslass').learnset.nastyplot = ['5L1'];
 		// Cursed Dance learned further up
 		this.modData('Learnsets', 'rotomheat').learnset.flamethrower = ['5L1'];
 		this.modData('Learnsets', 'rotomwash').learnset.surf = ['5L1'];
@@ -633,5 +668,22 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'phione').learnset.calmmind = ['5L1'];
 		this.modData('Learnsets', 'phione').learnset.lifedew = ['5L1'];
 		this.modData('Learnsets', 'manaphy').learnset.lifedew = ['5L1'];
+		// --------- END SINNOH BUFFS ---------
+		this.modData('Learnsets', 'serperior').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'emboar').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'samurott').learnset.flipturn = ['5L1'];
+		this.modData('Learnsets', 'samurott').learnset.iciclespear = ['5L1'];
+		this.modData('Learnsets', 'samurott').learnset.leafblade = ['5L1'];
+		this.modData('Learnsets', 'samurott').learnset.secretsword = ['5L1'];
+		this.modData('Learnsets', 'samurott').learnset.solarblade = ['5L1'];
+		this.modData('Learnsets', 'watchog').learnset.doubleedge = ['5L1'];
+		this.modData('Learnsets', 'stoutland').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'liepard').learnset.dazzlinggleam = ['5L1'];
+		this.modData('Learnsets', 'simisage').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'simisage').learnset.powerwhip = ['5L1'];
+		this.modData('Learnsets', 'simisage').learnset.stoneedge = ['5L1'];
+		this.modData('Learnsets', 'simisear').learnset.burningjealousy = ['5L1'];
+		this.modData('Learnsets', 'simisear').learnset.scorchingsands = ['5L1'];
+		this.modData('Learnsets', 'simipour').learnset.flipturn = ['5L1'];
 	},
 };
