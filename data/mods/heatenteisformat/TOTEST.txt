@@ -42,6 +42,7 @@ abilities to test:
 	prevision
 	child of sea
 	first born
+	dream world (does it respect sleep clause?)
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?)

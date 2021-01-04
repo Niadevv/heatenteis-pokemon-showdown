@@ -857,4 +857,52 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	echolocation: {
+		onSourceModifyAccuracyPriority: -1,
+		onSourceModifyAccuracy(accuracy) {
+			if (typeof accuracy !== 'number') return;
+			this.debug('Echolocation - enhancing accuracy');
+			return this.chainModify([0x14CD, 0x1000]);
+		},
+		name: "Echolocation",
+		rating: 3,
+	},
+	withered: {
+		name: "Withered",
+		desc: "The user's attacks are boosted by 1.3x, but takes 1/10 of the user's max HP in damage after every attack.",
+		shortDesc: "1.3x boost to attack but takes 1/10 max hp after every attack.",
+		// basically life orb
+		onModifyDamage(damage, source, target, move) {
+			return this.chainModify([0x14CC, 0x1000]);
+		},
+		onAfterMoveSecondarySelf(source, target, move) {
+			if (source && source !== target && move && move.category !== 'Status') {
+				this.damage(source.baseMaxhp / 10, source, source);
+			}
+		},
+	},
+	upbeat: {
+		name: "Upbeat",
+		desc: "The user's speed is boosted one stage when they use a status move.",
+		shortDesc: "+1 to speed on status move used.",
+		onAfterMoveSecondarySelf(source, target, move) {
+			if (move.category === 'Status') {
+				this.add('-activate', source, 'ability: Upbeat');
+				this.boost({spe: 1}, source);
+			}
+		},
+	},
+	freegan: {
+		name: "Freegan",
+		desc: "The user absorbs and is healed by Poison type moves.",
+		shortDesc: "Absorbs and is healed by Poison type moves.",
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Poison') {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Freegan');
+				}
+				return null;
+			}
+		},
+	},
 };

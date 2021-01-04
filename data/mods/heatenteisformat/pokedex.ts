@@ -352,7 +352,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	unown: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 75, spa: 105, spd: 75, spe: 120},
-		cosmeticFormes: [],
+		cosmeticFormes: undefined,
 		otherFormes: ["Unown-B", "Unown-C", "Unown-D", "Unown-E", "Unown-F", "Unown-G", "Unown-H", "Unown-I", "Unown-J", "Unown-K", "Unown-L", "Unown-M", "Unown-N", "Unown-O", "Unown-P", "Unown-Q", "Unown-R", "Unown-S", "Unown-T", "Unown-U", "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question"],
 	},
 	unownb: {
@@ -1252,6 +1252,116 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 75, atk: 68, def: 63, spa: 123, spd: 63, spe: 110},
 	},
+	musharna: {
+		inherit: true,
+		types: ["Psychic", "Fairy"],
+		abilities: {0: "Forewarn", 1: "Synchronize", H: "Dream World"},
+		baseStats: {hp: 116, atk: 55, def: 100, spa: 107, spd: 95, spe: 29},
+	},
+	unfezant: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 121, def: 80, spa: 59, spd: 55, spe: 100},
+	},
+	zebstrika: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 125, def: 63, spa: 55, spd: 63, spe: 116},
+	},
+	swoobat: {
+		inherit: true,
+		baseStats: {hp: 67, atk: 57, def: 55, spa: 117, spd: 55, spe: 117},
+		abilities: {0: "Unaware", 1: "Echolocation", H: "Simple"},
+	},
+	audino: {
+		inherit: true,
+		baseStats: {hp: 103, atk: 60, def: 86, spa: 70, spd: 86, spe: 50},
+	},
+	conkeldurr: {
+		inherit: true,
+		baseStats: {hp: 105, atk: 140, def: 95, spa: 55, spd: 75, spe: 55},
+	},
+	seismitoad: {
+		inherit: true,
+		baseStats: {hp: 105, atk: 100, def: 95, spa: 90, spd: 95, spe: 74},
+	},
+	throh: {
+		inherit: true,
+		baseStats: {hp: 120, atk: 105, def: 120, spa: 30, spd: 90, spe: 45},
+	},
+	leavanny: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 123, def: 95, spa: 80, spd: 85, spe: 112},
+		abilities: {0: "Technician", 1: "Chlorophyll", H: "Overcoat"},
+	},
+	scolipede: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 110, def: 89, spa: 55, spd: 69, spe: 112},
+	},
+	whimsicott: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 67, def: 85, spa: 107, spd: 75, spe: 120},
+	},
+	lilligant: {
+		inherit: true,
+		abilities: {0: "Chlorophyll", 1: "Own Tempo", H: "Withered"},
+		baseStats: {hp: 80, atk: 60, def: 75, spa: 120, spd: 85, spe: 100},
+	},
+	basculin: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 110, def: 65, spa: 98, spd: 55, spe: 106},
+	},
+	basculinbluestriped: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 110, def: 65, spa: 98, spd: 55, spe: 106},
+	},
+	darmanitan: {
+		inherit: true,
+		abilities: {0: "Sheer Force", 1: "Zen Mode", H: "Reckless"},
+	},
+	darmanitanzen: {
+		inherit: true,
+		requiredAbility: undefined,
+		battleOnly: undefined,
+	},
+	darmanitangalarzen: {
+		inherit: true,
+		requiredAbility: undefined,
+		battleOnly: undefined,
+	},
+	maractus: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 86, def: 72, spa: 126, spd: 72, spe: 70},
+		abilities: {0: "Upbeat", 1: "Chlorophyll", H: "Storm Drain"},
+	},
+	scrafty: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 100, def: 115, spa: 45, spd: 115, spe: 65},
+	},
+	sigilyph: {
+		inherit: true,
+		baseStats: {hp: 72, atk: 58, def: 80, spa: 113, spd: 80, spe: 97},
+	},
+	cofagrigus: {
+		inherit: true,
+		types: ["Ghost", "Steel"],
+		baseStats: {hp: 68, atk: 50, def: 145, spa: 105, spd: 105, spe: 30},
+	},
+	carracosta: {
+		inherit: true,
+		baseStats: {hp: 74, atk: 108, def: 133, spa: 103, spd: 65, spe: 42},
+	},
+	archeops: {
+		inherit: true,
+		abilities: {0: "Defeatist", H: "Tough Claws"},
+	},
+	garbodor: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 100, def: 92, spa: 60, spd: 92, spe: 75},
+		abilities: {0: "Freegan", 1: "Weak Armor", H: "Aftermath"},
+	},
+	zoroark: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 105, def: 60, spa: 120, spd: 60, spe: 115},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {
@@ -1261,6 +1371,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	ampharosmega: {
 		inherit: true,
 		abilities: {0: "Thick Fat"},
+	},
+	audinomega: {
+		inherit: true,
+		abilities: {0: "Regenerator"},
+		baseStats: {hp: 103, atk: 60, def: 126, spa: 90, spd: 126, spe: 50},
 	},
 	// New Megas
 	butterfree: {
