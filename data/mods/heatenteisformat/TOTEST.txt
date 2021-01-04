@@ -43,9 +43,13 @@ abilities to test:
 	child of sea
 	first born
 	dream world (does it respect sleep clause?)
+	withered
+	upbeat
+	migration
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?)
+	slow start (does slow start still get wiped on switchout?)
 
 moves to test:
 	wild charge (does wild charge no longer do recoil?)

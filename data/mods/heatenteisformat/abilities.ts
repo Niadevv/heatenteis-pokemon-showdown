@@ -234,6 +234,21 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	megalauncher: {
+		inherit: true,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['pulse'] || ['electroball', 'energyball', 'gyroball', 'iceball', 'mistball',
+			  'pyroball', 'shadowball', 'weatherball']) {
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	slowstart: {
+		inherit: true,
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'Slow Start', '[silent]');
+		},
+	},
 	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -300,6 +315,101 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 
 		// TODO: disable all items that trigger instead of just berries
+	},
+	genesis: {
+		name: "Genesis",
+		desc: "The user possesses Spacial Barrier, Temporal Barrier, Distortion, and Multitype, while Judgement becomes 200 BP and all of its moves gain STAB. Repent mortals.",
+		shortDesc: "User has Spacial Barrier, Temporal Barrier, Distortion, Multitype. Judgement is 200 BP, all moves have STAB bonus.",
+		isPermanent: true,
+		// Temporal barrier
+		onUpdate(pokemon) {
+			if (pokemon.status) {
+				this.add('-activate', pokemon, 'ability: Spacial Barrier');
+				pokemon.cureStatus();
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if (status) return;
+			if ((effect as Move)?.status) {
+				this.add('-immune', target, '[from] ability: Spacial Barrier');
+			}
+			return false;
+		},
+		onTryHit(pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[from] ability: Spacial Barrier');
+				return null;
+			}
+		},
+		// Temporal Barrier
+		// No flinches thank you
+		onTryAddVolatile(status, pokemon) {
+			if (status.id === 'flinch') return null;
+		},
+		// in case steel typing removed
+		onDamage(damage, target, source, effect) {
+			if (effect.id === 'tox') {
+				// keep toxic timer at 6%, refer to conditions.ts
+				this.effectData.stage -= 1;
+				// but still take damage
+				return true;
+			}
+		},
+		// set rollout and iceball accumlation back so it never goes up
+		onDamagingHit(damage, target, source, move) {
+			if (move.id === "rollout") {
+				source.volatiles['rollout'].hitCount -= 1;
+			}
+			if (move.id === "iceball") {
+				source.volatiles['iceball'].hitCount -= 1;
+			}
+		},
+		// TODO: Make able to move when asleep
+
+		// Distortion
+		onFoeTryEatItem: false,
+		onStart(pokemon) {
+			// this.add('-fieldstart', 'ability: Distortion');
+			this.field.addPseudoWeather('gravity');
+		},
+
+		// Multitype
+		onTypePriority: 1,
+		onType(types, pokemon) {
+			if (pokemon.transformed || pokemon.ability !== 'multitype' && this.gen >= 8) return types;
+			let type: string | undefined = 'Normal';
+			if (pokemon.ability === 'multitype') {
+				type = pokemon.getItem().onPlate;
+				if (!type) {
+					type = 'Normal';
+				}
+			}
+			return [type];
+		},
+
+		// Judgment BP change
+		onModifyMove(move) {
+			if (move.id === "judgment") {
+				move.basePower = 200;
+			}
+		},
+
+		// STAB boost for everything
+		onBasePower(basePower, source, target, move) {
+			if (move.type !== source.types[0]) {
+				this.chainModify(1.5);
+			}
+		},
+	},
+	oneforall: {
+		name: "One for All",
+		desc: "Gives STAB bonus to Rock, Steel, Ice, Dragon and Electric type moves.",
+		shortDesc: "STAB bonus to Rock, Steel, Ice, Dragon and Electric moves.",
+		onBasePower(basePower, source, target, move) {
+			if (['Rock', 'Steel', 'Ice', 'Dragon', 'Electric'].includes(move.type)) {
+				this.chainModify(1.5);
+			}
+		},
 	},
 	neurotoxin: {
 		desc: "Poison caused by the user does double damage to the target, including Toxic and Toxic Spikes.",
@@ -821,13 +931,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	riposte: {
 		name: "Riposte",
-		desc: "Boosts Sword, Blade or Spear moves.",
-		shortDesc: "Boosts Sword, Blade or Spear moves.",
+		desc: "Boosts cutting and Spear moves.",
+		shortDesc: "Boosts cutting and Spear moves.",
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (['behemothblade', 'leafblade', 'solarblade', 'sacredsword', 'secretsword',
 			  'iciclespear', 'razorshell', 'cut', 'xscissor', 'megahorn', 'airslash', 'aerialace',
-			  'furycutter', 'nightslash', 'slash', 'smartstrike'].includes(move.id)) {
+			  'furycutter', 'nightslash', 'slash', 'smartstrike', 'razorleaf', 'psychocut', 'glaciallance'].includes(move.id)) {
 				this.chainModify(1.5);
 			}
 		},
@@ -835,7 +945,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onModifySpA(atk, attacker, defender, move) {
 			if (['behemothblade', 'leafblade', 'solarblade', 'sacredsword', 'secretsword',
 			  'iciclespear', 'razorshell', 'cut', 'xscissor', 'megahorn', 'airslash', 'aerialace',
-			  'furycutter', 'nightslash', 'slash', 'smartstrike'].includes(move.id)) {
+			  'furycutter', 'nightslash', 'slash', 'smartstrike', 'razorleaf', 'psychocut', 'glaciallance'].includes(move.id)) {
 				this.chainModify(1.5);
 			}
 		},
@@ -902,6 +1012,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					this.add('-immune', target, '[from] ability: Freegan');
 				}
 				return null;
+			}
+		},
+	},
+	migration: {
+		name: "Migration",
+		desc: "The user's speed is doubled in Sun, Rain and Hail",
+		shortDesc: "User speed doubled in Sun, Rain and Hail.",
+		onModifySpe(spe, pokemon) {
+			if (['raindance', 'primordialsea', 'sunnyday', 'desolateland', 'hail'].includes(pokemon.effectiveWeather())) {
+				return this.chainModify(2);
 			}
 		},
 	},

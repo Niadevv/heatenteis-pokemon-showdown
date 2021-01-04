@@ -36,6 +36,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'mewtwo').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'mewtwo').learnset.closecombat = ['5L1'];
 
+		// Mareanie gave Spectrier Aura Sphere and Cursed Dance so calyshadow has to have it too :pensive:
+		this.modData('Learnsets', 'calyrexshadow').learnset.aurasphere = ['5L1'];
+		this.modData('Learnsets', 'calyrexshadow').learnset.curseddance = ['5L1'];
+
 		// Mega Base forms new learned moves:
 		this.modData('Learnsets', 'butterfree').learnset.psyshock = ['5L1'];
 		this.modData('Learnsets', 'butterfree').learnset.aurasphere = ['5L1'];
@@ -711,10 +715,12 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'whimsicott').learnset.leafstorm = ['5L1'];
 		this.modData('Learnsets', 'whimsicott').learnset.mysticalfire = ['5L1'];
 		this.modData('Learnsets', 'whimsicott').learnset.nastyplot = ['5L1'];
-		this.modData('Learnsets', 'liligant').learnset.earthpower = ['5L1'];
+		this.modData('Learnsets', 'lilligant').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'basculin').learnset.closecombat = ['5L1'];
 		this.modData('Learnsets', 'basculin').learnset.fishiousrend = ['5L1'];
 		this.modData('Learnsets', 'basculin').learnset.flipturn = ['5L1'];
+		// Fix because it's not in default galar zen's movepool fsr
+		this.modData('Learnsets', 'darmanitangalarzen').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'krookodile').learnset.flipturn = ['5L1'];
 		this.modData('Learnsets', 'maractus').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'maractus').learnset.sleeppowder = ['5L1'];
@@ -739,5 +745,27 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'garbodor').learnset.knockoff = ['5L1'];
 		this.modData('Learnsets', 'garbodor').learnset.poisonjab = ['5L1'];
 		this.modData('Learnsets', 'garbodor').learnset.recover = ['5L1'];
+		this.modData('Learnsets', 'cinccino').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'cinccino').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'gothitelle').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'gothitelle').learnset.knockoff = ['5L1'];
+		this.modData('Learnsets', 'gothitelle').learnset.recover = ['5L1'];
+		this.modData('Learnsets', 'reuniclus').learnset.teleport = ['5L1'];
+		this.modData('Learnsets', 'swanna').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'sawsbuck').learnset.woodhammer = ['5L1'];
+		this.modData('Learnsets', 'emolga').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'emolga').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'escavalier').learnset.trickroom = ['5L1'];
+		this.modData('Learnsets', 'escavalier').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'amoonguss').learnset.toxicspikes = ['5L1'];
+		this.modData('Learnsets', 'alomomola').learnset.fishiousrend = ['5L1'];
+		this.modData('Learnsets', 'alomomola').learnset.flipturn = ['5L1'];
+		this.modData('Learnsets', 'galvantula').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'galvantula').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'ferrothorn').learnset.spikyshield = ['5L1'];
+		this.modData('Learnsets', 'klinklang').learnset.bulldoze = ['5L1'];
+		this.modData('Learnsets', 'klinklang').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'klinklang').learnset.repair = ['5L1'];
+		this.modData('Learnsets', 'eelektross').learnset.recharge = ['5L1'];
 	},
 };

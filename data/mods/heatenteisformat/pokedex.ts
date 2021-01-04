@@ -87,6 +87,37 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	arceus: {
 		inherit: true,
 		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+		otherFormes: ["Arceus-Bug", "Arceus-Dark", "Arceus-Dragon", "Arceus-Electric", "Arceus-Fairy", "Arceus-Fighting", "Arceus-Fire", "Arceus-Flying", "Arceus-Ghost", "Arceus-Grass", "Arceus-Ground", "Arceus-Ice", "Arceus-Poison", "Arceus-Psychic", "Arceus-Rock", "Arceus-Steel", "Arceus-Water", "Arceus-Origin"],
+		formeOrder: [
+			"Arceus", "Arceus-Fighting", "Arceus-Flying", "Arceus-Poison", "Arceus-Ground", "Arceus-Rock", "Arceus-Bug", "Arceus-Ghost", "Arceus-Steel",
+			"Arceus-Fire", "Arceus-Water", "Arceus-Grass", "Arceus-Electric", "Arceus-Psychic", "Arceus-Ice", "Arceus-Dragon", "Arceus-Dark", "Arceus-Fairy", "Arceus-Origin",
+		],
+	},
+	arceusorigin: {
+		num: 493,
+		name: "Arceus-Origin",
+		baseSpecies: "Arceus",
+		types: ["Normal"],
+		gender: "N",
+		baseStats: {hp: 255, atk: 255, def: 255, spa: 255, spd: 255, spe: 255},
+		abilities: {0: "Genesis"},
+		heightm: 3.2,
+		weightkg: 320,
+		color: "White",
+		eggGroups: ["Undiscovered"],
+	},
+	regigigasorigin: {
+		num: 486,
+		name: "Regigigas-Origin",
+		baseSpecies: "Regigigas",
+		types: ["Normal"],
+		gender: "N",
+		baseStats: {hp: 170, atk: 255, def: 185, spa: 135, spd: 185, spe: 120},
+		abilities: {0: "One for All"},
+		heightm: 3.7,
+		weightkg: 420,
+		color: "White",
+		eggGroups: ["Undiscovered"],
 	},
 	groudon: {
 		inherit: true,
@@ -1165,7 +1196,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	drapion: {
 		inherit: true,
-		baseStats: {hp: 70, atk: 115, def: 110, spa: 60, spd: 75, spe: 105},
+		// I'm sorry little one
+		// baseStats: {hp: 70, atk: 115, def: 110, spa: 60, spd: 75, spe: 105},
 		abilities: {0: "Battle Armor", 1: "Sniper", H: "Merciless"},
 	},
 	toxicroak: {
@@ -1319,11 +1351,13 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	darmanitanzen: {
 		inherit: true,
+		abilities: {0: "Zen Mode", 1: "Inner Focus"},
 		requiredAbility: undefined,
 		battleOnly: undefined,
 	},
 	darmanitangalarzen: {
 		inherit: true,
+		abilities: {0: "Zen Mode", 1: "Inner Focus"},
 		requiredAbility: undefined,
 		battleOnly: undefined,
 	},
@@ -1362,6 +1396,62 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 60, atk: 105, def: 60, spa: 120, spd: 60, spe: 115},
 	},
+	cinccino: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 115, def: 60, spa: 65, spd: 60, spe: 115},
+	},
+	gothitelle: {
+		inherit: true,
+		types: ["Psychic", "Dark"],
+	},
+	reuniclus: {
+		inherit: true,
+		baseStats: {hp: 110, atk: 65, def: 75, spa: 125, spd: 85, spe: 30},
+	},
+	swanna: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 87, def: 70, spa: 120, spd: 70, spe: 101},
+		abilities: {0: "Gale Wings", 1: "Big Pecks", H: "Hydration"},
+	},
+	vanilluxe: {
+		inherit: true,
+		baseStats: {hp: 71, atk: 95, def: 85, spa: 117, spd: 95, spe: 90},
+	},
+	sawsbuck: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 113, def: 75, spa: 55, spd: 75, spe: 95},
+		abilities: {0: "Chlorophyll", 1: "Sap Sipper", H: "Serene Grace"},
+	},
+	emolga: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 75, def: 75, spa: 116, spd: 75, spe: 115},
+		abilities: {0: "Static", 1: "Motor Drive", H: "Speed Boost"},
+	},
+	escavalier: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 135, def: 105, spa: 60, spd: 105, spe: 20},
+	},
+	amoonguss: {
+		inherit: true,
+		baseStats: {hp: 114, atk: 85, def: 80, spa: 85, spd: 90, spe: 30},
+	},
+	jellicent: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 60, def: 95, spa: 85, spd: 105, spe: 60},
+	},
+	alomomola: {
+		inherit: true,
+		baseStats: {hp: 165, atk: 75, def: 90, spa: 40, spd: 45, spe: 65},
+	},
+	galvantula: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 77, def: 60, spa: 107, spd: 60, spe: 108},
+	},
+	klinklang: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 105, def: 115, spa: 70, spd: 95, spe: 90},
+		abilities: {0: "Technician", 1: "Steelworker", H: "Clear Body"},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {
@@ -1376,6 +1466,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Regenerator"},
 		baseStats: {hp: 103, atk: 60, def: 126, spa: 90, spd: 126, spe: 50},
+	},
+	sceptilemega: {
+		inherit: true,
+		abilities: {0: "Mega Launcher"},
 	},
 	// New Megas
 	butterfree: {
