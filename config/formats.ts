@@ -620,16 +620,16 @@ export const Formats: FormatList = [
 		// searchShow: false,
 		ruleset: ['Standard', 'Dynamax Clause'],
 		banlist: [
-			'Calyrex-Ice', 'Calyrex-Shadow', 'Darmanitan-Galar', 'Dialga', 'Eternatus', 'Genesect', 'Giratina', 'Giratina-Origin',
-			'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Marshadow', 'Melmetal', 'Mewtwo', 'Naganadel',
-			'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Palkia', 'Pheromosa', 'Rayquaza', 'Reshiram', 'Shedinja', 'Solgaleo', 'Toxapex',
-			'Urshifu-Base', 'Urshifu-Rapid-Strike', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom',
+			'Calyrex-Ice', 'Calyrex-Shadow', 'Darmanitan-Galar', 'Dialga', 'Dracovish', 'Eternatus', 'Genesect', 'Giratina',
+			'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Magearna',
+			'Marshadow', 'Melmetal', 'Mewtwo', 'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Palkia',
+			'Pheromosa', 'Rayquaza', 'Reshiram', 'Shedinja', 'Solgaleo', 'Toxapex', 'Urshifu-Base', 'Urshifu-Rapid-Strike',
+			'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom',
 			'Arena Trap', 'Contrary', 'Drizzle ++ Swift Swim', 'Drought ++ Chlorophyll', 'Electric Surge ++ Surge Surfer',
 			'Flare Boost', 'Fur Coat', 'Guts', 'Harvest', 'Huge Power', 'Imposter', 'Innards Out', 'Libero', 'Magic Bounce',
-			'Magic Guard', 'Magnet Pull', 'Mold Breaker', 'Moody', 'Neutralizing Gas', 'Power Construct', 'Regenerator ++ Emergency Exit',
-			'Regenerator ++ Wimp Out', 'Sand Rush', 'Sand Veil', 'Shadow Tag', 'Simple', 'Slush Rush', 'Snow Cloak',
-			'Speed Boost', 'Stakeout', 'Steelworker ++ Steely Spirit', 'Tinted Lens', 'Unaware', 'Unburden', 'Water Bubble',
-			'Leppa Berry', 'Baton Pass',
+			'Magic Guard', 'Magnet Pull', 'Mold Breaker', 'Moody', 'Neutralizing Gas', 'Power Construct', 'Regenerator',
+			'Sand Rush', 'Sand Veil', 'Shadow Tag', 'Simple', 'Slush Rush', 'Snow Cloak', 'Speed Boost', 'Stakeout',
+			'Steelworker ++ Steely Spirit', 'Tinted Lens', 'Unaware', 'Unburden', 'Water Bubble', 'Baton Pass',
 		],
 		getSharedPower(pokemon) {
 			const sharedPower = new Set<string>();
@@ -908,18 +908,18 @@ export const Formats: FormatList = [
 				];
 			}
 		},
-		checkLearnset(move, species, lsetData, set) {
+		checkCanLearn(move, species, lsetData, set) {
 			// @ts-ignore
 			if (!set.sp || !set.sp.exists || !set.crossSpecies || !set.crossSpecies.exists) {
-				return this.checkLearnset(move, species, lsetData, set);
+				return this.checkCanLearn(move, species, lsetData, set);
 			}
 			// @ts-ignore
-			const problem = this.checkLearnset(move, set.sp);
+			const problem = this.checkCanLearn(move, set.sp);
 			if (!problem) return null;
 			// @ts-ignore
 			if (!set.crossMovesLeft) return problem;
 			// @ts-ignore
-			if (this.checkLearnset(move, set.crossSpecies)) return problem;
+			if (this.checkCanLearn(move, set.crossSpecies)) return problem;
 			// @ts-ignore
 			set.crossMovesLeft--;
 			return null;
