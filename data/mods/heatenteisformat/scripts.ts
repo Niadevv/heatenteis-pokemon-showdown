@@ -771,5 +771,21 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'beheeyem').learnset.mysticalfire = ['5L1'];
 		this.modData('Learnsets', 'beartic').learnset.flipturn = ['5L1'];
 		this.modData('Learnsets', 'beartic').learnset.waterfall = ['5L1'];
+		this.modData('Learnsets', 'accelgor').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'stunfisk').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'stunfisk').learnset.voltswitch = ['5L1'];
+		this.modData('Learnsets', 'druddigon').learnset.dragondance = ['5L1'];
+		this.modData('Learnsets', 'druddigon').learnset.roost = ['5L1'];
+		this.modData('Learnsets', 'druddigon').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'golurk').learnset.shoreup = ['5L1'];
+		this.modData('Learnsets', 'golurk').learnset.willowisp = ['5L1'];
+		this.modData('Learnsets', 'bouffalant').learnset.bulkup = ['5L1'];
+		this.modData('Learnsets', 'bouffalant').learnset.hornleech = ['5L1'];
+		this.modData('Learnsets', 'braviary').learnset.lashout = ['5L1'];
+		this.modData('Learnsets', 'heatmor').learnset.calmmind = ['5L1'];
+		this.modData('Learnsets', 'heatmor').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'durant').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'durant').learnset.uturn = ['5L1'];
+		this.modData('Learnsets', 'volcarona').learnset.scorchingsands = ['5L1'];
 	},
 };

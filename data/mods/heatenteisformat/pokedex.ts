@@ -1470,6 +1470,60 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Ice", "Water"],
 		baseStats: {hp: 95, atk: 130, def: 90, spa: 70, spd: 90, spe: 80},
 	},
+	cryogonal: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 50, def: 60, spa: 115, spd: 135, spe: 105},
+		abilities: {0: "Levitate", H: "Snow Warning"},
+	},
+	accelgor: {
+		inherit: true,
+		types: ["Bug", "Poison"],
+		baseStats: {hp: 80, atk: 70, def: 40, spa: 111, spd: 60, spe: 145},
+	},
+	stunfisk: {
+		inherit: true,
+		baseStats: {hp: 109, atk: 66, def: 99, spa: 81, spd: 108, spe: 32},
+		abilities: {0: "Static", 1: "Regenerator", H: "Sand Veil"},
+	},
+	mienshao: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 125, def: 70, spa: 95, spd: 70, spe: 105},
+	},
+	druddigon: {
+		inherit: true,
+		baseStats: {hp: 87, atk: 120, def: 90, spa: 60, spd: 90, spe: 48},
+	},
+	golurk: {
+		inherit: true,
+		baseStats: {hp: 108, atk: 124, def: 80, spa: 55, spd: 80, spe: 65},
+	},
+	bisharp: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 125, def: 100, spa: 60, spd: 70, spe: 90},
+	},
+	bouffalant: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 115, def: 95, spa: 40, spd: 95, spe: 70},
+	},
+	braviary: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 123, def: 85, spa: 57, spd: 85, spe: 80},
+		abilities: {0: "Moxie", 1: "Sheer Force", H: "Defiant"},
+	},
+	mandibuzz: {
+		inherit: true,
+		baseStats: {hp: 115, atk: 75, def: 105, spa: 85, spd: 100, spe: 80},
+		abilities: {0: "Big Pecks", 1: "Overcoat", H: "Unaware"},
+	},
+	heatmor: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 103, def: 86, spa: 123, spd: 86, spe: 75},
+	},
+	durant: {
+		inherit: true,
+		baseStats: {hp: 68, atk: 109, def: 112, spa: 48, spd: 68, spe: 109},
+		abilities: {0: "Swarm", 1: "Hustle", H: "Sheer Force"},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {
