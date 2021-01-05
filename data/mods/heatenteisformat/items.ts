@@ -578,4 +578,46 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	rampardite: {
+		name: "Rampardite",
+		spritenum: 625,
+		megaStone: "Rampardos-Mega",
+		megaEvolves: "Rampardos",
+		itemUser: ["Rampardos"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -133,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	bastionite: {
+		name: "Bastionite",
+		spritenum: 625,
+		megaStone: "Bastiodon-Mega",
+		megaEvolves: "Bastiodon",
+		itemUser: ["Bastiodon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -134,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	vespiquenite: {
+		name: "Vespiquenite",
+		spritenum: 625,
+		megaStone: "Vespiquen-Mega",
+		megaEvolves: "Vespiquen",
+		itemUser: ["Vespiquen"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -135,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };

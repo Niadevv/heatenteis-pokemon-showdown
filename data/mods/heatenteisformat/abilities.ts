@@ -1080,4 +1080,22 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	lastorder: {
+		name: "Last Order",
+		desc: "Boosts the power and effects of Order moves (Attack Order, Defend Order and Heal Order).",
+		shortDesc: "Boosts the power and effects of Order moves.",
+		onBasePower(basePower, source, target, move) {
+			if (move.id === 'lastorder') {
+				move.basePower = 120;
+			}
+		},
+		onModifyMove(move, pokemon, target) {
+			if (move.id === 'defendorder') {
+				move.boosts = {def: 2, spd: 2};
+			} else if (move.id === 'healorder') {
+				move.heal = [3, 4];
+			}
+		},
+		// heal and defend order are implemented in their overriden variants
+	},
 };
