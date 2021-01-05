@@ -1048,4 +1048,36 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	continentaldrift: {
+		name: "Continental Drift",
+		desc: "The user's ground type moves are doubled in power.",
+		shortDesc: "Ground moves doubled in power.",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Ground') {
+				this.debug('Continental Drift boost');
+				return this.chainModify(2);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Ground') {
+				this.debug('Continental Drift boost');
+				return this.chainModify(2);
+			}
+		},
+	},
+	heavenlystyle: {
+		name: "Heavenly Style",
+		desc: "The user becomes the same type as the move it is about to use.",
+		shortDesc: "Changes type to move being used before attack.",
+		onPrepareHit(source, target, move) {
+			if (move.hasBounced || move.sourceEffect === 'snatch') return;
+			const type = move.type;
+			if (type && type !== '???' && source.getTypes().join() !== type) {
+				if (!source.setType(type)) return;
+				this.add('-start', source, 'typechange', type, '[from] ability: Heavenly Style');
+			}
+		},
+	},
 };

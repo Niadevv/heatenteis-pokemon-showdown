@@ -7,10 +7,13 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'blissey').learnset.psywave = ['5L1'];
 		// Uber buffs
 		this.modData('Learnsets', 'kyurem').learnset.icepunch = ['5L1'];
+		this.modData('Learnsets', 'kyurem').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'kyurem').learnset.earthquake = ['5L1'];
 		this.modData('Learnsets', 'kyuremblack').learnset.icepunch = ['5L1'];
+		this.modData('Learnsets', 'kyuremblack').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'kyuremblack').learnset.earthquake = ['5L1'];
 		this.modData('Learnsets', 'kyuremwhite').learnset.icepunch = ['5L1'];
+		this.modData('Learnsets', 'kyuremwhite').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'kyuremwhite').learnset.earthquake = ['5L1'];
 		this.modData('Learnsets', 'zekrom').learnset.earthquake = ['5L1'];
 		// this was a mistake
@@ -567,8 +570,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'roserade').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'roserade').learnset.sludgewave = ['5L1'];
 		this.modData('Learnsets', 'rampardos').learnset.accelerock = ['5L1'];
+		this.modData('Learnsets', 'rampardos').learnset.closecombat = ['5L1'];
 		this.modData('Learnsets', 'bastiodon').learnset.ironmaw = ['5L1'];
 		this.modData('Learnsets', 'bastiodon').learnset.repair = ['5L1'];
+		this.modData('Learnsets', 'bastiodon').learnset.thunderwave = ['5L1'];
 		this.modData('Learnsets', 'wormadam').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'wormadam').learnset.stickyweb = ['5L1'];
 		this.modData('Learnsets', 'wormadam').learnset.uturn = ['5L1'];
@@ -787,5 +792,14 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'durant').learnset.closecombat = ['5L1'];
 		this.modData('Learnsets', 'durant').learnset.uturn = ['5L1'];
 		this.modData('Learnsets', 'volcarona').learnset.scorchingsands = ['5L1'];
+		this.modData('Learnsets', 'cobalion').learnset.repair = ['5L1'];
+		this.modData('Learnsets', 'terrakion').learnset.accelerock = ['5L1'];
+		this.modData('Learnsets', 'thundurus').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'landorus').learnset.hurricane = ['5L1'];
+		this.modData('Learnsets', 'keldeo').learnset.icebeam = ['5L1'];
+		this.modData('Learnsets', 'meloetta').learnset.nastyplot = ['5L1'];
+		this.modData('Learnsets', 'meloetta').learnset.swordsdance = ['5L1'];
+		this.modData('Learnsets', 'genesect').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'genesect').learnset.repair = ['5L1'];
 	},
 };

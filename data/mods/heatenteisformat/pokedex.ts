@@ -1139,6 +1139,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 83, atk: 55, def: 60, spa: 105, spd: 60, spe: 75},
 		abilities: {0: "Swarm", 1: "Technician", H: "Crescendo"},
 	},
+	rampardos: {
+		inherit: true,
+		baseStats: {hp: 97, atk: 165, def: 60, spa: 95, spd: 50, spe: 58},
+	},
+	bastiodon: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 52, def: 168, spa: 47, spd: 138, spe: 30},
+	},
 	wormadam: {
 		inherit: true,
 		baseStats: {hp: 95, atk: 85, def: 95, spa: 105, spd: 115, spe: 40},
@@ -1524,6 +1532,38 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 68, atk: 109, def: 112, spa: 48, spd: 68, spe: 109},
 		abilities: {0: "Swarm", 1: "Hustle", H: "Sheer Force"},
 	},
+	cobalion: {
+		inherit: true,
+		baseStats: {hp: 129, atk: 90, def: 91, spa: 90, spd: 72, spe: 108},
+	},
+	virizion: {
+		inherit: true,
+		baseStats: {hp: 91, atk: 90, def: 72, spa: 90, spd: 108, spe: 129},
+	},
+	tornadus: {
+		inherit: true,
+		abilities: {0: "Prankster", 1: "Defiant", H: "Windstorm"},
+	},
+	thundurus: {
+		inherit: true,
+		abilities: {0: "Prankster", 1: "Defiant", H: "Drizzle"},
+	},
+	genesectburn: {
+		inherit: true,
+		types: ["Steel", "Fire"],
+	},
+	genesectchill: {
+		inherit: true,
+		types: ["Steel", "Ice"],
+	},
+	genesectdouse: {
+		inherit: true,
+		types: ["Steel", "Water"],
+	},
+	genesectshock: {
+		inherit: true,
+		types: ["Steel", "Electric"],
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {
@@ -1533,6 +1573,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	ampharosmega: {
 		inherit: true,
 		abilities: {0: "Thick Fat"},
+	},
+	gallademega: {
+		inherit: true,
+		types: ["Fighting", "Fairy"],
+		abilities: {0: "Pixilate"},
 	},
 	audinomega: {
 		inherit: true,
@@ -2132,5 +2177,61 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		eggGroups: ["Amorphous"],
 		canHatch: true,
 		requiredItem: "Chimechonite",
+	},
+	torterra: {
+		inherit: true,
+		otherFormes: ["Torterra-Mega"],
+		formeOrder: ["Torterra", "Torterra-Mega"],
+	},
+	torterramega: {
+		num: 389,
+		name: "Torterra-Mega",
+		forme: "Mega",
+		types: ["Grass", "Ground"],
+		genderRatio: {M: 0.875, F: 0.125},
+		baseStats: {hp: 95, atk: 119, def: 160, spa: 75, spd: 140, spe: 36},
+		abilities: {0: "Continental Drift"},
+		heightm: 18.7,
+		weightkg: 310,
+		color: "Green",
+		eggGroups: ["Monster", "Grass"],
+		requiredItem: "Torterrite",
+	},
+	infernape: {
+		inherit: true,
+		otherFormes: ["Infernape-Mega"],
+		formeOrder: ["Infernape", "Infernape-Mega"],
+	},
+	infernapemega: {
+		num: 392,
+		name: "Infernape-Mega",
+		forme: "Mega",
+		types: ["Fire", "Fighting"],
+		genderRatio: {M: 0.875, F: 0.125},
+		baseStats: {hp: 76, atk: 144, def: 71, spa: 144, spd: 71, spe: 128},
+		abilities: {0: "Heavenly Style"},
+		heightm: 1.2,
+		weightkg: 55,
+		color: "Brown",
+		eggGroups: ["Field", "Human-Like"],
+		requiredItem: "Infernite",
+	},
+	empoleon: {
+		inherit: true,
+		otherFormes: ["Empoleon-Mega"],
+		formeOrder: ["Empoleon", "Empoleon-Mega"],
+	},
+	empoleonmega: {
+		num: 395,
+		name: "Empoleon-Mega",
+		types: ["Water", "Steel"],
+		genderRatio: {M: 0.875, F: 0.125},
+		baseStats: {hp: 84, atk: 156, def: 115, spa: 80, spd: 101, spe: 94},
+		abilities: {0: "Defiant"},
+		heightm: 1.7,
+		weightkg: 84.5,
+		color: "Blue",
+		eggGroups: ["Water 1", "Field"],
+		requiredItem: "Empoleonite",
 	},
 };

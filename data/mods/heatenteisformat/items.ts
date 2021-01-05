@@ -536,4 +536,46 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	torterrite: {
+		name: "Torterrite",
+		spritenum: 625,
+		megaStone: "Torterra-Mega",
+		megaEvolves: "Torterra",
+		itemUser: ["Torterra"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -130,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	infernite: {
+		name: "Infernite",
+		spritenum: 625,
+		megaStone: "Infernape-Mega",
+		megaEvolves: "Infernape",
+		itemUser: ["Infernape"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -131,
+		gen: 7,
+		isNonstandard: "Past",
+	},
+	empoleonite: {
+		name: "Empoleonite",
+		spritenum: 625,
+		megaStone: "Empoleon-Mega",
+		megaEvolves: "Empoleon",
+		itemUser: ["Empoleon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -132,
+		gen: 7,
+		isNonstandard: "Past",
+	},
 };
