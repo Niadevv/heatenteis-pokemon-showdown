@@ -1452,6 +1452,24 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 60, atk: 105, def: 115, spa: 70, spd: 95, spe: 90},
 		abilities: {0: "Technician", 1: "Steelworker", H: "Clear Body"},
 	},
+	eelektross: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 115, def: 80, spa: 115, spd: 95, spe: 50},
+	},
+	beheeyem: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 95, def: 75, spa: 125, spd: 110, spe: 40},
+		abilities: {0: "Psychic Terrain", 1: "Mind Sweep", H: "Analytic"},
+	},
+	chandelure: {
+		inherit: true,
+		abilities: {0: "Flash Fire", 1: "Flame Body", H: "Shadow Tag"},
+	},
+	beartic: {
+		inherit: true,
+		types: ["Ice", "Water"],
+		baseStats: {hp: 95, atk: 130, def: 90, spa: 70, spd: 90, spe: 80},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {

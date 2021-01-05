@@ -1025,4 +1025,27 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	mindsweep: {
+		name: "Mind Sweep",
+		desc: "The user clears the terrain of hazards, weather, terrain, Tailwind, Trick Room, Magic Room, Wonder Room, Gravity, Screens, Aurora Veil, and Safeguard on entry.",
+		shortDesc: "Clears the terrain of hazards, weather, terrain, tailwind and other conditions on entry.",
+		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Mind Sweep');
+			this.field.clearWeather();
+			this.field.clearTerrain();
+			this.field.removePseudoWeather('tailwind');
+			this.field.removePseudoWeather('trickroom');
+			this.field.removePseudoWeather('magicroom');
+			this.field.removePseudoWeather('gravity');
+			this.field.removePseudoWeather('wonderroom');
+			const removeTarget = [
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge',
+			];
+
+			for (const target of removeTarget) {
+				pokemon.side.removeSideCondition(target);
+				pokemon.side.foe.removeSideCondition(target);
+			}
+		},
+	},
 };

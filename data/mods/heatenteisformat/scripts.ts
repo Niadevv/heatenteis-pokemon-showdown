@@ -767,5 +767,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'klinklang').learnset.recharge = ['5L1'];
 		this.modData('Learnsets', 'klinklang').learnset.repair = ['5L1'];
 		this.modData('Learnsets', 'eelektross').learnset.recharge = ['5L1'];
+		this.modData('Learnsets', 'beheeyem').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'beheeyem').learnset.mysticalfire = ['5L1'];
+		this.modData('Learnsets', 'beartic').learnset.flipturn = ['5L1'];
+		this.modData('Learnsets', 'beartic').learnset.waterfall = ['5L1'];
 	},
 };
