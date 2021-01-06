@@ -1529,6 +1529,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Prankster", 1: "Defiant", H: "Drizzle"},
 	},
+	meloettapirouette: {
+		inherit: true,
+		requiredMove: undefined,
+		battleOnly: undefined,
+	},
 	genesectburn: {
 		inherit: true,
 		types: ["Steel", "Fire"],

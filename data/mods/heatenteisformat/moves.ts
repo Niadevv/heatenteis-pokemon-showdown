@@ -625,7 +625,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					return this.chainModify(0.5);
 				}
 				if (move.type === 'Fairy' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
-					// magic bullshit numbers idk, electric terrain uses it so I'm using it
+					// magic bullshit numbers idk, electric terrain uses it so I'm using it. equals 5325 / 4096 = 1.300048828125
+					// guessing this is what the real games use?
 					return this.chainModify([0x14CD, 0x1000]);
 				}
 			},
