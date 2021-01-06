@@ -193,7 +193,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 
 		},
 	},
-	judgement: {
+	judgment: {
 		inherit: true,
 		basePower: 120,
 		onModifyMove(move, pokemon) {
