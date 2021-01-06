@@ -1545,6 +1545,151 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		types: ["Steel", "Electric"],
 	},
+	// -------- END UNOVA BUFFS --------
+	chesnaught: {
+		inherit: true,
+		baseStats: {hp: 88, atk: 107, def: 144, spa: 64, spd: 105, spe: 61},
+	},
+	delphox: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 49, def: 72, spa: 129, spd: 115, spe: 114},
+		abilities: {0: "Blaze", H: "Witchcraft"},
+	},
+	diggersby: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 56, def: 77, spa: 50, spd: 77, spe: 90},
+	},
+	talonflame: {
+		inherit: true,
+		baseStats: {hp: 78, atk: 95, def: 71, spa: 74, spd: 69, spe: 126},
+	},
+	vivillon: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 52, def: 70, spa: 125, spd: 70, spe: 109},
+	},
+	pyroar: {
+		inherit: true,
+		baseStats: {hp: 96, atk: 68, def: 72, spa: 111, spd: 66, spe: 109},
+		abilities: {0: "Rivalry", 1: "Unnerve", H: "Flash Point"},
+	},
+	florges: {
+		inherit: true,
+		baseStats: {hp: 78, atk: 65, def: 78, spa: 112, spd: 154, spe: 75},
+		abilities: {0: "Flower Veil", 1: "Symbiosis", H: "Natural Cure"},
+	},
+	gogoat: {
+		inherit: true,
+		types: ["Grass", "Rock"],
+		baseStats: {hp: 123, atk: 110, def: 70, spa: 97, spd: 90, spe: 78},
+		abilities: {0: "Sap Sipper", 1: "Grass Pelt", H: "Sand Rush"},
+	},
+	pangoro: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 124, def: 78, spa: 69, spd: 71, spe: 65},
+	},
+	furfrou: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 100, def: 100, spa: 65, spd: 90, spe: 102},
+	},
+	meowsticf: {
+		inherit: true,
+		abilities: {0: "Keen Eye", 1: "Infiltrator", H: "Sheer Force"},
+	},
+	slurpuff: {
+		inherit: true,
+		baseStats: {hp: 82, atk: 100, def: 86, spa: 85, spd: 75, spe: 72},
+	},
+	aromatisse: {
+		inherit: true,
+		baseStats: {hp: 101, atk: 72, def: 82, spa: 109, spd: 89, spe: 29},
+		abilities: {0: "Healer", 1: "Aroma Veil", H: "Misty Surge"},
+	},
+	barbaracle: {
+		inherit: true,
+		// haha enbic s*x number
+		baseStats: {hp: 72, atk: 105, def: 115, spa: 54, spd: 86, spe: 69},
+	},
+	dragalge: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 75, def: 90, spa: 120, spd: 123, spe: 54},
+	},
+	clawitzer: {
+		inherit: true,
+		baseStats: {hp: 71, atk: 73, def: 88, spa: 150, spd: 89, spe: 59},
+	},
+	heliolisk: {
+		inherit: true,
+		baseStats: {hp: 62, atk: 55, def: 52, spa: 139, spd: 94, spe: 109},
+	},
+	tyrantrum: {
+		inherit: true,
+		baseStats: {hp: 82, atk: 131, def: 119, spa: 69, spd: 59, spe: 90},
+	},
+	aurorus: {
+		inherit: true,
+		baseStats: {hp: 123, atk: 77, def: 102, spa: 119, spd: 102, spe: 58},
+	},
+	sylveon: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 65, def: 75, spa: 110, spd: 130, spe: 60},
+	},
+	dedenne: {
+		inherit: true,
+		baseStats: {hp: 89, atk: 58, def: 88, spa: 101, spd: 98, spe: 101},
+	},
+	carbink: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 50, def: 150, spa: 50, spd: 150, spe: 50},
+		abilities: {0: "Clear Body", 1: "Sturdy", H: "Solid Rock"},
+	},
+	klefki: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 80, def: 96, spa: 80, spd: 93, spe: 75},
+	},
+	trevenant: {
+		inherit: true,
+		abilities: {0: "Natural Cure", 1: "Shadow Tag", H: "Harvest"},
+	},
+	gourgeist: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 100, def: 122, spa: 58, spd: 85, spe: 87},
+		abilities: {0: "Flash Fire", 1: "Frisk", H: "Insomnia"},
+	},
+	gourgeistsmall: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 95, def: 122, spa: 58, spd: 85, spe: 102},
+		abilities: {0: "Flash Fire", 1: "Frisk", H: "Insomnia"},
+	},
+	gourgeistlarge: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 105, def: 122, spa: 58, spd: 85, spe: 72},
+		abilities: {0: "Flash Fire", 1: "Frisk", H: "Insomnia"},
+	},
+	gourgeistsuper: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 110, def: 122, spa: 58, spd: 85, spe: 57},
+		abilities: {0: "Flash Fire", 1: "Frisk", H: "Insomnia"},
+	},
+	avalugg: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 117, def: 184, spa: 44, spd: 66, spe: 28},
+	},
+	noivern: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 70, def: 80, spa: 117, spd: 80, spe: 123},
+		abilities: {0: "Frisk", 1: "Infiltrator", H: "Echolocation"},
+	},
+	hoopa: {
+		inherit: true,
+		abilities: {0: "Prankster"},
+	},
+	hoopaunbound: {
+		inherit: true,
+		abilities: {0: "Prankster"},
+	},
+	/* : {
+		inherit: true,
+	},*/
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {

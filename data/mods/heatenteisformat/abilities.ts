@@ -1172,4 +1172,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (target && ['psn', 'tox'].includes(target.status)) return 5;
 		},
 	},
+	flashpoint: {
+		name: "Flash Point",
+		desc: "Solar Beam and Solar Blade do not take a turn to charge.",
+		shortDesc: "No charge for Solar Beam and Solar Blade.",
+		// Implemented in Solar Beam and Solar Blade overrides
+	},
 };

@@ -496,7 +496,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	// woot wild charge is good now
 	wildcharge: {
 		inherit: true,
-		recoil: [0, 1],
+		recoil: undefined,
 	},
 	triplekick: {
 		inherit: true,
@@ -505,6 +505,44 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	lightthatburnsthesky: {
 		inherit: true,
 		basePower: 250,
+	},
+	solarbeam: {
+		inherit: true,
+		onTryMove(attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			this.add('-prepare', attacker, move.name);
+			if (['sunnyday', 'desolateland'].includes(attacker.effectiveWeather()) || attacker.ability === 'flashpoint') {
+				this.attrLastMove('[still]');
+				this.addMove('-anim', attacker, move.name, defender);
+				return;
+			}
+			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
+	},
+	solarblade: {
+		inherit: true,
+		onTryMove(attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			this.add('-prepare', attacker, move.name);
+			if (['sunnyday', 'desolateland'].includes(attacker.effectiveWeather()) || attacker.ability === 'flashpoint') {
+				this.attrLastMove('[still]');
+				this.addMove('-anim', attacker, move.name, defender);
+				return;
+			}
+			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
 	},
 	// NEW MOVES
 	curseddance: {
@@ -680,6 +718,38 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Ground",
 		contestType: "Smart",
+	},
+	keychain: {
+		num: 3009,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Key Chain",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'gmaxsteelsurge',
+		secondary: null,
+		target: "foeSide",
+		type: "Steel",
+		zMove: {boost: {def: 1}},
+		contestType: "Cool",
+	},
+	caltrops: {
+		num: 3010,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Caltrops",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'gmaxsteelsurge',
+		secondary: null,
+		target: "foeSide",
+		type: "Steel",
+		zMove: {boost: {def: 1}},
+		contestType: "Cool",
 	},
 	// New Sig Z Moves
 	endlesssilentforest: {
