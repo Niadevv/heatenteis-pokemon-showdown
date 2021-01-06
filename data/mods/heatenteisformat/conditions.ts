@@ -130,4 +130,20 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-weather', 'none');
 		},
 	},
+	rosepetals: {
+		name: "Rose Petals",
+		duration: 0,
+		onStart(target, source, effect) {
+			this.add('-start', target, 'Rose Petals');
+		},
+		onResidual(target, source, effect) {
+			if (target.ability !== 'magicguard') {
+				this.damage(target.maxhp / 8, target);
+			}
+		},
+		onBeforeSwitchOut(target) {
+			target.removeVolatile('rosepetals');
+			this.add('-end', target, 'Rose Petals');
+		},
+	},
 };

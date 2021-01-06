@@ -1,7 +1,7 @@
 export const Moves: {[k: string]: ModdedMoveData} = {
 	iceburn: {
 		inherit: true,
-		flags: {protect: 1, mirror: 1},
+		flags: {mirror: 1},
 		accuracy: 100,
 		onTryMove(attacker, defender, move) {
 			// No charging
@@ -23,7 +23,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	freezeshock: {
 		inherit: true,
-		flags: {protect: 1, mirror: 1},
+		flags: {mirror: 1},
 		accuracy: 100,
 		onTryMove(attacker, defender, move) {
 			// No charging

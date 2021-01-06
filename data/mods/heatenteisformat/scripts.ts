@@ -52,6 +52,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'arbok').learnset.taunt = ['5L1'];
 		this.modData('Learnsets', 'raichu').learnset.highjumpkick = ['5L1'];
 		this.modData('Learnsets', 'raichu').learnset.bulkup = ['5L1'];
+		this.modData('Learnsets', 'raichu').learnset.aquatail = ['5L1'];
 		this.modData('Learnsets', 'vileplume').learnset.leafstorm = ['5L1'];
 		this.modData('Learnsets', 'vileplume').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'vileplume').learnset.clearsmog = ['5L1'];

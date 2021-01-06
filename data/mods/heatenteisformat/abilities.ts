@@ -1096,6 +1096,80 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				move.heal = [3, 4];
 			}
 		},
-		// heal and defend order are implemented in their overriden variants
+	},
+	stinger: {
+		name: "Stinger",
+		desc: "The user's attacks attach Rose Petals to the opponent, which do 1/8th the target's max HP per turn.",
+		shortDesc: "Attacks apply Rose Petals which do 1/8th max HP at end of every turn.",
+		onAfterMoveSecondary(target, source, move) {
+			if (move.category !== 'Status' && !target.getVolatile('rosepetals')) {
+				this.add('-activate', source, 'ability: Stinger');
+				target.addVolatile('rosepetals');
+			}
+		},
+	},
+	lifeguard: {
+		name: "Lifeguard",
+		desc: "The user's defense and special defense are doubled.",
+		shortDesc: "User's def and spdef doubled.",
+		onModifyDefPriority: 5,
+		onModifyDef(def, target, source, move) {
+			return this.chainModify(2);
+		},
+		onModifySpDPriority: 5,
+		onModifySpD(def, target, source, move) {
+			return this.chainModify(2);
+		},
+	},
+	witchcraft: {
+		name: "Witchcraft",
+		desc: "Below 1/3 health, once per battle, the user will heal between 33% and 100% of their health.",
+		shortDesc: "Heals between 33% and 100% below 1/3 HP once per battle.",
+		onUpdate(pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 3) {
+				this.add('-activate', pokemon, 'ability: Witchcraft');
+				const heal = this.random(67);
+				this.heal(((pokemon.maxhp / 100) * (heal + 33)));
+			}
+		},
+	},
+	glockenspiel: {
+		name: "Glockenspiel",
+		desc: "Upon switchin, the user heals its teammates of all status.",
+		shortDesc: "Team healed of status on switchin.",
+		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Glockenspiel');
+			const side = pokemon.side;
+			for (const ally of side.pokemon) {
+				if (ally !== pokemon && ally.hasAbility('soundproof')) continue;
+				ally.cureStatus();
+			}
+		},
+	},
+	malicioussoul: {
+		name: "Malicious Soul",
+		desc: "User's move power doubled on resisted hits.",
+		shortDesc: "User move power doubled on resisted hits.",
+		onModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod < 0) {
+				this.debug('Malicious Soul boost');
+				return this.chainModify(2);
+			}
+		},
+	},
+	remorseless: {
+		name: "Remorseless",
+		desc: "Upon fainting a Pokemon, the user sets a layer of toxic spikes. If the target is poisoned, this Pokemon's attacks will always crit.",
+		shortDesc: "Sets toxic spikes on fainting target, guaranteed crit against poisoned Pokemon.",
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				for (let i = 0; i < length; i++) {
+					target.side.addSideCondition('toxicspikes');
+				}
+			}
+		},
+		onModifyCritRatio(critRatio, source, target) {
+			if (target && ['psn', 'tox'].includes(target.status)) return 5;
+		},
 	},
 };

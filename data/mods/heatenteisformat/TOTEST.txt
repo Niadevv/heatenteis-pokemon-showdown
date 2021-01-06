@@ -46,6 +46,10 @@ abilities to test:
 	withered
 	upbeat
 	migration
+	last order
+	stinger
+	lifeguard
+	witchcraft
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?)
