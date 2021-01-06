@@ -864,5 +864,6 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'avalugg').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'diancie').learnset.recover = ['5L1'];
 		this.modData('Learnsets', 'volcanion').learnset.lifedew = ['5L1'];
+		// -------- END KALOS BUFFS --------
 	},
 };

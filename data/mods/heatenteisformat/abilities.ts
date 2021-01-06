@@ -207,6 +207,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				pokemon.formeChange(forme, this.effect, false, '[msg]');
 			}
 		},
+		onBasePower(basePower, source, target, move) {
+			if ((move.type === 'Fire' && source.effectiveWeather() === 'desolateland') ||
+			  (move.type === 'Water' && source.effectiveWeather() === 'primordialsea') ||
+			  (move.type === 'Flying' && source.effectiveWeather() === 'deltastream')) {
+				return this.chainModify(1.8);
+			}
+		},
 	},
 	// More Pokemon can use Disguise now so get rid of the form exclusive stuff
 	disguise: {
@@ -247,6 +254,74 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
+		},
+	},
+	// Shield Dust is implemented in the overriden hazard moves
+	wonderguard: {
+		inherit: true,
+		onStart(pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				if (!target || target.fainted) continue;
+				for (const moveSlot of target.moveSlots) {
+					const move = this.dex.getMove(moveSlot.move);
+					if (move.category === 'Status') continue;
+					const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
+					if (
+						this.dex.getImmunity(moveType, pokemon) && this.dex.getEffectiveness(moveType, pokemon) > 0 ||
+						move.ohko
+					) {
+						this.add('-ability', pokemon, 'Wonder Guard');
+						return;
+					}
+				}
+			}
+		},
+	},
+	rivalry: {
+		inherit: true,
+		onBasePower(basePower, attacker, defender, move) {
+			if (attacker.gender && defender.gender) {
+				if (attacker.gender === defender.gender) {
+					this.debug('Rivalry boost');
+					return this.chainModify(1.25);
+				}
+			}
+		},
+	},
+	steamengine: {
+		inherit: true,
+		// merge logic with onTryHit, remove onDamagingHit behaviour
+		onDamagingHit(damage, target, source, move) {
+		},
+		onTryHit(target, source, move) {
+			if (target !== source && ['Water', 'Fire'].includes(move.type)) {
+				this.add('-immune', target, '[from] ability: Water Compaction');
+				this.boost({spe: 6});
+				return null;
+			}
+		},
+	},
+	symbiosis: {
+		inherit: true,
+		onResidual(pokemon, source, effect) {
+			const item = this.dex.getItem(pokemon.lastItem);
+			// mfw no item.consumable value
+			if (pokemon.hp && !pokemon.item && (item.isBerry || item.isGem || ['focussash', 'mentalherb', 'whiteherb',
+			  'absorbbulb', 'adrenalineorb', 'berryjuice', 'blunderpolicy', 'cellbattery', 'ejectbutton', 'ejectpack',
+			  'electricseed', 'grassyseed', 'mistyseed', 'psychicseed', 'luminousmoss', 'redcard', 'roomservice',
+			  'snowball', 'throatspray', 'weaknesspolicy'].includes(item.id))) {
+				pokemon.setItem(pokemon.lastItem);
+				pokemon.lastItem = '';
+				this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Symbiosis');
+			}
+		},
+	},
+	receiver: {
+		inherit: true,
+		onSourceAfterFaint(fainted, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				source.ability = target.ability;
+			}
 		},
 	},
 	// -------- New abilities --------
@@ -1159,8 +1234,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	remorseless: {
 		name: "Remorseless",
-		desc: "Upon fainting a Pokemon, the user sets a layer of toxic spikes. If the target is poisoned, this Pokemon's attacks will always crit.",
-		shortDesc: "Sets toxic spikes on fainting target, guaranteed crit against poisoned Pokemon.",
+		desc: "Upon fainting a Pokemon, the user sets a layer of toxic spikes. If the target is poisoned, this Pokemon's attacks will gain a heightened crit ratio.",
+		shortDesc: "Sets toxic spikes on fainting target, +2 crit chance against poisoned foe.",
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				for (let i = 0; i < length; i++) {
@@ -1169,7 +1244,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		onModifyCritRatio(critRatio, source, target) {
-			if (target && ['psn', 'tox'].includes(target.status)) return 5;
+			if (target && ['psn', 'tox'].includes(target.status)) return critRatio + 2;
 		},
 	},
 	flashpoint: {
@@ -1177,5 +1252,52 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "Solar Beam and Solar Blade do not take a turn to charge.",
 		shortDesc: "No charge for Solar Beam and Solar Blade.",
 		// Implemented in Solar Beam and Solar Blade overrides
+	},
+	chemicalreaction: {
+		name: "Chemical Reaction",
+		desc: "The user's attacks have a 30% chance to badly poison the target. They also gain a Poison resistance.",
+		shortDesc: "30% chance to badly poison target, gains Poison resistance.",
+		onModifyMove(move) {
+			if (!move || !move.flags['contact'] || move.target === 'self') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: 'psn',
+				ability: this.dex.getAbility('chemicalreaction'),
+			});
+		},
+		onSourceModifyAtkPriority: 6,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Poison') {
+				this.debug('Chemical Reaction weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onSourceModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Poison') {
+				this.debug('Chemical Reaction weaken');
+				return this.chainModify(0.5);
+			}
+		},
+	},
+	armyofone: {
+		name: "Army of One",
+		desc: "The user starts with +2 in Defense, until their HP drops below half, at which point they lose the +2 in Defense and gain +2 in Attack instead.",
+		shortDesc: "User starts with +2 Defense until HP goes below half, then loses Defense boost and gain +2 Attack instead.",
+		onStart(pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 2) {
+				this.boost({atk: 2}, pokemon);
+			} else {
+				this.boost({def: 2}, pokemon);
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 2) {
+				this.boost({atk: 2, def: -2}, pokemon);
+			}
+		},
 	},
 };
