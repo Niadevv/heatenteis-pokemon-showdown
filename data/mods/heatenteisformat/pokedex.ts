@@ -1697,6 +1697,45 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Overgrow", H: "Fatal Nock"},
 	},
+	primarina: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 54, def: 94, spa: 126, spd: 116, spe: 60},
+	},
+	toucannon: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 120, def: 75, spa: 95, spd: 75, spe: 85},
+	},
+	gumshoos: {
+		inherit: true,
+		baseStats: {hp: 88, atk: 115, def: 65, spa: 60, spd: 65, spe: 75},
+	},
+	vikavolt: {
+		inherit: true,
+		baseStats: {hp: 77, atk: 70, def: 90, spa: 145, spd: 75, spe: 53},
+		abilities: {0: "Levitate", 1: "Motor Drive"},
+	},
+	crabominable: {
+		inherit: true,
+		baseStats: {hp: 97, atk: 152, def: 77, spa: 62, spd: 67, spe: 52},
+		abilities: {0: "Slush Rush", 1: "Iron Fist", H: "Anger Point"},
+	},
+	oricorio: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 75, def: 75, spa: 108, spd: 75, spe: 103},
+		abilities: {0: "Dancer", H: "Adaptability"},
+	},
+	// : {
+	// 	inherit: true,
+	// },
+	// : {
+	// 	inherit: true,
+	// },
+	// : {
+	// 	inherit: true,
+	// },
+	// : {
+	// 	inherit: true,
+	// },
 	/* : {
 		inherit: true,
 	},*/
@@ -1752,6 +1791,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	arbokmega: {
 		num: 24,
 		name: "Arbok-Mega",
+		baseSpecies: "Arbok",
 		forme: "Mega",
 		types: ["Poison", "Ghost"],
 		baseStats: {hp: 60, atk: 145, def: 69, spa: 65, spd: 79, spe: 130},
@@ -1770,6 +1810,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	raichumega: {
 		num: 26,
 		name: "Raichu-Mega",
+		baseSpecies: "Raichu",
 		forme: "Mega",
 		types: ["Electric", "Fighting"],
 		baseStats: {hp: 60, atk: 165, def: 65, spa: 70, spd: 80, spe: 145},
@@ -1788,6 +1829,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	vileplumemega: {
 		num: 45,
 		name: "Vileplume",
+		baseSpecies: "Vileplume",
 		forme: "Mega",
 		types: ["Grass", "Poison"],
 		baseStats: {hp: 75, atk: 80, def: 145, spa: 110, spd: 150, spe: 30},
@@ -1806,6 +1848,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	arcaninemega: {
 		num: 59,
 		name: "Arcanine-Mega",
+		baseSpecies: "Arcanine",
 		forme: "Mega",
 		types: ["Fire", "Fairy"],
 		genderRatio: {M: 0.75, F: 0.25},
@@ -1825,6 +1868,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	weezingmega: {
 		num: 110,
 		name: "Weezing-Mega",
+		baseSpecies: "Weezing",
 		forme: "Mega",
 		types: ["Poison"],
 		baseStats: {hp: 65, atk: 90, def: 170, spa: 85, spd: 120, spe: 60},
@@ -1843,6 +1887,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	starmiemega: {
 		num: 121,
 		name: "Starmie-Mega",
+		baseSpecies: "Starmie",
 		forme: "Mega",
 		types: ["Water", "Psychic"],
 		gender: "N",
@@ -1862,6 +1907,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	laprasmega: {
 		num: 131,
 		name: "Lapras-Mega",
+		baseSpecies: "Lapras",
 		forme: "Mega",
 		types: ["Water", "Fairy"],
 		baseStats: {hp: 130, atk: 85, def: 130, spa: 105, spd: 135, spe: 50},
@@ -1880,6 +1926,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	dragonitemega: {
 		num: 149,
 		name: "Dragonite-Mega",
+		baseSpecies: "Dragonite",
 		forme: "Mega",
 		types: ["Dragon", "Flying"],
 		baseStats: {hp: 91, atk: 174, def: 110, spa: 115, spd: 110, spe: 100},
@@ -1898,6 +1945,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	meganiummega: {
 		num: 154,
 		name: "Meganium-Mega",
+		baseSpecies: "Meganium",
 		forme: "Mega",
 		types: ["Grass", "Fairy"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -1917,6 +1965,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	typhlosionmega: {
 		num: 157,
 		name: "Typhlosion-Mega",
+		baseSpecies: "Typhlosion",
 		forme: "Mega",
 		types: ["Fire", "Ground"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -1936,6 +1985,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	feraligatrmega: {
 		num: 160,
 		name: "Feraligatr-Mega",
+		baseSpecies: "Feraligatr",
 		forme: "Mega",
 		types: ["Water", "Dark"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -1955,6 +2005,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	sudowoodomega: {
 		num: 185,
 		name: "Sudowoodo-Mega",
+		baseSpecies: "Sudowoodo",
 		forme: "Mega",
 		types: ["Rock"],
 		baseStats: {hp: 70, atk: 100, def: 115, spa: 30, spd: 65, spe: 130},
@@ -1974,6 +2025,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	girafarigmega: {
 		num: 203,
 		name: "Girafarig-Mega",
+		baseSpecies: "Girafarig",
 		forme: "Mega",
 		types: ["Steel", "Psychic"],
 		baseStats: {hp: 70, atk: 170, def: 75, spa: 70, spd: 65, spe: 105},
@@ -1992,6 +2044,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	granbullmega: {
 		num: 210,
 		name: "Granbull-Mega",
+		baseSpecies: "Granbull",
 		forme: "Mega",
 		types: ["Fairy", "Dark"],
 		genderRatio: {M: 0.25, F: 0.75},
@@ -2012,6 +2065,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	octillerymega: {
 		num: 224,
 		name: "Octillery-Mega",
+		baseSpecies: "Octillery",
 		forme: "Mega",
 		types: ["Water", "Steel"],
 		baseStats: {hp: 75, atk: 145, def: 105, spa: 145, spd: 85, spe: 25},
@@ -2030,6 +2084,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	delibirdmega: {
 		num: 225,
 		name: "Delibird-Mega",
+		baseSpecies: "Delibird",
 		forme: "Mega",
 		types: ["Ice", "Dark"],
 		baseStats: {hp: 45, atk: 125, def: 60, spa: 25, spd: 60, spe: 115},
@@ -2048,6 +2103,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	noctowlmega: {
 		num: 164,
 		name: "Noctowl-Mega",
+		baseSpecies: "Noctowl",
 		forme: "Mega",
 		types: ["Normal", "Flying"],
 		baseStats: {hp: 100, atk: 60, def: 50, spa: 116, spd: 130, spe: 96},
@@ -2066,6 +2122,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	ledianmega: {
 		num: 166,
 		name: "Ledian-Mega",
+		baseSpecies: "Ledian",
 		forme: "Mega",
 		types: ["Bug", "Fairy"],
 		baseStats: {hp: 55, atk: 50, def: 50, spa: 55, spd: 150, spe: 130},
@@ -2084,6 +2141,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	ariadosmega: {
 		num: 168,
 		name: "Ariados-Mega",
+		baseSpecies: "Ariados",
 		forme: "Mega",
 		types: ["Bug", "Poison"],
 		baseStats: {hp: 70, atk: 145, def: 80, spa: 60, spd: 70, spe: 75},
@@ -2102,6 +2160,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	bellossommega: {
 		num: 182,
 		name: "Bellossom-Mega",
+		baseSpecies: "Bellossom",
 		forme: "Mega",
 		types: ["Grass", "Fairy"],
 		baseStats: {hp: 75, atk: 135, def: 95, spa: 70, spd: 100, spe: 115},
@@ -2121,6 +2180,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	sunfloramega: {
 		num: 192,
 		name: "Sunflora-Mega",
+		baseSpecies: "Sunflora",
 		forme: "Mega",
 		types: ["Grass", "Fire"],
 		baseStats: {hp: 75, atk: 75, def: 75, spa: 145, spd: 95, spe: 60},
@@ -2138,6 +2198,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	slowkingmega: {
 		num: 199,
 		name: "Slowking-Mega",
+		baseSpecies: "Slowking",
 		forme: "Mega",
 		types: ["Water", "Psychic"],
 		baseStats: {hp: 95, atk: 75, def: 80, spa: 150, spd: 160, spe: 30},
@@ -2156,6 +2217,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	magcargomega: {
 		num: 219,
 		name: "Magcargo-Mega",
+		baseSpecies: "Magcargo",
 		forme: "Mega",
 		types: ["Fire", "Rock"],
 		baseStats: {hp: 60, atk: 30, def: 190, spa: 70, spd: 140, spe: 40},
@@ -2171,6 +2233,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	magcargomegabroken: {
 		num: 219,
 		name: "Magcargo-Mega-Broken",
+		baseSpecies: "Magcargo",
 		forme: "Mega",
 		types: ["Fire"],
 		// no mareanie we're not doing 190 spa post smash magcargo that's unepic because that would be ubers and outclassed by lunala in ubers
@@ -2193,6 +2256,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	kingdramega: {
 		num: 230,
 		name: "Kingdra-Mega",
+		baseSpecies: "Kingdra",
 		forme: "Mega",
 		types: ["Water", "Dragon"],
 		baseStats: {hp: 75, atk: 105, def: 105, spa: 135, spd: 115, spe: 105},
@@ -2211,6 +2275,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	stantlermega: {
 		num: 234,
 		name: "Stantler-Mega",
+		baseSpecies: "Stantler",
 		forme: "Mega",
 		types: ["Normal", "Ice"],
 		baseStats: {hp: 73, atk: 135, def: 72, spa: 85, spd: 75, spe: 125},
@@ -2228,7 +2293,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	miltankmega: {
 		num: 241,
-		name: "Miltank",
+		name: "Miltank-Mega",
+		baseSpecies: "Miltank",
 		forme: "Mega",
 		types: ["Normal", "Ground"],
 		gender: "F",
@@ -2247,7 +2313,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	flygonmega: {
 		num: 330,
-		name: "Flygon",
+		name: "Flygon-Mega",
+		baseSpecies: "Flygon",
 		forme: "Mega",
 		types: ["Bug", "Dragon"],
 		baseStats: {hp: 80, atk: 135, def: 80, spa: 110, spd: 80, spe: 135},
@@ -2265,7 +2332,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	miloticmega: {
 		num: 350,
-		name: "Milotic",
+		name: "Milotic-Mega",
+		baseSpecies: "Milotic",
 		forme: "Mega",
 		types: ["Water", "Dragon"],
 		baseStats: {hp: 95, atk: 60, def: 99, spa: 135, spd: 150, spe: 101},
@@ -2284,7 +2352,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	tropiusmega: {
 		num: 357,
-		name: "Tropius",
+		name: "Tropius-Mega",
+		baseSpecies: "Tropius",
 		forme: "Mega",
 		types: ["Grass", "Dragon"],
 		baseStats: {hp: 99, atk: 58, def: 98, spa: 142, spd: 102, spe: 111},
@@ -2302,7 +2371,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	chimechomega: {
 		num: 358,
-		name: "Chimecho",
+		name: "Chimecho-Mega",
+		baseSpecies: "Chimecho",
 		forme: "Mega",
 		types: ["Psychic", "Steel"],
 		baseStats: {hp: 75, atk: 25, def: 115, spa: 160, spd: 90, spe: 90},
@@ -2322,6 +2392,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	torterramega: {
 		num: 389,
 		name: "Torterra-Mega",
+		baseSpecies: "Torterra",
 		forme: "Mega",
 		types: ["Grass", "Ground"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -2341,6 +2412,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	infernapemega: {
 		num: 392,
 		name: "Infernape-Mega",
+		baseSpecies: "Infernape",
 		forme: "Mega",
 		types: ["Fire", "Fighting"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -2360,6 +2432,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	empoleonmega: {
 		num: 395,
 		name: "Empoleon-Mega",
+		baseSpecies: "Empoleon",
+		forme: "Mega",
 		types: ["Water", "Steel"],
 		genderRatio: {M: 0.875, F: 0.125},
 		baseStats: {hp: 84, atk: 156, def: 115, spa: 80, spd: 101, spe: 94},
@@ -2379,6 +2453,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	rampardosmega: {
 		num: 409,
 		name: "Rampardos-Mega",
+		baseSpecies: "Rampardos",
 		forme: "Mega",
 		types: ["Rock"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -2399,6 +2474,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	bastiodonmega: {
 		num: 411,
 		name: "Bastiodon-Mega",
+		baseSpecies: "Bastiodon",
 		forme: "Mega",
 		types: ["Rock", "Steel"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -2418,6 +2494,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	vespiquenmega: {
 		num: 416,
 		name: "Vespiquen-Mega",
+		baseSpecies: "Vespiquen",
 		forme: "Mega",
 		types: ["Bug", "Flying"],
 		gender: "F",
@@ -2437,6 +2514,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	luxraymega: {
 		num: 405,
 		name: "Luxray-Mega",
+		baseSpecies: "Luxray",
 		forme: "Mega",
 		types: ["Electric", "Dark"],
 		baseStats: {hp: 80, atk: 155, def: 80, spa: 105, spd: 80, spe: 123},
@@ -2455,6 +2533,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	roserademega: {
 		num: 407,
 		name: "Roserade-Mega",
+		baseSpecies: "Roserade",
 		forme: "Mega",
 		types: ["Grass", "Poison"],
 		baseStats: {hp: 60, atk: 50, def: 85, spa: 165, spd: 135, spe: 120},
@@ -2475,6 +2554,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	floatzelmega: {
 		num: 419,
 		name: "Floatzel-Mega",
+		baseSpecies: "Floatzel",
 		forme: "Mega",
 		types: ["Water", "Fighting"],
 		baseStats: {hp: 85, atk: 145, def: 55, spa: 125, spd: 50, spe: 135},
@@ -2495,6 +2575,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	mismagiusmega: {
 		num: 429,
 		name: "Mismagius-Mega",
+		baseSpecies: "Mismagius",
 		forme: "Mega",
 		types: ["Ghost", "Fairy"],
 		baseStats: {hp: 60, atk: 40, def: 80, spa: 165, spd: 130, spe: 120},
@@ -2513,6 +2594,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	puruglymega: {
 		num: 432,
 		name: "Purugly-Mega",
+		baseSpecies: "Purugly",
 		forme: "Mega",
 		types: ["Normal", "Dark"],
 		genderRatio: {M: 0.25, F: 0.75},
@@ -2534,6 +2616,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	bronzongmega: {
 		num: 437,
 		name: "Bronzong-Mega",
+		baseSpecies: "Bronzong",
 		forme: "Mega",
 		types: ["Steel", "Psychic"],
 		gender: "N",
@@ -2553,6 +2636,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	spiritombmega: {
 		num: 442,
 		name: "Spiritomb-Mega",
+		baseSpecies: "Spiritomb",
 		forme: "Mega",
 		types: ["Ghost", "Dark"],
 		baseStats: {hp: 50, atk: 132, def: 143, spa: 92, spd: 143, spe: 25},
@@ -2572,6 +2656,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	drapionmega: {
 		num: 452,
 		name: "Drapion-Mega",
+		baseSpecies: "Drapion",
 		forme: "Mega",
 		types: ["Poison", "Ground"],
 		baseStats: {hp: 70, atk: 140, def: 130, spa: 60, spd: 90, spe: 110},
@@ -2590,6 +2675,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	lumineonmega: {
 		num: 457,
 		name: "Lumineon-Mega",
+		baseSpecies: "Lumineon",
 		forme: "Mega",
 		types: ["Water", "Fairy"],
 		baseStats: {hp: 69, atk: 39, def: 121, spa: 115, spd: 125, spe: 91},
@@ -2608,6 +2694,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	weavilemega: {
 		num: 461,
 		name: "Weavile-Mega",
+		baseSpecies: "Weavile",
 		forme: "Mega",
 		types: ["Dark", "Ice"],
 		baseStats: {hp: 70, atk: 170, def: 70, spa: 45, spd: 95, spe: 160},
@@ -2626,6 +2713,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	electiviremega: {
 		num: 466,
 		name: "Electivire-Mega",
+		baseSpecies: "Electivire",
 		forme: "Mega",
 		types: ["Electric", "Fighting"],
 		genderRatio: {M: 0.75, F: 0.25},
@@ -2645,6 +2733,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	magmortarmega: {
 		num: 467,
 		name: "Magmortar-Mega",
+		baseSpecies: "Magmortar",
 		forme: "Mega",
 		types: ["Fire", "Steel"],
 		genderRatio: {M: 0.75, F: 0.25},
@@ -2664,6 +2753,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	froslassmega: {
 		num: 478,
 		name: "Froslass-Mega",
+		baseSpecies: "Froslass",
 		forme: "Mega",
 		types: ["Ice", "Ghost"],
 		gender: "F",

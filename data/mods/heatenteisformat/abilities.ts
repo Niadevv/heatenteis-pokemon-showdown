@@ -451,7 +451,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		// Multitype
 		onTypePriority: 1,
 		onType(types, pokemon) {
-			if (pokemon.transformed || pokemon.ability !== 'multitype' && this.gen >= 8) return types;
+			if (pokemon.transformed || pokemon.ability !== 'multitype') return types;
 			let type: string | undefined = 'Normal';
 			if (pokemon.ability === 'multitype') {
 				type = pokemon.getItem().onPlate;
@@ -490,7 +490,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "Poison caused by the user does double damage to the target, including Toxic and Toxic Spikes.",
 		shortDesc: "Poison caused by the user does double damage.",
 		name: "Neurotoxin",
-		// we redefine toxic and poison to make this work. hacky I know but there's no way to conditionally set status in a way that means it's not blocked by sheer force
+		// we redefine toxic and poison to make this work. hacky I know but there's no way to conditionally set status in a way that means it's not blocked by sheer force FUTUREDEV: tf you mean by it'd be blocked by sheer force bro you can't have two abilities at once
 	},
 	psychooverload: {
 		name: "Psycho Overload",
@@ -627,8 +627,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		rating: 4.5,
-
-		// TODO: Clear starlight boosts before baton passing
 	},
 	stickymadness: {
 		name: "Sticky Madness",

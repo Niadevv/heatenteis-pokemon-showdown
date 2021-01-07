@@ -307,7 +307,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'moltresgalar').learnset.defog = ['5L1'];
 		this.modData('Learnsets', 'dragonite').learnset.dragonenergy = ['5L1'];
 		this.modData('Learnsets', 'mew').learnset.recharge = ['5L1'];
+		//
 		// --------- END KANTO BUFFS ---------
+		//
 		// Starter moves are further up
 		this.modData('Learnsets', 'furret').learnset.bulletseed = ['5L1'];
 		this.modData('Learnsets', 'furret').learnset.claysmack = ['5L1'];
@@ -410,7 +412,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'celebi').learnset.focusblast = ['5L1'];
 		this.modData('Learnsets', 'celebi').learnset.moonblast = ['5L1'];
 		this.modData('Learnsets', 'celebi').learnset.mysticalfire = ['5L1'];
+		//
 		// --------- END JOHTO BUFFS ---------
+		//
 		this.modData('Learnsets', 'sceptile').learnset.dracometeor = ['5L1'];
 		this.modData('Learnsets', 'sceptile').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'sceptile').learnset.nastyplot = ['5L1'];
@@ -548,7 +552,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'latios').learnset.dragonenergy = ['5L1'];
 		this.modData('Learnsets', 'latios').learnset.flamethrower = ['5L1'];
 		this.modData('Learnsets', 'jirachi').learnset.moonlight = ['5L1'];
+		//
 		// -------- END HOENN BUFFS --------
+		//
 		this.modData('Learnsets', 'torterra').learnset.shellsmash = ['5L1'];
 		this.modData('Learnsets', 'infernape').learnset.drainpunch = ['5L1'];
 		this.modData('Learnsets', 'empoleon').learnset.flipturn = ['5L1'];
@@ -681,7 +687,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'phione').learnset.calmmind = ['5L1'];
 		this.modData('Learnsets', 'phione').learnset.lifedew = ['5L1'];
 		this.modData('Learnsets', 'manaphy').learnset.lifedew = ['5L1'];
+		//
 		// --------- END SINNOH BUFFS ---------
+		//
 		this.modData('Learnsets', 'serperior').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'emboar').learnset.closecombat = ['5L1'];
 		this.modData('Learnsets', 'samurott').learnset.flipturn = ['5L1'];
@@ -805,7 +813,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'meloetta').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'genesect').learnset.firstimpression = ['5L1'];
 		this.modData('Learnsets', 'genesect').learnset.repair = ['5L1'];
+		//
 		// -------- END UNOVA BUFFS --------
+		//
 		this.modData('Learnsets', 'chesnaught').learnset.closecombat = ['5L1'];
 		this.modData('Learnsets', 'delphox').learnset.aurasphere = ['5L1'];
 		this.modData('Learnsets', 'delphox').learnset.energyball = ['5L1'];
@@ -864,6 +874,18 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'avalugg').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'diancie').learnset.recover = ['5L1'];
 		this.modData('Learnsets', 'volcanion').learnset.lifedew = ['5L1'];
+		//
 		// -------- END KALOS BUFFS --------
+		//
+		this.modData('Learnsets', 'incineroar').learnset.morningsun = ['5L1'];
+		this.modData('Learnsets', 'incineroar').learnset.pursuit = ['5L1'];
+		this.modData('Learnsets', 'toucannon').learnset.closecombat = ['5L1'];
+		this.modData('Learnsets', 'toucannon').learnset.focusblast = ['5L1'];
+		this.modData('Learnsets', 'gumshoos').learnset.coil = ['5L1'];
+		this.modData('Learnsets', 'gumshoos').learnset.superpower = ['5L1'];
+		this.modData('Learnsets', 'vikavolt').learnset.quiverdance = ['5L1'];
+		this.modData('Learnsets', 'crabominable').learnset.iciclecrash = ['5L1'];
+		this.modData('Learnsets', 'oricorio').learnset.quiverdance = ['5L1'];
+		this.modData('Learnsets', 'ribombee').learnset.sleeppowder = ['5L1'];
 	},
 };
