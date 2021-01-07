@@ -6,7 +6,7 @@ export const Formats: FormatList = [
 		name: "[Gen 8] Heat Enteis OU",
 		desc: "Assorted buffs and new megas",
 		mod: 'heatenteisformat',
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Overflow Stat Mod'],
 		banlist: [
 			'Arceus', 'Arceus-Origin', 'Calyrex-Shadow', 'Dialga', 'Eternatus', 'Eternatus-Eternamax', 'Giratina', 'Giratina-Origin', 'Groudon',
 			'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Mewtwo', 'Necrozma-Dawn-Wings',
@@ -37,7 +37,7 @@ export const Formats: FormatList = [
 		name: "[Gen 8] Heat Enteis Ubers",
 		desc: "Assorted buffs and new megas",
 		mod: 'heatenteisformat',
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Overflow Stat Mod'],
 		banlist: ["Arceus-Origin"],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
@@ -62,7 +62,7 @@ export const Formats: FormatList = [
 		name: "[Gen 8] Heat Enteis AG",
 		desc: "Assorted buffs and new megas in a tier where everything bar Dynamax, non signature Z moves (we removed them from the game altogether) and Endless Battle clause is freed.",
 		mod: 'heatenteisformat',
-		ruleset: ['[Gen 8] National Dex AG', 'Dynamax Clause'],
+		ruleset: ['[Gen 8] National Dex AG', 'Dynamax Clause', 'Overflow Stat Mod'],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
 			if (item.zMove && !['ultranecroziumz', 'aloraichiumz', 'decidiumz', 'eeviumz', 'kommoniumz', 'lunaliumz',

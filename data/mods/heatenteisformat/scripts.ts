@@ -1,8 +1,6 @@
 export const Scripts: ModdedBattleScriptsData = {
 	init() {
 		// Making move combos available
-		this.modData('Learnsets', 'blissey').learnset.teleport = ['5L1'];
-		this.modData('Learnsets', 'blissey').learnset.wish = ['5L1'];
 		this.modData('Learnsets', 'blissey').learnset.softboiled = ['5L1'];
 		this.modData('Learnsets', 'blissey').learnset.psywave = ['5L1'];
 		// Uber buffs
