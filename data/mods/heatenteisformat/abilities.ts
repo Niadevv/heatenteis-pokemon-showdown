@@ -391,8 +391,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 
 		// TODO: disable all items that trigger instead of just berries
 	},
-	genesis: {
-		name: "Genesis",
+	origin: {
+		name: "Origin",
 		desc: "The user possesses Spacial Barrier, Temporal Barrier, Distortion, and Multitype, while Judgement becomes 200 BP and all of its moves gain STAB. Repent mortals.",
 		shortDesc: "User has Spacial Barrier, Temporal Barrier, Distortion, Multitype. Judgement is 200 BP, all moves have STAB bonus.",
 		isPermanent: true,
@@ -1298,6 +1298,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				this.boost({atk: 2, def: -2}, pokemon);
 			}
+		},
+	},
+	fatalnock: {
+		name: "Fatal Nock",
+		desc: "Spirit Shackle and Sinister Shadow Raid become priority moves and gain a 1.4x boost in power.",
+		shortDesc: "Spirit Shackle and Sinister Shadow Raid are priority, gain 1.4x boost in power.",
+		onBasePower(basePower, source, target, move) {
+			if (['spiritshackle', 'sinisterarrowraid'].includes(move.id)) {
+				this.chainModify(1.4);
+			}
+		},
+		onModifyPriority(priority, pokemon, target, move) {
+			if (['spiritshackle', 'sinisterarrowraid'].includes(move?.id)) return priority + 1;
 		},
 	},
 };

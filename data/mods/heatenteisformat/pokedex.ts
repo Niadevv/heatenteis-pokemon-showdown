@@ -100,7 +100,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Normal"],
 		gender: "N",
 		baseStats: {hp: 255, atk: 255, def: 255, spa: 255, spd: 255, spe: 255},
-		abilities: {0: "Genesis"},
+		abilities: {0: "Origin"},
 		heightm: 3.2,
 		weightkg: 320,
 		color: "White",
@@ -1691,6 +1691,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	hoopaunbound: {
 		inherit: true,
 		abilities: {0: "Prankster"},
+	},
+	// -------- END KALOS BUFFS --------
+	decidueye: {
+		inherit: true,
+		abilities: {0: "Overgrow", H: "Fatal Nock"},
 	},
 	/* : {
 		inherit: true,
