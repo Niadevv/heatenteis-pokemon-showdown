@@ -1724,18 +1724,119 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 75, atk: 75, def: 75, spa: 108, spd: 75, spe: 103},
 		abilities: {0: "Dancer", H: "Adaptability"},
 	},
-	// : {
-	// 	inherit: true,
-	// },
-	// : {
-	// 	inherit: true,
-	// },
-	// : {
-	// 	inherit: true,
-	// },
-	// : {
-	// 	inherit: true,
-	// },
+	ribombee: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 55, def: 70, spa: 110, spd: 70, spe: 124},
+	},
+	lycanrocmidnight: {
+		inherit: true,
+		types: ["Rock", "Dark"],
+	},
+	wishiwashi: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 20, def: 20, spa: 25, spd: 25, spe: 40},
+	},
+	wishiwashischool: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 140, def: 130, spa: 140, spd: 135, spe: 30},
+	},
+	mudsdale: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 125, def: 100, spa: 55, spd: 90, spe: 40},
+	},
+	araquanid: {
+		inherit: true,
+		baseStats: {hp: 68, atk: 85, def: 92, spa: 50, spd: 132, spe: 50},
+	},
+	lurantis: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 105, def: 90, spa: 80, spd: 90, spe: 80},
+	},
+	shiinotic: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 45, def: 80, spa: 90, spd: 100, spe: 30},
+	},
+	salazzle: {
+		inherit: true,
+		abilities: {0: "Corrosion", H: "Merciless"},
+	},
+	bewear: {
+		inherit: true,
+		baseStats: {hp: 120, atk: 125, def: 100, spa: 55, spd: 60, spe: 60},
+	},
+	tsareenas: {
+		inherit: true,
+		types: ["Grass", "Fighting"],
+		baseStats: {hp: 72, atk: 120, def: 98, spa: 50, spd: 98, spe: 82},
+		abilities: {0: "Reckless", 1: "Queenly Majesty", H: "Moxie"},
+	},
+	comfey: {
+		inherit: true,
+		baseStats: {hp: 73, atk: 52, def: 90, spa: 82, spd: 110, spe: 100},
+	},
+	oranguru: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 60, def: 90, spa: 115, spd: 110, spe: 60},
+	},
+	passimian: {
+		inherit: true,
+		types: ["Fighting", "Normal"],
+	},
+	golisopod: {
+		inherit: true,
+		abilities: {0: "Emergency Exit", H: "Tough Claws"},
+	},
+	palossand: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 75, def: 110, spa: 100, spd: 80, spe: 35},
+	},
+	minior: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 120, def: 60, spa: 120, spd: 60, spe: 120},
+	},
+	miniormeteor: {
+		inherit: true,
+		baseStats: {hp: 85, atk: 60, def: 120, spa: 60, spd: 120, spe: 60},
+	},
+	komala: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 115, def: 80, spa: 75, spd: 95, spe: 65},
+	},
+	turtonator: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 78, def: 135, spa: 111, spd: 85, spe: 60},
+		abilities: {0: "Shell Armor", H: "Chemical Reaction"},
+	},
+	togedemaru: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 98, def: 63, spa: 40, spd: 73, spe: 103},
+	},
+	// ayy mimikyu finally has an attack stat
+	mimikyu: {
+		inherit: true,
+		baseStats: {hp: 55, atk: 105, def: 80, spa: 50, spd: 105, spe: 96},
+	},
+	bruxish: {
+		inherit: true,
+		baseStats: {hp: 68, atk: 111, def: 70, spa: 70, spd: 70, spe: 92},
+	},
+	drampa: {
+		inherit: true,
+		baseStats: {hp: 78, atk: 60, def: 100, spa: 135, spd: 91, spe: 36},
+	},
+	dhelmise: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 131, def: 100, spa: 86, spd: 90, spe: 40},
+	},
+	guzzlord: {
+		inherit: true,
+		baseStats: {hp: 131, atk: 53, def: 131, spa: 113, spd: 101, spe: 41},
+	},
+	zeraora: {
+		inherit: true,
+		types: ["Electric", "Fighting"],
+		abilities: {0: "Volt Absorb", H: "Iron Fist"},
+	},
 	/* : {
 		inherit: true,
 	},*/

@@ -324,6 +324,28 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	shieldsdown: {
+		inherit: true,
+		onAfterMove(source, target, move) {
+			if (move.id === 'shellsmash' && !this.effectData.shellSmashed) {
+				this.add('-activate', source, 'ability: Shields Down');
+				source.formeChange('Minior', move, false, '[msg]');
+				this.effectData.shellSmashed = true;
+			}
+		},
+		onResidual(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Minior' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.hp > pokemon.maxhp / 2 && !this.effectData.shellSmashed) {
+				if (pokemon.species.forme !== 'Meteor') {
+					pokemon.formeChange('Minior-Meteor');
+				}
+			} else {
+				if (pokemon.species.forme === 'Meteor') {
+					pokemon.formeChange(pokemon.set.species);
+				}
+			}
+		},
+	},
 	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -740,7 +762,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		onAfterMove(source, target, move) {
-			if (move.id === 'Shell Smash' && !this.effectData.shellSmashed) {
+			if (move.id === 'shellsmash' && !this.effectData.shellSmashed) {
 				this.add('-activate', source, 'ability: Shell Break');
 				source.formeChange('Magcargo-Mega-Broken', move, false, '[msg]');
 				this.effectData.shellSmashed = true;
@@ -1253,7 +1275,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	chemicalreaction: {
 		name: "Chemical Reaction",
-		desc: "The user's attacks have a 30% chance to badly poison the target. They also gain a Poison resistance.",
+		desc: "The user's attacks have a 30% chance to badly poison the target. The user also gains a Poison resistance.",
 		shortDesc: "30% chance to badly poison target, gains Poison resistance.",
 		onModifyMove(move) {
 			if (!move || !move.flags['contact'] || move.target === 'self') return;
