@@ -677,23 +677,32 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move.flags['contact']) {
 				if (!source.side.getSideCondition('stickyweb') && !(source.side === target.side)) {
 					source.side.addSideCondition('stickyweb');
-
 					// check if the user's side has webs before boosting
-					if (!target.side.getSideCondition('stickyweb')) {
-						this.boost({atk: 2, spe: 1});
+					if (!target.side.getSideCondition('stickyweb') && !target.volatiles['stickymadness']) {
+						this.boost({atk: 2, spe: 1}, target);
 					}
 				}
 				this.boost({spe: -1}, source);
 			}
 		},
 		onStart(pokemon) {
-			if (pokemon.side.foe.getSideCondition('stickyweb')) {
-				this.boost({atk: 2, spe: 1});
-			}
+			if (!pokemon.volatiles['stickymadness']) {
+				let boost = undefined;
+				if (pokemon.side.foe.getSideCondition('stickyweb')) {
+					boost = {atk: 2, spe: 1};
+				}
+				if (pokemon.side.getSideCondition('stickyweb')) {
+					boost = {atk: 2, spe: 2};
+				}
 
-			if (pokemon.side.getSideCondition('stickyweb') && !pokemon.side.foe.getSideCondition('stickyweb')) {
-				this.boost({atk: 2, spe: 2});
+				if (boost) {
+					this.boost(boost, pokemon);
+					pokemon.addVolatile('stickymadness');
+				}
 			}
+		},
+		onSwitchOut(pokemon) {
+			delete pokemon.volatiles['stickymadness'];
 		},
 	},
 	solarenergy: {
@@ -719,15 +728,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Trick Room active while user is active.",
 		onStart(pokemon) {
 			if (!this.field.getPseudoWeather('trickroom')) {
+				this.add('-activate', pokemon, 'ability: Twisted Dimension');
 				this.field.addPseudoWeather('trickroom');
-				this.effectData.twistedDimensionSetTR = true;
-			} else {
-				this.effectData.twistedDimensionSetTR = false;
-			}
+				// this.effectData.twistedDimensionSetTR = true;
+			} // else {
+			// 	 this.effectData.twistedDimensionSetTR = false;
+			// }
 		},
 		onEnd(pokemon) {
 			// check if the user that set TR was a mon with twisted dimension and that the trick room hasn't been unset by another Pokemon using the move Trick Room
-			if (this.effectData.twistedDimensionSetTR && this.field.getPseudoWeather('trickroom')) {
+			if (this.field.getPseudoWeather('trickroom')) {
 				// don't remove TR if another Pokemon has Twisted Dimension
 				for (const target of this.getAllActive()) {
 					if (target === pokemon) continue;
@@ -749,20 +759,29 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (['sunnyday', 'desolateland'].includes(this.field.getWeather().id)) {
 				this.add('-activate', pokemon, 'ability: Photosynthesis');
 				this.boost({atk: 2, def: 2, spa: 2, spd: 2, spe: 2}, pokemon);
+				this.effectData.photosynthesising = true;
 			}
 		},
 		// on update in case of things like cloud nine, also not sure if onanysetweather triggers if weather fades
 		onUpdate(pokemon) {
 			if (!pokemon.isActive || !pokemon.hp) return;
-			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather()) && !this.effectData.photosynthesising) {
 				// set boosts if sun is triggered
+				console.log("Triggering Photosynthesis! this.effectData.photosynthesising = " + this.effectData.photosynthesising);
 				this.add('-activate', pokemon, 'ability: Photosynthesis');
-				this.boost({atk: 2, def: 2, spa: 2, spd: 2, spe: 2}, pokemon);
-			} else {
-				// unset boosts if sunny weather goes away
-				this.add('-activate', pokemon, 'ability: Photosynthesis');
-				this.boost({atk: -2, def: -2, spa: -2, spd: -2, spe: -2});
+				this.boost({atk: 2, spa: 2, spe: 2}, pokemon);
+				this.effectData.photosynthesising = true;
 			}
+			if (this.effectData.photosynthesising && !['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				// unset boosts if sunny weather goes away
+				console.log("Unsetting Photosynthesis! this.effectData.photosynthesising = " + this.effectData.photosynthesising);
+				this.add('-activate', pokemon, 'ability: Photosynthesis');
+				this.boost({atk: -2, spa: -2, spe: -2});
+				this.effectData.photosynthesising = false;
+			}
+		},
+		onEnd(pokemon) {
+			this.effectData.photosynthesising = false;
 		},
 	},
 	shellbreak: {

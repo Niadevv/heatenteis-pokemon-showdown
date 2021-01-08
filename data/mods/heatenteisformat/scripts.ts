@@ -108,6 +108,11 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'noctowl').learnset.uturn = ['5L1'];
 		this.modData('Learnsets', 'ledian').learnset.playrough = ['5L1'];
 		this.modData('Learnsets', 'ledian').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'ariados').learnset.firstimpression = ['5L1'];
+		this.modData('Learnsets', 'ariados').learnset.gunkshot = ['5L1'];
+		// resolves some compatability issue with gunk shot and megahorn
+		this.modData('Learnsets', 'ariados').learnset.megahorn = ['5L1'];
+		this.modData('Learnsets', 'ariados').learnset.hornleech = ['5L1'];
 		this.modData('Learnsets', 'bellossom').learnset.calmmind = ['5L1'];
 		this.modData('Learnsets', 'bellossom').learnset.drainingkiss = ['5L1'];
 		this.modData('Learnsets', 'bellossom').learnset.earthpower = ['5L1'];
