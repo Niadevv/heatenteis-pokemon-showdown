@@ -37,8 +37,8 @@ abilities to test:
 	shell break (water immunity, forme changing) - WORKS
 	plantation - WORKS
 	sublime aura - WORKS
-	fortissimo (check to make sure moves that switch don't permanently switch everything, check to make sure it only switches after two successful moves)
-	dollhouse
+	fortissimo (check to make sure moves that switch don't permanently switch everything, check to make sure it only switches after two successful moves) - WORKS
+	dollhouse - WORKS
 	prevision
 	child of sea
 	first born

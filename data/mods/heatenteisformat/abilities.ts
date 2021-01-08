@@ -883,29 +883,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "After the target is hit by the user's attacks twice, they are forced to switch out. Soundproof Pokemon are not affected.",
 		shortDesc: "Target switches out after hit twice by user. Soundproof Pokemon not affected.",
 		onBeforeMove(source, target, move) {
-			if (target.ability !== 'soundproof') {
-				if (target === this.effectData.currentTarget) {
-					if (this.effectData.hitsOnTarget >= 2) {
-						move.forceSwitch = true;
-						this.effectData.willSwitchTarget = false;
-					} else {
-						this.effectData.hitsOnTarget++;
-					}
-				} else {
-					this.effectData.currentTarget = target;
-					this.effectData.hitsOnTarget = 1;
-				}
+			if (target.ability !== 'soundproof' && target.volatiles['fortissimo']) {
+				move.forceSwitch = true;
+				delete target.volatiles['fortissimo'];
 			}
 		},
 		onAfterMove(source, target, move) {
-			this.effectData.hitsOnTarget++;
-
-			if (this.effectData.willSwitchTarget) {
-				this.add('-activate', source, 'ability: Fortissimo');
-				this.effectData.hitsOnTarget = 0;
-				this.effectData.currentTarget = null;
-				this.effectData.willSwitchTarget = false;
-			}
+			if (target.ability !== 'soundproof') target.addVolatile('fortissimo');
 		},
 	},
 	solareclipse: {
@@ -930,7 +914,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Substitutes on switchin",
 		onStart(pokemon) {
 			// check for substitute already as it may be baton passed to mega bannette
-			if (pokemon.maxhp > pokemon.hp / 4 && !pokemon.volatiles['substitute']) {
+			if (pokemon.hp > pokemon.maxhp / 4 && !pokemon.volatiles['substitute']) {
 				this.add('-activate', pokemon, 'ability: Dollhouse');
 				this.directDamage(pokemon.maxhp / 4, pokemon);
 				pokemon.addVolatile('substitute');
