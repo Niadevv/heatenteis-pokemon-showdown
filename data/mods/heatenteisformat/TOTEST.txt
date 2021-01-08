@@ -33,10 +33,10 @@ abilities to test:
 	prosecutor WORKS
 	sticky madness (test with webs on opp side, on user side, on both sides and on neither side. also test it setting its webs) - WORKS
 	twisted dimension (see if removes properly if the original setter switches out while another mon with the ability is active, which subsequently switches out) - WORKS
-	photosynthesis (should lose stat changes when weather ends/changes)
-	shell break (water immunity, forme changing)
-	plantation
-	sublime aura
+	photosynthesis (should lose stat changes when weather ends/changes) - WORKS
+	shell break (water immunity, forme changing) - WORKS
+	plantation - WORKS
+	sublime aura - WORKS
 	fortissimo (check to make sure moves that switch don't permanently switch everything, check to make sure it only switches after two successful moves)
 	dollhouse
 	prevision

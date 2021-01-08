@@ -2434,9 +2434,9 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		eggGroups: ["Amorphous"],
 		requiredItem: "Magcargonite",
 	},
-	magcargomegabroken: {
+	magcargomegashellless: {
 		num: 219,
-		name: "Magcargo-Mega-Broken",
+		name: "Magcargo-Mega-Shellless",
 		baseSpecies: "Magcargo",
 		forme: "Mega",
 		types: ["Fire"],
@@ -2447,10 +2447,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		heightm: 0.8,
 		weightkg: 55,
 		color: "Red",
-		prevo: "Slugma",
-		evoLevel: 38,
 		eggGroups: ["Amorphous"],
 		requiredItem: "Magcargonite",
+		battleOnly: "Magcargo",
+		requiredAbility: "Shell Break",
 	},
 	kingdra: {
 		inherit: true,

@@ -526,6 +526,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'banette').learnset.poweruppunch = ['5L1'];
 		this.modData('Learnsets', 'banette').learnset.pursuit = ['5L1'];
 		this.modData('Learnsets', 'banette').learnset.thunderpunch = ['5L1'];
+		this.modData('Learnsets', 'tropius').learnset.powerwhip = ['5L1'];
 		this.modData('Learnsets', 'chimecho').learnset.aurasphere = ['5L1'];
 		this.modData('Learnsets', 'chimecho').learnset.flashcannon = ['5L1'];
 		this.modData('Learnsets', 'chimecho').learnset.mysticalfire = ['5L1'];

@@ -755,39 +755,30 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Photosynthesis",
 		desc: "The user gains +2 to all stats in sun, and loses them when the weather ends or is changed.",
 		shortDesc: "+2 to all stats while sun active.",
-		onStart(pokemon) {
-			if (['sunnyday', 'desolateland'].includes(this.field.getWeather().id)) {
-				this.add('-activate', pokemon, 'ability: Photosynthesis');
-				this.boost({atk: 2, def: 2, spa: 2, spd: 2, spe: 2}, pokemon);
-				this.effectData.photosynthesising = true;
+		onModifySpAPriority: 5,
+		onModifySpA(spa, source, target, move) {
+			if (['sunnyday', 'desolateland'].includes(source.effectiveWeather())) {
+				this.chainModify(2);
 			}
 		},
-		// on update in case of things like cloud nine, also not sure if onanysetweather triggers if weather fades
-		onUpdate(pokemon) {
-			if (!pokemon.isActive || !pokemon.hp) return;
-			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather()) && !this.effectData.photosynthesising) {
-				// set boosts if sun is triggered
-				console.log("Triggering Photosynthesis! this.effectData.photosynthesising = " + this.effectData.photosynthesising);
-				this.add('-activate', pokemon, 'ability: Photosynthesis');
-				this.boost({atk: 2, spa: 2, spe: 2}, pokemon);
-				this.effectData.photosynthesising = true;
-			}
-			if (this.effectData.photosynthesising && !['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
-				// unset boosts if sunny weather goes away
-				console.log("Unsetting Photosynthesis! this.effectData.photosynthesising = " + this.effectData.photosynthesising);
-				this.add('-activate', pokemon, 'ability: Photosynthesis');
-				this.boost({atk: -2, spa: -2, spe: -2});
-				this.effectData.photosynthesising = false;
+		onModifySpDPriority: 5,
+		onModifySpD(spa, source, target, move) {
+			if (['sunnyday', 'desolateland'].includes(source.effectiveWeather())) {
+				this.chainModify(2);
 			}
 		},
-		onEnd(pokemon) {
-			this.effectData.photosynthesising = false;
+		onModifySpe(spe, source) {
+			if (['sunnyday', 'desolateland'].includes(source.effectiveWeather())) {
+				this.chainModify(2);
+			}
 		},
 	},
 	shellbreak: {
 		name: "Shell Break",
 		desc: "When the user uses Shell Smash, they change into their Broken form. While they are in shell form, they are immune to water.",
 		shortDesc: "Transforms upon using Shell Smash, immune to water before transformation.",
+		isPermanent: true,
+		isUnbreakable: true,
 		onStart(pokemon) {
 			delete this.effectData.forme;
 			this.effectData.shellSmashed = false;
@@ -801,17 +792,22 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onAfterMove(source, target, move) {
 			if (move.id === 'shellsmash' && !this.effectData.shellSmashed) {
 				this.add('-activate', source, 'ability: Shell Break');
-				source.formeChange('Magcargo-Mega-Broken', move, false, '[msg]');
+				source.formeChange('Magcargo-Mega-Shellless', move, false, '[msg]');
 				this.effectData.shellSmashed = true;
 			}
 		},
 		onSetStatus(status, target, source, effect) {
-			if (!this.effectData.shellSmashed || target.transformed) return;
+			if (this.effectData.shellSmashed || target.transformed) return;
 			if ((effect as Move)?.status) {
 				this.add('-immune', target, '[from] ability: Shell Break');
 			}
 			return false;
 		},
+		// onEnd(pokemon) {
+		// 	if (this.effectData.shellSmashed) {
+		// 		pokemon.formeChange('Magcargo-Mega');
+		// 	}
+		// },
 	},
 	submerge: {
 		name: "Submerge",
@@ -867,8 +863,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			this.add('-activate', pokemon, 'ability: Sublime Aura');
 			for (const mon of pokemon.side.foe.active) {
-				this.add('-clearboosts', mon);
 				mon.clearBoosts();
+				this.add('-clearboost', mon);
 			}
 		},
 	},
@@ -877,7 +873,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "If the user is below 50% health at the end of the turn, the user restores 25% of its max HP.",
 		shortDesc: "User restores 25% max HP at end of turn if below 50%",
 		onResidual(target) {
-			if (target.hp < (Math.floor(target.hp / 2))) {
+			if (target.hp < (Math.floor(target.maxhp / 2))) {
 				this.heal(target.baseMaxhp / 4);
 			}
 		},
