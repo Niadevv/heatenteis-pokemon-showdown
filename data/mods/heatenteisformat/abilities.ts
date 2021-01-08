@@ -491,9 +491,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		// Multitype
 		onTypePriority: 1,
 		onType(types, pokemon) {
-			if (pokemon.transformed || pokemon.ability !== 'multitype') return types;
+			if (pokemon.transformed || pokemon.ability !== 'origin') return types;
 			let type: string | undefined = 'Normal';
-			if (pokemon.ability === 'multitype') {
+			if (pokemon.ability === 'origin') {
 				type = pokemon.getItem().onPlate;
 				if (!type) {
 					type = 'Normal';

@@ -737,8 +737,6 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'basculin').learnset.closecombat = ['5L1'];
 		this.modData('Learnsets', 'basculin').learnset.fishiousrend = ['5L1'];
 		this.modData('Learnsets', 'basculin').learnset.flipturn = ['5L1'];
-		// Fix because it's not in default galar zen's movepool fsr
-		this.modData('Learnsets', 'darmanitangalarzen').learnset.iciclecrash = ['5L1'];
 		this.modData('Learnsets', 'krookodile').learnset.flipturn = ['5L1'];
 		this.modData('Learnsets', 'maractus').learnset.earthpower = ['5L1'];
 		this.modData('Learnsets', 'maractus').learnset.sleeppowder = ['5L1'];

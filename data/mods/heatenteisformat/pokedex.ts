@@ -1341,12 +1341,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	darmanitanzen: {
 		inherit: true,
 		abilities: {0: "Zen Mode", 1: "Inner Focus"},
+		baseSpecies: "Darmanitan",
 		requiredAbility: undefined,
 		battleOnly: undefined,
 	},
 	darmanitangalarzen: {
 		inherit: true,
 		abilities: {0: "Zen Mode", 1: "Inner Focus"},
+		baseSpecies: "Darmanitan-Galar",
 		requiredAbility: undefined,
 		battleOnly: undefined,
 	},
