@@ -107,7 +107,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	speedboost: {
 		inherit: true,
 		onStart(pokemon) {
-			// onStart is triggered again for Mega Blaziken, so we add a volatile to track when the speed boost is applied
+			// onStart is triggered again upon mega evolving into Mega Blaziken, so we add a volatile to track when the speed boost is applied
 			if (pokemon && !pokemon.volatiles['speedboost']) {
 				this.boost({spe: 1}, pokemon);
 				pokemon.addVolatile('speedboost');
@@ -351,6 +351,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				if (pokemon.species.forme === 'Meteor') {
 					pokemon.formeChange(pokemon.set.species);
 				}
+			}
+		},
+	},
+	powerspot: {
+		inherit: true,
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (attacker !== defender) {
+				this.debug('Power Spot boost');
+				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
 	},

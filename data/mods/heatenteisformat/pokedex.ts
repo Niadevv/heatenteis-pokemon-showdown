@@ -1837,9 +1837,110 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Electric", "Fighting"],
 		abilities: {0: "Volt Absorb", H: "Iron Fist"},
 	},
-	/* : {
+	//
+	// -------- END ALOLA BUFFS --------
+	//
+	greedent: {
 		inherit: true,
-	},*/
+		baseStats: {hp: 120, atk: 95, def: 115, spa: 55, spd: 95, spe: 35},
+		abilities: {0: "Cheek Pouch", 1: "Thick Fat", H: "Unaware"},
+	},
+	orbeetle: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 45, def: 110, spa: 100, spd: 120, spe: 90},
+		abilities: {0: "Swarm", 1: "Frisk", H: "Tinted Lens"},
+	},
+	thievul: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 58, def: 58, spa: 110, spd: 92, spe: 112},
+	},
+	eldegoss: {
+		inherit: true,
+		baseStats: {hp: 120, atk: 50, def: 90, spa: 100, spd: 120, spe: 60},
+	},
+	dubwool: {
+		inherit: true,
+		baseStats: {hp: 92, atk: 90, def: 110, spa: 60, spd: 100, spe: 88},
+	},
+	boltund: {
+		inherit: true,
+		types: ["Electric", "Normal"],
+		baseStats: {hp: 69, atk: 113, def: 65, spa: 113, spd: 65, spe: 123},
+		abilities: {0: "Strong Jaw", 1: "Competitive", H: "Motor Drive"},
+	},
+	coalossal: {
+		inherit: true,
+		baseStats: {hp: 110, atk: 90, def: 120, spa: 90, spd: 90, spe: 30},
+	},
+	flapple: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 110, def: 80, spa: 110, spd: 60, spe: 100},
+	},
+	appletun: {
+		inherit: true,
+		baseStats: {hp: 110, atk: 85, def: 100, spa: 90, spd: 100, spe: 30},
+	},
+	sandaconda: {
+		inherit: true,
+		baseStats: {hp: 102, atk: 107, def: 125, spa: 65, spd: 80, spe: 71},
+	},
+	cramorant: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 55, def: 75, spa: 105, spd: 105, spe: 110},
+	},
+	centiskorch: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 125, def: 65, spa: 90, spd: 90, spe: 80},
+	},
+	grapploct: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 118, def: 90, spa: 70, spd: 80, spe: 62},
+	},
+	hatterene: {
+		inherit: true,
+		baseStats: {hp: 77, atk: 90, def: 95, spa: 136, spd: 103, spe: 29},
+	},
+	grimmsnarl: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 120, def: 65, spa: 95, spd: 95, spe: 60},
+	},
+	perrserker: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 110, def: 100, spa: 50, spd: 60, spe: 105},
+	},
+	cursola: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 95, def: 50, spa: 145, spd: 130, spe: 30},
+	},
+	sirfetchd: {
+		inherit: true,
+		baseStats: {hp: 62, atk: 135, def: 120, spa: 68, spd: 87, spe: 65},
+	},
+	mrrime: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 55, def: 75, spa: 130, spd: 100, spe: 105},
+	},
+	alcremie: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 60, def: 75, spa: 110, spd: 121, spe: 64},
+	},
+	falinks: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 105, def: 105, spa: 70, spd: 70, spe: 100},
+		abilities: {0: "Battle Armor", 1: "Defiant", H: "Army of One"},
+	},
+	morpeko: {
+		inherit: true,
+		baseStats: {hp: 58, atk: 115, def: 58, spa: 70, spd: 58, spe: 97},
+	},
+	copperajah: {
+		inherit: true,
+		baseStats: {hp: 122, atk: 130, def: 79, spa: 80, spd: 79, spe: 30},
+	},
+	zarude: {
+		inherit: true,
+		abilities: {0: "Leaf Guard", H: "Intimidate"},
+	},
 	// -------- MEGA STUFF --------
 	// Buffing pre existing megas:
 	steelixmega: {
