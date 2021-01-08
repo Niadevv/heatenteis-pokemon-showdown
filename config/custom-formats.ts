@@ -24,11 +24,14 @@ export const Formats: FormatList = [
 		onValidateTeam(team) {
 			let originceus = 0;
 			let origigas = 0;
+			let eternamax = 0;
 			for (const set of team) {
 				if (set.species === 'Arceus-Origin') originceus++;
 				if (set.species === 'Regigigas-Origin') origigas++;
+				if (set.species === 'Eternatus-Eternamax') eternamax++;
 				if (originceus > 1) return ["You can only use one Arceus-Origin."];
 				if (origigas > 1) return ["You can only use one Regigigas-Origin."];
+				if (eternamax > 1) return ["You can only use one Eternatus-Eternamax."];
 			}
 		},
 		// debug: true, // TEMP, REMOVEME
@@ -50,16 +53,19 @@ export const Formats: FormatList = [
 		onValidateTeam(team) {
 			let originceus = 0;
 			let origigas = 0;
+			let eternamax = 0;
 			for (const set of team) {
 				if (set.species === 'Arceus-Origin') originceus++;
 				if (set.species === 'Regigigas-Origin') origigas++;
+				if (set.species === 'Eternatus-Eternamax') eternamax++;
 				if (originceus > 1) return ["You can only use one Arceus-Origin."];
 				if (origigas > 1) return ["You can only use one Regigigas-Origin."];
+				if (eternamax > 1) return ["You can only use one Eternatus-Eternamax."];
 			}
 		},
 	},
 	{
-		name: "[Gen 8] Heat Enteis AG",
+		name: "[Gen 8] Heat Enteis Anything Goes",
 		desc: "Assorted buffs and new megas in a tier where everything bar Dynamax, non signature Z moves (we removed them from the game altogether) and Endless Battle clause is freed.",
 		mod: 'heatenteisformat',
 		ruleset: ['[Gen 8] National Dex AG', 'Dynamax Clause', 'Overflow Stat Mod'],
@@ -74,11 +80,42 @@ export const Formats: FormatList = [
 		onValidateTeam(team) {
 			let originceus = 0;
 			let origigas = 0;
+			let eternamax = 0;
 			for (const set of team) {
 				if (set.species === 'Arceus-Origin') originceus++;
 				if (set.species === 'Regigigas-Origin') origigas++;
+				if (set.species === 'Eternatus-Eternamax') eternamax++;
 				if (originceus > 1) return ["You can only use one Arceus-Origin."];
 				if (origigas > 1) return ["You can only use one Regigigas-Origin."];
+				if (eternamax > 1) return ["You can only use one Eternatus-Eternamax."];
+			}
+		},
+	},
+	{
+		name: "[Gen 8] Heat Enteis Almost Anything Goes",
+		desc: "Assorted buffs and new megas",
+		mod: 'heatenteisformat',
+		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Overflow Stat Mod'],
+		banlist: ["Arceus-Origin", "Regigigas-Origin", "Eternatus-Eternamax"],
+		onValidateSet(set) {
+			const item = this.dex.getItem(set.item);
+			if (item.zMove && !['ultranecroziumz', 'aloraichiumz', 'decidiumz', 'eeviumz', 'kommoniumz', 'lunaliumz',
+			 'lycaniumz', 'marshadiumz', 'mewniumz', 'mimikiumz', 'pikaniumz', 'pikashuniumz', 'primariumz', 'snorliumz',
+			 'solganiumz', 'tapuniumz', 'simisagiumz', 'simipouriumz', 'simiseariumz'].includes(item.id)) {
+				return [`${set.name || set.species}'s item ${item.name} is banned by Signature Z-Moves Only Clause.`];
+			}
+		},
+		onValidateTeam(team) {
+			let originceus = 0;
+			let origigas = 0;
+			let eternamax = 0;
+			for (const set of team) {
+				if (set.species === 'Arceus-Origin') originceus++;
+				if (set.species === 'Regigigas-Origin') origigas++;
+				if (set.species === 'Eternatus-Eternamax') eternamax++;
+				if (originceus > 1) return ["You can only use one Arceus-Origin."];
+				if (origigas > 1) return ["You can only use one Regigigas-Origin."];
+				if (eternamax > 1) return ["You can only use one Eternatus-Eternamax."];
 			}
 		},
 	},

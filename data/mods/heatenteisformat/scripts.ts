@@ -339,6 +339,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'slowkinggalar').learnset.teleport = ['5L1'];
 		// UNOWNS START
 
+		// Regular moves
 		let moves = require('./../../moves').Moves;
 		let movesKeys = Object.keys(moves);
 
@@ -354,6 +355,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 		}
 
+		// Modded moves
 		moves = require('./moves').Moves;
 		movesKeys = Object.keys(moves);
 		for (const move of movesKeys) {
@@ -963,5 +965,23 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'zeraora').learnset.icepunch = ['5L1'];
 		this.modData('Learnsets', 'zeraora').learnset.uturn = ['5L1'];
 		this.modData('Learnsets', 'melmetal').learnset.repair = ['5L1'];
+		//
+		// -------- END ALOLAN BUFFS --------
+		//
+
+		// as every gen 8 mon gets return, frustration, hidden power and toxic, we can just automatically add them to every gen 8 mon.
+		const gen8mons = require('./../../pokedex').Pokedex;
+		const gen8monsKeys = Object.keys(gen8mons);
+		for (const mon of gen8monsKeys) {
+			const currMon = gen8mons[mon];
+			// baseSpecies mons inherit movepool from another movepool so adding to them will cause an error.
+			// baseSpecies is otherwise undefined which is falsy, so we can check that way.
+			if (currMon.num >= 810 && currMon.num <= 898 && !currMon.baseSpecies) {
+				this.modData('Learnsets', mon).learnset.return = ['5L1'];
+				this.modData('Learnsets', mon).learnset.frustration = ['5L1'];
+				this.modData('Learnsets', mon).learnset.hiddenpower = ['5L1'];
+				this.modData('Learnsets', mon).learnset.toxic = ['5L1'];
+			}
+		}
 	},
 };
