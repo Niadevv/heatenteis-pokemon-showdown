@@ -107,7 +107,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	speedboost: {
 		inherit: true,
 		onStart(pokemon) {
-			this.boost({spe: 1}, pokemon);
+			// onStart is triggered again for Mega Blaziken, so we add a volatile to track when the speed boost is applied
+			if (pokemon && !pokemon.volatiles['speedboost']) {
+				this.boost({spe: 1}, pokemon);
+				pokemon.addVolatile('speedboost');
+			}
+		},
+		onSwitchOut(pokemon) {
+			// delete the volatile on switchout so that speed boost triggers when mega blaziken comes back in
+			delete pokemon.volatiles['speedboost'];
 		},
 		onResidual() {
 
