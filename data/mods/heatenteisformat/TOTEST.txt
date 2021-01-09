@@ -39,9 +39,9 @@ abilities to test:
 	sublime aura - WORKS
 	fortissimo (check to make sure moves that switch don't permanently switch everything, check to make sure it only switches after two successful moves) - WORKS
 	dollhouse - WORKS
-	prevision
-	child of sea
-	first born
+	prevision - WORKS
+	child of sea - WORKS
+	first born - WORKS (I think)
 	dream world (does it respect sleep clause?)
 	withered
 	upbeat

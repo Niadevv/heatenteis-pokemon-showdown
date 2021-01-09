@@ -64,7 +64,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		onSetStatus(status, target, source, effect) {
-			if (status) return;
+			// if (status) return;
 			if ((effect as Move)?.status) {
 				this.add('-immune', target, '[from] ability: Full Metal Body');
 			}
@@ -378,7 +378,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		onSetStatus(status, target, source, effect) {
-			if (status) return;
+			// if (status) return;
 			if ((effect as Move)?.status) {
 				this.add('-immune', target, '[from] ability: Spacial Barrier');
 			}
@@ -444,7 +444,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		onSetStatus(status, target, source, effect) {
-			if (status) return;
+			// if (status) return;
 			if ((effect as Move)?.status) {
 				this.add('-immune', target, '[from] ability: Spacial Barrier');
 			}
@@ -1022,7 +1022,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			pokemon.addVolatile('aquaring');
 		},
 		onSetStatus(status, target, source, effect) {
-			if (status) return;
+			// if (status) return false;
 			if ((effect as Move)?.status) {
 				this.add('-immune', target, '[from] ability: First Born');
 			}
@@ -1033,8 +1033,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Child of the Sea",
 		desc: "Opposing water type attacks will always fail.",
 		shortDesc: "Opposing water type attacks always fail.",
-		onBeforeMove(source, target, move) {
+		onFoeTryMove(source, target, move) {
 			if (move.type === 'Water' && source.side !== target.side) {
+				console.log("Blocking water move!");
 				this.add('cant', source, 'ability: Child of the Sea', move);
 				return false;
 			}

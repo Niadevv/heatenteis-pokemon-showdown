@@ -1112,4 +1112,20 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'calyrexshadow').learnset.recover = ['5L1'];
 		this.modData('Learnsets', 'calyrexshadow').learnset.teleport = ['5L1'];
 	},
+	canMegaEvo(pokemon) {
+		const species = pokemon.baseSpecies;
+		const altForme = species.otherFormes && this.dex.getSpecies(species.otherFormes[0]);
+		const item = pokemon.getItem();
+		// Mega Rayquaza
+		if ((this.gen <= 7 || this.ruleTable.has('standardnatdex')) &&
+			altForme?.isMega && altForme?.requiredMove &&
+			pokemon.baseMoves.includes(this.toID(altForme.requiredMove)) && !item.zMove) {
+			return altForme.name;
+		}
+		// a hacked-in Megazard X can mega evolve into Megazard Y, but not into Megazard X
+		if (item.megaEvolves === pokemon.species.name && item.megaStone !== species.name) {
+			return item.megaStone;
+		}
+		return null;
+	},
 };
