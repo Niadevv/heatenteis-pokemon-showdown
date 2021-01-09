@@ -2552,7 +2552,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	tropius: {
 		inherit: true,
-		baseStats: {hp: 99, atk: 78, def: 83, spa: 82, spd: 87, spe: 81},
+		baseStats: {hp: 100, atk: 78, def: 83, spa: 82, spd: 87, spe: 81},
 		otherFormes: ["Tropius-Mega"],
 		formeOrder: ["Tropius", "Tropius-Mega"],
 	},

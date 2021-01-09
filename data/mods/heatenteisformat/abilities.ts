@@ -946,20 +946,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				if (target.side.addSlotCondition(target, 'futuremove')) {
 					Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 						duration: 3,
-						move: 'futuresight',
+						move: 'doomdesire',
 						source: pokemon,
 						moveData: {
-							id: 'futuresight',
-							name: "Future Sight",
+							id: 'doomdesire',
+							name: "Doom Desire",
 							accuracy: 100,
-							basePower: 120,
+							basePower: 140,
 							category: "Special",
 							priority: 0,
 							flags: {},
-							ignoreImmunity: false,
 							effectType: 'Move',
 							isFutureMove: true,
-							type: 'Psychic',
+							type: 'Steel',
 						},
 					});
 					success = true;
