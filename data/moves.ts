@@ -2181,7 +2181,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	clangoroussoul: {
 		num: 775,
-		accuracy: true,
+		accuracy: 100,
 		basePower: 0,
 		category: "Status",
 		name: "Clangorous Soul",
@@ -3446,7 +3446,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				},
 			});
 			this.add('-start', source, 'Doom Desire');
-			return null;
+			return this.NOT_FAIL;
 		},
 		secondary: null,
 		target: "normal",
@@ -4414,7 +4414,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 160,
 		category: "Special",
 		name: "Eternabeam",
-		pp: 10,
+		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
 		self: {
@@ -5887,7 +5887,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				},
 			});
 			this.add('-start', source, 'move: Future Sight');
-			return null;
+			return this.NOT_FAIL;
 		},
 		secondary: null,
 		target: "normal",
@@ -7195,6 +7195,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onResidual() {
 				this.eachEvent('Terrain');
 			},
+			onTerrainPriority: 1,
 			onTerrain(pokemon) {
 				if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
 					this.debug('Pokemon is grounded, healing through Grassy Terrain.');
@@ -9148,7 +9149,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 80,
 		category: "Physical",
 		name: "Jaw Lock",
-		pp: 15,
+		pp: 10,
 		priority: 0,
 		flags: {bite: 1, contact: 1, protect: 1, mirror: 1},
 		onHit(target, source, move) {
@@ -10290,7 +10291,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Airstream",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10312,7 +10313,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Darkness",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10334,7 +10335,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 100,
 		category: "Physical",
 		name: "Max Flare",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10354,7 +10355,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Flutterby",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10376,7 +10377,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Geyser",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10396,7 +10397,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Max Guard",
-		pp: 5,
+		pp: 10,
 		priority: 4,
 		flags: {},
 		isMax: true,
@@ -10418,7 +10419,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (move.isMax && move.breaksProtect) return;
 				/** moves blocked by Max Guard but not Protect */
 				const overrideBypassProtect = [
-					'block', 'flowershield', 'gearup', 'magneticflux', 'phantomforce', 'psychup', 'teatime', 'transform',
+					'block', 'flowershield', 'gearup', 'magneticflux', 'phantomforce', 'psychup', 'shadowforce', 'teatime', 'transform',
 				];
 				const blockedByMaxGuard = (this.dex.getMove(move.id).flags['protect'] ||
 						move.isZ || move.isMax || overrideBypassProtect.includes(move.id));
@@ -10451,7 +10452,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Hailstorm",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10471,7 +10472,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Knuckle",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10493,7 +10494,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Lightning",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10513,7 +10514,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Mindstorm",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10533,7 +10534,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Ooze",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10555,7 +10556,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Overgrowth",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10575,7 +10576,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Phantasm",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10597,7 +10598,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Quake",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10619,7 +10620,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Rockfall",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10639,7 +10640,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Starfall",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10659,7 +10660,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Steelspike",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10681,7 +10682,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Strike",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -10703,7 +10704,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 10,
 		category: "Physical",
 		name: "Max Wyrmwind",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {},
 		isMax: true,
@@ -11997,7 +11998,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	obstruct: {
 		num: 792,
-		accuracy: true,
+		accuracy: 100,
 		basePower: 0,
 		category: "Status",
 		name: "Obstruct",
@@ -16416,7 +16417,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 75,
 		category: "Physical",
 		name: "Spirit Break",
-		pp: 10,
+		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: {
@@ -17655,7 +17656,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Tar Shot",
-		pp: 20,
+		pp: 15,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1},
 		volatileStatus: 'tarshot',
