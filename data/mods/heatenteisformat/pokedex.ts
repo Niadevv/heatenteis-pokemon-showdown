@@ -946,6 +946,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	whiscash: {
 		inherit: true,
+		abilities: {0: "Oblivious", 1: "Simple", H: "Hydration"},
 		baseStats: {hp: 110, atk: 90, def: 83, spa: 80, spd: 81, spe: 75},
 	},
 	claydol: {
