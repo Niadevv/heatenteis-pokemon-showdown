@@ -103,6 +103,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'delibird').learnset.suckerpunch = ['5L1'];
 		this.modData('Learnsets', 'delibird').learnset.swordsdance = ['5L1'];
 		this.modData('Learnsets', 'delibird').learnset.tripleaxel = ['5L1'];
+		this.modData('Learnsets', 'delibird').learnset.roost = ['5L1'];
 		this.modData('Learnsets', 'noctowl').learnset.focusblast = ['5L1'];
 		this.modData('Learnsets', 'noctowl').learnset.aurasphere = ['5L1'];
 		this.modData('Learnsets', 'noctowl').learnset.uturn = ['5L1'];

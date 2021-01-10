@@ -9,8 +9,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		secondary: {
 			chance: 40,
 			onHit(target, source) {
-				const result = this.random(4);
-				if (result > 0) {
+				if (this.randomChance(3, 4)) {
 					target.trySetStatus('brn', source);
 				} else {
 					target.trySetStatus('frz', source);
@@ -31,8 +30,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		secondary: {
 			chance: 40,
 			onHit(target, source) {
-				const result = this.random(4);
-				if (result > 0) {
+				if (this.randomChance(3, 4)) {
 					target.trySetStatus('par', source);
 				} else {
 					target.trySetStatus('frz', source);
@@ -740,8 +738,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		flags: {snatch: 1},
 		secondary: {
 			onHit(target) {
-				const result = this.random(2);
-				if (result === 0) {
+				if (this.randomChance(1, 2)) {
 					this.boost({def: 4, spd: 4, spe: 4});
 				} else {
 					this.boost({atk: 4, spa: 4, spe: 4});
@@ -782,8 +779,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		secondary: {
 			chance: 20,
 			onHit(target, source) {
-				const result = this.random(2);
-				if (result > 0) {
+				if (this.randomChance(1, 2)) {
 					target.addVolatile('flinch', source);
 				} else {
 					target.trySetStatus('brn', source);

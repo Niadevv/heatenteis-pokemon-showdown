@@ -1413,7 +1413,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	sawsbuck: {
 		inherit: true,
 		baseStats: {hp: 80, atk: 113, def: 75, spa: 55, spd: 75, spe: 95},
-		abilities: {0: "Chlorophyll", 1: "Sap Sipper", H: "Serene Grace"},
+		abilities: {0: "Migration", 1: "Sap Sipper", H: "Serene Grace"},
 	},
 	emolga: {
 		inherit: true,

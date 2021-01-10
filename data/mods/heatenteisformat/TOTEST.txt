@@ -42,14 +42,14 @@ abilities to test:
 	prevision - WORKS
 	child of sea - WORKS
 	first born - WORKS (I think)
-	dream world (does it respect sleep clause?)
-	withered
-	upbeat
-	migration
-	last order
-	stinger
-	lifeguard
-	witchcraft
+	dream world (does it respect sleep clause?) - WORKS
+	withered - WORKS
+	upbeat - WORKS
+	migration - WORKS
+	last order - WORKS
+	stinger - WORKS
+	lifeguard - WORKS
+	witchcraft - WORKS
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?)

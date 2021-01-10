@@ -364,6 +364,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	parentalbond: {
+		inherit: true,
+		onPrepareHit(source, target, move) {
+			if (move.category === 'Status' || move.selfdestruct || move.multihit || move.damage) return;
+			if (['endeavor', 'fling', 'iceball', 'rollout'].includes(move.id)) return;
+			if (!move.flags['charge'] && !move.spreadHit && !move.isZ && !move.isMax) {
+				move.multihit = 2;
+				move.multihitType = 'parentalbond';
+			}
+		},
+	},
 	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -577,7 +588,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "The user's two halves attack at once. The second hit is weaker than the first.",
 		shortDesc: "User attacks twice, second hit is 1.25x the first.",
 		onPrepareHit(source, target, move) {
-			if (move.category === 'Status' || move.selfdestruct || move.multihit) return;
+			if (move.category === 'Status' || move.selfdestruct || move.multihit || move.damage) return;
 			if (['endeavor', 'fling', 'iceball', 'rollout'].includes(move.id)) return;
 			if (!move.flags['charge'] && !move.spreadHit && !move.isZ && !move.isMax) {
 				move.multihit = 2;
@@ -1064,16 +1075,27 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	dreamworld: {
 		name: "Dream World",
-		desc: "While user is in, has 30% chance to put an opposing Pokemon to sleep at the end of each turn. Lasts 5 turns.",
-		shortDesc: "User has 30% chance to sleep adjacing opposing Pokemon at end of each turn while in.",
+		desc: "While user is in, has 30% chance to put an opposing Pokemon to sleep at the end of each turn. Only one Pokemon can be in the dream world at a time.",
+		shortDesc: "User has 30% chance to sleep adjacing opposing Pokemon at end of each turn while in. Only one Pokemon can be asleep at a time.",
 		onResidual(pokemon, target, effect) {
-			for (const mon of target.side.active) {
-				const rand = this.random(10);
-				// 0, 1 and 2 = 30%
-				if (rand <= 2) {
-					// TODO: does this respect sleep clause?
-					if (mon.trySetStatus('sleep')) {
-						this.add('-activate', pokemon, 'move: Dream World');
+			// Check to see if a Pokemon is asleep already because violating sleep clause is cringe
+			for (const mon of pokemon.side.foe.pokemon) {
+				if (mon.status === 'slp') {
+					this.debug("Detected slept mon for Dream World");
+					return;
+				}
+			}
+			for (const mon of pokemon.side.foe.active) {
+				if (this.randomChance(3, 10)) {
+					this.add('-activate', pokemon, 'ability: Dream World');
+					// if the mon is immune to sleep (comatose, etc.) then skip this one
+					if (!mon.runStatusImmunity('slp')) {
+						continue;
+					}
+					if (!mon.setStatus('slp')) {
+						this.add('-fail', pokemon, 'ability: Dream World');
+					} else {
+						return;
 					}
 				}
 			}
@@ -1196,16 +1218,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Last Order",
 		desc: "Boosts the power and effects of Order moves (Attack Order, Defend Order and Heal Order).",
 		shortDesc: "Boosts the power and effects of Order moves.",
-		onBasePower(basePower, source, target, move) {
-			if (move.id === 'lastorder') {
-				move.basePower = 120;
-			}
-		},
 		onModifyMove(move, pokemon, target) {
 			if (move.id === 'defendorder') {
 				move.boosts = {def: 2, spd: 2};
 			} else if (move.id === 'healorder') {
 				move.heal = [3, 4];
+			} else if (move.id === 'attackorder') {
+				console.log("Boosting Attack Order");
+				move.basePower = 120;
 			}
 		},
 	},
@@ -1213,7 +1233,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Stinger",
 		desc: "The user's attacks attach Rose Petals to the opponent, which do 1/8th the target's max HP per turn.",
 		shortDesc: "Attacks apply Rose Petals which do 1/8th max HP at end of every turn.",
-		onAfterMoveSecondary(target, source, move) {
+		onFoeAfterMoveSecondary(target, source, move) {
 			if (move.category !== 'Status' && !target.getVolatile('rosepetals')) {
 				this.add('-activate', source, 'ability: Stinger');
 				target.addVolatile('rosepetals');
@@ -1238,10 +1258,11 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "Below 1/3 health, once per battle, the user will heal between 33% and 100% of their health.",
 		shortDesc: "Heals between 33% and 100% below 1/3 HP once per battle.",
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 3) {
+			if (pokemon.hp <= pokemon.maxhp / 3 && !this.effectData.witchcraftTriggered) {
 				this.add('-activate', pokemon, 'ability: Witchcraft');
 				const heal = this.random(67);
 				this.heal(((pokemon.maxhp / 100) * (heal + 33)));
+				this.effectData.witchcraftTriggered = true;
 			}
 		},
 	},
