@@ -512,6 +512,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			// this.add('-fieldstart', 'ability: Distortion');
 			this.field.addPseudoWeather('gravity');
 		},
+		onUpdate(pokemon) {
+			for (const mon of pokemon.side.foe.active) {
+				if (['focussash', 'mentalherb', 'whiteherb',
+				  'absorbbulb', 'adrenalineorb', 'berryjuice', 'blunderpolicy', 'cellbattery', 'ejectbutton', 'ejectpack',
+				  'electricseed', 'grassyseed', 'mistyseed', 'psychicseed', 'luminousmoss', 'redcard', 'roomservice',
+				  'snowball', 'throatspray', 'weaknesspolicy', 'leftovers'].includes(mon.item) || mon.getItem().isGem) {
+					mon.addVolatile('embargo');
+				}
+			}
+		},
 
 		// TODO: disable all items that trigger instead of just berries
 	},
@@ -525,6 +535,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (pokemon.status) {
 				this.add('-activate', pokemon, 'ability: Spacial Barrier');
 				pokemon.cureStatus();
+			}
+			for (const mon of pokemon.side.foe.active) {
+				if (['focussash', 'mentalherb', 'whiteherb',
+				  'absorbbulb', 'adrenalineorb', 'berryjuice', 'blunderpolicy', 'cellbattery', 'ejectbutton', 'ejectpack',
+				  'electricseed', 'grassyseed', 'mistyseed', 'psychicseed', 'luminousmoss', 'redcard', 'roomservice',
+				  'snowball', 'throatspray', 'weaknesspolicy', 'leftovers'].includes(mon.item) || mon.getItem().isGem) {
+					mon.addVolatile('embargo');
+				}
 			}
 		},
 		onSetStatus(status, target, source, effect) {
@@ -571,6 +589,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			// this.add('-fieldstart', 'ability: Distortion');
 			this.field.addPseudoWeather('gravity');
 		},
+		// onUpdate in the Spacial Barrier section
 
 		// Multitype
 		onTypePriority: 1,

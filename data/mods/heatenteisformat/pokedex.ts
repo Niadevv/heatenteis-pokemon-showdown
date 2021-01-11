@@ -944,6 +944,16 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 73, atk: 100, def: 60, spa: 110, spd: 60, spe: 110},
 		abilities: {0: "Shed Skin", 1: "Merciless", H: "Sheer Force"},
 	},
+	solrock: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 115, def: 85, spa: 85, spd: 65, spe: 90},
+		abilities: {0: "Levitate", H: "Solar Eclipse"},
+	},
+	lunatone: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 55, def: 95, spa: 95, spd: 115, spe: 90},
+		abilities: {0: "Levitate", H: "Lunar Eclipse"},
+	},
 	whiscash: {
 		inherit: true,
 		abilities: {0: "Oblivious", 1: "Simple", H: "Hydration"},

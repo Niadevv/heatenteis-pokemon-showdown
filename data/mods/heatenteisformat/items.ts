@@ -115,6 +115,16 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 	// Normal Gem is already legal
+	// Modify Life orb so it doesn't inflict recoil when the opponent has Distortion
+	lifeorb: {
+		inherit: true,
+		onAfterMoveSecondarySelf(source, target, move) {
+			if (source && source !== target && move && move.category !== 'Status' &&
+			  !['distortion', 'origin'].includes(target.ability)) {
+				this.damage(source.baseMaxhp / 10, source, source, this.dex.getItem('lifeorb'));
+			}
+		},
+	},
 	// -------- MEGA STONES --------
 	butterfreenite: {
 		name: "Butterfreenite",

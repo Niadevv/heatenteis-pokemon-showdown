@@ -53,11 +53,11 @@ abilities to test:
 
 	submerge - WORKS
 	fatal nock - WORKS
-	lunar eclipse
-	solar eclipse
-	birds of prey 
-	leaf hurricane
-	conjoined
+	lunar eclipse - WORKS
+	solar eclipse - WORKS
+	birds of prey - WORKS
+	leaf hurricane - WORKS
+	conjoined - WORKS
 	crescendo
 	lost gift
 	toxify
@@ -67,6 +67,7 @@ abilities to test:
 	windstorm
 	flash point
 	remorseless
+	distortion (test to make sure it disables all consumables) - WORKS
 
 
 existing changd abilities to test:
