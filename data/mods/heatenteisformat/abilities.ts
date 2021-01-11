@@ -237,6 +237,38 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return 0;
 			}
 		},
+		onCriticalHit(target, source, move) {
+			if (!target) return;
+			if (this.effectData.busted || target.transformed) {
+				return;
+			}
+			const hitSub = target.volatiles['substitute'] && !move.flags['authentic'] && !(move.infiltrates && this.gen >= 6);
+			if (hitSub) return;
+
+			if (!target.runImmunity(move.type)) return;
+			return false;
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (!target) return;
+			if (target.transformed || this.effectData.busted) {
+				return;
+			}
+			const hitSub = target.volatiles['substitute'] && !move.flags['authentic'] && !(move.infiltrates && this.gen >= 6);
+			if (hitSub) return;
+
+			if (!target.runImmunity(move.type)) return;
+			return 0;
+		},
+		onUpdate(pokemon) {
+			if (this.effectData.busted && !this.effectData.hasTakenDisguiseBustDamage) {
+				if (['mimikyu', 'mimikyutotem'].includes(pokemon.species.id) && this.effectData.busted) {
+					const speciesid = pokemon.species.id === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';
+					pokemon.formeChange(speciesid, this.effect, true);
+				}
+				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon, this.dex.getSpecies(pokemon.species.name));
+				this.effectData.hasTakenDisguiseBustDamage = true;
+			}
+		},
 	},
 	watercompaction: {
 		inherit: true,
@@ -258,11 +290,51 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	// reimplement slow start purely as an ability
 	slowstart: {
 		inherit: true,
+		onStart(pokemon) {
+			if (!this.effectData.slowstartBegun) {
+				this.effectData.slowstartTurnsLeft = 5;
+				this.effectData.slowstartBegun = true;
+			}
+			if (this.effectData.slowstartTurnsLeft > 0) {
+				pokemon.addVolatile('slowstart');
+				this.add('-start', pokemon, 'ability: Slow Start');
+			} else {
+				this.add('-end', pokemon, 'Slow Start');
+			}
+			// onUpdate triggers before onStart for some reason, so we don't enable it until after the volatile is added.
+			this.effectData.initialisedSlowstart = true;
+		},
+		onUpdate(pokemon) {
+			// eliminate slow start effect if a neutralising gas mon is present
+			if (!pokemon.volatiles['slowstart'] && this.effectData.initialisedSlowstart && this.effectData.slowstartTurnsLeft > 0) {
+				this.effectData.slowstartTurnsLeft = 0;
+			}
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, pokemon) {
+			if (this.effectData.slowstartTurnsLeft > 0) return this.chainModify(0.5);
+		},
+		onModifySpe(spe, pokemon) {
+			if (this.effectData.slowstartTurnsLeft > 0) return this.chainModify(0.5);
+		},
+		onResidual(target, source, effect) {
+			if (target.activeTurns && this.effectData.slowstartTurnsLeft > 0) {
+				this.effectData.slowstartTurnsLeft--;
+				if (this.effectData.slowstartTurnsLeft <= 0) {
+					this.add('-end', target, 'Slow Start');
+					target.removeVolatile('slowstart');
+				}
+			}
+		},
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
+			// de initialise this so that onUpdate doesn't reset the counter to 0 when we switch back in (ie. before the volatile is added)
+			this.effectData.initialisedSlowstart = false;
 		},
+		condition: {},
 	},
 	// Shield Dust is implemented in the overriden hazard moves
 	wonderguard: {
@@ -278,7 +350,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 						this.dex.getImmunity(moveType, pokemon) && this.dex.getEffectiveness(moveType, pokemon) > 0 ||
 						move.ohko
 					) {
-						this.add('-ability', pokemon, 'Wonder Guard');
+						this.add('-activate', pokemon, 'Anticipation');
 						return;
 					}
 				}
@@ -303,7 +375,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		onTryHit(target, source, move) {
 			if (target !== source && ['Water', 'Fire'].includes(move.type)) {
-				this.add('-immune', target, '[from] ability: Water Compaction');
+				this.add('-immune', target, '[from] ability: Steam Engine');
 				this.boost({spe: 6});
 				return null;
 			}
@@ -328,7 +400,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onSourceAfterFaint(fainted, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				source.ability = target.ability;
+				source.setAbility(target.ability, target);
+				this.add('-ability', source, this.dex.getAbility(target.ability), '[from]ability: Receiver');
 			}
 		},
 	},

@@ -51,17 +51,38 @@ abilities to test:
 	lifeguard - WORKS
 	witchcraft - WORKS
 
+	submerge
+	fatal nock
+	lunar eclipse
+	solar eclipse
+	birds of prey 
+	leaf hurricane
+	conjoined
+	crescendo
+	lost gift
+	toxify
+	chemical reaction
+	army of one
+	mind sweep
+	windstorm
+	flash point
+	remorseless
+
+
 existing changd abilities to test:
-	Disguise (does it still work with Mimikyu properly?)
-	slow start (does slow start still get wiped on switchout?)
-	shield dust hazard immunity
-	wonder guard anticipation effect
-	steam engine
-	symbiosis
-	receiver
+	Disguise (does it still work with Mimikyu properly?) - WORKS
+	slow start (does slow start still get wiped on switchout?) - WORKS
+	shield dust hazard immunity - WORKS
+	wonder guard anticipation effect - WORKS
+	steam engine - WORKS
+	symbiosis - WORKS
+	receiver - WORKS
 
 moves to test:
-	wild charge (does wild charge no longer do recoil?)
+	wild charge (does wild charge no longer do recoil?) - WORKS
+	happy valentine
+	purging flame
+	Key Chain/Caltrops
 
 TODO:
 investigate why knock off can remove custom mega stones (only confirmed to be knockable with weezinite but investigate others)
