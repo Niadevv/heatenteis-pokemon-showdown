@@ -1385,7 +1385,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "The user's attacks have a 30% chance to badly poison the target. The user also gains a Poison resistance.",
 		shortDesc: "30% chance to badly poison target, gains Poison resistance.",
 		onModifyMove(move) {
-			if (!move || !move.flags['contact'] || move.target === 'self') return;
+			if (!move || move.target === 'self') return;
 			if (!move.secondaries) {
 				move.secondaries = [];
 			}
@@ -1438,6 +1438,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move.type === 'Ghost') return priority + 1;
+		},
+	},
+	windstorm: {
+		name: "Windstorm",
+		desc: "User summons Windstorm on switch in.",
+		shortDesc: "User summons Windstorm on switch in.",
+		onStart(pokemon) {
+			this.field.setWeather('windstorm');
 		},
 	},
 };
