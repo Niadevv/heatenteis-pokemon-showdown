@@ -51,8 +51,8 @@ abilities to test:
 	lifeguard - WORKS
 	witchcraft - WORKS
 
-	submerge
-	fatal nock
+	submerge - WORKS
+	fatal nock - WORKS
 	lunar eclipse
 	solar eclipse
 	birds of prey 
@@ -78,6 +78,8 @@ existing changd abilities to test:
 	symbiosis - WORKS
 	receiver - WORKS
 
+	parental bond (fixed move damage quartering on second hit) - DOESN'T WORK, temporarily changed to not hit second time with seismic type mvoes
+
 moves to test:
 	wild charge (does wild charge no longer do recoil?) - WORKS
 	happy valentine
@@ -85,4 +87,5 @@ moves to test:
 	Key Chain/Caltrops
 
 TODO:
+Twisted Dimension to just setting 5 turns of trick room - DONE
 investigate why knock off can remove custom mega stones (only confirmed to be knockable with weezinite but investigate others)

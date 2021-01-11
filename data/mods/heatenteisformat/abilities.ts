@@ -814,24 +814,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (!this.field.getPseudoWeather('trickroom')) {
 				this.add('-activate', pokemon, 'ability: Twisted Dimension');
 				this.field.addPseudoWeather('trickroom');
-				// this.effectData.twistedDimensionSetTR = true;
-			} // else {
-			// 	 this.effectData.twistedDimensionSetTR = false;
-			// }
-		},
-		onEnd(pokemon) {
-			// check if the user that set TR was a mon with twisted dimension and that the trick room hasn't been unset by another Pokemon using the move Trick Room
-			if (this.field.getPseudoWeather('trickroom')) {
-				// don't remove TR if another Pokemon has Twisted Dimension
-				for (const target of this.getAllActive()) {
-					if (target === pokemon) continue;
-					if (target.hasAbility('twisteddimension')) {
-						// target.abilityData.userSetTR = true;
-						return;
-					}
-				}
-
-				this.field.removePseudoWeather('trickroom');
 			}
 		},
 	},
@@ -887,11 +869,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 			return false;
 		},
-		// onEnd(pokemon) {
-		// 	if (this.effectData.shellSmashed) {
-		// 		pokemon.formeChange('Magcargo-Mega');
-		// 	}
-		// },
 	},
 	submerge: {
 		name: "Submerge",
@@ -1441,7 +1418,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		onModifyPriority(priority, pokemon, target, move) {
-			if (['spiritshackle', 'sinisterarrowraid'].includes(move?.id)) return priority + 1;
+			if (move.type === 'Ghost') return priority + 1;
 		},
 	},
 };

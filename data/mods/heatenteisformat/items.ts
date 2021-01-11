@@ -242,6 +242,19 @@ export const Items: {[k: string]: ModdedItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	meganiumite: {
+		name: "Meganiumite",
+		spritenum: 625,
+		megaStone: "Meganium-Mega",
+		megaEvolves: "Meganium",
+		itemUser: ["Meganium"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -149,
+		gen: 7,
+	},
 	typhlosionite: {
 		name: "Typhlosionite",
 		spritenum: 625,
