@@ -76,29 +76,37 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		// apply target's status damage 3 times - if poison heal make them heal 3 times, and do not damage with status
 		// TODO: neurotoxin
-		onHit(target) {
+		onHit(target, source) {
 			if (target.status) {
 				if (!['magicguard', 'poisonheal', 'spacialbarrier', 'temporalbarrier'].includes(target.ability)) {
 					if (target.status === 'psn') {
-						target.damage((target.baseMaxhp / 8) * 3);
+						const neurotoxModifier = target.statusData.neurotoxin ? 2 : 1;
+						target.damage(((target.baseMaxhp / 8) * neurotoxModifier) * 3);
 						this.add('-damage', target, target.getHealth);
 					} else if (target.status === 'tox') {
 						let accumulatedDamage = 0;
+						const neurotoxModifier = target.statusData.neurotoxin ? 2 : 1;
 
 						for (let i = 0; i < 3; i++) {
-							accumulatedDamage += (target.baseMaxhp / 16) * target.statusData.stage;
+							accumulatedDamage += ((target.baseMaxhp / 16) * neurotoxModifier) * target.statusData.stage;
 							target.statusData.stage += 1;
 						}
 
-						target.damage(this.clampIntRange(accumulatedDamage));
+						target.damage(this.clampIntRange(accumulatedDamage, 1, target.baseMaxhp));
 						this.add('-damage', target, target.getHealth);
 					} else if (target.status === 'brn') {
 						target.damage((target.baseMaxhp / 16) * 3);
 						this.add('-damage', target, target.getHealth);
 					}
+
+					// Darkrai gets Roar of Time for some reason so we should account for that
+					if (source.ability === 'baddreams') {
+						target.damage((target.baseMaxhp / 8) * 3);
+						this.add('-damage', target, target.getHealth);
+					}
 				}
 				if (target.ability === 'poisonheal') {
-					this.add('-activate', 'move: Roar of Time');
+					this.add('-activate', source, 'move: Roar of Time');
 					target.heal((target.baseMaxhp / 8) * 3);
 				}
 			}

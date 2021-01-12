@@ -58,13 +58,13 @@ abilities to test:
 	birds of prey - WORKS
 	leaf hurricane - WORKS
 	conjoined - WORKS
-	crescendo
+	crescendo - WORKS
 	lost gift
-	toxify
-	chemical reaction
-	army of one
-	mind sweep
-	windstorm
+	toxify - WORKS
+	chemical reaction - WORKS
+	army of one - WORKS
+	mind sweep - WORKS
+	windstorm - Works
 	flash point
 	remorseless
 	distortion (test to make sure it disables all consumables) - WORKS
@@ -78,6 +78,7 @@ existing changd abilities to test:
 	steam engine - WORKS
 	symbiosis - WORKS
 	receiver - WORKS
+	gale wings (pre nerf?) - WORKS
 
 	parental bond (fixed move damage quartering on second hit) - DOESN'T WORK, temporarily changed to not hit second time with seismic type mvoes
 
@@ -88,5 +89,6 @@ moves to test:
 	Key Chain/Caltrops
 
 TODO:
+Roar of Time with Bad Dreams (on a sleeping mon, think of drai using it) - DONE
 Twisted Dimension to just setting 5 turns of trick room - DONE
 investigate why knock off can remove custom mega stones (only confirmed to be knockable with weezinite but investigate others)

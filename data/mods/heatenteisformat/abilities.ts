@@ -1054,14 +1054,20 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Crescendo",
 		desc: "Power of sound based moves increases when used in a row, maxing at a 3x boost after 5 uses.",
 		shortDesc: "Sound based moves increased on successive uses, maxes at 3x boost after 5",
+		onStart(pokemon) {
+			this.effectData.uses = 0;
+		},
 		onBasePower(basePower, pokemon, target, move) {
 			if (move.flags['sound'] && move.category !== 'Status') {
-				return this.chainModify(1 + (this.effectData.uses * 0.4));
+				const modifier = parseFloat(this.effectData.uses) * 0.4;
+				return this.chainModify(1.0 + modifier);
 			}
 		},
-		onAfterMoveSecondary(target, source, move) {
+		onAfterMove(target, source, move) {
 			if (move.flags['sound'] && move.category !== 'Status') {
-				this.effectData.uses++;
+				if (this.effectData.uses < 5) {
+					this.effectData.uses++;
+				}
 			} else {
 				this.effectData.uses = 0;
 			}
@@ -1102,7 +1108,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			pokemon.addVolatile('aquaring');
 		},
 		onSetStatus(status, target, source, effect) {
-			// if (status) return false;
 			if ((effect as Move)?.status) {
 				this.add('-immune', target, '[from] ability: First Born');
 			}
@@ -1242,12 +1247,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			this.field.removePseudoWeather('gravity');
 			this.field.removePseudoWeather('wonderroom');
 			const removeTarget = [
-				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge',
+				'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge', 'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist',
 			];
 
+			const hazards = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+
 			for (const target of removeTarget) {
-				pokemon.side.removeSideCondition(target);
-				pokemon.side.foe.removeSideCondition(target);
+				if (pokemon.side.removeSideCondition(target) && hazards.includes(target)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(target).name, '[from] ability: Mind Sweep', '[of] ' + pokemon);
+				}
+				if (pokemon.side.foe.removeSideCondition(target) && hazards.includes(target)) {
+					this.add('-sideend', pokemon.side.foe, this.dex.getEffect(target).name, '[from] ability: Mind Sweep', '[of] ' + pokemon);
+				}
 			}
 		},
 	},
@@ -1415,15 +1426,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "The user starts with +2 in Defense, until their HP drops below half, at which point they lose the +2 in Defense and gain +2 in Attack instead.",
 		shortDesc: "User starts with +2 Defense until HP goes below half, then loses Defense boost and gain +2 Attack instead.",
 		onStart(pokemon) {
+			this.effectData.armyofoneAttackBoosts = false;
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				this.boost({atk: 2}, pokemon);
+				this.effectData.armyofoneAttackBoosts = true;
 			} else {
 				this.boost({def: 2}, pokemon);
 			}
 		},
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.hp <= pokemon.maxhp / 2 && !this.effectData.armyofoneAttackBoosts) {
 				this.boost({atk: 2, def: -2}, pokemon);
+				this.effectData.armyofoneAttackBoosts = true;
 			}
 		},
 	},
