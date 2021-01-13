@@ -71,7 +71,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	dialga: {
 		inherit: true,
-		baseStats: {hp: 100, atk: 120, def: 120, spa: 150, spd: 100, spe: 90},
+		baseStats: {hp: 100, atk: 120, def: 150, spa: 180, spd: 120, spe: 90},
 		abilities: {0: "Pressure", H: "Temporal Barrier"},
 	},
 	giratina: {
@@ -92,6 +92,74 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"Arceus", "Arceus-Fighting", "Arceus-Flying", "Arceus-Poison", "Arceus-Ground", "Arceus-Rock", "Arceus-Bug", "Arceus-Ghost", "Arceus-Steel",
 			"Arceus-Fire", "Arceus-Water", "Arceus-Grass", "Arceus-Electric", "Arceus-Psychic", "Arceus-Ice", "Arceus-Dragon", "Arceus-Dark", "Arceus-Fairy", "Arceus-Origin",
 		],
+	},
+	arceusfighting: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusflying: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceuspoison: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusground: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusrock: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusbug: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusghost: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceussteel: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusfire: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceuswater: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusgrass: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceuselectric: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceuspsychic: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusice: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusdragon: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusdark: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
+	},
+	arceusfairy: {
+		inherit: true,
+		baseStats: {hp: 140, atk: 140, def: 140, spa: 140, spd: 140, spe: 140},
 	},
 	arceusorigin: {
 		num: 493,
