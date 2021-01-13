@@ -467,8 +467,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				} else {
 					source.trySetStatus('par', target, move);
 				}
-				target.formeChange('cramorant', move);
+			} else {
+				this.add('-immune', source, '[from] ability: Bulletproof');
 			}
+			target.formeChange('cramorant', move);
 		},
 	},
 	// -------- New abilities --------

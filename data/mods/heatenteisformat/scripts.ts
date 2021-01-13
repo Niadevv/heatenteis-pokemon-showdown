@@ -924,6 +924,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'lurantis').learnset.focusblast = ['8L1'];
 		this.modData('Learnsets', 'lurantis').learnset.uturn = ['8L1'];
 		this.modData('Learnsets', 'salazzle').learnset.scorchingsands = ['8L1'];
+		this.modData('Learnsets', 'salazzle').learnset.toxicspikes = ['8L1'];
 		this.modData('Learnsets', 'bewear').learnset.knockoff = ['8L1'];
 		this.modData('Learnsets', 'bewear').learnset.playrough = ['8L1'];
 		this.modData('Learnsets', 'comfey').learnset.moonblast = ['8L1'];

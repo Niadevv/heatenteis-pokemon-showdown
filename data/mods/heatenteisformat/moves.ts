@@ -542,11 +542,27 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
-				if (pokemon.hasType('Poison') && this.effectData.source.ability !== 'corrosion') {
+				if (pokemon.hasType('Poison')) {
+					if (this.effectData.source.ability === 'corrosion') {
+						if (this.effectData.layers >= 2) {
+							pokemon.setStatus('tox', this.effectData.source, this.dex.getAbility('corrosion'), true);
+						} else {
+							pokemon.setStatus('psn', this.effectData.source, this.dex.getAbility('corrosion'), true);
+						}
+					}
 					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
 					pokemon.side.removeSideCondition('toxicspikes');
-				} else if (pokemon.hasType('Steel') || pokemon.hasItem('heavydutyboots') || pokemon.ability === "shielddust" &&
-				  this.effectData.source.ability !== 'corrosion') {
+				} else if (pokemon.hasType('Steel')) {
+					if (this.effectData.source.ability === 'corrosion') {
+						if (this.effectData.layers >= 2) {
+							pokemon.setStatus('tox', this.effectData.source, this.dex.getAbility('corrosion'), true);
+						} else {
+							pokemon.setStatus('psn', this.effectData.source, this.dex.getAbility('corrosion'), true);
+						}
+					} else {
+						return;
+					}
+				} else if (pokemon.hasItem('heavydutyboots')) {
 					return;
 				} else if (this.effectData.layers >= 2) {
 					pokemon.trySetStatus('tox', this.effectData.source);
