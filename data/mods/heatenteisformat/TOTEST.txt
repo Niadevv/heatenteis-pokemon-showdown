@@ -65,7 +65,7 @@ abilities to test:
 	army of one - WORKS
 	mind sweep - WORKS
 	windstorm - Works
-	flash point
+	flash point - WORKS
 	remorseless
 	distortion (test to make sure it disables all consumables) - WORKS
 

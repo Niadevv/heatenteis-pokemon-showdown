@@ -917,9 +917,11 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			this.add('-activate', pokemon, 'ability: Lost Gift');
 			for (const teammate of pokemon.side.pokemon) {
-				if (!teammate.hasItem && teammate.set.item) {
-					teammate.setItem(teammate.set.item);
-					this.add('-item', teammate, teammate.item, '[from] ability: Lost Gift');
+				if (!teammate.fainted && !teammate.item && teammate.set.item) {
+					console.log("Restoring item");
+					const itemToRestore = this.dex.getItem(teammate.set.item);
+					teammate.setItem(itemToRestore);
+					this.add('-item', teammate, itemToRestore, '[from] ability: Lost Gift');
 				}
 			}
 		},
@@ -1120,7 +1122,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Opposing water type attacks always fail.",
 		onFoeTryMove(source, target, move) {
 			if (move.type === 'Water' && source.side !== target.side) {
-				console.log("Blocking water move!");
 				this.add('cant', source, 'ability: Child of the Sea', move);
 				return false;
 			}
@@ -1304,7 +1305,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			} else if (move.id === 'healorder') {
 				move.heal = [3, 4];
 			} else if (move.id === 'attackorder') {
-				console.log("Boosting Attack Order");
 				move.basePower = 120;
 			}
 		},

@@ -133,7 +133,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Butterfree",
 		itemUser: ["Butterfree"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -100,
@@ -147,7 +147,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Arbok",
 		itemUser: ["Arbok"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -101,
@@ -161,7 +161,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Raichu",
 		itemUser: ["Raichu"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -102,
@@ -175,7 +175,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Vileplume",
 		itemUser: ["Vileplume"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -103,
@@ -189,7 +189,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Arcanine",
 		itemUser: ["Arcanine"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -104,
@@ -203,7 +203,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Weezing",
 		itemUser: ["Weezing"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -105,
@@ -217,7 +217,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Starmie",
 		itemUser: ["Starmie"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -106,
@@ -231,7 +231,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Lapras",
 		itemUser: ["Lapras"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -107,
@@ -245,7 +245,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Dragonite",
 		itemUser: ["Dragonite"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -108,
@@ -272,7 +272,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Typhlosion",
 		itemUser: ["Typhlosion"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -109,
@@ -286,7 +286,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Feraligatr",
 		itemUser: ["Feraligatr"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -110,
@@ -300,7 +300,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Sudowoodo",
 		itemUser: ["Sudowoodo"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -111,
@@ -314,7 +314,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Girafarig",
 		itemUser: ["Girafarig"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -112,
@@ -328,7 +328,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Granbull",
 		itemUser: ["Granbull"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -113,
@@ -342,7 +342,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Octillery",
 		itemUser: ["Octillery"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -114,
@@ -356,7 +356,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Delibird",
 		itemUser: ["Delibird"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -115,
@@ -370,7 +370,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Noctowl",
 		itemUser: ["Noctowl"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -116,
@@ -384,7 +384,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Ledian",
 		itemUser: ["Ledian"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -117,
@@ -398,7 +398,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Ariados",
 		itemUser: ["Ariados"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -118,
@@ -412,7 +412,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Bellossom",
 		itemUser: ["Bellossom"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -119,
@@ -426,7 +426,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Sunflora",
 		itemUser: ["Sunflora"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -120,
@@ -440,7 +440,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Slowking",
 		itemUser: ["Slowking"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -121,
@@ -454,7 +454,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Magcargo",
 		itemUser: ["Magcargo"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -122,
@@ -468,7 +468,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Kingdra",
 		itemUser: ["Kingdra"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -123,
@@ -482,7 +482,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Stantler",
 		itemUser: ["Stantler"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -124,
@@ -496,7 +496,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Miltank",
 		itemUser: ["Miltank"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -125,
@@ -510,7 +510,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Flygon",
 		itemUser: ["Flygon"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -126,
@@ -524,7 +524,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Milotic",
 		itemUser: ["Milotic"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -127,
@@ -538,7 +538,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Tropius",
 		itemUser: ["Tropius"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -128,
@@ -552,7 +552,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Chimecho",
 		itemUser: ["Chimecho"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -129,
@@ -566,7 +566,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Torterra",
 		itemUser: ["Torterra"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -130,
@@ -580,7 +580,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Infernape",
 		itemUser: ["Infernape"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -131,
@@ -594,7 +594,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Empoleon",
 		itemUser: ["Empoleon"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -132,
@@ -608,7 +608,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Rampardos",
 		itemUser: ["Rampardos"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -133,
@@ -622,7 +622,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Bastiodon",
 		itemUser: ["Bastiodon"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -134,
@@ -636,7 +636,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Vespiquen",
 		itemUser: ["Vespiquen"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -135,
@@ -650,7 +650,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Luxray",
 		itemUser: ["Luxray"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -136,
@@ -664,7 +664,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Roserade",
 		itemUser: ["Roserade"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -137,
@@ -678,7 +678,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Floatzel",
 		itemUser: ["Floatzel"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -138,
@@ -692,7 +692,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Mismagius",
 		itemUser: ["Mismagius"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -139,
@@ -706,7 +706,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Purugly",
 		itemUser: ["Purugly"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -140,
@@ -720,7 +720,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Bronzong",
 		itemUser: ["Bronzong"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -141,
@@ -734,7 +734,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Spiritomb",
 		itemUser: ["Spiritomb"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -142,
@@ -748,7 +748,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Drapion",
 		itemUser: ["Drapion"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -143,
@@ -762,7 +762,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Lumineon",
 		itemUser: ["Lumineon"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -144,
@@ -776,7 +776,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Weavile",
 		itemUser: ["Weavile"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -145,
@@ -790,7 +790,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Electivire",
 		itemUser: ["Electivire"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -146,
@@ -804,7 +804,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Magmortar",
 		itemUser: ["Magmortar"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -147,
@@ -818,7 +818,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		megaEvolves: "Froslass",
 		itemUser: ["Froslass"],
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 		num: -148,
@@ -830,301 +830,301 @@ export const Items: {[k: string]: ModdedItemData} = {
 	abomasite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	absolite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	aerodactylite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	aggronite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	alakazite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	altarianite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	ampharosite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	audinite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	banettite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	beedrillite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	blastoisinite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	blazikenite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	cameruptite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	diancite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	galladite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	garchompite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	gardevoirite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	gengarite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	glalitite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	gyaradosite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	heracronite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	houndoominite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	kangaskhanite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	latiasite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	latiosite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	lopunnite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	lucarionite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	manectite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	mawilite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	medichamite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	metagrossite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	pidgeotite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	pinsirite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	sablenite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	salamencite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	sceptilite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	scizorite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	sharpedonite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	slowbronite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	steelixite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	swampertite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	tyranitarite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},
 	venusaurite: {
 		inherit: true,
 		onTakeItem(item, source) {
-			if (item.megaEvolves === source.species.name) return false;
+			if (item.megaEvolves === source.species.name || item.megaStone === source.species.name) return false;
 			return true;
 		},
 	},

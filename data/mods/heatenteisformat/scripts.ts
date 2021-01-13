@@ -780,6 +780,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'gothitelle').learnset.recover = ['8L1'];
 		this.modData('Learnsets', 'reuniclus').learnset.teleport = ['8L1'];
 		this.modData('Learnsets', 'swanna').learnset.hurricane = ['8L1'];
+		this.modData('Learnsets', 'swanna').learnset.hydropump = ['8L1'];
 		this.modData('Learnsets', 'sawsbuck').learnset.woodhammer = ['8L1'];
 		this.modData('Learnsets', 'emolga').learnset.hurricane = ['8L1'];
 		this.modData('Learnsets', 'emolga').learnset.nastyplot = ['8L1'];
