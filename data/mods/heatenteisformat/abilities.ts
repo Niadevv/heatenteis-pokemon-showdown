@@ -448,6 +448,29 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	victorystar: {
+		inherit: true,
+		onAnyModifyAccuracy(accuracy, target, source) {
+			if (source.side === this.effectData.target.side && typeof accuracy === 'number') {
+				return this.chainModify(1.2);
+			}
+		},
+	},
+	gulpmissile: {
+		inherit: true,
+		onDamagingHit(damage, target, source, move) {
+			if (target.transformed || target.isSemiInvulnerable()) return;
+			if (['cramorantgulping', 'cramorantgorging'].includes(target.species.id) && source.ability !== 'bulletproof') {
+				this.damage(source.baseMaxhp / 4, source, target);
+				if (target.species.id === 'cramorantgulping') {
+					this.boost({def: -1}, source, target, null, true);
+				} else {
+					source.trySetStatus('par', target, move);
+				}
+				target.formeChange('cramorant', move);
+			}
+		},
+	},
 	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",

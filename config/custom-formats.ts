@@ -41,7 +41,7 @@ export const Formats: FormatList = [
 		desc: "Assorted buffs and new megas",
 		mod: 'heatenteisformat',
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Overflow Stat Mod'],
-		banlist: ["Arceus-Origin"],
+		banlist: ["Arceus-Origin", "Eternatus-Eternamax"],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
 			if (item.zMove && !['ultranecroziumz', 'aloraichiumz', 'decidiumz', 'eeviumz', 'kommoniumz', 'lunaliumz',

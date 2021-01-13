@@ -81,6 +81,8 @@ existing changd abilities to test:
 	gale wings (pre nerf?) - WORKS
 
 	parental bond (fixed move damage quartering on second hit) - DOESN'T WORK, temporarily changed to not hit second time with seismic type mvoes
+	Gulping Missile
+	Corrosion Toxic Spikes
 
 moves to test:
 	wild charge (does wild charge no longer do recoil?) - WORKS

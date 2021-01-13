@@ -923,6 +923,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	swellow: {
 		inherit: true,
 		baseStats: {hp: 60, atk: 85, def: 60, spa: 95, spd: 50, spe: 125},
+		abilities: {0: "Guts", 1: "Aerilate", H: "Scrappy"},
 	},
 	masquerain: {
 		inherit: true,
@@ -1509,6 +1510,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	jellicent: {
 		inherit: true,
 		baseStats: {hp: 100, atk: 60, def: 95, spa: 85, spd: 105, spe: 60},
+		abilities: {0: "Water Absorb", 1: "Cursed Body", H: "Regenerator"},
 	},
 	alomomola: {
 		inherit: true,
@@ -1658,6 +1660,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 96, atk: 68, def: 72, spa: 111, spd: 66, spe: 109},
 		abilities: {0: "Rivalry", 1: "Unnerve", H: "Flash Point"},
+	},
+	floetteeternal: {
+		inherit: true,
+		abilities: {0: "Flower Veil", H: "Magic Guard"},
 	},
 	florges: {
 		inherit: true,
@@ -2293,7 +2299,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		forme: "Mega",
 		types: ["Rock"],
 		baseStats: {hp: 70, atk: 100, def: 115, spa: 30, spd: 65, spe: 130},
-		abilities: {0: "Pure Power"},
+		abilities: {0: "Huge Power"},
 		heightm: 1.2,
 		weightkg: 38,
 		color: "Brown",
@@ -2982,7 +2988,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		forme: "Mega",
 		types: ["Dark", "Ice"],
 		baseStats: {hp: 70, atk: 170, def: 70, spa: 45, spd: 95, spe: 160},
-		abilities: {0: "Tough Claws"},
+		abilities: {0: "Infiltrator"},
 		heightm: 1.1,
 		weightkg: 34,
 		color: "Black",
