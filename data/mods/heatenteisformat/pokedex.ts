@@ -273,7 +273,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	electrode: {
 		inherit: true,
 		baseStats: {hp: 60, atk: 50, def: 70, spa: 100, spd: 80, spe: 170},
-		abilities: {0: "Soundproof", 1: "Static", H: "Electric Terrain"},
+		abilities: {0: "Soundproof", 1: "Static", H: "Electric Surge"},
 	},
 	marowak: {
 		inherit: true,
