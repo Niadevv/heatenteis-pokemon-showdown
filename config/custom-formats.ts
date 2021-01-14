@@ -11,7 +11,7 @@ export const Formats: FormatList = [
 			'Arceus', 'Arceus-Origin', 'Calyrex-Shadow', 'Dialga', 'Eternatus', 'Eternatus-Eternamax', 'Gengar-Mega', 'Giratina', 'Giratina-Origin', 'Groudon',
 			'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Mewtwo', 'Necrozma-Dawn-Wings',
 			'Necrozma-Dusk-Mane', 'Necrozma-Ultra', 'Palkia', 'Rayquaza', 'Regigigas-Origin', 'Reshiram', 'Solgaleo', 'Xerneas', 'Yveltal',
-			'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Baton Pass',
+			'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Complete', 'Baton Pass',
 		],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
