@@ -1295,6 +1295,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	glaceon: {
 		inherit: true,
 		baseStats: {hp: 65, atk: 60, def: 110, spa: 130, spd: 95, spe: 95},
+		abilities: {0: "Snow Cloak", 1: "Slush Rush", H: "Ice Body"},
+	},
+	mamoswine: {
+		inherit: true,
+		abilities: {0: "Oblivious", 1: "Slush Rush", H: "Thick Fat"},
 	},
 	probopass: {
 		inherit: true,
@@ -1599,11 +1604,15 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	cobalion: {
 		inherit: true,
-		baseStats: {hp: 129, atk: 90, def: 91, spa: 90, spd: 72, spe: 108},
+		baseStats: {hp: 129, atk: 100, def: 91, spa: 100, spd: 72, spe: 108},
+	},
+	terrakion: {
+		inherit: true,
+		baseStats: {hp: 91, atk: 129, def: 100, spa: 72, spd: 100, spe: 108},
 	},
 	virizion: {
 		inherit: true,
-		baseStats: {hp: 91, atk: 90, def: 72, spa: 90, spd: 108, spe: 129},
+		baseStats: {hp: 91, atk: 100, def: 72, spa: 100, spd: 108, spe: 129},
 	},
 	tornadus: {
 		inherit: true,

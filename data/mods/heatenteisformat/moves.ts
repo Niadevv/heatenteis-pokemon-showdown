@@ -637,6 +637,22 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	aurasphere: {
+		inherit: true,
+		basePower: 90,
+	},
+	razorwind: {
+		inherit: true,
+		basePower: 130,
+	},
+	geargrind: {
+		inherit: true,
+		accuracy: 100,
+	},
+	lightofruin: {
+		inherit: true,
+		accuracy: 100,
+	},
 	// NEW MOVES
 	curseddance: {
 		num: 3000,
