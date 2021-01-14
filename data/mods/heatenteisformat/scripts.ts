@@ -843,6 +843,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'delphox').learnset.scorchingsands = ['8L1'];
 		this.modData('Learnsets', 'delphox').learnset.teleport = ['8L1'];
 		this.modData('Learnsets', 'greninja').learnset.flipturn = ['8L1'];
+		this.modData('Learnsets', 'greninjaash').learnset.flipturn = ['8L1'];
 		this.modData('Learnsets', 'diggersby').learnset.doubleedge = ['8L1'];
 		this.modData('Learnsets', 'pyroar').learnset.scorchingsands = ['8L1'];
 		this.modData('Learnsets', 'florges').learnset.mysticalfire = ['8L1'];
