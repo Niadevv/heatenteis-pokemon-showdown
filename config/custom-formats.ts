@@ -12,6 +12,8 @@ export const Formats: FormatList = [
 			'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Mewtwo', 'Necrozma-Dawn-Wings',
 			'Necrozma-Dusk-Mane', 'Necrozma-Ultra', 'Palkia', 'Rayquaza', 'Regigigas-Origin', 'Reshiram', 'Solgaleo', 'Xerneas', 'Yveltal',
 			'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Complete', 'Power Construct', 'Baton Pass',
+			// no clue why I need to ban the mega stones because natdex format doesn't have to but apparently I do now so /shrug
+			'Gengarite',
 		],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
@@ -84,6 +86,9 @@ export const Formats: FormatList = [
 			'Tornadus-Therian', 'Toxapex', 'Tyranitar', 'Urshifu-Single-Strike', 'Volcarona', 'Zapdos', 'Zygarde',
 			// OU by technicality
 			'Garchomp-Mega', 'Slowbro-Mega', 'Tyranitar-Mega',
+			// no clue why I need to ban the mega stones because natdex format doesn't have to but apparently I do now so /shrug
+			'Gengarite', 'Alakazite', 'Blastoisinite', 'Blazikenite', 'Charizardite X', 'Charizardite Y', 'Garchompite', 'Kangaskhanite', 'Lopunnite',
+			'Lucarionite', 'Mawilite', 'Medichamite', 'Metagrossite', 'Salamencite', 'Swampertite', 'Tyranitarite', 'Slowbronite',
 		],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
