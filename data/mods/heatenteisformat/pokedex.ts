@@ -1388,7 +1388,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	seismitoad: {
 		inherit: true,
-		baseStats: {hp: 105, atk: 100, def: 95, spa: 90, spd: 95, spe: 74},
+		baseStats: {hp: 105, atk: 115, def: 95, spa: 105, spd: 95, spe: 74},
 	},
 	throh: {
 		inherit: true,
@@ -1697,6 +1697,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Keen Eye", 1: "Infiltrator", H: "Sheer Force"},
 	},
+	aegislash: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 50, def: 150, spa: 50, spd: 150, spe: 60},
+	},
+	aegislashblade: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 150, def: 50, spa: 150, spd: 50, spe: 60},
+	},
 	slurpuff: {
 		inherit: true,
 		baseStats: {hp: 82, atk: 100, def: 86, spa: 85, spd: 75, spe: 72},
@@ -1897,7 +1905,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	komala: {
 		inherit: true,
-		baseStats: {hp: 80, atk: 115, def: 80, spa: 75, spd: 95, spe: 65},
+		baseStats: {hp: 90, atk: 115, def: 95, spa: 75, spd: 110, spe: 65},
 	},
 	turtonator: {
 		inherit: true,

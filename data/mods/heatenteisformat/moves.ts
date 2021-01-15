@@ -644,6 +644,19 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	razorwind: {
 		inherit: true,
 		basePower: 130,
+		category: "Physical",
+		onTryMove(attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			this.add('-prepare', attacker, move.name);
+			this.boost({atk: 1}, attacker, attacker, move);
+			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
 	},
 	geargrind: {
 		inherit: true,
