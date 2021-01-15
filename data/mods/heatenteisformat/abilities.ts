@@ -652,7 +652,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		// STAB boost for everything
 		onBasePower(basePower, source, target, move) {
 			if (!source.getTypes().includes(move.type)) {
-				console.log("Origin boost");
 				this.chainModify(1.5);
 			}
 		},
