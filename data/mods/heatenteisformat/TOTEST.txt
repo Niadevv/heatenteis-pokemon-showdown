@@ -82,7 +82,8 @@ existing changd abilities to test:
 
 	parental bond (fixed move damage quartering on second hit) - DOESN'T WORK, temporarily changed to not hit second time with seismic type mvoes
 	Gulping Missile - WORKS
-	Corrosion Toxic Spikes
+	Corrosion Toxic Spikes - WORKS
+	Distortion blocking Primal Reversion
 
 moves to test:
 	wild charge (does wild charge no longer do recoil?) - WORKS

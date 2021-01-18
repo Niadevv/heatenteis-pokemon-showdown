@@ -125,6 +125,43 @@ export const Items: {[k: string]: ModdedItemData} = {
 			}
 		},
 	},
+	// disable transform enabling items with Distortion
+	redorb: {
+		inherit: true,
+		onSwitchIn(pokemon) {
+			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
+
+			if (pokemon.isActive && pokemon.baseSpecies.name === 'Groudon' && !['distortion', 'origin'].includes(target.ability)) {
+				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
+			}
+		},
+		// transform once distortion is gone
+		onUpdate(pokemon) {
+			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
+
+			if (pokemon.isActive && pokemon.baseSpecies.name === 'Groudon' && !['distortion', 'origin'].includes(target.ability)) {
+				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
+			}
+		},
+	},
+	blueorb: {
+		inherit: true,
+		onSwitchIn(pokemon) {
+			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
+
+			if (pokemon.isActive && pokemon.baseSpecies.name === 'Kyogre' && !['distortion', 'origin'].includes(target.ability)) {
+				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
+			}
+		},
+		// transform once distortion is gone
+		onUpdate(pokemon) {
+			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
+
+			if (pokemon.isActive && pokemon.baseSpecies.name === 'Kyogre' && !['distortion', 'origin'].includes(target.ability)) {
+				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
+			}
+		},
+	},
 	// -------- MEGA STONES --------
 	butterfreenite: {
 		name: "Butterfreenite",

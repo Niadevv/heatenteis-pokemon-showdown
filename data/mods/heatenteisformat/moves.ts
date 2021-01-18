@@ -662,6 +662,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		accuracy: 100,
 	},
+	// make moonblast be effected by bulletproof
+	moonblast: {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, bullet: 1},
+	},
 	lightofruin: {
 		inherit: true,
 		accuracy: 100,

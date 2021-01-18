@@ -295,10 +295,11 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onStart(pokemon) {
 			if (!this.effectData.slowstartBegun) {
-				this.effectData.slowstartTurnsLeft = 5;
+				this.effectData.slowstartTurnsLeft = 3;
 				this.effectData.slowstartBegun = true;
 			}
 			if (this.effectData.slowstartTurnsLeft > 0) {
+				// keep adding the volatile as while it's useless now, it is important to preserve the visual effect
 				pokemon.addVolatile('slowstart');
 				this.add('-start', pokemon, 'ability: Slow Start');
 			} else {
@@ -485,6 +486,27 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			source.trySetStatus(status, target, {status: status.id, id: 'synchronize'} as Effect);
 		},
 	},
+	imposter: {
+		inherit: true,
+		onStart(pokemon) {
+			// Imposter does not activate when Skill Swapped or when Neutralizing Gas leaves the field
+			if (!this.effectData.switchingIn) return;
+			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
+			if (target) {
+				pokemon.transformInto(target, this.dex.getAbility('imposter'));
+				if (['distortion', 'origin'].includes(target.ability) && !target.volatiles['substitute'] &&
+				  !target.illusion && !target.fainted) {
+					const boosts = target.boosts;
+					this.add('-activate', target, 'ability: Distortion');
+					// invert the ditto's boosts
+					// +1 + (-1 * 2) = -1, 0 + (0 * 2) = 0, -1 + (+1 * 2) = 1, +2 + (-2 * 2) = -2, etc.
+					this.boost({atk: -boosts.atk * 2, def: -boosts.def * 2, spa: -boosts.spa * 2, spd: -boosts.spd * 2,
+						spe: -boosts.spe * 2, evasion: -boosts.evasion * 2, accuracy: -boosts.accuracy * 2}, pokemon);
+				}
+			}
+			this.effectData.switchingIn = false;
+		},
+	},
 	// -------- New abilities --------
 	spacialbarrier: {
 		desc: "While active, this Pokemon is immune to status and OHKO moves.",
@@ -546,7 +568,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Distortion",
 		onFoeTryEatItem: false,
 		onStart(pokemon) {
-			// this.add('-fieldstart', 'ability: Distortion');
+			this.add('-activate', pokemon, 'ability: Distortion');
 			this.field.addPseudoWeather('gravity');
 		},
 		onUpdate(pokemon) {
@@ -559,8 +581,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				}
 			}
 		},
-
-		// TODO: disable all items that trigger instead of just berries
+		onEnd(pokemon) {
+			for (const mon of pokemon.side.foe.active) {
+				if (mon.volatiles['embargo']) {
+					delete mon.volatiles['embargo'];
+					this.add('-end', mon, 'Embargo');
+				}
+			}
+		},
 	},
 	origin: {
 		name: "Origin",
@@ -623,7 +651,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		// Distortion
 		onFoeTryEatItem: false,
 		onStart(pokemon) {
-			// this.add('-fieldstart', 'ability: Distortion');
+			this.add('-activate', pokemon, 'ability: Distortion');
 			this.field.addPseudoWeather('gravity');
 		},
 		// onUpdate in the Spacial Barrier section
@@ -653,6 +681,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onBasePower(basePower, source, target, move) {
 			if (!source.getTypes().includes(move.type)) {
 				this.chainModify(1.5);
+			}
+		},
+
+		onEnd(pokemon) {
+			for (const mon of pokemon.side.foe.active) {
+				if (mon.volatiles['embargo']) {
+					delete mon.volatiles['embargo'];
+					this.add('-end', mon, 'Embargo');
+				}
 			}
 		},
 	},

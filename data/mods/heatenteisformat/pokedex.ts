@@ -218,6 +218,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	zygardecomplete: {
 		inherit: true,
 		baseStats: {hp: 216, atk: 110, def: 141, spa: 91, spd: 115, spe: 85},
+		battleOnly: undefined,
 	},
 	yveltal: {
 		inherit: true,
@@ -938,7 +939,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	slaking: {
 		inherit: true,
 		// mareanie why part 2
-		abilities: {0: "Truant", 1: "Comatose"},
+		abilities: {0: "Truant", 1: "Gluttony"},
 	},
 	ninjask: {
 		inherit: true,
