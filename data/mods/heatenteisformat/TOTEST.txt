@@ -66,9 +66,13 @@ abilities to test:
 	mind sweep - WORKS
 	windstorm - Works
 	flash point - WORKS
-	remorseless
+	remorseless - WORKS
 	distortion (test to make sure it disables all consumables) - WORKS
 
+RETEST:
+	Dollhouse (test with keeping intact substitutes) - WORKS
+	Fortissimo (message, also check if it still works) - WORKS
+	Distortion (check to see the distortion message shows for blocking primal reversion) - WORKS
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?) - WORKS
@@ -87,11 +91,16 @@ existing changd abilities to test:
 
 moves to test:
 	wild charge (does wild charge no longer do recoil?) - WORKS
-	happy valentine
-	purging flame
-	Key Chain/Caltrops
+	happy valentine - WORKS
+	purging flame - WORKS
+	Key Chain/Caltrops - WORKS
+
+Animation Testing:
+- Cursed Dance (does it only animate the quiver dance animation?) - doesn't work but not particularly important
+- Starlight (does Wish animation work?) - WORKS
+- Prevision (does Doom Desire animation work?) - WORKS
 
 TODO:
 Roar of Time with Bad Dreams (on a sleeping mon, think of drai using it) - DONE
 Twisted Dimension to just setting 5 turns of trick room - DONE
-investigate why knock off can remove custom mega stones (only confirmed to be knockable with weezinite but investigate others)
+investigate why knock off can remove custom mega stones (only confirmed to be knockable with weezinite but investigate others) - FIXED

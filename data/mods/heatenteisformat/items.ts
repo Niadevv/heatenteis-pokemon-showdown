@@ -131,10 +131,14 @@ export const Items: {[k: string]: ModdedItemData} = {
 		onSwitchIn(pokemon) {
 			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
 
-			if (pokemon.isActive && pokemon.baseSpecies.name === 'Groudon' && !['distortion', 'origin'].includes(target.ability) &&
-			  !this.effectData.primalReversionComplete) {
-				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
-				this.effectData.primalReversionComplete = true;
+			if (!['distortion', 'origin'].includes(target.ability)) {
+				if (pokemon.isActive && pokemon.baseSpecies.name === 'Groudon' &&
+				  !this.effectData.primalReversionComplete) {
+					this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
+					this.effectData.primalReversionComplete = true;
+				}
+			} else {
+				this.add('-message', pokemon.name + '\'s Primal Reversion is blocked by ' + this.dex.getAbility(target.ability).name + '!');
 			}
 		},
 		// transform once distortion is gone
@@ -153,10 +157,13 @@ export const Items: {[k: string]: ModdedItemData} = {
 		onSwitchIn(pokemon) {
 			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
 
-			if (pokemon.isActive && pokemon.baseSpecies.name === 'Kyogre' && !['distortion', 'origin'].includes(target.ability) &&
-			  !this.effectData.primalReversionComplete) {
-				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
-				this.effectData.primalReversionComplete = true;
+			if (!['distortion', 'origin'].includes(target.ability)) {
+				if (pokemon.isActive && pokemon.baseSpecies.name === 'Kyogre' && !this.effectData.primalReversionComplete) {
+					this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
+					this.effectData.primalReversionComplete = true;
+				}
+			} else {
+				this.add('-message', pokemon.name + '\'s Primal Reversion is blocked by ' + this.dex.getAbility(target.ability).name + '!');
 			}
 		},
 		// transform once distortion is gone
@@ -164,7 +171,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 			const target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
 
 			if (pokemon.isActive && pokemon.baseSpecies.name === 'Kyogre' && !['distortion', 'origin'].includes(target.ability) &&
-			  !this.effectData.primalReversionComplete) {
+				!this.effectData.primalReversionComplete) {
 				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
 				this.effectData.primalReversionComplete = true;
 			}

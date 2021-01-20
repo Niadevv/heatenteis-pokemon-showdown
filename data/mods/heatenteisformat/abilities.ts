@@ -814,27 +814,29 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			if (!this.field.effectiveWeather()) {
 				this.add('-ability', pokemon, 'Starlight');
+				this.add('-anim', pokemon, 'Wish');
 				this.effectData.starCount = 6;
 				this.effectData.user = pokemon;
 				this.boost({atk: 6}, pokemon);
+			} else {
+				this.add('-message', pokemon.name + '\'s Starlight is blocked by the weather!');
 			}
 		},
 		onAnySetWeather(target, source, weather) {
 			// clear boosts on weather set
 			if (this.effectData.starCount > 0) {
 				this.debug("Clearing boosts from weather");
+				this.add('-message', "The stars are blocked by the weather! The stars are no longer shining!");
 				this.boost({atk: -this.effectData.starCount}, this.effectData.user);
 				this.effectData.starCount = 0;
 			}
 		},
 		onResidual(pokemon) {
-			this.debug("Starlight level of " + pokemon + ": " + this.effectData.starCount);
 			// Only decrease if the user was in for a full turn
 			if (pokemon.activeTurns && this.effectData.starCount > 0) {
-				this.debug("Dropping Starlight count!");
+				this.add('-message', "One of " + pokemon.name + "'s stars faded!");
 				this.boost({atk: -1}, pokemon);
 				this.effectData.starCount -= 1;
-				this.debug("Starlight level of " + pokemon + " after drop: " + this.effectData.starCount);
 			}
 		},
 		// Remove star power before baton pass for the sake of AG's sanity and lore
@@ -852,6 +854,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onDamagingHitOrder: 1,
 		onDamagingHit(damage, target, source, move) {
 			if (move.flags['contact']) {
+				this.add('-activate', target, 'ability: Sticky Madness');
 				if (!source.side.getSideCondition('stickyweb') && !(source.side === target.side)) {
 					source.side.addSideCondition('stickyweb');
 					// check if the user's side has webs before boosting
@@ -873,6 +876,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				}
 
 				if (boost) {
+					this.add('-activate', pokemon, 'ability: Sticky Madness');
 					this.boost(boost, pokemon);
 					pokemon.addVolatile('stickymadness');
 				}
@@ -1030,6 +1034,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "User restores 25% max HP at end of turn if below 50%",
 		onResidual(target) {
 			if (target.hp < (Math.floor(target.maxhp / 2))) {
+				this.add('-activate', target, 'ability: Plantation');
 				this.heal(target.baseMaxhp / 4);
 			}
 		},
@@ -1039,13 +1044,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "After the target is hit by the user's attacks twice, they are forced to switch out. Soundproof Pokemon are not affected.",
 		shortDesc: "Target switches out after hit twice by user. Soundproof Pokemon not affected.",
 		onBeforeMove(source, target, move) {
-			if (target.ability !== 'soundproof' && target.volatiles['fortissimo']) {
+			if (target.ability !== 'soundproof' && target.volatiles['fortissimo'] && move.category !== 'Status') {
 				move.forceSwitch = true;
 				delete target.volatiles['fortissimo'];
 			}
 		},
 		onAfterMove(source, target, move) {
-			if (target.ability !== 'soundproof') target.addVolatile('fortissimo');
+			if (move.forceSwitch && move.category !== 'Status') {
+				this.add('-message', target.name + " couldn't stand the noise and switched out!");
+			}
+			if (target && target.ability !== 'soundproof') target.addVolatile('fortissimo');
 		},
 	},
 	solareclipse: {
@@ -1053,6 +1061,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "The user gains +1 in attack and special attack on switchin.",
 		shortDesc: "+1 in attack and special attack on switchin.",
 		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Solar Eclipse');
 			this.boost({atk: 1, spa: 1}, pokemon);
 		},
 	},
@@ -1061,25 +1070,39 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "The user gains +1 in defense and special defense on switchin.",
 		shortDesc: "+1 in defense and special defense on switchin.",
 		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Lunar Eclipse');
 			this.boost({def: 1, spd: 1}, pokemon);
 		},
 	},
 	dollhouse: {
 		name: "Dollhouse",
-		desc: "On switchin, the user puts in a substitute.",
-		shortDesc: "Substitutes on switchin",
+		desc: "On switchin, the user puts in a substitute. If the Substitute is unbroken, it will reuse the same Substitute net time.",
+		shortDesc: "Substitutes on switchin. Reuses unbroken Substitutes.",
 		onStart(pokemon) {
 			// check for substitute already as it may be baton passed to mega bannette
 			if (pokemon.hp > pokemon.maxhp / 4 && !pokemon.volatiles['substitute']) {
 				this.add('-activate', pokemon, 'ability: Dollhouse');
-				this.directDamage(pokemon.maxhp / 4, pokemon);
+				// if the user didn't use up their last sub or had another sub setup, don't cut the HP.
+				if (!this.effectData.dollhouseSubstituteIntact) this.directDamage(pokemon.maxhp / 4, pokemon);
 				pokemon.addVolatile('substitute');
+				if (this.effectData.dollhouseSubstituteIntact) {
+					// set the new sub's HP to be equal to the old sub's HP
+					pokemon.volatiles['substitute'].hp = this.effectData.dollhouseSubstituteHP;
+				}
 			} else {
 				if (!pokemon.volatiles['substitute']) {
 					this.add('-fail', pokemon, 'ability: Dollhouse', '[weak]');
 				} else {
 					this.add('-fail', pokemon, 'ability: Dollhouse');
 				}
+			}
+		},
+		onSwitchOut(pokemon) {
+			this.effectData.dollhouseSubstituteIntact = !!pokemon.volatiles['substitute'];
+			if (this.effectData.dollhouseSubstituteIntact) {
+				this.effectData.dollhouseSubstituteHP = pokemon.volatiles['substitute'].hp as number;
+			} else {
+				this.effectData.dollhouseSubstituteHP = 0;
 			}
 		},
 	},
@@ -1093,8 +1116,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	prevision: {
 		name: "Prevision",
-		desc: "Upon switchin, the user uses Future Sight on the opposing side.",
-		shortDesc: "Future Sight for opposing side on switchin.",
+		desc: "Upon switchin, the user uses Doom Desire on the opposing side.",
+		shortDesc: "Doom Desire for opposing side on switchin.",
 		onStart(pokemon) {
 			this.add('-activate', pokemon, 'ability: Prevision');
 			let success = false;
@@ -1122,7 +1145,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 
 			if (success) {
-				this.add('-start', pokemon, 'move: Future Sight');
+				this.add('-anim', pokemon, 'Doom Desire');
+				this.add('-start', pokemon, 'Doom Desire');
 			}
 		},
 	},
@@ -1451,6 +1475,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				for (let i = 0; i < length; i++) {
+					this.add('-anim', source, 'Toxic Spikes');
 					target.side.addSideCondition('toxicspikes');
 				}
 			}

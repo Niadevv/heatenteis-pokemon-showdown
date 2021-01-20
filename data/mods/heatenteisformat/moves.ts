@@ -686,7 +686,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			spa: 1,
 		},
 		onPrepareHit(source) {
-			this.add('[still]');
+			this.add('-anim', source, '[still]');
 			this.add('-anim', source, 'Quiver Dance');
 		},
 		secondary: null,
