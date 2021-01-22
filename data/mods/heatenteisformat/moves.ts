@@ -443,6 +443,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	triplekick: {
 		inherit: true,
 		basePower: 20,
+		// what's the point in defining the basePower if it's decided here? :/
+		basePowerCallback(pokemon, target, move) {
+			return 20 * move.hit;
+		},
 	},
 	lightthatburnsthesky: {
 		inherit: true,
