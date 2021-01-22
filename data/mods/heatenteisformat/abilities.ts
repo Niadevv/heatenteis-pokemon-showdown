@@ -862,7 +862,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 						this.boost({atk: 2, spe: 1}, target);
 					}
 				}
-				this.boost({spe: -1}, source);
+				this.add('-ability', target, 'ability: Sticky Madness');
+				this.boost({spe: -1}, source, target, null, true);
 			}
 		},
 		onStart(pokemon) {
