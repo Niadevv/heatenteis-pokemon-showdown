@@ -347,10 +347,46 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	moonlight: {
 		inherit: true,
 		pp: 10,
+		onHit(pokemon) {
+			let factor = 0.5;
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				factor = 0.667;
+				break;
+			case 'windstorm':
+			case 'deltastream':
+			case 'raindance':
+			case 'primordialsea':
+			case 'sandstorm':
+			case 'hail':
+				factor = 0.25;
+				break;
+			}
+			return !!this.heal(this.modify(pokemon.maxhp, factor));
+		},
 	},
 	morningsun: {
 		inherit: true,
 		pp: 10,
+		onHit(pokemon) {
+			let factor = 0.5;
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				factor = 0.667;
+				break;
+			case 'windstorm':
+			case 'deltastream':
+			case 'raindance':
+			case 'primordialsea':
+			case 'sandstorm':
+			case 'hail':
+				factor = 0.25;
+				break;
+			}
+			return !!this.heal(this.modify(pokemon.maxhp, factor));
+		},
 	},
 	uturn: {
 		inherit: true,
