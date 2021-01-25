@@ -994,7 +994,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	grumpig: {
 		inherit: true,
-		abilities: {0: "Thick Fat", 1: "Psychic Terrain", H: "Gluttony"},
+		abilities: {0: "Thick Fat", 1: "Psychic Surge", H: "Gluttony"},
 	},
 	spinda: {
 		inherit: true,
@@ -1538,7 +1538,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	beheeyem: {
 		inherit: true,
 		baseStats: {hp: 100, atk: 95, def: 75, spa: 125, spd: 110, spe: 40},
-		abilities: {0: "Psychic Terrain", 1: "Mind Sweep", H: "Analytic"},
+		abilities: {0: "Psychic Surge", 1: "Mind Sweep", H: "Analytic"},
 	},
 	chandelure: {
 		inherit: true,

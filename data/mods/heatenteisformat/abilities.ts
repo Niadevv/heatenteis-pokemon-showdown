@@ -1533,12 +1533,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			} else {
 				this.boost({def: 2}, pokemon);
 			}
+			this.effectData.startedArmyofone = true;
 		},
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2 && !this.effectData.armyofoneAttackBoosts) {
+			if (pokemon.hp <= pokemon.maxhp / 2 && !this.effectData.armyofoneAttackBoosts && this.effectData.startedArmyofone) {
 				this.boost({atk: 2, def: -2}, pokemon);
 				this.effectData.armyofoneAttackBoosts = true;
 			}
+		},
+		onEnd(pokemon) {
+			this.effectData.startedArmyofone = false;
 		},
 	},
 	fatalnock: {
