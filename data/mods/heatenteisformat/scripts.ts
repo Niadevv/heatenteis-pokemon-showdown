@@ -1273,16 +1273,18 @@ export const Scripts: ModdedBattleScriptsData = {
 		// pain.
 		this.modData('Learnsets', 'spectrier').learnset.aurasphere = ['8L1'];
 		this.modData('Learnsets', 'calyrex').learnset.aurasphere = ['8L1'];
-		this.modData('Learnsets', 'calyrex').learnset.futursight = ['8L1'];
+		this.modData('Learnsets', 'calyrex').learnset.futuresight = ['8L1'];
 		this.modData('Learnsets', 'calyrex').learnset.recover = ['8L1'];
 		this.modData('Learnsets', 'calyrex').learnset.teleport = ['8L1'];
 		this.modData('Learnsets', 'calyrexice').learnset.aurasphere = ['8L1'];
-		this.modData('Learnsets', 'calyrexice').learnset.futursight = ['8L1'];
+		this.modData('Learnsets', 'calyrexice').learnset.futuresight = ['8L1'];
 		this.modData('Learnsets', 'calyrexice').learnset.recover = ['8L1'];
 		this.modData('Learnsets', 'calyrexice').learnset.teleport = ['8L1'];
+		this.modData('Learnsets', 'calyrexice').learnset.earthquake = ['8L1'];
+		this.modData('Learnsets', 'calyrexice').learnset.slackoff = ['8L1'];
 		// pain.
 		this.modData('Learnsets', 'calyrexshadow').learnset.aurasphere = ['8L1'];
-		this.modData('Learnsets', 'calyrexshadow').learnset.futursight = ['8L1'];
+		this.modData('Learnsets', 'calyrexshadow').learnset.futuresight = ['8L1'];
 		this.modData('Learnsets', 'calyrexshadow').learnset.recover = ['8L1'];
 		this.modData('Learnsets', 'calyrexshadow').learnset.teleport = ['8L1'];
 	},
