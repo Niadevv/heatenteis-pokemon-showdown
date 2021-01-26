@@ -78,6 +78,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'meganium').learnset.drainingkiss = ['8L1'];
 		this.modData('Learnsets', 'meganium').learnset.earthpower = ['8L1'];
 		this.modData('Learnsets', 'meganium').learnset.petaldance = ['8L1'];
+		this.modData('Learnsets', 'meganium').learnset.calmmind = ['8L1'];
 		this.modData('Learnsets', 'typhlosion').learnset.earthpower = ['8L1'];
 		this.modData('Learnsets', 'typhlosion').learnset.explosion = ['8L1'];
 		this.modData('Learnsets', 'typhlosion').learnset.rockblast = ['8L1'];
