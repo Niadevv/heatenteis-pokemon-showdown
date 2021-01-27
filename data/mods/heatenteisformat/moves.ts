@@ -108,6 +108,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (target.ability === 'poisonheal') {
 					this.add('-activate', source, 'move: Roar of Time');
 					target.heal((target.baseMaxhp / 8) * 3);
+					this.add('-heal', target, target.getHealth);
 				}
 			}
 		},
