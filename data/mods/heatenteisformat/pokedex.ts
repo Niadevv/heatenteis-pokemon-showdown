@@ -243,6 +243,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Inner Focus"},
 	},
 	// NON UBERS BUFFS
+	blastoise: {
+		inherit: true,
+		abilities: {0: "Torrent", H: "Shell Armor"},
+	},
 	raticate: {
 		inherit: true,
 		baseStats: {hp: 55, atk: 105, def: 60, spa: 50, spd: 70, spe: 107},
