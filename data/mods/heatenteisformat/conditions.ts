@@ -169,11 +169,6 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 					this.effectData.lostgiftToRestore.push(teammate);
 				}
 			}
-			// this.add('-activate', source, 'ability: Lost Gift');
-			// const itemToRestore = this.dex.getItem(target.set.item);
-			// target.setItem(itemToRestore);
-			// this.add('-item', target, itemToRestore, '[from] ability: Lost Gift');
-			// delete target.volatiles['lostgift'];
 		},
 		onAnySwitchIn(pokemon) {
 			if (pokemon && pokemon.side === this.effectData.lostgiftOrigin.side && !pokemon.item && pokemon.set.item &&

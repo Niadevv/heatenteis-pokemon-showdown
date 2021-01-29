@@ -995,6 +995,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "User's team regains lost held items on switchin.",
 		onStart(pokemon) {
 			this.add('-activate', pokemon, 'ability: Lost Gift');
+			// DOUBLES: restore partner items before activating the condition
 			if (pokemon.side.active.length > 1) {
 				for (const partner of pokemon.side.active) {
 					if (partner !== pokemon && !partner.fainted && !partner.item && partner.set.item) {
@@ -1004,7 +1005,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					}
 				}
 			}
+			// refresh the side condition
 			if (pokemon.side.sideConditions['lostgift']) pokemon.side.removeSideCondition('lostgift');
+			// restoring items does not seem to work if the Pokemon is not active.
 			pokemon.side.addSideCondition('lostgift');
 		},
 	},
