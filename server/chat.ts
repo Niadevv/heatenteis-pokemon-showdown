@@ -472,7 +472,7 @@ export class CommandContext extends MessageContext {
 			this.handler = parsedCommand.handler;
 		}
 
-		if (this.room && !(this.user.id in this.room.users)) {
+		if (this.room && !this.user.inRoom(this.room)) {
 			if (this.room.roomid === 'lobby') {
 				this.room = null;
 			} else {
@@ -835,16 +835,16 @@ export class CommandContext extends MessageContext {
 	statusfilter(status: string) {
 		return Chat.statusfilter(status, this.user);
 	}
-	checkCan(permission: RoomPermission, target: User | null, room: Room): undefined;
-	checkCan(permission: GlobalPermission, target?: User | null): undefined;
-	checkCan(permission: string, target: User | null = null, room: Room | null = null) {
+	checkCan(permission: RoomPermission, target: User | ID | null, room: Room): undefined;
+	checkCan(permission: GlobalPermission, target?: User | ID | null): undefined;
+	checkCan(permission: string, target: User | ID | null = null, room: Room | null = null) {
 		if (!Users.Auth.hasPermission(this.user, permission, target, room, this.fullCmd)) {
 			throw new Chat.ErrorMessage(`${this.cmdToken}${this.fullCmd} - Access denied.`);
 		}
 	}
-	privatelyCheckCan(permission: RoomPermission, target: User | null, room: Room): boolean;
-	privatelyCheckCan(permission: GlobalPermission, target?: User | null): boolean;
-	privatelyCheckCan(permission: string, target: User | null = null, room: Room | null = null) {
+	privatelyCheckCan(permission: RoomPermission, target: User | ID | null, room: Room): boolean;
+	privatelyCheckCan(permission: GlobalPermission, target?: User | ID | null): boolean;
+	privatelyCheckCan(permission: string, target: User | ID | null = null, room: Room | null = null) {
 		this.handler!.isPrivate = true;
 		if (Users.Auth.hasPermission(this.user, permission, target, room, this.fullCmd)) {
 			return true;
@@ -974,7 +974,7 @@ export class CommandContext extends MessageContext {
 						this.tr`Because moderated chat is set, you must be of rank ${groupName} or higher to speak in this room.`
 					);
 				}
-				if (!(user.id in room.users)) {
+				if (!user.inRoom(room)) {
 					connection.popup(`You can't send a message to this room without being in it.`);
 					return null;
 				}
@@ -1092,7 +1092,7 @@ export class CommandContext extends MessageContext {
 		if (!targetUser || !targetUser.connected) {
 			throw new Chat.ErrorMessage(`User ${this.targetUsername} is not currently online.`);
 		}
-		if (!(this.room && (targetUser.id in this.room.users)) && !this.user.can('addhtml')) {
+		if (!(this.room && targetUser.inRoom(this.room)) && !this.user.can('addhtml')) {
 			throw new Chat.ErrorMessage("You do not have permission to use PM HTML to users who are not in this room.");
 		}
 		if (targetUser.settings.blockPMs &&
@@ -1313,6 +1313,18 @@ export class CommandContext extends MessageContext {
 		}
 		return game;
 	}
+	requireMinorActivity<T extends MinorActivity>(constructor: new (...args: any[]) => T) {
+		const room = this.requireRoom();
+		if (!room.minorActivity) {
+			throw new Chat.ErrorMessage(`This command requires a ${constructor.name} (this room has no minor activity).`);
+		}
+		const game = room.getMinorActivity(constructor);
+		// must be a different game
+		if (!game) {
+			throw new Chat.ErrorMessage(`This command requires a ${constructor.name} (this minor activity is a(n) ${room.minorActivity.name}).`);
+		}
+		return game;
+	}
 	commandDoesNotExist(): never {
 		if (this.cmdToken === '!') {
 			throw new Chat.ErrorMessage(`The command "${this.cmdToken}${this.fullCmd}" does not exist.`);
@@ -1320,6 +1332,11 @@ export class CommandContext extends MessageContext {
 		throw new Chat.ErrorMessage(
 			`The command "${this.cmdToken}${this.fullCmd}" does not exist. To send a message starting with "${this.cmdToken}${this.fullCmd}", type "${this.cmdToken}${this.cmdToken}${this.fullCmd}".`
 		);
+	}
+	refreshPage(pageid: string) {
+		if (this.connection.openPages?.has(pageid)) {
+			this.parse(`/join view-${pageid}`);
+		}
 	}
 }
 

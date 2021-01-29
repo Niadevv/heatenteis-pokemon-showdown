@@ -37,6 +37,7 @@ import {ScavengerGameTemplate} from './chat-plugins/scavenger-games';
 import {RepeatedPhrase} from './chat-plugins/repeats';
 import {PM as RoomBattlePM, RoomBattle, RoomBattlePlayer, RoomBattleTimer} from "./room-battle";
 import {RoomGame, RoomGamePlayer} from './room-game';
+import {MinorActivity} from './room-minor-activity';
 import {Roomlogs} from './roomlogs';
 import * as crypto from 'crypto';
 import {RoomAuth} from './user-groups';
@@ -113,8 +114,9 @@ export interface RoomSettings {
 	requestShowEnabled?: boolean | null;
 	permissions?: {[k: string]: GroupSymbol};
 	minorActivity?: PollData | AnnouncementData;
-	minorActivityQueue?: (PollData | AnnouncementData)[];
+	minorActivityQueue?: MinorActivityData[];
 	repeats?: RepeatedPhrase[];
+	autoModchat?: {rank: GroupSymbol, time: number, active: boolean};
 	tournaments?: TournamentRoomSettings;
 
 	scavSettings?: AnyObject;
@@ -132,8 +134,8 @@ export interface RoomSettings {
 export type MessageHandler = (room: BasicRoom, message: string) => void;
 export type Room = GameRoom | ChatRoom;
 
-import type {Announcement, AnnouncementData} from './chat-plugins/announcements';
-import type {Poll, PollData} from './chat-plugins/poll';
+import type {AnnouncementData} from './chat-plugins/announcements';
+import type {PollData} from './chat-plugins/poll';
 import type {AutoResponder} from './chat-plugins/responder';
 import type {RoomEvent, RoomEventAlias, RoomEventCategory} from './chat-plugins/room-events';
 import type {Tournament, TournamentRoomSettings} from './tournaments/index';
@@ -181,6 +183,7 @@ export abstract class BasicRoom {
 	userCount: number;
 	active: boolean;
 	muteTimer: NodeJS.Timer | null;
+	modchatTimer: NodeJS.Timer | null;
 	lastUpdate: number;
 	lastBroadcast: string;
 	lastBroadcastTime: number;
@@ -200,8 +203,8 @@ export abstract class BasicRoom {
 	batchJoins: number;
 	reportJoinsInterval: NodeJS.Timer | null;
 
-	minorActivity: Poll | Announcement | null;
-	minorActivityQueue: PollData[] | null;
+	minorActivity: MinorActivity | null;
+	minorActivityQueue: MinorActivityData[] | null;
 	banwordRegex: RegExp | true | null;
 	logUserStatsInterval: NodeJS.Timer | null;
 	expireTimer: NodeJS.Timer | null;
@@ -284,6 +287,7 @@ export abstract class BasicRoom {
 
 		this.active = false;
 		this.muteTimer = null;
+		this.modchatTimer = null;
 
 		this.logUserStatsInterval = null;
 		this.expireTimer = null;
@@ -492,6 +496,44 @@ export abstract class BasicRoom {
 		if (this.game && this.game.constructor.name === constructor.name) return this.game as T;
 		return null;
 	}
+	getMinorActivity<T extends MinorActivity>(constructor: new (...args: any[]) => T): T | null {
+		if (this.minorActivity?.constructor.name === constructor.name) return this.minorActivity as T;
+		return null;
+	}
+	getMinorActivityQueue(settings = false): MinorActivityData[] | null {
+		const usedQueue = settings ? this.settings.minorActivityQueue : this.minorActivityQueue;
+		if (!usedQueue?.length) return null;
+		return usedQueue;
+	}
+	queueMinorActivity(activity: MinorActivityData): void {
+		if (!this.minorActivityQueue) this.minorActivityQueue = [];
+		this.minorActivityQueue.push(activity);
+		this.settings.minorActivityQueue = this.minorActivityQueue;
+	}
+	clearMinorActivityQueue(slot?: number, depth = 1) {
+		if (!this.minorActivityQueue) return;
+		if (!slot) {
+			this.minorActivityQueue = null;
+			delete this.settings.minorActivityQueue;
+			this.saveSettings();
+		} else {
+			this.minorActivityQueue.splice(slot, depth);
+			this.settings.minorActivityQueue = this.minorActivityQueue;
+			this.saveSettings();
+			if (!this.minorActivityQueue.length) this.clearMinorActivityQueue();
+		}
+	}
+	setMinorActivity(activity: MinorActivity | null): void {
+		this.minorActivity?.endTimer();
+		this.minorActivity = activity;
+		if (this.minorActivity) {
+			this.minorActivity.save();
+			this.minorActivity.display();
+		} else {
+			delete this.settings.minorActivity;
+			this.saveSettings();
+		}
+	}
 	saveSettings() {
 		if (!this.persist) return;
 
@@ -500,7 +542,7 @@ export abstract class BasicRoom {
 		Rooms.global.writeChatRoomData();
 	}
 	checkModjoin(user: User) {
-		if (user.id in this.users) return true;
+		if (user.inRoom(this)) return true;
 		if (!this.settings.modjoin) return true;
 		// users with a room rank can always join
 		if (this.auth.has(user.id)) return true;
@@ -575,7 +617,7 @@ export abstract class BasicRoom {
 			}
 		}
 
-		if (user && successUserid && userid in this.users) {
+		if (user && successUserid && user.inRoom(this)) {
 			user.updateIdentity();
 			if (notifyText) user.popup(notifyText);
 		}
@@ -872,8 +914,8 @@ export abstract class BasicRoom {
 			connection,
 			'|init|chat\n|title|' + this.title + '\n' + userList + '\n' + this.log.getScrollback() + this.getIntroMessage(user)
 		);
-		if (this.minorActivity) this.minorActivity.onConnect(user, connection);
-		if (this.game && this.game.onConnect) this.game.onConnect(user, connection);
+		this.minorActivity?.onConnect?.(user, connection);
+		this.game?.onConnect?.(user, connection);
 	}
 	onJoin(user: User, connection: Connection) {
 		if (!user) return false; // ???
@@ -888,9 +930,10 @@ export abstract class BasicRoom {
 
 		this.users[user.id] = user;
 		this.userCount++;
+		this.checkAutoModchat(user);
 
-		if (this.minorActivity) this.minorActivity.onConnect(user, connection);
-		if (this.game && this.game.onJoin) this.game.onJoin(user, connection);
+		this.minorActivity?.onConnect?.(user, connection);
+		this.game?.onJoin?.(user, connection);
 		return true;
 	}
 	onRename(user: User, oldid: ID, joining: boolean) {
@@ -914,9 +957,7 @@ export abstract class BasicRoom {
 		} else {
 			this.reportJoin('n', user.getIdentityWithStatus(this.roomid) + '|' + oldid, user);
 		}
-		if (this.minorActivity && 'voters' in this.minorActivity) {
-			if (user.id in this.minorActivity.voters) this.minorActivity.updateFor(user);
-		}
+		this.minorActivity?.onRename?.(user, oldid, joining);
 		return true;
 	}
 	/**
@@ -934,7 +975,7 @@ export abstract class BasicRoom {
 	onLeave(user: User) {
 		if (!user) return false; // ...
 
-		if (!(user.id in this.users)) {
+		if (!user.inRoom(this)) {
 			Monitor.crashlog(new Error(`user ${user.id} already left`));
 			return false;
 		}
@@ -945,7 +986,42 @@ export abstract class BasicRoom {
 			this.reportJoin('l', user.getIdentity(this.roomid), user);
 		}
 		if (this.game && this.game.onLeave) this.game.onLeave(user);
+
+
 		return true;
+	}
+
+	runAutoModchat() {
+		if (!this.settings.autoModchat || this.settings.autoModchat.active) return;
+		// they are staff and online
+		const staff = Object.values(this.users).filter(u => this.auth.isStaff(u.id));
+		if (!staff.length) {
+			const {rank, time} = this.settings.autoModchat;
+			this.modchatTimer = setTimeout(() => {
+				this.settings.modchat = rank;
+				this.add(
+					`|raw|<div class="broadcast-blue"><strong>This room has had no active staff for ${Chat.toDurationString(time)},` +
+					` and has had modchat set to ${rank}.</strong></div>`
+				).update();
+				this.modlog({
+					action: 'AUTOMODCHAT ACTIVATE',
+				});
+				// automodchat will always exist
+				this.settings.autoModchat!.active = true;
+			}, time * 60 * 1000);
+		}
+	}
+
+	checkAutoModchat(user: User) {
+		if (this.auth.isStaff(user.id)) {
+			if (this.modchatTimer) {
+				clearTimeout(this.modchatTimer);
+			}
+			if (this.settings.autoModchat?.active) {
+				delete this.settings.modchat;
+				this.settings.autoModchat.active = false;
+			}
+		}
 	}
 
 	destroy(): void {
@@ -1651,7 +1727,7 @@ export class GameRoom extends BasicRoom {
 		return this.log.getScrollback(channel);
 	}
 	getLogForUser(user: User) {
-		if (!(user.id in this.game.playerTable)) return this.getLog();
+		if (!user.inGame(this)) return this.getLog();
 		// @ts-ignore
 		return this.getLog(this.game.playerTable[user.id].num);
 	}
@@ -1899,6 +1975,8 @@ export const Rooms = {
 
 	RoomGame,
 	RoomGamePlayer,
+
+	MinorActivity,
 
 	RETRY_AFTER_LOGIN,
 

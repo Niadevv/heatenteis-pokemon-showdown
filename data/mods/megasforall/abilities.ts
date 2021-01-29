@@ -899,21 +899,146 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: -1026,
 	},
 	diamonddust: {
-		shortDesc: "During hail, this Pokémon is immune to all Rock-type attacks and Stealth Rock.",
-		onDamage(damage, target, source, effect) {
-			if (effect && effect.id === 'stealthrock' && this.field.isWeather('hail')) {
-				return false;
-			}
-		},
-		onTryHit(target, source, move) {
-			if (move.type === 'Rock' && this.field.isWeather('hail')) {
-				this.add('-immune', target, '[from] ability: Diamond Dust');
-				return null;
-			}
+		desc: "On switch-in, this Pokémon summons Diamond Dust for 5 turns. During the effect, Pokémon are immune to all Rock-type attacks and Stealth Rock; Weather Ball becomes an Ice-type move, and its base power is 100; and other weather-related moves and Abilities behave as they do in Hail.",
+		shortDesc: "5 turns: all Pokémon are immune to Rock; counts as hail.",
+		onStart(source) {
+			this.field.setWeather('diamonddust');
 		},
 		name: "Diamond Dust",
 		rating: 3,
 		num: -1027,
+	},
+	forecast: {
+		onUpdate(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Castform' || pokemon.transformed) return;
+			let forme = null;
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				if (pokemon.species.id !== 'castformsunny') forme = 'Castform-Sunny';
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				if (pokemon.species.id !== 'castformrainy') forme = 'Castform-Rainy';
+				break;
+			case 'hail':
+			case 'diamonddust':
+				if (pokemon.species.id !== 'castformsnowy') forme = 'Castform-Snowy';
+				break;
+			default:
+				if (pokemon.species.id !== 'castform') forme = 'Castform';
+				break;
+			}
+			if (pokemon.isActive && forme) {
+				pokemon.formeChange(forme, this.effect, false, '[msg]');
+			}
+		},
+		name: "Forecast",
+		rating: 2,
+		num: 59,
+	},
+	icebody: {
+		desc: "If Hail or Diamond Dust is active, this Pokémon restores 1/16 of its maximum HP, rounded down, at the end of each turn. This Pokémon takes no damage from Hail.",
+		shortDesc: "If Hail or Diamond Dust is active, heals 1/16 of its max HP each turn; immunity to Hail.",
+		onWeather(target, source, effect) {
+			if (effect.id === 'hail') {
+				this.heal(target.baseMaxhp / 16);
+			}
+		},
+		onImmunity(type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		name: "Ice Body",
+		rating: 1,
+		num: 115,
+	},
+	iceface: {
+		desc: "If this Pokémon is an Eiscue, the first physical hit it takes in battle deals 0 neutral damage. Its ice face is then broken and it changes forme to Noice Face. Eiscue regains its Ice Face forme when Hail or Diamond Dust begins or when Eiscue switches in while Hail or Diamond Dust is active. Confusion damage also breaks the ice face.",
+		shortDesc: "If Eiscue, the first physical hit it takes deals 0 damage. Effect restored in Hail, Diamond Dust.",
+		onStart(pokemon) {
+			if (
+				(this.field.isWeather('hail') || this.field.isWeather('diamonddust')) &&
+				pokemon.species.id === 'eiscuenoice' && !pokemon.transformed
+			) {
+				this.add('-activate', pokemon, 'ability: Ice Face');
+				this.effectData.busted = false;
+				pokemon.formeChange('Eiscue', this.effect, true);
+			}
+		},
+		onDamagePriority: 1,
+		onDamage(damage, target, source, effect) {
+			if (
+				effect && effect.effectType === 'Move' && effect.category === 'Physical' &&
+				target.species.id === 'eiscue' && !target.transformed
+			) {
+				this.add('-activate', target, 'ability: Ice Face');
+				this.effectData.busted = true;
+				return 0;
+			}
+		},
+		onCriticalHit(target, type, move) {
+			if (!target) return;
+			if (move.category !== 'Physical' || target.species.id !== 'eiscue' || target.transformed) return;
+			if (target.volatiles['substitute'] && !(move.flags['authentic'] || move.infiltrates)) return;
+			if (!target.runImmunity(move.type)) return;
+			return false;
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (!target) return;
+			if (move.category !== 'Physical' || target.species.id !== 'eiscue' || target.transformed) return;
+			if (target.volatiles['substitute'] && !(move.flags['authentic'] || move.infiltrates)) return;
+			if (!target.runImmunity(move.type)) return;
+			return 0;
+		},
+		onUpdate(pokemon) {
+			if (pokemon.species.id === 'eiscue' && this.effectData.busted) {
+				pokemon.formeChange('Eiscue-Noice', this.effect, true);
+			}
+		},
+		onAnyWeatherStart() {
+			const pokemon = this.effectData.target;
+			if (
+				(this.field.isWeather('hail') || this.field.isWeather('diamonddust')) &&
+				pokemon.species.id === 'eiscuenoice' && !pokemon.transformed
+			) {
+				this.add('-activate', pokemon, 'ability: Ice Face');
+				this.effectData.busted = false;
+				pokemon.formeChange('Eiscue', this.effect, true);
+			}
+		},
+		isPermanent: true,
+		name: "Ice Face",
+		rating: 3,
+		num: 248,
+	},
+	slushrush: {
+		shortDesc: "If Hail or Diamond Dust is active, this Pokémon's Speed is doubled.",
+		onModifySpe(spe, pokemon) {
+			if (this.field.isWeather('hail') || this.field.isWeather('diamonddust')) {
+				return this.chainModify(2);
+			}
+		},
+		name: "Slush Rush",
+		rating: 3,
+		num: 202,
+	},
+	snowcloak: {
+		desc: "If Hail or Diamond Dust is active, this Pokémon's evasiveness is multiplied by 1.25. This Pokémon takes no damage from Hail.",
+		shortDesc: "If Hail or Diamond Dust is active, evasiveness is 1.25x; immunity to Hail.",
+		onImmunity(type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		onModifyAccuracyPriority: 8,
+		onModifyAccuracy(accuracy) {
+			if (typeof accuracy !== 'number') return;
+			if (this.field.isWeather('hail') || this.field.isWeather('diamonddust')) {
+				this.debug('Snow Cloak - decreasing accuracy');
+				return accuracy * 0.8;
+			}
+		},
+		name: "Snow Cloak",
+		rating: 1.5,
+		num: 81,
 	},
 	prehistoricrage: {
 		shortDesc: "This Pokémon can hit Fairy-types with Dragon-type moves.",
@@ -1430,6 +1555,155 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		name: "Steelbreaker",
 		rating: 3,
 		num: -1043,
+	},
+	seismicscream: {
+		desc: "This Pokémon uses Earthquake at 60 base power after using a sound-based move. If the sound-based move is a special attack, the Earthquake that is used is also a special attack.",
+		shortDesc: "Follows up sound moves with an Earthquake of 60 BP.",
+		onSourceHit(target, source, move) {
+			if (!move || !target || !target.hp) return;
+			if (target !== source && target.hp && move.flags['sound']) {
+				source.addVolatile('seismicscream');
+				if (move.category === 'Special') {
+					source.addVolatile('specialsound');
+				}
+				this.useMove('earthquake', source);
+			}
+		},
+		name: "Seismic Scream",
+		rating: 3,
+		num: -1044,
+	},
+	acidrock: {
+		shortDesc: "On switch-in, this Pokémon poisons every Pokémon on the field.",
+		onStart(pokemon) {
+			for (const target of this.getAllActive()) {
+				if (!target || !this.isAdjacent(target, pokemon) || target.status) continue;
+				if (target.hasAbility('soundproof')) {
+					this.add('-ability', pokemon, 'Acid Rock');
+					this.add('-immune', target, "[from] ability: Soundproof", "[of] " + target);
+				} else if (!target.runStatusImmunity('psn')) {
+					this.add('-ability', pokemon, 'Acid Rock');
+					this.add('-immune', target);
+				} else {
+					target.setStatus('psn', pokemon);
+				}
+			}
+		},
+		name: "Acid Rock",
+		rating: 4,
+		num: -1045,
+	},
+	coupdegrass: {
+		desc: "This Pokémon moves first in its priority bracket when its target has 1/2 or less of its maximum HP, rounded down. Does not affect moves that have multiple targets.",
+		shortDesc: "This Pokémon moves first in its priority bracket when its target has 1/2 or less HP.",
+		onUpdate(pokemon) {
+			const action = this.queue.willMove(pokemon);
+			if (!action) return;
+			const target = this.getTarget(action.pokemon, action.move, action.targetLoc);
+			if (!target) return;
+			if (target.hp <= target.maxhp / 2) {
+				pokemon.addVolatile('coupdegrass');
+			}
+		},
+		condition: {
+			duration: 1,
+			onStart(pokemon) {
+				const action = this.queue.willMove(pokemon);
+				if (action) {
+					this.add('-ability', pokemon, 'Coup de Grass');
+					this.add('-message', `${pokemon.name} prepared to move immediately!`);
+				}
+			},
+			onModifyPriority(priority) {
+				return priority + 0.1;
+			},
+		},
+		name: "Coup de Grass",
+		rating: 3,
+		num: -1046,
+	},
+	masquerade: {
+		desc: "This Pokémon inherits the Ability of the last unfainted Pokemon in its party until it takes direct damage from another Pokémon's attack. Abilities that cannot be copied are \"No Ability\", As One, Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Gulp Missile, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, and Zen Mode.",
+		shortDesc: "Inherits the Ability of the last party member. Wears off when attacked.",
+		// the same thing happens manually onAfterMega and onSwitchIn, but it should not happen every time the Ability starts
+		onAfterMega(pokemon) {
+			pokemon.addVolatile('masquerade');
+			let i;
+			for (i = pokemon.side.pokemon.length - 1; i > pokemon.position; i--) {
+				if (!pokemon.side.pokemon[i]) continue;
+				const additionalBannedAbilities = [
+					'noability', 'flowergift', 'forecast', 'hungerswitch', 'illusion', 'imposter', 'neutralizinggas', 'powerofalchemy', 'receiver', 'trace', 'wonderguard',
+				];
+				if (
+					pokemon.side.pokemon[i].fainted ||
+					pokemon.side.pokemon[i].getAbility().isPermanent || additionalBannedAbilities.includes(pokemon.side.pokemon[i].ability)
+				) {
+					continue;
+				} else {
+					break;
+				}
+			}
+			if (!pokemon.side.pokemon[i]) return;
+			if (pokemon === pokemon.side.pokemon[i]) return;
+			const masquerade = pokemon.side.pokemon[i];
+			this.add('-ability', pokemon, 'Masquerade');
+			pokemon.setAbility(masquerade.ability);
+			this.add('-message', `${pokemon.name} inherited ${this.dex.getAbility(pokemon.ability).name} from ${masquerade.name}!`);
+			this.add('-ability', pokemon, this.dex.getAbility(pokemon.ability).name, '[silent]');
+		},
+		onSwitchIn(pokemon) {
+			pokemon.addVolatile('masquerade');
+			let i;
+			for (i = pokemon.side.pokemon.length - 1; i > pokemon.position; i--) {
+				if (!pokemon.side.pokemon[i]) continue;
+				const additionalBannedAbilities = [
+					'noability', 'flowergift', 'forecast', 'hungerswitch', 'illusion', 'imposter', 'neutralizinggas', 'powerofalchemy', 'receiver', 'trace', 'wonderguard',
+				];
+				if (
+					pokemon.side.pokemon[i].fainted ||
+					pokemon.side.pokemon[i].getAbility().isPermanent || additionalBannedAbilities.includes(pokemon.side.pokemon[i].ability)
+				) {
+					continue;
+				} else {
+					break;
+				}
+			}
+			if (!pokemon.side.pokemon[i]) return;
+			if (pokemon === pokemon.side.pokemon[i]) return;
+			const masquerade = pokemon.side.pokemon[i];
+			this.add('-ability', pokemon, 'Masquerade');
+			pokemon.setAbility(masquerade.ability);
+			this.add('-message', `${pokemon.name} inherited ${this.dex.getAbility(pokemon.ability).name} from ${masquerade.name}!`);
+			this.add('-ability', pokemon, this.dex.getAbility(pokemon.ability).name, '[silent]');
+		},
+		condition: {
+			onDamagingHit(damage, target, source, move) {
+				target.removeVolatile('masquerade');
+			},
+			onFaint(pokemon) {
+				pokemon.removeVolatile('masquerade');
+			},
+			onEnd(pokemon) {
+				this.add('-ability', pokemon, 'Masquerade');
+				this.add('-message', `${pokemon.name}'s Masquerade wore off!`);
+				pokemon.setAbility('masquerade');
+			},
+		},
+		name: "Masquerade",
+		rating: 3,
+		num: -1047,
+	},
+	bodyofwater: {
+		desc: "When this Pokémon uses a Water-type attack, damage is calculated using the user's Defense stat as its Attack or its Special Defense as its Special Attack, including stat stage changes. Other effects that modify the Attack and Special Attack stats are used as normal.",
+		shortDesc: "Water-type attacks use Def as Atk and Sp. Def as Sp. Atk in damage calculation.",
+		name: "Body of Water",
+		onModifyMove(move, attacker) {
+			if (move.type === 'Water') {
+				move.useSourceDefensiveAsOffensive = true;
+			}
+		},
+		rating: 3.5,
+		num: -1048,
 	},
 	stickyresidues: {
 		desc: "On switch-in, this Pokémon summons sticky residues that prevent hazards from being cleared or moved by Court Change for five turns. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",

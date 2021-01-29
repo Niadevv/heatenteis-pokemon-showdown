@@ -297,7 +297,7 @@ export const commands: ChatCommands = {
 		if (!targetConnections.length) {
 			// no connection has requested it - verify that we share a room
 			this.checkPMHTML(targetUser);
-			targetConnections = [targetUser.connections[0]];
+			targetConnections = targetUser.connections;
 		}
 
 		content = this.checkHTML(content);
@@ -600,7 +600,10 @@ export const commands: ChatCommands = {
 	],
 
 	processes(target, room, user) {
-		this.checkCan('lockdown');
+		const devRoom = Rooms.get('development');
+		if (!(devRoom && Users.Auth.atLeast(devRoom.auth.getDirect(user.id), '%'))) {
+			this.checkCan('lockdown');
+		}
 
 		let buf = `<strong>${process.pid}</strong> - Main<br />`;
 		for (const manager of ProcessManager.processManagers) {

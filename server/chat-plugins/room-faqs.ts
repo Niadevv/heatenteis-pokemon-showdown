@@ -82,7 +82,7 @@ export const commands: ChatCommands = {
 		saveRoomFaqs();
 		this.privateModAction(`${user.name} removed the FAQ for '${topic}'`);
 		this.modlog('ROOMFAQ', null, `removed ${topic}`);
-		if (roomid) this.parse(`/join view-roomfaqs-${targetRoom.roomid}`);
+		if (roomid) this.refreshPage(`roomfaqs-${targetRoom.roomid}`);
 	},
 	addalias(target, room, user) {
 		room = this.requireRoom();
@@ -120,6 +120,10 @@ export const commands: ChatCommands = {
 
 		if (!this.runBroadcast()) return;
 		this.sendReplyBox(Chat.formatText(roomFaqs[room.roomid][topic], true));
+		if (!this.broadcasting && user.can('ban', null, room, 'rfaq')) {
+			const code = Utils.escapeHTML(roomFaqs[room.roomid][topic]).replace(/\n/g, '<br />');
+			this.sendReplyBox(`<details><summary>Source</summary><code style="white-space: pre-wrap; display: table; tab-size: 3">/addfaq ${topic}, ${code}</code></details>`);
+		}
 	},
 	roomfaqhelp: [
 		`/roomfaq - Shows the list of all available FAQ topics`,
