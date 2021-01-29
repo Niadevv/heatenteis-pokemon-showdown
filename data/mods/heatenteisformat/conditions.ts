@@ -176,6 +176,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 				this.add('-activate', this.effectData.lostgiftOrigin, 'ability: Lost Gift');
 				const itemToRestore = this.dex.getItem(pokemon.set.item);
 				pokemon.setItem(itemToRestore);
+				this.add('-message', pokemon.name + "'s " + itemToRestore.name + " was returned!");
 				this.add('-item', pokemon, itemToRestore);
 				this.effectData.lostgiftToRestore = this.effectData.lostgiftToRestore.filter((mon: Pokemon) => mon !== pokemon);
 			}
