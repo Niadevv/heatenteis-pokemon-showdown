@@ -155,4 +155,40 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-end', target, 'Rose Petals');
 		},
 	},
+	// side condition
+	// hacky and bad but there's weirdness the more intuitive way
+	lostgift: {
+		name: "Lost Gift",
+		duration: 0,
+		onStart(target, source, effect) {
+			this.effectData.lostgiftOrigin = source;
+			// only restore the items of Pokemon who were itemless when the effect begins
+			this.effectData.lostgiftToRestore = [];
+			for (const teammate of source.side.pokemon) {
+				if (!teammate.fainted && !teammate.item && teammate.set.item) {
+					this.effectData.lostgiftToRestore.push(teammate);
+				}
+			}
+			// this.add('-activate', source, 'ability: Lost Gift');
+			// const itemToRestore = this.dex.getItem(target.set.item);
+			// target.setItem(itemToRestore);
+			// this.add('-item', target, itemToRestore, '[from] ability: Lost Gift');
+			// delete target.volatiles['lostgift'];
+		},
+		onAnySwitchIn(pokemon) {
+			if (pokemon && pokemon.side === this.effectData.lostgiftOrigin.side && !pokemon.item && pokemon.set.item &&
+				this.effectData.lostgiftToRestore.includes(pokemon)) {
+				this.add('-activate', this.effectData.lostgiftOrigin, 'ability: Lost Gift');
+				const itemToRestore = this.dex.getItem(pokemon.set.item);
+				pokemon.setItem(itemToRestore);
+				this.add('-item', pokemon, itemToRestore);
+				this.effectData.lostgiftToRestore = this.effectData.lostgiftToRestore.filter((mon: Pokemon) => mon !== pokemon);
+			}
+		},
+		onUpdate(pokemon) {
+			// eslint-disable-next-line max-len
+			this.effectData.lostgiftToRestore = this.effectData.lostgiftToRestore.filter((mon: Pokemon) => !mon.fainted && !mon.item);
+			if (this.effectData.lostgiftToRestore.length < 1) this.effectData.lostgiftOrigin.side.removeSideCondition('lostgift');
+		},
+	},
 };

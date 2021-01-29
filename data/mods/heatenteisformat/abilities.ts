@@ -995,14 +995,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "User's team regains lost held items on switchin.",
 		onStart(pokemon) {
 			this.add('-activate', pokemon, 'ability: Lost Gift');
-			for (const teammate of pokemon.side.pokemon) {
-				if (!teammate.fainted && !teammate.item && teammate.set.item) {
-					console.log("Restoring item");
-					const itemToRestore = this.dex.getItem(teammate.set.item);
-					teammate.setItem(itemToRestore);
-					this.add('-item', teammate, itemToRestore, '[from] ability: Lost Gift');
+			if (pokemon.side.active.length > 1) {
+				for (const partner of pokemon.side.active) {
+					if (partner !== pokemon && !partner.fainted && !partner.item && partner.set.item) {
+						const itemToRestore = this.dex.getItem(partner.set.item);
+						partner.setItem(itemToRestore);
+						this.add('-item', partner, itemToRestore, '[from] ability: Lost Gift');
+					}
 				}
 			}
+			if (pokemon.side.sideConditions['lostgift']) pokemon.side.removeSideCondition('lostgift');
+			pokemon.side.addSideCondition('lostgift');
 		},
 	},
 	forgedsteel: {
