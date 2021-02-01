@@ -107,15 +107,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	speedboost: {
 		inherit: true,
 		onStart(pokemon) {
-			// onStart is triggered again upon mega evolving into Mega Blaziken, so we add a volatile to track when the speed boost is applied
-			if (pokemon && !pokemon.volatiles['speedboost']) {
-				this.boost({spe: 1}, pokemon);
-				pokemon.addVolatile('speedboost');
-			}
-		},
-		onSwitchOut(pokemon) {
-			// delete the volatile on switchout so that speed boost triggers when mega blaziken comes back in
-			delete pokemon.volatiles['speedboost'];
+			this.boost({spe: 1}, pokemon);
 		},
 		onResidual() {
 
@@ -1606,6 +1598,38 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (success) {
 				this.add('-anim', pokemon, 'Future Sight');
 				this.add('-start', pokemon, 'Future Sight');
+			}
+		},
+	},
+	bonearmor: {
+		name: "Bone Armor",
+		desc: "This Pokemon gains +1 in Defense and is immune to status until it is hit with an attack.",
+		shortDesc: "Gains +1 in Defense and immune to status until hit with attack.",
+		onDamagePriority: 1,
+		onStart(pokemon) {
+			if (!this.effectData.bonearmorBroken) {
+				this.add('-activate', pokemon, 'ability: Bone Armor');
+				this.boost({def: 1}, pokemon);
+			}
+		},
+		onDamage(damage, target, source, effect) {
+			if (!this.effectData.bonearmorBroken && effect && effect.effectType === 'Move') {
+				this.effectData.bonearmorBroken = true;
+				this.add('-activate', target, 'ability: Bone Armor');
+				this.add('-message', target.name + "'s Bone Armor was broken!");
+				this.boost({def: -1}, target);
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if ((effect as Move)?.status && !this.effectData.bonearmorBroken) {
+				this.add('-immune', target, '[from] ability: Bone Armor');
+			}
+			return false;
+		},
+		onUpdate(pokemon) {
+			if (pokemon.status && !this.effectData.bonearmorBroken) {
+				this.add('-activate', pokemon, 'ability: Bone Armor');
+				pokemon.cureStatus();
 			}
 		},
 	},

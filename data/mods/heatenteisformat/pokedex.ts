@@ -1642,7 +1642,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	mandibuzz: {
 		inherit: true,
 		baseStats: {hp: 115, atk: 75, def: 105, spa: 85, spd: 100, spe: 80},
-		abilities: {0: "Big Pecks", 1: "Overcoat", H: "Unaware"},
+		abilities: {0: "Big Pecks", 1: "Overcoat", H: "Bone Armor"},
 	},
 	heatmor: {
 		inherit: true,
