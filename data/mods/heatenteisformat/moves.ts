@@ -932,6 +932,22 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Fighting",
 		contestType: "Cool",
 	},
+	typhoon: {
+		num: 3012,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Typhoon",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		weather: 'windstorm',
+		secondary: null,
+		target: "all",
+		type: "Flying",
+		zMove: {boost: {spe: 1}},
+		contestType: "Cool",
+	},
 	// New Sig Z Moves
 	endlesssilentforest: {
 		accuracy: true,

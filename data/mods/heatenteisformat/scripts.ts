@@ -40,9 +40,8 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'mewtwo').learnset.closecombat = ['8L1'];
 		this.modData('Learnsets', 'rayquaza').learnset.skyattack = ['8L1'];
 
-		// Mareanie gave Spectrier Aura Sphere and Cursed Dance so calyshadow has to have it too :pensive:
+		// Mareanie gave Spectrier Aura Sphere so calyshadow has to have it too :pensive:
 		this.modData('Learnsets', 'calyrexshadow').learnset.aurasphere = ['8L1'];
-		this.modData('Learnsets', 'calyrexshadow').learnset.curseddance = ['8L1'];
 
 		// Mega Base forms new learned moves:
 		this.modData('Learnsets', 'butterfree').learnset.psyshock = ['8L1'];
@@ -177,6 +176,23 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'hippowdon').learnset.ironmaw = ['8L1'];
 		this.modData('Learnsets', 'carnivine').learnset.ironmaw = ['8L1'];
 		this.modData('Learnsets', 'tyrantrum').learnset.ironmaw = ['8L1'];
+
+		// Typhoon Learners
+		const typhoon = ['charizard', 'corviknight', 'gliscor', 'landorus', 'pelipper', 'salamence',
+		  'shaymin', 'tornadus', 'zapdos', 'arceus', 'hooh', 'lugia', 'rayquaza', 'yveltal', 'aerodactyl',
+		  'altaria', 'archeops', 'articuno', 'articunogalar', 'beautifly', 'braviary', 'butterfree', 'castform',
+		  'celesteela', 'chatot', 'cramorant', 'crobat', 'delibird', 'dodrio', 'dragonite', 'drifblim',
+		  'emolga', 'farfetchd', 'fearow', 'gyarados', 'hawlucha', 'honchkrow', 'jumpluff', 'ledian',
+		  'mantine', 'mandibuzz', 'minior', 'moltres', 'moltresgalar', 'mothim', 'ninjask', 'noctowl',
+		  'noivern', 'oricorio', 'scyther', 'sigilyph', 'skarmory', 'silvally', 'staraptor', 'swanna',
+		  'swellow', 'swoobat', 'talonflame', 'thundurus', 'togekiss', 'toucannon', 'tropius', 'unfezant',
+		  'vespiquen', 'vivillon', 'xatu', 'yanmega', 'zapdos-galar', 'mewtwo', 'decidueye', 'frosmoth',
+		  'drampa', 'kindra', 'masquerain', 'mew', 'sandaconda', 'whimsicott', 'shiftry', 'rotom', 'naganadel',
+		  'volcarona', 'lunala', 'reshiram', 'hydreigon', 'kyurem', 'lumineon'];
+
+		for (const learner of typhoon) {
+			this.modData('Learnsets', learner).learnset.typhoon = ['8L1'];
+		}
 
 		// Other buffs
 		this.modData('Learnsets', 'venusaur').learnset.sludgewave = ['8L1'];
@@ -1290,6 +1306,24 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'calyrexshadow').learnset.futuresight = ['8L1'];
 		this.modData('Learnsets', 'calyrexshadow').learnset.recover = ['8L1'];
 		this.modData('Learnsets', 'calyrexshadow').learnset.teleport = ['8L1'];
+
+		// free all shinies
+		const mons = require('./../../pokedex').Pokedex;
+		const monsKeys = Object.keys(mons);
+		for (const mon of monsKeys) {
+			const currMon = mons[mon];
+			// baseSpecies mons inherit movepool, and presumably event data from another movepool so adding to them will cause an error.
+			// baseSpecies is otherwise undefined which is falsy, so we can check that way.
+			if (!currMon.baseSpecies) {
+				for (const eventData of this.modData('Learnsets', currMon).eventData) {
+					// explicitly test for true as 1 means something different in this context
+					if (eventData.shiny === true) {
+						// set to 1 which means it can be either shiny or not shiny
+						eventData.shiny = 1;
+					}
+				}
+			}
+		}
 	},
 	canMegaEvo(pokemon) {
 		const species = pokemon.baseSpecies;

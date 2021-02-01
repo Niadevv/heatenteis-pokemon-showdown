@@ -1294,7 +1294,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	withered: {
 		name: "Withered",
 		desc: "The user's attacks are boosted by 1.3x, but takes 1/10 of the user's max HP in damage after every attack.",
-		shortDesc: "1.3x boost to attack but takes 1/10 max hp after every attack.",
+		shortDesc: "1.3x boost to attacks but takes 1/10 max hp after every attack.",
 		// basically life orb
 		onModifyDamage(damage, source, target, move) {
 			return this.chainModify([0x14CC, 0x1000]);
@@ -1570,6 +1570,43 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "User summons Windstorm on switch in.",
 		onStart(pokemon) {
 			this.field.setWeather('windstorm');
+		},
+	},
+	clairvoyant: {
+		name: "Clairvoyant",
+		desc: "Upon switchin, the user summons Future Sight on both opponents.",
+		shortDesc: "Future Sight on both opponents on switchin.",
+		onStart(pokemon) {
+			this.add('-activate', pokemon, 'ability: Clairvoyant');
+			let success = false;
+			for (const target of pokemon.side.foe.active) {
+				if (target.side.addSlotCondition(target, 'futuremove')) {
+					Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+						duration: 3,
+						move: 'futuresight',
+						source: pokemon,
+						moveData: {
+							id: 'futuresight',
+							name: "Future Sight",
+							accuracy: 100,
+							basePower: 120,
+							category: "Special",
+							priority: 0,
+							flags: {},
+							ignoreImmunity: false,
+							effectType: 'Move',
+							isFutureMove: true,
+							type: 'Psychic',
+						},
+					});
+					success = true;
+				}
+			}
+
+			if (success) {
+				this.add('-anim', pokemon, 'Future Sight');
+				this.add('-start', pokemon, 'Future Sight');
+			}
 		},
 	},
 };

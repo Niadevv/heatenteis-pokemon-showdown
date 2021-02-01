@@ -291,6 +291,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 80, atk: 110, def: 100, spa: 60, spd: 100, spe: 30},
 		abilities: {0: "Effect Spore", 1: "Dry Skin", H: "Regenerator"},
 	},
+	diglett: {
+		inherit: true,
+		abilities: {0: "Sand Veil", 1: "Sand Rush", H: "Sand Force"},
+	},
+	dugtrio: {
+		inherit: true,
+		abilities: {0: "Sand Veil", 1: "Mole Power", H: "Sand Force"},
+	},
 	dugtrioalola: {
 		inherit: true,
 		baseStats: {hp: 35, atk: 110, def: 60, spa: 50, spd: 70, spe: 110},
@@ -864,6 +872,22 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		otherFormes: ["Unown-B", "Unown-C", "Unown-D", "Unown-E", "Unown-F", "Unown-G", "Unown-H", "Unown-I", "Unown-J", "Unown-K", "Unown-L", "Unown-M", "Unown-N", "Unown-O", "Unown-P", "Unown-Q", "Unown-R", "Unown-S", "Unown-T", "Unown-U", "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question"],
 		formeOrder: ["Unown", "Unown-B", "Unown-C", "Unown-D", "Unown-E", "Unown-F", "Unown-G", "Unown-H", "Unown-I", "Unown-J", "Unown-K", "Unown-L", "Unown-M", "Unown-N", "Unown-O", "Unown-P", "Unown-Q", "Unown-R", "Unown-S", "Unown-T", "Unown-U", "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question"],
 	},
+	wynaut: {
+		inherit: true,
+		abilities: {0: "Unaware", H: "Telepathy"},
+	},
+	wobbuffet: {
+		inherit: true,
+		abilities: {0: "Unaware", H: "Telepathy"},
+	},
+	snorunt: {
+		inherit: true,
+		abilities: {0: "Inner Focus", 1: "Ice Body", H: "Battle Armor"},
+	},
+	glalie: {
+		inherit: true,
+		abilities: {0: "Inner Focus", 1: "Ice Body", H: "Battle Armor"},
+	},
 	dunsparce: {
 		inherit: true,
 		types: ["Normal", "Ground"],
@@ -880,6 +904,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	corsola: {
 		inherit: true,
 		baseStats: {hp: 105, atk: 55, def: 115, spa: 65, spd: 115, spe: 35},
+	},
+	remoraid: {
+		inherit: true,
+		abilities: {0: "Hustle", 1: "Sniper", H: "Suction Cups"},
+	},
+	smeargle: {
+		inherit: true,
+		abilities: {0: "Own Tempo", 1: "Technician", H: "Inner Focus"},
 	},
 	hitmontop: {
 		inherit: true,
@@ -1003,6 +1035,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	spinda: {
 		inherit: true,
 		baseStats: {hp: 90, atk: 90, def: 90, spa: 90, spd: 90, spe: 90},
+	},
+	trapinch: {
+		inherit: true,
+		abilities: {0: "Hyper Cutter", 1: "Sand Stream", H: "Sheer Force"},
 	},
 	cacturne: {
 		inherit: true,
@@ -1216,9 +1252,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Pressure", H: "Regenerator"},
 	},
 	// -------- END HOENN BUFFS --------
+	bidoof: {
+		inherit: true,
+		abilities: {0: "Simple", 1: "Unaware", H: "Technician"},
+	},
 	bibarel: {
 		inherit: true,
 		baseStats: {hp: 90, atk: 100, def: 75, spa: 55, spd: 75, spe: 90},
+		abilities: {0: "Simple", 1: "Unaware", H: "Technician"},
 	},
 	kricketune: {
 		inherit: true,
@@ -1482,9 +1523,18 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 75, atk: 115, def: 60, spa: 65, spd: 60, spe: 115},
 	},
+	gothita: {
+		inherit: true,
+		abilities: {0: "Frisk", 1: "Competitive", H: "Analytic"},
+	},
+	gothorita: {
+		inherit: true,
+		abilities: {0: "Frisk", 1: "Competitive", H: "Analytic"},
+	},
 	gothitelle: {
 		inherit: true,
 		types: ["Psychic", "Dark"],
+		abilities: {0: "Frisk", 1: "Competitive", H: "Clairvoyant"},
 	},
 	reuniclus: {
 		inherit: true,
@@ -1543,10 +1593,6 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 100, atk: 95, def: 75, spa: 125, spd: 110, spe: 40},
 		abilities: {0: "Psychic Surge", 1: "Mind Sweep", H: "Analytic"},
-	},
-	chandelure: {
-		inherit: true,
-		abilities: {0: "Flash Fire", 1: "Flame Body", H: "Shadow Tag"},
 	},
 	beartic: {
 		inherit: true,
@@ -1760,10 +1806,6 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	klefki: {
 		inherit: true,
 		baseStats: {hp: 70, atk: 80, def: 96, spa: 80, spd: 93, spe: 75},
-	},
-	trevenant: {
-		inherit: true,
-		abilities: {0: "Natural Cure", 1: "Shadow Tag", H: "Harvest"},
 	},
 	gourgeist: {
 		inherit: true,
@@ -2372,7 +2414,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		otherFormes: ["Octillery-Mega"],
 		formeOrder: ["Octillery", "Octillery-Mega"],
-		abilities: {0: "Mega Launcher", 1: "Sniper", H: "Moody"},
+		abilities: {0: "Mega Launcher", 1: "Sniper", H: "Suction Cups"},
 	},
 	octillerymega: {
 		num: 224,
