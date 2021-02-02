@@ -1605,14 +1605,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Bone Armor",
 		desc: "This Pokemon gains +1 in Defense and is immune to status until it is hit with an attack.",
 		shortDesc: "Gains +1 in Defense and immune to status until hit with attack.",
-		onDamagePriority: 1,
 		onStart(pokemon) {
 			if (!this.effectData.bonearmorBroken) {
 				this.add('-activate', pokemon, 'ability: Bone Armor');
 				this.boost({def: 1}, pokemon);
 			}
 		},
-		onDamage(damage, target, source, effect) {
+		onDamagingHit(damage, target, source, effect) {
 			if (!this.effectData.bonearmorBroken && effect && effect.effectType === 'Move') {
 				this.effectData.bonearmorBroken = true;
 				this.add('-activate', target, 'ability: Bone Armor');
@@ -1623,8 +1622,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onSetStatus(status, target, source, effect) {
 			if ((effect as Move)?.status && !this.effectData.bonearmorBroken) {
 				this.add('-immune', target, '[from] ability: Bone Armor');
+				return false;
 			}
-			return false;
 		},
 		onUpdate(pokemon) {
 			if (pokemon.status && !this.effectData.bonearmorBroken) {

@@ -186,11 +186,12 @@ export const Scripts: ModdedBattleScriptsData = {
 		  'mantine', 'mandibuzz', 'minior', 'moltres', 'moltresgalar', 'mothim', 'ninjask', 'noctowl',
 		  'noivern', 'oricorio', 'scyther', 'sigilyph', 'skarmory', 'silvally', 'staraptor', 'swanna',
 		  'swellow', 'swoobat', 'talonflame', 'thundurus', 'togekiss', 'toucannon', 'tropius', 'unfezant',
-		  'vespiquen', 'vivillon', 'xatu', 'yanmega', 'zapdos-galar', 'mewtwo', 'decidueye', 'frosmoth',
-		  'drampa', 'kindra', 'masquerain', 'mew', 'sandaconda', 'whimsicott', 'shiftry', 'rotom', 'naganadel',
-		  'volcarona', 'lunala', 'reshiram', 'hydreigon', 'kyurem', 'lumineon'];
+		  'vespiquen', 'vivillon', 'xatu', 'yanmega', 'zapdosgalar', 'mewtwo', 'decidueye', 'frosmoth',
+		  'drampa', 'kingdra', 'masquerain', 'mew', 'sandaconda', 'whimsicott', 'shiftry', 'rotom', 'naganadel',
+		  'volcarona', 'lunala', 'reshiram', 'hydreigon', 'kyurem', 'lumineon', 'suicune'];
 
 		for (const learner of typhoon) {
+			// TEMP, REMOVEME
 			this.modData('Learnsets', learner).learnset.typhoon = ['8L1'];
 		}
 
@@ -1312,10 +1313,11 @@ export const Scripts: ModdedBattleScriptsData = {
 		const monsKeys = Object.keys(mons);
 		for (const mon of monsKeys) {
 			const currMon = mons[mon];
+			const learnset = this.modData('Learnsets', currMon);
 			// baseSpecies mons inherit movepool, and presumably event data from another movepool so adding to them will cause an error.
 			// baseSpecies is otherwise undefined which is falsy, so we can check that way.
-			if (!currMon.baseSpecies) {
-				for (const eventData of this.modData('Learnsets', currMon).eventData) {
+			if (!currMon.baseSpecies && learnset) {
+				for (const eventData of learnset.eventData) {
 					// explicitly test for true as 1 means something different in this context
 					if (eventData.shiny === true) {
 						// set to 1 which means it can be either shiny or not shiny

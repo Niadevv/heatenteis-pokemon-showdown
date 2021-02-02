@@ -59,7 +59,7 @@ abilities to test:
 	leaf hurricane - WORKS
 	conjoined - WORKS
 	crescendo - WORKS
-	lost gift
+	lost gift - WORKS (at last)
 	toxify - WORKS
 	chemical reaction - WORKS
 	army of one - WORKS
@@ -69,10 +69,15 @@ abilities to test:
 	remorseless - WORKS
 	distortion (test to make sure it disables all consumables) - WORKS
 
+	Mole Power - WORKS
+	Clairvoyance - no funny Prevision messages? - WORKS
+	Bone Armor - status immunity, remembering if it stays broken after being broken, stat boosts - WORKS
+
 RETEST:
 	Dollhouse (test with keeping intact substitutes) - WORKS
 	Fortissimo (message, also check if it still works) - WORKS
 	Distortion (check to see the distortion message shows for blocking primal reversion) - WORKS
+	Speed Boost (does it give a second boost on mega) - WORKS
 
 existing changd abilities to test:
 	Disguise (does it still work with Mimikyu properly?) - WORKS
@@ -94,6 +99,7 @@ moves to test:
 	happy valentine - WORKS
 	purging flame - WORKS
 	Key Chain/Caltrops - WORKS
+	typhoon - WORKS
 
 Animation Testing:
 - Cursed Dance (does it only animate the quiver dance animation?) - doesn't work but not particularly important
