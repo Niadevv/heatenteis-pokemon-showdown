@@ -84,7 +84,6 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'feraligatr').learnset.psychicfangs = ['8L1'];
 		this.modData('Learnsets', 'feraligatr').learnset.submission = ['8L1'];
 		// Learns Iron Maw further down
-		this.modData('Learnsets', 'sudowoodo').learnset.accelerock = ['8L1'];
 		this.modData('Learnsets', 'sudowoodo').learnset.closecombat = ['8L1'];
 		this.modData('Learnsets', 'sudowoodo').learnset.bulkup = ['8L1'];
 		this.modData('Learnsets', 'sudowoodo').learnset.seedbomb = ['8L1'];
