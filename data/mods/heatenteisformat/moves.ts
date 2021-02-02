@@ -75,10 +75,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			// Make empty to ensure no recharge
 		},
 		// apply target's status damage 3 times - if poison heal make them heal 3 times, and do not damage with status
-		// TODO: neurotoxin
 		onHit(target, source) {
 			if (target.status) {
-				if (!['magicguard', 'poisonheal', 'spacialbarrier', 'temporalbarrier'].includes(target.ability)) {
+				if (!['magicguard', 'poisonheal', 'spacialbarrier', 'temporalbarrier'].includes(target.ability) && target.status &&
+				  ['tox', 'psn', 'brn', 'slp'].includes(target.status)) {
+					this.add('-activate', source, 'move: Roar of Time');
+					// Darkrai gets Roar of Time for some reason so we should account for that
+					if (source.ability === 'baddreams' && source.status === 'slp') {
+						this.add('-message', target.name + " experienced more Bad Dreams than usual due to the time distortion!");
+						target.damage((target.baseMaxhp / 8) * 3);
+						this.add('-damage', target, target.getHealth);
+					}
+
+					this.add('-message', target.name + "'s status condition was accelerated by the time distortion!");
+
 					if (target.status === 'psn') {
 						const neurotoxModifier = target.statusData.neurotoxin ? 2 : 1;
 						target.damage(((target.baseMaxhp / 8) * neurotoxModifier) * 3);
@@ -98,14 +108,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 						target.damage((target.baseMaxhp / 16) * 3);
 						this.add('-damage', target, target.getHealth);
 					}
-
-					// Darkrai gets Roar of Time for some reason so we should account for that
-					if (source.ability === 'baddreams') {
-						target.damage((target.baseMaxhp / 8) * 3);
-						this.add('-damage', target, target.getHealth);
-					}
 				}
 				if (target.ability === 'poisonheal') {
+					this.add('-message', target.name + "'s status condition was accelerated by the time distortion!");
 					this.add('-activate', source, 'move: Roar of Time');
 					target.heal((target.baseMaxhp / 8) * 3);
 					this.add('-heal', target, target.getHealth);
