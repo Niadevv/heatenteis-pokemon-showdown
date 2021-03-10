@@ -8,12 +8,12 @@ export const Formats: FormatList = [
 		mod: 'heatenteisformat',
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Overflow Stat Mod'],
 		banlist: [
-			'Arceus', 'Arceus-Origin', 'Calyrex-Shadow', 'Dialga', 'Eternatus', 'Eternatus-Eternamax', 'Gengar-Mega', 'Giratina', 'Giratina-Origin', 'Groudon',
-			'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Mewtwo', 'Necrozma-Dawn-Wings',
-			'Necrozma-Dusk-Mane', 'Necrozma-Ultra', 'Palkia', 'Rayquaza', 'Regigigas-Origin', 'Reshiram', 'Solgaleo', 'Xerneas', 'Yveltal',
+			'Arceus', 'Arceus-Origin', 'Calyrex-Shadow', 'Darkrai', 'Deoxys-Attack', 'Dialga', 'Eternatus', 'Eternatus-Eternamax', 'Gengar-Mega', 'Giratina', 'Giratina-Origin', 'Groudon',
+			'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Marshadow', 'Metagross-Mega', 'Mewtwo', 'Necrozma-Dawn-Wings',
+			'Necrozma-Dusk-Mane', 'Necrozma-Ultra', 'Palkia', 'Rayquaza', 'Regigigas-Origin', 'Reshiram', 'Slowking-Mega', 'Solgaleo', 'Xerneas', 'Yveltal',
 			'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Complete', 'Power Construct', 'Baton Pass',
 			// no clue why I need to ban the mega stones because natdex format doesn't have to but apparently I do now so /shrug
-			'Gengarite',
+			'Gengarite', 'Slowkingite', 'Metagrossite',
 		],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
@@ -82,13 +82,13 @@ export const Formats: FormatList = [
 			'Dragapult', 'Excadrill', 'Ferrothorn', 'Floette-Eternal', 'Garchomp', 'Genesect', 'Genesect-Burn', 'Genesect-Douse', 'Genesect-Chill', 'Genesect-Shock',
 			'Gliscor', 'Greninja', 'Greninja-Ash', 'Heatran', 'Kartana', 'Kangaskhan-Mega', 'Kommo-o', 'Landorus-Base', 'Landorus-Therian', 'Lopunny-Mega',
 			'Lucario-Mega', 'Magearna', 'Magnezone', 'Marshadow', 'Mawile-Mega', 'Medicham-Mega', 'Metagross-Mega', 'Naganadel', 'Pelipper', 'Pheromosa', 'Rillaboom',
-			'Salamence-Mega', 'Scizor-Mega', 'Serperior', 'Shaymin-Sky', 'Slowbro', 'Spectrier', 'Swampert-Mega', 'Tangrowth', 'Tapu Fini', 'Tapu Koko', 'Tapu Lele',
+			'Salamence-Mega', 'Scizor-Mega', 'Serperior', 'Shaymin-Sky', 'Slowbro', 'Slowking-Mega', 'Spectrier', 'Swampert-Mega', 'Tangrowth', 'Tapu Fini', 'Tapu Koko', 'Tapu Lele',
 			'Tornadus-Therian', 'Toxapex', 'Tyranitar', 'Urshifu-Single-Strike', 'Volcarona', 'Zapdos', 'Zygarde',
 			// OU by technicality
 			'Garchomp-Mega', 'Slowbro-Mega', 'Tyranitar-Mega',
 			// no clue why I need to ban the mega stones because natdex format doesn't have to but apparently I do now so /shrug
 			'Gengarite', 'Alakazite', 'Blastoisinite', 'Blazikenite', 'Charizardite X', 'Charizardite Y', 'Garchompite', 'Kangaskhanite', 'Lopunnite',
-			'Lucarionite', 'Mawilite', 'Medichamite', 'Metagrossite', 'Salamencite', 'Swampertite', 'Tyranitarite', 'Slowbronite',
+			'Lucarionite', 'Mawilite', 'Medichamite', 'Metagrossite', 'Salamencite', 'Swampertite', 'Tyranitarite', 'Slowbronite', 'Slowkingite',
 		],
 		onValidateSet(set) {
 			const item = this.dex.getItem(set.item);
